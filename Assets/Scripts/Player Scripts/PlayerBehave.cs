@@ -81,7 +81,7 @@ public class PlayerBehave : MonoBehaviour {
 		
 	
 	void Update () {
-		bool isLeft = Input.GetMouseButtonDown(0);
+		bool isLeft = Input.GetKey(KeyCode.Mouse0);
 		bool isA = wiimote_getButtonA(0);
 		bool isB = wiimote_getButtonB(0);
 		bool rKey = Input.GetKeyDown(KeyCode.R);
@@ -109,7 +109,6 @@ public class PlayerBehave : MonoBehaviour {
 				
 				
 		if (isLeft || isB) {
-			//CAMBIAS EL isLeft por lo que tengas que hacer, y para disparar, weapon.shoot(), asi de facil
 			weapon.shoot();	
 		}
 		
