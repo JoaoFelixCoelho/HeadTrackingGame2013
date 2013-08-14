@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<enemies>
+	
+	<zombie>
+		<baseHP> 150 </baseHP>
+		<attackType> melee </attackType>
+		<damage> 40 </damage>
+		<moveSpeed> 3 </moveSpeed>
+	</zombie>
+	
+	
+	<flubber>
+		<baseHP> 150 </baseHP>
+		<attackType> melee </attackType>
+		<damage> 40 </damage>
+		<moveSpeed> 3 </moveSpeed>	
+	</flubber>
+	
+	<spider>
+		<baseHP> 150 </baseHP>
+		<attackType> melee </attackType>
+		<damage> 40 </damage>
+		<moveSpeed> 3 </moveSpeed>	
+	</spider>
+	
+	<ghost>
+		<baseHP> 150 </baseHP>
+		<attackType> melee </attackType>
+		<damage> 40 </damage>
+		<moveSpeed> 3 </moveSpeed>		
+	</ghost>
+	
+	<boss>
+	</boss>
+	
+</enemies>	

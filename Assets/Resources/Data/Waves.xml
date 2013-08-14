@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rounds>
+	<round n="1">
+		<destiny>10</destiny>
+		<type>ghost</type>
+		<interval>1.2</interval>
+	</round>
+
+	<round n="2">
+		<destiny>8</destiny>
+		<type>flubber</type>
+		<interval>1.5</interval>
+	</round>
+
+	<round n="3">
+		<destiny>55</destiny>
+		<type>zombie</type>
+		<interval>0.5</interval>
+	</round>
+
+	<round n="4">
+		<destiny>2</destiny>
+		<type>ghost</type>
+		<interval>1.6</interval>
+	</round>
+
+	<round n="5">
+		<destiny>6</destiny>
+		<type>spider</type>
+		<interval>1.5</interval>
+	</round>
+
+	<round n="6">
+		<destiny>3</destiny>
+		<type>zombie</type>
+		<interval>4</interval>
+	</round>
+
+	<round n="7">
+		<destiny>9</destiny>
+		<type>zombie</type>
+		<interval>0.4</interval>
+	</round>
+
+
+
+</rounds>
