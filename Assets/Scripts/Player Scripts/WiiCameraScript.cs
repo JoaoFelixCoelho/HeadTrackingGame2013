@@ -68,7 +68,7 @@ public class WiiCameraScript: MonoBehaviour {
 		//Camera.main.fieldOfView = 80;
 		X = wiimote_getIrX(0)*10;
 		Y = wiimote_getIrY(0)*10;
-		Z = 0f;
+		Z = wiimote_getAccZ(0)*1;
 		gameObject.transform.LookAt(center);
 		transform.position = new Vector3(X, Y, Z);
 

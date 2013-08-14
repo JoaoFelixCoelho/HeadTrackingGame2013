@@ -9,9 +9,6 @@ public class Crosshair : MonoBehaviour {
 	private static extern void wiimote_start();
  
 	[DllImport ("UniWii")]
-	private static extern void wiimote_stop();
- 
-	[DllImport ("UniWii")]
 	private static extern int wiimote_count();
  
 	[DllImport ("UniWii")]
@@ -32,10 +29,14 @@ public class Crosshair : MonoBehaviour {
 	[DllImport ("UniWii")]
 	private static extern float wiimote_getYaw(int which);
  
+	
+	// mis attrs
 	private string display;
 	private int mira_x, mira_y;
 	public Texture2D mira;
 	private Vector3 oldVec;
+	private Vector3 vec3Look;
+	public GameObject arma;
 
 	
 	
@@ -65,7 +66,8 @@ public class Crosshair : MonoBehaviour {
 				    Vector3 vec = new Vector3(p, 0 , -1 * roll);
 				    vec = Vector3.Lerp(oldVec, vec, Time.deltaTime * 5);
 				    oldVec = vec;
-					oldVec.z = -(transform.position.x - Camera.mainCamera.transform.position.x);
+					print("x: " + oldVec.x + " y: " +  oldVec.y);
+					//oldVec.z = -(transform.position.x - Camera.mainCamera.transform.position.x);
 					
 				}
 			    if ( (i==c-1) && (ir_x != -100) && (ir_y != -100) ) {
@@ -75,6 +77,8 @@ public class Crosshair : MonoBehaviour {
 				    	float temp_y = Screen.height - (ir_y * (float) Screen.height / (float)2.0);
 				    	mira_x = Mathf.RoundToInt(temp_x);
 				    	mira_y = Mathf.RoundToInt(temp_y);
+						vec3Look = camera.ScreenToWorldPoint(new Vector3(mira_x, Screen.height*1.5f - mira_y , -20));
+						arma.transform.LookAt(vec3Look);
 				}
 			}
 		}
