@@ -14,8 +14,9 @@ public class Bloom_Autowalker : MonoBehaviour {
 	
 	
 	public float amplitud;
-	public float T;
-	public float B;
+	public float frecuencia;
+	public AudioClip footstep;
+	public AudioSource source;
 	
 	private float spc = 0f;
 	private float toScale;
@@ -41,15 +42,23 @@ public class Bloom_Autowalker : MonoBehaviour {
 		else {
 			bloomAnimOver = true;	
 			timerDelta = 0f;
-			//animation.Play();
+			source.PlayOneShot(footstep);
 		}
 		
 	}
 	
 	private void checkWalk() {
 		spc += Time.deltaTime;
-		// si mira Sandra, lo que me ensenaste sirvio para algo!!
-		transform.localPosition += new Vector3(0, amplitud * (Mathf.Sin( ((2f * Mathf.PI) / T) * spc)) ,1) * Time.deltaTime * walkSpeed;
+		transform.localPosition += new Vector3(0, amplitud * (Mathf.Sin( ((2f * Mathf.PI) / frecuencia) * spc)) ,1) * Time.deltaTime * walkSpeed;
+	}
+	
+	private void checkFootstep() {
+		
+	}
+	
+	private void step() {
+		checkWalk();
+		checkFootstep();
 	}
 
 	
@@ -60,7 +69,7 @@ public class Bloom_Autowalker : MonoBehaviour {
 			checkInt();
 		}
 		else if (!walkAnimOver) {
-				checkWalk();
+				step();
 		}
 
 	}
