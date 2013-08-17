@@ -45,7 +45,7 @@ public class Arma : MonoBehaviour {
 				RaycastHit hit;
 				if (Physics.Raycast(transform.position, fwd, out hit)){
 					
-					Enemy enemyInstance = hit.collider.gameObject.GetComponent("Enemy") as Enemy;
+					Enemy enemyInstance = hit.collider.gameObject.GetComponent<Enemy>();
 					
 					if (enemyInstance != null){
 						enemyInstance.GetComponent<HealthSystem>().damageHp(this.damage);

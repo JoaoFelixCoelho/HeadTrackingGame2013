@@ -15,10 +15,12 @@ public class Bloom_Autowalker : MonoBehaviour {
 	
 	public float amplitud;
 	public float frecuencia;
-	public AudioClip footstep;
+	public AudioClip [] footsteps;
 	public AudioSource source;
 	
+	private bool isStepping;
 	private float spc = 0f;
+	private int i = 0;
 	private float toScale;
 	private float animTime;
 	bool headUp = true;
@@ -41,8 +43,7 @@ public class Bloom_Autowalker : MonoBehaviour {
 		
 		else {
 			bloomAnimOver = true;	
-			timerDelta = 0f;
-			source.PlayOneShot(footstep);
+			timerDelta = 0.9f;
 		}
 		
 	}
@@ -53,10 +54,15 @@ public class Bloom_Autowalker : MonoBehaviour {
 	}
 	
 	private void checkFootstep() {
-		
+		if (timerDelta >= 0.9f) {
+			i = Random.Range(0, footsteps.Length);
+			source.PlayOneShot(footsteps[i]);
+			timerDelta = 0f;
+		}
 	}
 	
 	private void step() {
+		timerDelta += Time.deltaTime;
 		checkWalk();
 		checkFootstep();
 	}
