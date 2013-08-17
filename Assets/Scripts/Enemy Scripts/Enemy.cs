@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour{
 	public static int numerator;
 	public static int current;
 	public bool insideAttZone = false;
+	public bool isDead = false;
 	
 	
 
@@ -169,6 +170,10 @@ public class Enemy : MonoBehaviour{
 	
 	public void moveForward(){
 		gameObject.transform.position += transform.forward * Time.deltaTime * moveSpeed;	
+	}
+	
+	public void markAsDead() {
+		this.isDead = true;	
 	}
 	
 	void Update () {

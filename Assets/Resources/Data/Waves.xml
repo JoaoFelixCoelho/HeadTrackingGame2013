@@ -3,7 +3,7 @@
 <rounds>
 	<round n="1">
 		<destiny>10</destiny>
-		<type>ghost</type>
+		<type>zombie</type>
 		<interval>1.2</interval>
 	</round>
 

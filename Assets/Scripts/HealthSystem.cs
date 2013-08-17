@@ -7,6 +7,7 @@ public class HealthSystem : MonoBehaviour {
 	public bool isPlayer;
 	public static RoundManager roundManager;
 	public PlayerBehave player;
+	private Enemy enemyAttrs;
 	
 	
 	public void damageHp (int hit){
@@ -14,12 +15,15 @@ public class HealthSystem : MonoBehaviour {
 			this.currHp-=hit;
 		}
 		else if(!isPlayer) {
-			Destroy(gameObject);
-			player.GetComponent<PlayerBehave>().addKill();
-			roundManager.killOne();
+			if (!enemyAttrs.isDead){
+				enemyAttrs.markAsDead();
+				Destroy(gameObject);
+				player.GetComponent<PlayerBehave>().addKill();
+				roundManager.killOne();
+			}
 		}
 		else {
-			print("el jugador se murio guachiturro");	
+			print("el jugador se murio");	
 		}
 	}
 
@@ -38,6 +42,9 @@ public class HealthSystem : MonoBehaviour {
 		this.currHp = this.totHp;
 		roundManager = (RoundManager) GameObject.Find("SpawnManager").GetComponent("RoundManager");	
 		player = (PlayerBehave) GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehave>();
+		if (!isPlayer) {
+			enemyAttrs = gameObject.GetComponent<Enemy>();	
+		}
 	}
 	
 	// Update is called once per frame
