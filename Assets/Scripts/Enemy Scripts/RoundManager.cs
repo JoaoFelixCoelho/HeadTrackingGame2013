@@ -13,9 +13,10 @@ public class RoundManager : MonoBehaviour {
 	public static float interval; 
 	public bool isSpawning;
 	
-	//los puntos de spawn, seguro terminan siendo 8 ?
 	public Transform [] spawnPoints;
 	public GUIText roundAlert;
+	public GameObject spawnParticlePrefab;
+	
 	
 	public PlayerBehave player;
 	
@@ -78,7 +79,14 @@ public class RoundManager : MonoBehaviour {
 	
 	public void spawnEnemy() {
 		if(waveDeltaTime>=RoundManager.interval) {
-			Enemy.createEnemy(Round.type, Round.number, spawnPoints[(int) Random.Range(0,spawnPoints.Length)]);
+			int randomSpawn = Random.Range(0,spawnPoints.Length);
+			Enemy.createEnemy(Round.type, Round.number, spawnPoints[randomSpawn]);
+			Instantiate (
+							spawnParticlePrefab, 
+							new Vector3(spawnPoints[randomSpawn].transform.position.x, 0, spawnPoints[randomSpawn].transform.position.z),
+							spawnPoints[randomSpawn].transform.rotation
+						);
+			
 			waveDeltaTime = 0;
 			Enemy.current++;
 		}

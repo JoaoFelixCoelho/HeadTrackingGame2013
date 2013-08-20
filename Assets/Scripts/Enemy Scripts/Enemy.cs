@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour{
 	public float moveSpeed;
 	public int id;
 	
+	public static int standByTime = 3;
+	private float timer = 0f;
+	private bool started = false;
 	public static int numerator;
 	public static int current;
 	public bool insideAttZone = false;
@@ -178,9 +181,16 @@ public class Enemy : MonoBehaviour{
 	
 	void Update () {
 		//si no pasó el trigger, que solo avanze, cuando pasa el trigger, sigue al player
-
-		if(!insideAttZone) {
-			moveForward();
+		if (!started) {
+			timer += Time.deltaTime;
+			if (timer >= Enemy.standByTime) {
+				started = true;
+			}
+		}
+		else {
+			if(!insideAttZone) {
+				moveForward();
+			}
 		}
 
 	}
