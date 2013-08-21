@@ -14,7 +14,7 @@
 	</round>
 
 	<round n="3">
-		<destiny>55</destiny>
+		<destiny>10</destiny>
 		<type>zombie</type>
 		<interval>0.5</interval>
 	</round>

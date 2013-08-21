@@ -81,11 +81,12 @@ public class RoundManager : MonoBehaviour {
 		if(waveDeltaTime>=RoundManager.interval) {
 			int randomSpawn = Random.Range(0,spawnPoints.Length);
 			Enemy.createEnemy(Round.type, Round.number, spawnPoints[randomSpawn]);
-			Instantiate (
+			
+			/*Instantiate (
 							spawnParticlePrefab, 
 							new Vector3(spawnPoints[randomSpawn].transform.position.x, 0, spawnPoints[randomSpawn].transform.position.z),
-							spawnPoints[randomSpawn].transform.rotation
-						);
+							spawnParticlePrefab.transform.rotation
+						);*/
 			
 			waveDeltaTime = 0;
 			Enemy.current++;

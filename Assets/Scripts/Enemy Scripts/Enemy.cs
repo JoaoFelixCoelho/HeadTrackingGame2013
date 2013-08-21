@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour{
 	public float moveSpeed;
 	public int id;
 	
-	public static int standByTime = 3;
+	public static float standByTime = 1f;
 	private float timer = 0f;
 	private bool started = false;
 	public static int numerator;
@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour{
 	
 	public static GameObject zombiePrefab  = (GameObject) Resources.Load("Prefabs/Enemies/zombie");
 	public static GameObject flubberPrefab = (GameObject) Resources.Load("Prefabs/Enemies/flubber");
-	public static GameObject spiderPrefab    = (GameObject) Resources.Load("Prefabs/Enemies/spider");
+	public static GameObject spiderPrefab  = (GameObject) Resources.Load("Prefabs/Enemies/spider");
 	public static GameObject ghostPrefab   = (GameObject) Resources.Load("Prefabs/Enemies/ghost");
 	
 	//El jugador y el controlador de las rondas
@@ -65,7 +65,9 @@ public class Enemy : MonoBehaviour{
 			enemyInstance.id = Enemy.numerator;
 			enemyInstance.name = enemyInstance.type + "-" + enemyInstance.id + "-" + Round.number;
 			Enemy.numerator++;	
-
+			//cambiar
+			//enemyGameObject.transform.GetChild(0).renderer.enabled = false;
+			
 			return enemyInstance;
 				
 		case "flubber":
@@ -82,6 +84,8 @@ public class Enemy : MonoBehaviour{
 			enemyInstance.id = Enemy.numerator;
 			enemyInstance.name = enemyInstance.type + "-" + enemyInstance.id + "-" + Round.number;
 			Enemy.numerator++;	
+			//cambiar
+			//enemyGameObject.transform.GetChild(0).renderer.enabled = false;			
 			
 			return enemyInstance;
 			
@@ -99,6 +103,8 @@ public class Enemy : MonoBehaviour{
 			enemyInstance.id = Enemy.numerator;
 			enemyInstance.name = enemyInstance.type + "-" + enemyInstance.id + "-" + Round.number;
 			Enemy.numerator++;	
+			//cambiar
+			//enemyGameObject.transform.GetChild(0).renderer.enabled = false;
 			
 			return enemyInstance;
 			
@@ -124,6 +130,8 @@ public class Enemy : MonoBehaviour{
 			enemyInstance.id = Enemy.numerator;
 			enemyInstance.name = enemyInstance.type + "-" + enemyInstance.id + "-" + Round.number;
 			Enemy.numerator++;	
+			//cambiar
+			//enemyGameObject.transform.GetChild(0).renderer.enabled = false;			
 			
 			return enemyInstance;
 		
@@ -141,7 +149,8 @@ public class Enemy : MonoBehaviour{
 			enemyInstance.name = enemyInstance.type + "-" + enemyInstance.id + "-" + Round.number;
 			Enemy.numerator++;	
 			print("Se creo el default Enemy, fijate si no escribiste algo mal!! ");
-			
+			//cambiar
+			//enemyGameObject.transform.GetChild(0).renderer.enabled = false;			
 			
 			return enemyInstance;
 			
@@ -155,7 +164,7 @@ public class Enemy : MonoBehaviour{
 	
 	#region behaviour	
 	
-	bool isOnTheFloor(){
+	bool clearFront(){
 		
 		/*
 		 * que se fije si el guachín toca el piso y esta bien parado. 
@@ -181,16 +190,22 @@ public class Enemy : MonoBehaviour{
 	
 	void Update () {
 		//si no pasó el trigger, que solo avanze, cuando pasa el trigger, sigue al player
-		if (!started) {
+		/*if (!started) { 
 			timer += Time.deltaTime;
 			if (timer >= Enemy.standByTime) {
 				started = true;
+				gameObject.transform.GetChild(0).renderer.enabled = true;
 			}
 		}
-		else {
+		else {*/
+		if (clearFront()) {
 			if(!insideAttZone) {
 				moveForward();
 			}
+		} else {
+			//quedarse
+		}
+
 		}
 
 	}
@@ -207,4 +222,4 @@ public class Enemy : MonoBehaviour{
 	
 	
 	
-}
+
