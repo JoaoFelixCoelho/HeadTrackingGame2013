@@ -21,8 +21,9 @@ public class PlayerBehave : MonoBehaviour {
 	public GUIText ammoGUI;
 	public GUIText enemyCounter;
 	public GUIText warningGUI;
-	
-	
+	private double fireRate=0.2;
+	private bool allowFire=false;
+	private bool resetBool=true;
 	public Transform testSpawn;
 
 	
@@ -81,6 +82,7 @@ public class PlayerBehave : MonoBehaviour {
 		
 	
 	void Update () {
+		Debug.Log (fireRate);
 		bool isLeft = Input.GetKey(KeyCode.Mouse0);
 		bool isA = wiimote_getButtonA(0);
 		bool isB = wiimote_getButtonB(0);
@@ -88,8 +90,14 @@ public class PlayerBehave : MonoBehaviour {
 		bool zKey = Input.GetKeyDown(KeyCode.Z);
 		bool xKey = Input.GetKeyDown(KeyCode.X);
 		bool cKey = Input.GetKeyDown(KeyCode.C);
-		
-		
+		fireRate -= Time.deltaTime;
+		if (fireRate<0){
+			fireRate = 0.2;
+			allowFire=true;
+		}
+			else 
+				allowFire=false;
+			
 		if (rKey || isA){
 			this.reloadWep();
 			print("municion que queda: " + this.ammo);
@@ -107,9 +115,15 @@ public class PlayerBehave : MonoBehaviour {
 			Enemy.createEnemy("dino",1, testSpawn);
 		}
 				
-				
-		if (isLeft || isB) {
+		if (isLeft && resetBool==true){
+			fireRate = 0;
+			resetBool=false;
+		}
+		if (isLeft && allowFire==true || isB && allowFire==true) {
 			weapon.shoot();	
+		}
+		if (isLeft=false){
+			resetBool=true;
 		}
 		
 
