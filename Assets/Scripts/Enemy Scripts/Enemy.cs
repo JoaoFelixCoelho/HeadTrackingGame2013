@@ -165,27 +165,36 @@ public class Enemy : MonoBehaviour{
 	#region behaviour	
 	
 	private bool clearFront(){
-		Vector3 startV3 = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-		Vector3 endV3 = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z + 10);
 		
-		Vector3 fwd = transform.dir;
-		Debug.DrawRay(transform.localPosition, fwd);
-        if (Physics.Raycast(transform.position, fwd, 10)) {
-			print("pegando");	
+		Ray rallo = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
+		Debug.DrawRay(rallo.origin, rallo.direction * 10);
+
+		RaycastHit hit;
+        if (Physics.Raycast(rallo, out hit, 10)) {
+            if (hit.collider.tag == "Enemy") {
+				return false;
+			}
+			else {
+				return true;	
+			}
+    	}
+		else {
+			return true;	
 		}
 		
-		
-		Debug.DrawLine(startV3, endV3);
-		print(Physics.Raycast(startV3, endV3));
-        return true;
 	}	
 	
 	public void modifyRoute() {
 		this.insideAttZone=true;
 	}
 	
-	public void moveForward(){
-		gameObject.transform.position += transform.forward * Time.deltaTime * moveSpeed;	
+	public void moveForwardRect(){
+		gameObject.transform.localPosition += transform.forward * (moveSpeed * Time.deltaTime);	
+		rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+	}
+	
+	public void moveForward() {
+		gameObject.transform.localPosition += transform.forward * (moveSpeed * Time.deltaTime);	
 	}
 	
 	
@@ -196,21 +205,16 @@ public class Enemy : MonoBehaviour{
 	
 	
 	void Update () {
-		if(clearFront()) {
-			print("clearfront");
-		}
-		/*if (clearFront()) {
-			if(!insideAttZone) {
-				moveForward();
-			}
-		} else {
-			print("not clear front");
-			gameObject.transform.position -= transform.forward * Time.deltaTime * moveSpeed;	
-		}*/
 
-		}
+		if (clearFront()) {
+			if(!insideAttZone) {
+				moveForwardRect();
+			}
+		} 
 
 	}
+
+}
 	
 	
 	

@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 36697567}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.28145981, y: -5.65287685, z: -9.97013283}
+  m_LocalPosition: {x: 2.28145981, y: -5.65287685, z: -5.53780174}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 678629490}
@@ -641,7 +641,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 429358630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.6389046, y: -2.41442013, z: 1.42746735}
+  m_LocalPosition: {x: 22.1147385, y: -2.41442013, z: 1.42746735}
   m_LocalScale: {x: 38.7999992, y: 17, z: .450446129}
   m_Children: []
   m_Father: {fileID: 1040878314}
@@ -1307,6 +1307,10 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 678629490}
   - {fileID: 2048731835}
+  - {fileID: 1922944078}
+  - {fileID: 697376759}
+  - {fileID: 1773812064}
+  - {fileID: 1857447098}
   roundAlert: {fileID: 674692817}
   spawnParticlePrefab: {fileID: 100000, guid: 06f323adf33fa774b95c8e493b01e6f9, type: 2}
   player: {fileID: 319776606}
@@ -1883,7 +1887,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1963972223}
   - 33: {fileID: 1963972222}
-  - 65: {fileID: 1963972221}
   - 23: {fileID: 1963972220}
   m_Layer: 8
   m_Name: WiiCameraCenter
@@ -1910,18 +1913,6 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
---- !u!65 &1963972221
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1963972219}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1963972222
 MeshFilter:
   m_ObjectHideFlags: 0
