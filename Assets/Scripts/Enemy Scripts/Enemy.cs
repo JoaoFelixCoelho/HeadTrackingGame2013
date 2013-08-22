@@ -164,16 +164,20 @@ public class Enemy : MonoBehaviour{
 	
 	#region behaviour	
 	
-	bool clearFront(){
+	private bool clearFront(){
+		Vector3 startV3 = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+		Vector3 endV3 = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z + 10);
 		
-		/*
-		 * que se fije si el guachín toca el piso y esta bien parado. 
-		 * Si anda esto, que devuelva true si no, que lo haga pararse y devuelva true
-		 * 
-		 * (calcular posiciónY y altura del gameObject??)
-		 * */
+		Vector3 fwd = transform.dir;
+		Debug.DrawRay(transform.localPosition, fwd);
+        if (Physics.Raycast(transform.position, fwd, 10)) {
+			print("pegando");	
+		}
 		
-		return true;
+		
+		Debug.DrawLine(startV3, endV3);
+		print(Physics.Raycast(startV3, endV3));
+        return true;
 	}	
 	
 	public void modifyRoute() {
@@ -184,27 +188,25 @@ public class Enemy : MonoBehaviour{
 		gameObject.transform.position += transform.forward * Time.deltaTime * moveSpeed;	
 	}
 	
+	
 	public void markAsDead() {
 		this.isDead = true;	
 	}
 	
+	
+	
 	void Update () {
-		//si no pasó el trigger, que solo avanze, cuando pasa el trigger, sigue al player
-		/*if (!started) { 
-			timer += Time.deltaTime;
-			if (timer >= Enemy.standByTime) {
-				started = true;
-				gameObject.transform.GetChild(0).renderer.enabled = true;
-			}
+		if(clearFront()) {
+			print("clearfront");
 		}
-		else {*/
-		if (clearFront()) {
+		/*if (clearFront()) {
 			if(!insideAttZone) {
 				moveForward();
 			}
 		} else {
-			//quedarse
-		}
+			print("not clear front");
+			gameObject.transform.position -= transform.forward * Time.deltaTime * moveSpeed;	
+		}*/
 
 		}
 

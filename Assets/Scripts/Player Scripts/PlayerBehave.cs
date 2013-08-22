@@ -82,7 +82,7 @@ public class PlayerBehave : MonoBehaviour {
 		
 	
 	void Update () {
-		Debug.Log (fireRate);
+		//Debug.Log (fireRate);
 		bool isLeft = Input.GetKey(KeyCode.Mouse0);
 		bool isA = wiimote_getButtonA(0);
 		bool isB = wiimote_getButtonB(0);
@@ -91,7 +91,7 @@ public class PlayerBehave : MonoBehaviour {
 		bool xKey = Input.GetKeyDown(KeyCode.X);
 		bool cKey = Input.GetKeyDown(KeyCode.C);
 		fireRate -= Time.deltaTime;
-		if (fireRate<0){
+		if (fireRate < 0){
 			fireRate = 0.2;
 			allowFire=true;
 		}
@@ -102,18 +102,7 @@ public class PlayerBehave : MonoBehaviour {
 			this.reloadWep();
 			print("municion que queda: " + this.ammo);
 		}
-		
-		if (zKey){		
-			Enemy.createEnemy("zombie",1, testSpawn);
-		}
-		
-		if (xKey){		
-			Enemy.createEnemy("flubber",1, testSpawn);
-		}
-		
-		if (cKey){		
-			Enemy.createEnemy("dino",1, testSpawn);
-		}
+	
 				
 		if (isLeft && resetBool==true){
 			fireRate = 0;
