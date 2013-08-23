@@ -17,9 +17,9 @@ public class Enemy : MonoBehaviour{
 	public static int current;
 	public bool insideAttZone = false;
 	public bool isDead = false;
-	
-	
 
+	
+	
 	//los prefabs de los enemigos
 	
 	public static GameObject zombiePrefab  = (GameObject) Resources.Load("Prefabs/Enemies/zombie");
@@ -34,23 +34,13 @@ public class Enemy : MonoBehaviour{
 	
 	#region Stats
 	
-	public static Enemy createEnemy(string type, int round, Transform currSpawn) {		
+	public static Enemy createEnemy(string type, int round, Transform currSpawn, int firstGrid) {		
 		
 		//if (round>0 && round<10){
 		GameObject enemyGameObject;
 		Enemy enemyInstance;
 
 		switch(type){ 
-			
-		/*
-		 * Instanseo un gameObject con el prefab del chobi que corresponde
-		 * le agrego el Script "Enemy", la clase Enemy, esta misma
-		 * agarro a el componente Enemy del gameobject y le seteo todo
-		 * devuelvo al enemigo, para que desde donde llamaron a este metodo puedan hacer lo que quieran
-		 * el gameobject ya está relacionado con el Enemy
-		 * 
-		 * 
-		 * */
 			
 		case "zombie":
 			
@@ -65,8 +55,7 @@ public class Enemy : MonoBehaviour{
 			enemyInstance.id = Enemy.numerator;
 			enemyInstance.name = enemyInstance.type + "-" + enemyInstance.id + "-" + Round.number;
 			Enemy.numerator++;	
-			//cambiar
-			//enemyGameObject.transform.GetChild(0).renderer.enabled = false;
+			enemyInstance.GetComponent<AIPathfinding>().originalGrid = firstGrid;
 			
 			return enemyInstance;
 				
@@ -84,8 +73,8 @@ public class Enemy : MonoBehaviour{
 			enemyInstance.id = Enemy.numerator;
 			enemyInstance.name = enemyInstance.type + "-" + enemyInstance.id + "-" + Round.number;
 			Enemy.numerator++;	
-			//cambiar
-			//enemyGameObject.transform.GetChild(0).renderer.enabled = false;			
+			enemyInstance.GetComponent<AIPathfinding>().originalGrid = firstGrid;
+	
 			
 			return enemyInstance;
 			
@@ -103,8 +92,8 @@ public class Enemy : MonoBehaviour{
 			enemyInstance.id = Enemy.numerator;
 			enemyInstance.name = enemyInstance.type + "-" + enemyInstance.id + "-" + Round.number;
 			Enemy.numerator++;	
-			//cambiar
-			//enemyGameObject.transform.GetChild(0).renderer.enabled = false;
+			enemyInstance.GetComponent<AIPathfinding>().originalGrid = firstGrid;
+
 			
 			return enemyInstance;
 			
@@ -130,8 +119,8 @@ public class Enemy : MonoBehaviour{
 			enemyInstance.id = Enemy.numerator;
 			enemyInstance.name = enemyInstance.type + "-" + enemyInstance.id + "-" + Round.number;
 			Enemy.numerator++;	
-			//cambiar
-			//enemyGameObject.transform.GetChild(0).renderer.enabled = false;			
+			enemyInstance.GetComponent<AIPathfinding>().originalGrid = firstGrid;
+		
 			
 			return enemyInstance;
 		
@@ -149,8 +138,8 @@ public class Enemy : MonoBehaviour{
 			enemyInstance.name = enemyInstance.type + "-" + enemyInstance.id + "-" + Round.number;
 			Enemy.numerator++;	
 			print("Se creo el default Enemy, fijate si no escribiste algo mal!! ");
-			//cambiar
-			//enemyGameObject.transform.GetChild(0).renderer.enabled = false;			
+			enemyInstance.GetComponent<AIPathfinding>().originalGrid = firstGrid;
+		
 			
 			return enemyInstance;
 			
@@ -163,56 +152,24 @@ public class Enemy : MonoBehaviour{
 		
 	
 	#region behaviour	
-	
-	private bool clearFront(){
 		
-		Ray rallo = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
-		Debug.DrawRay(rallo.origin, rallo.direction * 10);
-
-		RaycastHit hit;
-        if (Physics.Raycast(rallo, out hit, 10)) {
-            if (hit.collider.tag == "Enemy") {
-				return false;
-			}
-			else {
-				return true;	
-			}
-    	}
-		else {
-			return true;	
-		}
-		
+	public void moveForward() {
+		gameObject.transform.localPosition += transform.forward * (moveSpeed * Time.deltaTime);	
 	}	
+	
+	
 	
 	public void modifyRoute() {
 		this.insideAttZone=true;
 	}
 	
-	public void moveForwardRect(){
-		gameObject.transform.localPosition += transform.forward * (moveSpeed * Time.deltaTime);	
-		rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-	}
-	
-	public void moveForward() {
-		gameObject.transform.localPosition += transform.forward * (moveSpeed * Time.deltaTime);	
-	}
 	
 	
 	public void markAsDead() {
 		this.isDead = true;	
 	}
 	
-	
-	
-	void Update () {
 
-		if (clearFront()) {
-			if(!insideAttZone) {
-				moveForwardRect();
-			}
-		} 
-
-	}
 
 }
 	
