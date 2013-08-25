@@ -7,7 +7,7 @@ public class AIPathfinding : MonoBehaviour {
 	bool isRotating = false;
 	public  int originalGrid;
 	private int currentGrid;
-
+	string rotation;
 	
 	// Use this for initialization
 	void Start () {
@@ -26,10 +26,12 @@ public class AIPathfinding : MonoBehaviour {
 		
 		Ray rayo = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
 		Debug.DrawRay(rayo.origin, rayo.direction * 5);
+	
 		
 		if (isRotating) {
-			if(!animation.isPlaying) {
-				gameObject.transform.Rotate(new Vector3(-35,0,0));	
+			if (Mathf.Round(transform.position.x) == Mathf.Round(GridSystem.grids[currentGrid].xPos)) {
+				isRotating = false;
+				animation.Play("EnemyReturnFrom" + rotation);
 			}
 			
 			
@@ -45,9 +47,8 @@ public class AIPathfinding : MonoBehaviour {
 					if (!isRotating) {
 						
 						int leastCrowdedAdjacent;
-						string rotation;
 						
-						if (currentGrid >= 1) {
+						if (currentGrid >= 1 && currentGrid < GridSystem.grids.Length-1) {
 						
 							if (GridSystem.grids[currentGrid+1].currentEnemies > GridSystem.grids[currentGrid-1].currentEnemies) {
 								leastCrowdedAdjacent = currentGrid-1;
@@ -59,10 +60,13 @@ public class AIPathfinding : MonoBehaviour {
 								rotation = "Right";
 							}
 						} 
-						else {
+						else if(currentGrid == 0) {
 							leastCrowdedAdjacent = currentGrid + 1;	
-							print ( "rotating to grid: " +  leastCrowdedAdjacent);
 							rotation = "Right";
+						}
+						else {
+							leastCrowdedAdjacent = currentGrid - 1;	
+							rotation = "Left";
 						}
 						
 						if (GridSystem.grids[currentGrid].currentEnemies > GridSystem.grids[leastCrowdedAdjacent].currentEnemies) {

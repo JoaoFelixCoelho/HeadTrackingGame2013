@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GridSystem : MonoBehaviour {
 	
-	public static Grid [] grids = new Grid[4];
+	public static Grid [] grids;
 	public GUIText visualDebug;
 
 	
@@ -11,6 +11,17 @@ public class GridSystem : MonoBehaviour {
 	public class Grid {
 		public int number;
 		public int currentEnemies;		
+		public float xPos;
+		
+	}
+	
+	
+	public static void setGridLength(int length) {
+		grids = new Grid[length];
+		for (int i=0; i < grids.Length; i++) {
+			grids [i] = new Grid();	
+			grids [i].currentEnemies = 0;
+		}		
 		
 	}
 	
@@ -19,17 +30,16 @@ public class GridSystem : MonoBehaviour {
 	void Awake () {
 		
 		//que asco loco
-		for (int i=0; i<grids.Length; i++) {
-			grids [i] = new Grid();	
-			grids [i].currentEnemies = 0;
-		}
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		visualDebug.text = ("grid 0: " + grids[0].currentEnemies + "\n" +
-						   "grid 1: " + grids[1].currentEnemies + "\n" +
-						   "grid 2: " + grids[2].currentEnemies + "\n");
+		string gridString = "";
+		for (int i=0; i<grids.Length; i++) {
+			gridString += "grid" + i + ": " + grids[i].currentEnemies + "\n";	
+		}
+		visualDebug.text = gridString;
 		
 	}
 }

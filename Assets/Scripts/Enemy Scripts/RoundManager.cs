@@ -30,6 +30,10 @@ public class RoundManager : MonoBehaviour {
 		startNewRound();
 		//lo tuve que poner aca porque no andaba, alta negrada :/
 		Stats.read();
+		GridSystem.setGridLength(spawnPoints.Length);
+		for (int i=0; i<spawnPoints.Length; i++) {
+			GridSystem.grids[i].xPos = spawnPoints[i].transform.position.x;	
+		}
 	}	
 	
 	public void startNewRound(){

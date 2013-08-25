@@ -29,6 +29,8 @@ GameObject:
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
+  - 111: {fileID: 11100000}
+  - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: Flubber
   m_TagString: Enemy
@@ -111,6 +113,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.20000005, y: 2.3900001, z: 1.25}
   m_Center: {x: .0599999987, y: .150000006, z: 0}
+--- !u!111 &11100000
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 167192077aa51dc4b883cf2527e2f791, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 167192077aa51dc4b883cf2527e2f791, type: 2}
+  - {fileID: 7400000, guid: bc8233e6068ef4344b5a5ee56db8e661, type: 2}
+  - {fileID: 7400000, guid: 1e4769ebf8179bb4b94588f861d5be43, type: 2}
+  - {fileID: 7400000, guid: f1a28f3ae157e5a4b868e840f3571390, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+  m_UserAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,6 +163,17 @@ MonoBehaviour:
   currHp: 0
   isPlayer: 0
   player: {fileID: 0}
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defe6a50576a77c4699de21df2103707, type: 3}
+  m_Name: 
+  originalGrid: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

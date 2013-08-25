@@ -1293,6 +1293,10 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 678629490}
   - {fileID: 2048731835}
+  - {fileID: 1922944078}
+  - {fileID: 697376759}
+  - {fileID: 1773812064}
+  - {fileID: 1857447098}
   roundAlert: {fileID: 674692817}
   spawnParticlePrefab: {fileID: 100000, guid: 06f323adf33fa774b95c8e493b01e6f9, type: 2}
   player: {fileID: 319776606}
