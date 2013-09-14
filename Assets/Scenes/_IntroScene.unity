@@ -252,9 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f02cd036901c4e4d9905c5a3eb2e5af, type: 3}
   m_Name: 
   toIntensity: .5
-  fadeTime: 1
-  walkSpeed: 3
-  amplitud: .0599999987
+  fadeTime: 3
+  walkSpeed: 2.5
+  amplitud: .0949999988
   frecuencia: .99000001
   footsteps:
   - {fileID: 8300000, guid: 52e8785d485570848b2bab7da20efec4, type: 3}

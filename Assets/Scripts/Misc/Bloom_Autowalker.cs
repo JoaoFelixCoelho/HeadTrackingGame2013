@@ -51,26 +51,25 @@ public class Bloom_Autowalker : MonoBehaviour {
 	private void checkWalk() {
 		spc += Time.deltaTime;
 		transform.localPosition += new Vector3(0, amplitud * (Mathf.Sin( ((2f * Mathf.PI) / frecuencia) * spc)) ,1) * Time.deltaTime * walkSpeed;
-	}
-	
-	private void checkFootstep() {
-		if (timerDelta >= 0.9f) {
-			i = Random.Range(0, footsteps.Length);
-			source.PlayOneShot(footsteps[i]);
-			timerDelta = 0f;
+		
+		if ((amplitud * (Mathf.Sin( ((2f * Mathf.PI) / frecuencia) * spc))) <= -amplitud + 0.00012f){
+			if (!source.isPlaying) {
+				i = Random.Range(0, footsteps.Length);
+				source.PlayOneShot(footsteps[i]);
+				print("un footstep");
+			}
 		}
 	}
+	
 	
 	private void step() {
 		timerDelta += Time.deltaTime;
 		checkWalk();
-		checkFootstep();
 	}
 
 	
 	
-	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if(!bloomAnimOver) {
 			checkInt();
 		}
