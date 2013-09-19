@@ -3,13 +3,13 @@
 <rounds>
 	<round n="1">
 		<destiny>3</destiny>
-		<type>spider</type>
+		<type>flubber</type>
 		<interval>1.2</interval>
 	</round>
 
 	<round n="2">
 		<destiny>8</destiny>
-		<type>flubber</type>
+		<type>ghost</type>
 		<interval>1.5</interval>
 	</round>
 

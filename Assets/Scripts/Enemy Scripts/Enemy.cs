@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Xml;
+using System.Threading;
+
 
 public class Enemy : MonoBehaviour{
 	
@@ -34,6 +36,7 @@ public class Enemy : MonoBehaviour{
 	public static GameObject player = GameObject.FindGameObjectWithTag("Player");
 	public static Rigidbody ghostProjectile;
 		
+	
 	
 	#region Stats
 	
@@ -182,6 +185,7 @@ public class Enemy : MonoBehaviour{
 	    Vector3[] verts = M.vertices;
 	    Vector3[] normals = M.normals;
 	    Vector2[] uvs = M.uv;
+		print (M.subMeshCount);
 	    for (int submesh = 0; submesh < M.subMeshCount; submesh++)
 	    {
 	        int[] indices = M.GetTriangles(submesh);
@@ -210,17 +214,18 @@ public class Enemy : MonoBehaviour{
 	            GO.transform.rotation = MF.transform.rotation;
 	            GO.AddComponent<MeshRenderer>().material = MR.materials[submesh];
 	            GO.AddComponent<MeshFilter>().mesh = mesh;
-	            GO.AddComponent<BoxCollider>();
-	            GO.AddComponent<Rigidbody>().AddExplosionForce(100, transform.position, 30);
+		       /* GO.AddComponent<BoxCollider>();
+		        GO.AddComponent<Rigidbody>();	*/				
 	
-	            Destroy(GO, 2 + Random.Range(0.0f, 2.0f));
+	            Destroy(GO, Random.Range(0.5f, 2.0f));
 	        }
 	    }
 		Destroy(gameObject);
 	    MR.enabled = false;
 
     }	
-
+	
+	
 
 }
 	
