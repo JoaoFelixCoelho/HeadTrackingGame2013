@@ -10,7 +10,11 @@ public class WiiCameraScript: MonoBehaviour {
 	private static extern void wiimote_stop();
 	[DllImport ("UniWii")]
 	private static extern int wiimote_count();
+	[DllImport ("UniWii")]	
+private static extern bool wiimote_enableIR( int which );
 	
+	[DllImport ("UniWii")]
+	private static extern bool wiimote_isIRenabled( int which );
 	
 	[DllImport ("UniWii")]
 	private static extern byte wiimote_getAccX(int which);
@@ -35,16 +39,32 @@ public class WiiCameraScript: MonoBehaviour {
 	float Y;
 	float Z;
 	public Transform center;
-	
+	Vector3 vec;
+	Vector3 oldVec;
+	public GUIText debug;
+	private float midY;
 	void Start () {
+		Camera.main.fieldOfView = 80;
 		wiimote_start();
+		wiimote_enableIR(0);
+		midY = transform.position.y;
+		X = wiimote_getIrX(0)*10;
+		Y = wiimote_getIrY(0)*10;
+		Z = 100f;
+		if (X==-1000) {
+			oldVec = transform.position;
+		}
+		else {
+			oldVec = new Vector3(X,Y,Z);
+		}
+		
 	}
 	
 	
 	void Update () {
 		
 		MoveCamera();
-		
+		//OnGUI();
 		
 		
 		//transform.position = Camera.main.ScreenToViewportPoint(Input.mousePosition);
@@ -61,21 +81,49 @@ public class WiiCameraScript: MonoBehaviour {
     	//MyCamera.transform.position.y = 81;
 		//MyCamara.transform.position.z = 76;
 		
+		
 	}
 	
 
 	void MoveCamera() {
-		//Camera.main.fieldOfView = 80;
+/*			int c = wiimote_count();
+		if (c>0) {
+			for (int i=0; i<=c-1; i++) {*/
 		X = wiimote_getIrX(0)*10;
 		Y = wiimote_getIrY(0)*10;
-		Z = wiimote_getAccZ(0)*1;
-		gameObject.transform.LookAt(center);
-		transform.position = new Vector3(X, Y, Z);
 
-	}
-
-	
+		Z = 100f;
 		
+		
+		transform.position = oldVec;
+		if(X>-9.5f && X<9.5f){
+			oldVec = new Vector3(X,Y,Z);
+		} 
+		
+		//if (X==-1000 || Y<-0){
+		//	transform.position = oldVec;
+		//}
+		//else if(X<=9f) {
+		//	vec = new Vector3(X, Y, Z);
+		//	oldVec = vec;
+    	//	transform.position = vec;
+		//}
+		
+		/*if(X<=9f){
+			if (X==-1000 || Y<-0){
+				transform.position += oldVec;
+			} else {
+				vec = new Vector3(X, Y, Z);
+				oldVec = vec;
+				transform.position += vec;	
+			}
+		}*/
+		
+		gameObject.transform.LookAt(center);
+		debug.text = "x:" + X + " Y:" + Y;
+	}
 	
+
 }
+
 

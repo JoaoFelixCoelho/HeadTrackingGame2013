@@ -35,11 +35,11 @@ public class GridSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		string gridString = "";
+		/*string gridString = "";
 		for (int i=0; i<grids.Length; i++) {
 			gridString += "grid" + i + ": " + grids[i].currentEnemies + "\n";	
 		}
-		visualDebug.text = gridString;
+		visualDebug.text = gridString;*/
 		
 	}
 }
