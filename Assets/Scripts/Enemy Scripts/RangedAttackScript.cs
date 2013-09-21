@@ -16,7 +16,7 @@ public class RangedAttackScript : MonoBehaviour {
 	
 	void Start () {
 		enemyAttrs = gameObject.GetComponent<Enemy>();
-		attackInterval += Random.Range((-attackInterval+1),2.5f);
+		attackInterval = Random.Range(enemyAttrs.baseAttInterval - (enemyAttrs.baseAttInterval/8f), enemyAttrs.baseAttInterval + (enemyAttrs.baseAttInterval/4f));
 		ammo += Random.Range((-ammo/2),10);
 	}
 	

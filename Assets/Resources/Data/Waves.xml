@@ -2,8 +2,8 @@
 
 <rounds>
 	<round n="1">
-		<destiny>3</destiny>
-		<type>flubber</type>
+		<destiny>1</destiny>
+		<type>zombie</type>
 		<interval>1.2</interval>
 	</round>
 

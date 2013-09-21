@@ -8,6 +8,8 @@ public class AIPathfinding : MonoBehaviour {
 	public  int originalGrid;
 	private int currentGrid;
 	string rotation;
+	public bool hittingPlayer = false;
+	private float rayDistance = 5f;
 	
 	// Use this for initialization
 	void Start () {
@@ -25,7 +27,7 @@ public class AIPathfinding : MonoBehaviour {
 	private bool clearFront(){
 		
 		Ray rayo = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
-		Debug.DrawRay(rayo.origin, rayo.direction * 5);
+		Debug.DrawRay(rayo.origin, rayo.direction * rayDistance);
 	
 		
 		if (isRotating) {
@@ -39,7 +41,7 @@ public class AIPathfinding : MonoBehaviour {
 		
 		
 		RaycastHit hit;
-        if (Physics.Raycast(rayo, out hit, 5)) {
+        if (Physics.Raycast(rayo, out hit, rayDistance)) {
             if (hit.collider.tag == "Enemy") {
 				if (!enemyAttrs.insideAttZone) {
 					
@@ -89,10 +91,23 @@ public class AIPathfinding : MonoBehaviour {
 				return false;
 			}
 			else {
-				return true;	
+				rayDistance = enemyAttrs.attackRange;
+			
+				if(hit.collider.tag == "Player") {
+					hittingPlayer = true;
+					return false;
+				}
+				
+				else {
+					hittingPlayer = false;
+					return true;	
+				}				
 			}
+			
+
     	}
 		else {
+			hittingPlayer = false;
 			return true;	
 		}
 		
@@ -102,11 +117,14 @@ public class AIPathfinding : MonoBehaviour {
 	
 	void Update () {
 		
+		
 		if (clearFront()) {
 			if(!enemyAttrs.insideAttZone) {
 				moveForwardRect();
 			}
 		} 
+		
+		
 
 
 	}

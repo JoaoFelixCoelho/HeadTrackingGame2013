@@ -6,7 +6,8 @@
 		<baseHP> 150 </baseHP>
 		<attackType> melee </attackType>
 		<damage> 40 </damage>
-		<moveSpeed> 3 </moveSpeed>
+		<moveSpeed> 3  </moveSpeed>
+		<baseAttInterval> 5 </baseAttInterval>
 	</zombie>
 	
 	
@@ -15,6 +16,7 @@
 		<attackType> melee </attackType>
 		<damage> 40 </damage>
 		<moveSpeed> 3 </moveSpeed>	
+		<baseAttInterval> 4.3 </baseAttInterval>
 	</flubber>
 	
 	<spider>
@@ -22,13 +24,15 @@
 		<attackType> melee </attackType>
 		<damage> 40 </damage>
 		<moveSpeed> 3 </moveSpeed>	
+		<baseAttInterval> 3.5 </baseAttInterval>
 	</spider>
 	
 	<ghost>
 		<baseHP> 150 </baseHP>
 		<attackType> melee </attackType>
 		<damage> 40 </damage>
-		<moveSpeed> 3 </moveSpeed>		
+		<moveSpeed> 3 </moveSpeed>	
+		<baseAttInterval> 4 </baseAttInterval>
 	</ghost>
 	
 	<boss>
