@@ -1,17 +1,8 @@
 using UnityEngine;
 using System.Collections;
-using System.Runtime.InteropServices;
 
 public class PlayerBehave : MonoBehaviour {
-	[DllImport ("UniWii")]
-	private static extern void wiimote_start();
-	[DllImport ("UniWii")]
-	private static extern void wiimote_stop();
-	
-	[DllImport ("UniWii")]
-	private static extern bool wiimote_getButtonB(int which);
-	[DllImport ("UniWii")]
-	private static extern bool wiimote_getButtonA(int which);
+
 	public int ammo;
 	public Arma weapon;
 	public int kills;
@@ -30,7 +21,6 @@ public class PlayerBehave : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		wiimote_start();
 		this.kills=0;
 		this.score=0;
 		//this.currHp = totalHp;
@@ -82,7 +72,7 @@ public class PlayerBehave : MonoBehaviour {
 		
 	
 	void Update () {
-		//Debug.Log (fireRate);
+		/*//Debug.Log (fireRate);
 		bool isLeft = Input.GetKey(KeyCode.Mouse0);
 		bool isA = wiimote_getButtonA(0);
 		bool isB = wiimote_getButtonB(0);
@@ -113,7 +103,7 @@ public class PlayerBehave : MonoBehaviour {
 		}
 		if (isLeft=false){
 			resetBool=true;
-		}
+		}*/
 		
 
 		

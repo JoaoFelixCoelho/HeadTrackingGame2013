@@ -72,6 +72,7 @@ public class Enemy : MonoBehaviour{
 		
 	public void moveForward() {
 		gameObject.transform.localPosition += transform.forward * (moveSpeed * Time.deltaTime);	
+		
 	}	
 	
 	

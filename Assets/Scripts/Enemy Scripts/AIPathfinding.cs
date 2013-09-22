@@ -19,6 +19,7 @@ public class AIPathfinding : MonoBehaviour {
 	
 	
 	public void moveForwardRect(){
+		//enemyAttrs.transform.FindChild("model").animation.
 		gameObject.transform.localPosition += transform.forward * (enemyAttrs.moveSpeed * Time.deltaTime);	
 		rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 	}

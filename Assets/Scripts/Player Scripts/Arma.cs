@@ -13,52 +13,58 @@ public class Arma : MonoBehaviour {
 	public float laserSpeed;
 	bool shooting = false;
 	float muzzleDeltaTime = 0;
-	
+	private float fireRate = 0.2f;
+	private float timer = 0f;
 	
 	//Dependencias
 	public Transform spawnPos;
 	public Rigidbody proPrefab;
 	public PlayerBehave player;
-	public GameObject muzzle;
 	
 	GUIText ammoTxt;
 	GUIText warningTxt;
 
-
+	public GameObject muzzle;
 
 	public void shoot(){
 		
 		//falta checkear que el jugador se quedo sin balas
-		if (this.bullets<=0){
-			showWarning("reload");
-		}
-		else {
-			shooting = true;
-			if (this.model=="laser"){
-				Rigidbody lasInstance = (Rigidbody) Instantiate(proPrefab, spawnPos.position, spawnPos.rotation);
-				lasInstance.AddForce(spawnPos.forward*laserSpeed);	
-				lasInstance.GetComponent<Projectile>().setDamage(damage);
+		
+		timer += Time.deltaTime;
+		if (timer >= fireRate) {
+		
+			if (this.bullets<=0){
+				showWarning("reload");
 			}
-			
 			else {
-				Vector3 fwd = spawnPos.TransformDirection(Vector3.forward);
-				RaycastHit hit;
-				if (Physics.Raycast(transform.position, fwd, out hit)){
-					
-					Enemy enemyInstance = hit.collider.gameObject.GetComponent<Enemy>();
-					
-					if (enemyInstance != null){
-						enemyInstance.GetComponent<HealthSystem>().damageHp(this.damage);
+				shooting = true;
+				if (this.model=="laser"){
+					Rigidbody lasInstance = (Rigidbody) Instantiate(proPrefab, spawnPos.position, spawnPos.rotation);
+					lasInstance.AddForce(spawnPos.forward*laserSpeed);	
+					lasInstance.GetComponent<Projectile>().setDamage(damage);
+				}
+				
+				else {
+					Vector3 fwd = spawnPos.TransformDirection(Vector3.forward);
+					RaycastHit hit;
+					if (Physics.Raycast(transform.position, fwd, out hit)){
+						
+						Enemy enemyInstance = hit.collider.gameObject.GetComponent<Enemy>();
+						
+						if (enemyInstance != null){
+							enemyInstance.GetComponent<HealthSystem>().damageHp(this.damage);
+						}
 					}
 				}
+				this.bullets-=1;
+				updateAmmo();
+				
+				if (this.bullets==0) {
+					showWarning("reload");	
+				}
+				
 			}
-			this.bullets-=1;
-			updateAmmo();
-			
-			if (this.bullets==0) {
-				showWarning("reload");	
-			}
-			
+			timer = 0f;
 		}
 	}
 	
