@@ -14,7 +14,7 @@ public class Crosshair : MonoBehaviour {
 	private Vector3 vec3Look;
 	public GameObject arma;
 	private int fireRate;
-	
+	private bool limitChange=false;
 	
 	// Use this for initialization
 	void Start () {
@@ -24,12 +24,13 @@ public class Crosshair : MonoBehaviour {
  
 	// Update is called once per frame
 	void FixedUpdate () {
-		
+		print(arma.GetComponent<Arma>().enumInt);
 		int c = WiiMote.wiimote_count();
-		int pepe=1;
+		int pepe=0;
 		bool isB = WiiMote.wiimote_getButtonB(pepe);
 		bool isA = WiiMote.wiimote_getButtonA(pepe);
-		
+		bool isBtnLeft = WiiMote.wiimote_getButtonLeft(pepe);
+		bool isBtnRight = WiiMote.wiimote_getButtonRight(pepe);
 		
 		if(isB) {
 			arma.GetComponent<Arma>().shoot();		
@@ -39,7 +40,16 @@ public class Crosshair : MonoBehaviour {
 			arma.GetComponent<Arma>().reload(Enemy.player.GetComponent<PlayerBehave>().ammo);	
 			
 		}
-		
+		if(isBtnRight && limitChange==false && arma.GetComponent<Arma>().enumInt<=1){
+			arma.GetComponent<Arma>().enumInt+=1;
+			limitChange=true;
+			
+		}
+		if(isBtnLeft && limitChange==false && arma.GetComponent<Arma>().enumInt==2){
+			arma.GetComponent<Arma>().enumInt-=1;
+			limitChange=true;
+		}
+		limitChange=false;
 	//	if (c>0) {
 		//	display = "";
 		//	for (int i=0; i<=c-1; i++) {

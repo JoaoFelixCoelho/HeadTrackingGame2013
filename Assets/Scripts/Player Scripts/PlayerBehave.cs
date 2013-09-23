@@ -72,10 +72,16 @@ public class PlayerBehave : MonoBehaviour {
 		
 	
 	void Update () {
-		/*//Debug.Log (fireRate);
+	/*	bool isLeft = Input.GetKey(KeyCode.Mouse0);
+		bool rKey = Input.GetKeyDown(KeyCode.R);
+		if(isLeft) {
+			weapon.shoot();		
+		}*/
+		
+	/*	//Debug.Log (fireRate);
 		bool isLeft = Input.GetKey(KeyCode.Mouse0);
-		bool isA = wiimote_getButtonA(0);
-		bool isB = wiimote_getButtonB(0);
+	//	bool isA = wiimote_getButtonA(0);
+//		bool isB = wiimote_getButtonB(0);
 		bool rKey = Input.GetKeyDown(KeyCode.R);
 		bool zKey = Input.GetKeyDown(KeyCode.Z);
 		bool xKey = Input.GetKeyDown(KeyCode.X);
@@ -103,8 +109,8 @@ public class PlayerBehave : MonoBehaviour {
 		}
 		if (isLeft=false){
 			resetBool=true;
-		}*/
-		
+		}
+		*/
 
 		
 	}

@@ -11,6 +11,7 @@ public class Arma : MonoBehaviour {
 	public float shootInterval;
 	public int capacity;
 	public float laserSpeed;
+	public float rifleSpeed;
 	bool shooting = false;
 	float muzzleDeltaTime = 0;
 	private float fireRate = 0.2f;
@@ -18,14 +19,19 @@ public class Arma : MonoBehaviour {
 	
 	//Dependencias
 	public Transform spawnPos;
-	public Rigidbody proPrefab;
+	public Rigidbody proPrefab,rifleFab;
 	public PlayerBehave player;
 	
 	GUIText ammoTxt;
 	GUIText warningTxt;
 
 	public GameObject muzzle;
+	public enum Model{laser=1, rifle};
+	public int enumInt;
+		
+		
 
+	
 	public void shoot(){
 		
 		//falta checkear que el jugador se quedo sin balas
@@ -38,12 +44,16 @@ public class Arma : MonoBehaviour {
 			}
 			else {
 				shooting = true;
-				if (this.model=="laser"){
+				if (this.enumInt==1){
 					Rigidbody lasInstance = (Rigidbody) Instantiate(proPrefab, spawnPos.position, spawnPos.rotation);
 					lasInstance.AddForce(spawnPos.forward*laserSpeed);	
 					lasInstance.GetComponent<Projectile>().setDamage(damage);
 				}
-				
+				else if (enumInt==2){
+					Rigidbody lasInstance = (Rigidbody) Instantiate(rifleFab, spawnPos.position, spawnPos.rotation);
+					lasInstance.AddForce(spawnPos.forward*rifleSpeed);	
+					lasInstance.GetComponent<Projectile>().setDamage(damage);
+				}
 				else {
 					Vector3 fwd = spawnPos.TransformDirection(Vector3.forward);
 					RaycastHit hit;
@@ -126,6 +136,7 @@ public class Arma : MonoBehaviour {
 		warningTxt = player.warningGUI;
 		updateAmmo();
 		muzzle.renderer.enabled = false;
+		enumInt=(int)Model.laser;
 
 	}
 	
@@ -143,4 +154,5 @@ public class Arma : MonoBehaviour {
 		}
 		
 	}
+
 }
