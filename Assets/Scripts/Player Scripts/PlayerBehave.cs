@@ -72,20 +72,6 @@ public class PlayerBehave : MonoBehaviour {
 		
 	
 	void Update () {
-		
-		bool isLeft = Input.GetKey(KeyCode.Mouse0);
-		
-		if (isLeft) {
-			weapon.shoot();	
-		}
-		
-		
-		
-		
-		
-		
-		
-		
 	/*	bool isLeft = Input.GetKey(KeyCode.Mouse0);
 		bool rKey = Input.GetKeyDown(KeyCode.R);
 		if(isLeft) {
@@ -93,6 +79,7 @@ public class PlayerBehave : MonoBehaviour {
 		}*/
 		
 	/*	//Debug.Log (fireRate);
+		bool isLeft = Input.GetKey(KeyCode.Mouse0);
 	//	bool isA = wiimote_getButtonA(0);
 //		bool isB = wiimote_getButtonB(0);
 		bool rKey = Input.GetKeyDown(KeyCode.R);
