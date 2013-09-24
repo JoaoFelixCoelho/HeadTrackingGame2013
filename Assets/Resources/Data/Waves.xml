@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <rounds>
+
+	<round n="1">
+		<destiny>5</destiny>
+		<type>flubber</type>
+		<interval>1.7</interval>
+	</round>
+
+
+	
 	<round n="1">
 		<destiny>1</destiny>
 		<type>flubber</type>
-		<interval>1.2</interval>
+		<interval>2.3</interval>
 	</round>
 
 	<round n="2">
-		<destiny>8</destiny>
+		<destiny>3</destiny>
 		<type>ghost</type>
-		<interval>1.5</interval>
+		<interval>1.7</interval>
 	</round>
 
 	<round n="3">
 		<destiny>10</destiny>
-		<type>spider</type>
+		<type>flubber</type>
 		<interval>0.5</interval>
 	</round>
 
@@ -27,7 +36,7 @@
 
 	<round n="5">
 		<destiny>6</destiny>
-		<type>spider</type>
+		<type>zombie</type>
 		<interval>1.5</interval>
 	</round>
 

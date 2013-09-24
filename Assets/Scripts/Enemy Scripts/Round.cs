@@ -5,7 +5,7 @@ using System.Xml;
 public static class Round{
 	
 	public static int destinyQuant;
-  	public static int number;	
+  	public static int number = 1;	
 	public static string type;
 	public static XmlDocument xmlAsset = new XmlDocument();
 

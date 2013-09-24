@@ -37,9 +37,6 @@ public class WiiCameraScript: MonoBehaviour {
 	
 	void Update () {
 		
-		
-		WiiMote.wiimote_enableIR(0);
-		WiiMote.wiimote_enableIR(2);
 
 		
 		MoveCamera();
@@ -51,10 +48,10 @@ public class WiiCameraScript: MonoBehaviour {
 
 	void MoveCamera() {
 
-		X = WiiMote.wiimote_getIrX(0) * 10;
-		Y = WiiMote.wiimote_getIrY(0) * 2f;
+		X = WiiMote.wiimote_getIrX(1) * 10;
+		Y = WiiMote.wiimote_getIrY(1) * 2f;
 
-		Z = 100f;
+		Z = 60f;
 		
 		
 		transform.position = oldVec;

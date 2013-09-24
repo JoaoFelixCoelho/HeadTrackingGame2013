@@ -554,7 +554,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400072}
-  - 137: {fileID: 13700000}
+  - 33: {fileID: 3300000}
+  - 23: {fileID: 2300000}
   m_Layer: 0
   m_Name: model
   m_TagString: Untagged
@@ -1032,6 +1033,31 @@ Transform:
   - {fileID: 400070}
   - {fileID: 400068}
   m_Father: {fileID: 400002}
+--- !u!23 &2300000
+Renderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100072}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: e4c6827da15f3ff45b001797f1b3caf5, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+--- !u!33 &3300000
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100072}
+  m_Mesh: {fileID: 4300000, guid: 959ca243c2f496c4db3f32e10ec915e7, type: 3}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1091,8 +1117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a48af2e71171604d80a9d5a9cf3b690, type: 3}
   m_Name: 
   projectile: {fileID: 5400000, guid: 9a9142d4b1f40894c9928c6e9cac9735, type: 2}
-  attackInterval: 2.5
-  bulletSpeed: 75
+  attackInterval: 2.92000008
+  bulletSpeed: 45
   ammo: 4
   accuracy: 1.62
 --- !u!114 &11400002
@@ -1121,54 +1147,6 @@ MonoBehaviour:
   m_Name: 
   originalGrid: 0
   hittingPlayer: 0
---- !u!137 &13700000
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100072}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 2100000, guid: e4c6827da15f3ff45b001797f1b3caf5, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_Mesh: {fileID: 4300000, guid: 959ca243c2f496c4db3f32e10ec915e7, type: 3}
-  m_Bones:
-  - {fileID: 400028}
-  - {fileID: 400058}
-  - {fileID: 400026}
-  - {fileID: 400056}
-  - {fileID: 400018}
-  - {fileID: 400016}
-  - {fileID: 400064}
-  - {fileID: 400020}
-  - {fileID: 400068}
-  - {fileID: 400046}
-  - {fileID: 400024}
-  - {fileID: 400044}
-  - {fileID: 400008}
-  - {fileID: 400006}
-  - {fileID: 400062}
-  - {fileID: 400010}
-  - {fileID: 400066}
-  - {fileID: 400060}
-  - {fileID: 400034}
-  - {fileID: 400032}
-  m_RootBone: {fileID: 400068}
-  m_AABB:
-    m_Center: {x: .0375412703, y: .0843924284, z: -.0405372977}
-    m_Extent: {x: 1.71965683, y: 1.09907949, z: 1.59270883}
-  m_DirtyAABB: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

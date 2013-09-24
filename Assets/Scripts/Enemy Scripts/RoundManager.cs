@@ -22,7 +22,7 @@ public class RoundManager : MonoBehaviour {
 	
 	float waveInterval;
 	float waveDeltaTime = 0f;	
-	bool roundStarted = false;	
+	public bool roundStarted = false;	
 	
 	
 	
@@ -43,7 +43,10 @@ public class RoundManager : MonoBehaviour {
 		waveDeltaTime = 0f;
 		Round.next();	
 		updateEnemiesLeft();
-		this.roundAlert.enabled = true;
+		
+		roundAlert.enabled = true;
+		roundAlert.transform.position = new Vector3(0.5f, 0.5f, 0.5f);
+
 		roundStarted = false;
 	}	
 	
@@ -61,7 +64,7 @@ public class RoundManager : MonoBehaviour {
 				spawnEnemy();
 			}
 			else if(player.killsInRound==Round.destinyQuant) {
-				startNewRound();	
+					startNewRound();
 			}
 		}
 		
@@ -74,10 +77,13 @@ public class RoundManager : MonoBehaviour {
 	
 	private void newRoundWarning() {
 		if(waveDeltaTime>2f) {
-			this.roundAlert.enabled = false;	
+			roundAlert.enabled = true;
+			this.roundAlert.animation.Play("GUITEXTANIM");
+			//this.roundAlert.enabled = false;	
 			roundStarted = true;
 		}
-		this.roundAlert.text = "pasando desde \n la ronda " + (Round.number-1) + "\n a la " +Round.number;
+		this.roundAlert.text = "round " + (Round.number-1);
+		
 	}	
 	
 	

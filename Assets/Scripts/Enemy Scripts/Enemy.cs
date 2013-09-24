@@ -7,7 +7,7 @@ using System.Threading;
 public class Enemy : MonoBehaviour{
 	
 	
-	protected string type;
+	public string type;
 	public int damage;
 	public float moveSpeed;
 	public float attackRange = 4f;
@@ -58,6 +58,23 @@ public class Enemy : MonoBehaviour{
 		enemyInstance.name = enemyInstance.type + "-" + enemyInstance.id + "-" + Round.number;
 		Enemy.numerator++;	
 		enemyInstance.GetComponent<AIPathfinding>().originalGrid = firstGrid;
+		
+		/*if (type=="flubber") {
+			int a = Mathf.RoundToInt(Random.Range(0,1));
+			Material mat;
+			switch (a) {
+				case 0:
+					mat = (Material) Resources.Load("Materials/Glow_Orange");
+					enemyGameObject.renderer.material = mat;
+				break;
+				case 1:
+					mat = (Material) Resources.Load("Materials/Glow_OrangeAlt1");
+					enemyGameObject.renderer.material = mat;
+				break;
+			}
+			
+		}*/
+		
 		
 		return enemyInstance;	
 	}

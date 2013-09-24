@@ -25,7 +25,12 @@ public class RangedAttackScript : MonoBehaviour {
 		attackDeltaTime += Time.deltaTime;
 		if (ammo>0) {	
 			if (attackDeltaTime >= attackInterval) {
-				//print(enemyAttrs.transform.FindChild("model").animation.Play());
+				
+				if (enemyAttrs.GetComponent<Enemy>().type == "flubber") {
+					
+				}
+				
+				
 				Vector3 velocityVector = Enemy.player.transform.position - transform.position;
 				Rigidbody tmpProjectile = (Rigidbody) Instantiate(projectile, transform.position, transform.rotation);
 				

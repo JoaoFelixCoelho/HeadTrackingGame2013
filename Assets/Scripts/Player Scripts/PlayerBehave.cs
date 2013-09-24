@@ -41,7 +41,7 @@ public class PlayerBehave : MonoBehaviour {
 			}
 		}*/
 
-	private void reloadWep(){
+	public void reloadWep(){
 		// .reload te devuelve la cantidad de balas que van a quedar, le llegan la cantidad que tenés
 		this.ammo-=(weapon.reload(this.ammo));
 	}
@@ -72,11 +72,11 @@ public class PlayerBehave : MonoBehaviour {
 		
 	
 	void Update () {
-	/*	bool isLeft = Input.GetKey(KeyCode.Mouse0);
+		bool isLeft = Input.GetKey(KeyCode.Mouse0);
 		bool rKey = Input.GetKeyDown(KeyCode.R);
 		if(isLeft) {
 			weapon.shoot();		
-		}*/
+		}
 		
 	/*	//Debug.Log (fireRate);
 		bool isLeft = Input.GetKey(KeyCode.Mouse0);

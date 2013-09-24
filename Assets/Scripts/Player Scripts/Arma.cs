@@ -6,7 +6,8 @@ public class Arma : MonoBehaviour {
 	
 	//atributos
 	protected int bullets;
-	public string model;
+	public enum WeaponEnum {Laser = 0, Rifle = 1};
+	public WeaponEnum weaponModel = 0;
 	public int damage;
 	public float shootInterval;
 	public int capacity;
@@ -26,9 +27,6 @@ public class Arma : MonoBehaviour {
 	GUIText warningTxt;
 
 	public GameObject muzzle;
-	public enum Model{laser=1, rifle};
-	public int enumInt;
-		
 		
 
 	
@@ -43,29 +41,34 @@ public class Arma : MonoBehaviour {
 				showWarning("reload");
 			}
 			else {
+				
+				
 				shooting = true;
-				if (this.enumInt==1){
+				
+				if (weaponModel == WeaponEnum.Laser) 				
+				{
 					Rigidbody lasInstance = (Rigidbody) Instantiate(proPrefab, spawnPos.position, spawnPos.rotation);
 					lasInstance.AddForce(spawnPos.forward*laserSpeed);	
 					lasInstance.GetComponent<Projectile>().setDamage(damage);
 				}
-				else if (enumInt==2){
-					Rigidbody lasInstance = (Rigidbody) Instantiate(rifleFab, spawnPos.position, spawnPos.rotation);
-					lasInstance.AddForce(spawnPos.forward*rifleSpeed);	
-					lasInstance.GetComponent<Projectile>().setDamage(damage);
-				}
-				else {
+				
+				
+				else if (weaponModel == WeaponEnum.Rifle)
+				{
 					Vector3 fwd = spawnPos.TransformDirection(Vector3.forward);
 					RaycastHit hit;
-					if (Physics.Raycast(transform.position, fwd, out hit)){
-						
+					if (Physics.Raycast(transform.position, fwd, out hit))
+					{
 						Enemy enemyInstance = hit.collider.gameObject.GetComponent<Enemy>();
 						
 						if (enemyInstance != null){
 							enemyInstance.GetComponent<HealthSystem>().damageHp(this.damage);
 						}
 					}
-				}
+				}				
+				
+				
+				
 				this.bullets-=1;
 				updateAmmo();
 				
@@ -108,6 +111,7 @@ public class Arma : MonoBehaviour {
 	
 	
 	public int reload (int totalBalas) {
+	
 		if (totalBalas==0){
 			showWarning("empty");
 		}
@@ -136,7 +140,6 @@ public class Arma : MonoBehaviour {
 		warningTxt = player.warningGUI;
 		updateAmmo();
 		muzzle.renderer.enabled = false;
-		enumInt=(int)Model.laser;
 
 	}
 	

@@ -15,7 +15,7 @@ public class Crosshair : MonoBehaviour {
 	public GameObject arma;
 	private int fireRate;
 	private bool limitChange=false;
-	
+	public int control=0;
 	// Use this for initialization
 	void Start () {
 		WiiMote.wiimote_start();
@@ -24,44 +24,42 @@ public class Crosshair : MonoBehaviour {
  
 	// Update is called once per frame
 	void FixedUpdate () {
-		print(arma.GetComponent<Arma>().enumInt);
 		int c = WiiMote.wiimote_count();
-		int pepe=0;
-		bool isB = WiiMote.wiimote_getButtonB(pepe);
-		bool isA = WiiMote.wiimote_getButtonA(pepe);
-		bool isBtnLeft = WiiMote.wiimote_getButtonLeft(pepe);
-		bool isBtnRight = WiiMote.wiimote_getButtonRight(pepe);
+		
+		bool isB = WiiMote.wiimote_getButtonB(control);
+		bool isA = WiiMote.wiimote_getButtonA(control);
+		bool isBtnLeft = WiiMote.wiimote_getButtonLeft(control);
+		bool isBtnRight = WiiMote.wiimote_getButtonRight(control);
 		
 		if(isB) {
 			arma.GetComponent<Arma>().shoot();		
 		}
 		
 		if(isA) {
-			arma.GetComponent<Arma>().reload(Enemy.player.GetComponent<PlayerBehave>().ammo);	
+			Enemy.player.GetComponent<PlayerBehave>().reloadWep();
 			
 		}
-		if(isBtnRight && limitChange==false && arma.GetComponent<Arma>().enumInt<=1){
-			arma.GetComponent<Arma>().enumInt+=1;
-			limitChange=true;
-			
+		//if(isBtnRight && limitChange==false && arma.GetComponent<Arma>().enumInt<=1){
+		if(isBtnRight) {
+			arma.GetComponent<Arma>().weaponModel = Arma.WeaponEnum.Laser;
 		}
-		if(isBtnLeft && limitChange==false && arma.GetComponent<Arma>().enumInt==2){
-			arma.GetComponent<Arma>().enumInt-=1;
-			limitChange=true;
+		
+		//if(isBtnLeft && limitChange==false && arma.GetComponent<Arma>().enumInt==2){
+		if(isBtnLeft) {
+			arma.GetComponent<Arma>().weaponModel = Arma.WeaponEnum.Rifle;
 		}
-		limitChange=false;
 	//	if (c>0) {
 		//	display = "";
 		//	for (int i=0; i<=c-1; i++) {
-				int x = WiiMote.wiimote_getAccX(pepe) ;
-				int y = WiiMote.wiimote_getAccY(pepe);
-				int z = WiiMote.wiimote_getAccZ(pepe);
+				int x = WiiMote.wiimote_getAccX(control) ;
+				int y = WiiMote.wiimote_getAccY(control);
+				int z = WiiMote.wiimote_getAccZ(control);
 
-				float roll = Mathf.Round(WiiMote.wiimote_getRoll(pepe));
-				float p = Mathf.Round(WiiMote.wiimote_getPitch(pepe));
-				float yaw = Mathf.Round(WiiMote.wiimote_getYaw(pepe));
-				float ir_x = WiiMote.wiimote_getIrX(pepe);
-				float ir_y = WiiMote.wiimote_getIrY(pepe);
+				float roll = Mathf.Round(WiiMote.wiimote_getRoll(control));
+				float p = Mathf.Round(WiiMote.wiimote_getPitch(control));
+				float yaw = Mathf.Round(WiiMote.wiimote_getYaw(control));
+				float ir_x = WiiMote.wiimote_getIrX(control);
+				float ir_y = WiiMote.wiimote_getIrY(control);
 				//display += "Wiimote " + i + " accX: " + x + " accY: " + y + " accZ: " + z + " roll: " + roll + " pitch: " + p + " yaw: " + yaw + " IR X: " + ir_x + " IR Y: " + ir_y + "\n";
 				//if (!float.IsNaN(roll) && !float.IsNaN(p) && (i==c-1)) {
 
@@ -98,8 +96,8 @@ public class Crosshair : MonoBehaviour {
 		//if ((mira_x != 0) || (mira_y != 0)) GUI.Box ( new Rect (mira_x, mira_y, 50, 50), mira); //"Pointing\nHere");
 		int c = WiiMote.wiimote_count();
 		for (int i=0; i<=c-1; i++) {
-			float ir_x = WiiMote.wiimote_getIrX(1);
-			float ir_y = WiiMote.wiimote_getIrY(1);
+			float ir_x = WiiMote.wiimote_getIrX(control);
+			float ir_y = WiiMote.wiimote_getIrY(control);
 		    if ( (ir_x != -100) && (ir_y != -100) ) {
 			    float temp_x = ((ir_x + (float) 1.0)/ (float)2.0) * (float) Screen.width;
 			    float temp_y = (float) Screen.height - (((ir_y + (float) 1.0)/ (float)2.0) * (float) Screen.height);
