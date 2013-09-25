@@ -16,6 +16,7 @@ public class Crosshair : MonoBehaviour {
 	private int fireRate;
 	private bool limitChange=false;
 	public int control=0;
+	public Material rifleMaterial, laserMaterial;
 	// Use this for initialization
 	void Start () {
 		WiiMote.wiimote_start();
@@ -25,7 +26,8 @@ public class Crosshair : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		int c = WiiMote.wiimote_count();
-		
+		bool isE = Input.GetKey(KeyCode.E);
+		bool isQ = Input.GetKey(KeyCode.Q);
 		bool isB = WiiMote.wiimote_getButtonB(control);
 		bool isA = WiiMote.wiimote_getButtonA(control);
 		bool isBtnLeft = WiiMote.wiimote_getButtonLeft(control);
@@ -42,11 +44,14 @@ public class Crosshair : MonoBehaviour {
 		//if(isBtnRight && limitChange==false && arma.GetComponent<Arma>().enumInt<=1){
 		if(isBtnRight) {
 			arma.GetComponent<Arma>().weaponModel = Arma.WeaponEnum.Laser;
+			renderer.material = laserMaterial;
 		}
 		
 		//if(isBtnLeft && limitChange==false && arma.GetComponent<Arma>().enumInt==2){
 		if(isBtnLeft) {
 			arma.GetComponent<Arma>().weaponModel = Arma.WeaponEnum.Rifle;
+			renderer.material = rifleMaterial;
+		//	GetComponent<Arma>(MeshFilter).mesh = rifleMesh;
 		}
 	//	if (c>0) {
 		//	display = "";

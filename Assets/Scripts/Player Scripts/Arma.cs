@@ -13,7 +13,7 @@ public class Arma : MonoBehaviour {
 	public int capacity;
 	public float laserSpeed;
 	public float rifleSpeed;
-	bool shooting = false;
+	public bool shooting = false;
 	float muzzleDeltaTime = 0;
 	private float fireRate = 0.2f;
 	private float timer = 0f;
@@ -55,6 +55,7 @@ public class Arma : MonoBehaviour {
 				
 				else if (weaponModel == WeaponEnum.Rifle)
 				{
+					
 					Vector3 fwd = spawnPos.TransformDirection(Vector3.forward);
 					RaycastHit hit;
 					if (Physics.Raycast(transform.position, fwd, out hit))

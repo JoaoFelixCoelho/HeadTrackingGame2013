@@ -75,7 +75,8 @@ public class PlayerBehave : MonoBehaviour {
 		bool isLeft = Input.GetKey(KeyCode.Mouse0);
 		bool rKey = Input.GetKeyDown(KeyCode.R);
 		if(isLeft) {
-			weapon.shoot();		
+			//print (GetComponent<Arma>().shooting);
+			weapon.shoot();	
 		}
 		
 	/*	//Debug.Log (fireRate);

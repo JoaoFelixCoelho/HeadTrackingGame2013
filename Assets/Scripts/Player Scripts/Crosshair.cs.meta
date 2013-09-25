@@ -2,7 +2,11 @@ fileFormatVersion: 2
 guid: e3ebf5cd8ad47194ab1b428852032726
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - mira: {instanceID: 0}
+  - arma: {instanceID: 0}
+  - rifleMaterial: {fileID: 2100000, guid: 76f40fe04e217ee4582c9f47db76893f, type: 2}
+  - laserMaterial: {fileID: 2100000, guid: 2b5c2682d3630d24d80b92ecb3c76981, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

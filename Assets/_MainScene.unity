@@ -398,6 +398,7 @@ MonoBehaviour:
   capacity: 500
   laserSpeed: 5000
   rifleSpeed: 0
+  shooting: 0
   spawnPos: {fileID: 1356314878}
   proPrefab: {fileID: 5400000, guid: 296098b9f4797e14aad6b6f3491b3a05, type: 2}
   rifleFab: {fileID: 5400000, guid: 9a9142d4b1f40894c9928c6e9cac9735, type: 2}
@@ -711,7 +712,7 @@ Transform:
   m_PrefabInternal: {fileID: 712015986}
   m_GameObject: {fileID: 441553365}
   m_LocalRotation: {x: .000314206001, y: .00146250566, z: .210047111, w: .97769016}
-  m_LocalPosition: {x: -.0160424411, y: .0116513763, z: -1.2193681}
+  m_LocalPosition: {x: -.01603714, y: .0116513763, z: -1.2189492}
   m_LocalScale: {x: 5.13889885, y: 4.70222712, z: 1.23886955}
   m_Children: []
   m_Father: {fileID: 295569422}
@@ -833,6 +834,8 @@ MonoBehaviour:
   mira: {fileID: 2800000, guid: 8265c24532c889845a2128f088f9d6eb, type: 3}
   arma: {fileID: 295569421}
   control: 0
+  rifleMaterial: {fileID: 2100000, guid: 76f40fe04e217ee4582c9f47db76893f, type: 2}
+  laserMaterial: {fileID: 2100000, guid: 2b5c2682d3630d24d80b92ecb3c76981, type: 2}
 --- !u!114 &545231960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1173,7 +1176,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 39f359a4b4f222b4aaa0e43a0ca559d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -.0160424411
+      value: -.01603714
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 39f359a4b4f222b4aaa0e43a0ca559d0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1181,7 +1184,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 39f359a4b4f222b4aaa0e43a0ca559d0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.2193681
+      value: -1.2189492
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 39f359a4b4f222b4aaa0e43a0ca559d0, type: 3}
       propertyPath: m_LocalRotation.x
