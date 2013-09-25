@@ -11,7 +11,7 @@
 
 	
 	<round n="1">
-		<destiny>1</destiny>
+		<destiny>5</destiny>
 		<type>flubber</type>
 		<interval>2.3</interval>
 	</round>

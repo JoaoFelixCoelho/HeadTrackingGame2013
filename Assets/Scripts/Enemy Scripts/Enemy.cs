@@ -108,9 +108,27 @@ public class Enemy : MonoBehaviour{
 	
 	private void explodeMesh () {
 		
-		MeshFilter MF = gameObject.GetComponentInChildren<MeshFilter>();
-		MeshRenderer MR = gameObject.GetComponentInChildren<MeshRenderer>();
-	    Mesh M = MF.mesh;
+		bool hasMF = true;
+		Mesh M;
+		SkinnedMeshRenderer SKMR = new SkinnedMeshRenderer();
+		MeshFilter MF = new MeshFilter();
+		MeshRenderer MR = new MeshRenderer();
+		
+		if (gameObject.GetComponentInChildren<MeshFilter>() == null) 
+		{
+			hasMF = false;
+			SKMR = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+	    	M = SKMR.sharedMesh;
+			
+		}
+		
+		else 
+		{
+			MF = gameObject.GetComponentInChildren<MeshFilter>();
+			MR = gameObject.GetComponentInChildren<MeshRenderer>();
+	   		M  = MF.mesh;
+		}
+		
 	    Vector3[] verts = M.vertices;
 	    Vector3[] normals = M.normals;
 	    Vector2[] uvs = M.uv;
@@ -138,18 +156,25 @@ public class Enemy : MonoBehaviour{
 	
 	            GameObject GO = new GameObject("Triangle " + (i / 3));
 				GO.transform.parent = enemyContainer.transform;
-	            GO.transform.position = MF.transform.position;
-	            GO.transform.rotation = MF.transform.rotation;
-	            GO.AddComponent<MeshRenderer>().material = MR.materials[submesh];
+				if (!hasMF) {
+	           		GO.transform.position = new Vector3(SKMR.transform.position.x, SKMR.transform.position.y + 1.6f, SKMR.transform.position.z);
+		            GO.transform.rotation = SKMR.transform.rotation;
+		            GO.AddComponent<MeshRenderer>().material = SKMR.materials[submesh];										
+				}
+				else {
+	           		GO.transform.position = MF.transform.position;
+		            GO.transform.rotation = MF.transform.rotation;
+		            GO.AddComponent<MeshRenderer>().material = MR.materials[submesh];					
+					
+				}
 	            GO.AddComponent<MeshFilter>().mesh = mesh;
 		       /* GO.AddComponent<BoxCollider>();
 		        GO.AddComponent<Rigidbody>();	*/				
 	
-	            Destroy(GO, Random.Range(0.5f, 2.0f));
+	            Destroy(GO, Random.Range(0.5f, 1.5f));
 	        }
 	    }
 		Destroy(gameObject);
-	    MR.enabled = false;
 
     }	
 	
