@@ -2,18 +2,9 @@
 
 <rounds>
 
-	<round n="1">
-		<destiny>5</destiny>
-		<type>flubber</type>
-		<interval>1.7</interval>
-	</round>
 
-
-	
 	<round n="1">
-		<destiny>5</destiny>
-		<type>flubber</type>
-		<interval>2.3</interval>
+		<type>targets</type>
 	</round>
 
 	<round n="2">

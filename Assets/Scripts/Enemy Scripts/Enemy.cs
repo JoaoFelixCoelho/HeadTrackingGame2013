@@ -171,7 +171,7 @@ public class Enemy : MonoBehaviour{
 		       /* GO.AddComponent<BoxCollider>();
 		        GO.AddComponent<Rigidbody>();	*/				
 	
-	            Destroy(GO, Random.Range(0.5f, 1.5f));
+	            Destroy(GO, Random.Range(0.5f, 1.2f));
 	        }
 	    }
 		Destroy(gameObject);

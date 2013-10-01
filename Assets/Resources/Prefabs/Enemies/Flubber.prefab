@@ -554,6 +554,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400072}
+  - 137: {fileID: 13700000}
   m_Layer: 0
   m_Name: Flubber
   m_TagString: Untagged
@@ -585,7 +586,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400076}
   - 111: {fileID: 11100002}
-  - 137: {fileID: 13700000}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -611,7 +611,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.1856904, y: 3.05707693, z: 32.8865585}
+  m_LocalPosition: {x: 3.55011606, y: 3.79986739, z: 37.3294373}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400076}
@@ -1041,7 +1041,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100074}
   m_LocalRotation: {x: -.5, y: .5, z: .5, w: .5}
-  m_LocalPosition: {x: -.00241948129, y: 1.59412098, z: .0220653955}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .99999994, y: .99999994, z: 1}
   m_Children:
   - {fileID: 400070}
@@ -1125,8 +1125,8 @@ Animation:
   m_AnimatePhysics: 0
   m_CullingType: 1
   m_UserAABB:
-    m_Center: {x: -.00427627563, y: 1.78916836, z: .0504492521}
-    m_Extent: {x: 1.57275724, y: 1.9071753, z: .882866263}
+    m_Center: {x: -.00427627563, y: 1.79299176, z: .0503652096}
+    m_Extent: {x: 1.57275701, y: 1.90353024, z: .882950544}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1173,14 +1173,14 @@ SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100076}
+  m_GameObject: {fileID: 100072}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 5c812879f7c93b74dbb7f0c91d834a0c, type: 2}
+  - {fileID: 2100000, guid: e4c6827da15f3ff45b001797f1b3caf5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1191,27 +1191,27 @@ SkinnedMeshRenderer:
   m_UpdateWhenOffscreen: 0
   m_Mesh: {fileID: 4300000, guid: 959ca243c2f496c4db3f32e10ec915e7, type: 3}
   m_Bones:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_RootBone: {fileID: 400074}
+  - {fileID: 400028}
+  - {fileID: 400058}
+  - {fileID: 400026}
+  - {fileID: 400056}
+  - {fileID: 400018}
+  - {fileID: 400016}
+  - {fileID: 400064}
+  - {fileID: 400020}
+  - {fileID: 400068}
+  - {fileID: 400046}
+  - {fileID: 400024}
+  - {fileID: 400044}
+  - {fileID: 400008}
+  - {fileID: 400006}
+  - {fileID: 400062}
+  - {fileID: 400010}
+  - {fileID: 400066}
+  - {fileID: 400060}
+  - {fileID: 400034}
+  - {fileID: 400032}
+  m_RootBone: {fileID: 400068}
   m_AABB:
     m_Center: {x: .0372410417, y: .0843924284, z: -.0293160677}
     m_Extent: {x: 1.71995711, y: 1.09907949, z: 1.60393012}

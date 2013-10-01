@@ -5,9 +5,10 @@ using System.Xml;
 public static class Round{
 	
 	public static int destinyQuant;
-  	public static int number = 1;	
+  	public static int number = 0;	
 	public static string type;
-	public static XmlDocument xmlAsset = new XmlDocument();
+	private static XmlDocument xmlAsset = new XmlDocument();
+	public static bool isTargetRound = false;
 
 	
 	
@@ -24,10 +25,16 @@ public static class Round{
 		 * */
 		
 		number++;
-		XmlNode roundData = xmlAsset.ChildNodes[1].ChildNodes[number-1];		
-		destinyQuant = int.Parse(roundData["destiny"].InnerText);
+		XmlNode roundData = xmlAsset.ChildNodes[1].ChildNodes[number-1];	
 		type = (string) roundData["type"].InnerText;
-		RoundManager.interval = float.Parse(roundData["interval"].InnerText);	
+		if (type == "targets") {
+			isTargetRound = true;
+		}
+		else {
+			isTargetRound = false;
+			destinyQuant = int.Parse(roundData["destiny"].InnerText);
+			RoundManager.interval = float.Parse(roundData["interval"].InnerText);	
+		}
 	}
 
 }

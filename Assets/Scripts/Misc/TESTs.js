@@ -21,11 +21,12 @@ function Update ()
         {
             fadeValue = fadeTo;
             cursorIsFading = false;
-            aux = 2;
+            aux = 2;         
             
 			if (aux == 2)
 			{
 				fadeValue = 0;
+
 			}            
             
             
@@ -33,5 +34,9 @@ function Update ()
         
    
 		
+	}
+	else
+	{
+
 	}
 }

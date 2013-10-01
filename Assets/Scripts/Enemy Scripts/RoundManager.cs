@@ -44,7 +44,7 @@ public class RoundManager : MonoBehaviour {
 		Round.next();	
 		updateEnemiesLeft();
 		
-		roundAlert.enabled = true;
+		roundAlert.GetComponent<FadeGUI>().startAnim();
 		roundAlert.transform.position = new Vector3(0.5f, 0.5f, 0.5f);
 
 		roundStarted = false;
@@ -52,37 +52,39 @@ public class RoundManager : MonoBehaviour {
 	
 	
 	public void updateEnemiesLeft() {
-		player.enemyCounter.text = "Restantes: " + (Round.destinyQuant - player.killsInRound);
+		if (!Round.isTargetRound) {
+			player.enemyCounter.text = "Restantes: " + (Round.destinyQuant - player.killsInRound);
+		}
 	}	
 
-	void Update () {
+	void FixedUpdate () {
 		
 		waveDeltaTime+=Time.deltaTime;	
-		
-		if(roundStarted) {
-			if (Enemy.current + player.killsInRound < Round.destinyQuant) {
-				spawnEnemy();
+		if (!Round.isTargetRound) {
+			if(roundStarted) {
+				if (Enemy.current + player.killsInRound < Round.destinyQuant) {
+					spawnEnemy();
+				}
+				else if(player.killsInRound==Round.destinyQuant) {
+						startNewRound();
+				}
 			}
-			else if(player.killsInRound==Round.destinyQuant) {
-					startNewRound();
+			
+			else{
+				newRoundWarning();
 			}
-		}
-		
-		else{
-			newRoundWarning();
-		}
+		} 
+
 		
 		
 	}
 	
 	private void newRoundWarning() {
-		if(waveDeltaTime>2f) {
-			roundAlert.enabled = true;
-			this.roundAlert.animation.Play("GUITEXTANIM");
-			//this.roundAlert.enabled = false;	
+		
+		if(waveDeltaTime>roundAlert.GetComponent<FadeGUI>().timeToFade) {
 			roundStarted = true;
 		}
-		this.roundAlert.text = "round " + (Round.number-1);
+		this.roundAlert.text = "round " + (Round.number);
 		
 	}	
 	
@@ -90,8 +92,17 @@ public class RoundManager : MonoBehaviour {
 	public void spawnEnemy() {
 		if(waveDeltaTime>=RoundManager.interval) {
 			int randomSpawn = Random.Range(0,spawnPoints.Length);
-			Enemy.createEnemy(Round.type, Round.number, spawnPoints[randomSpawn], randomSpawn);
-			GridSystem.grids[randomSpawn].currentEnemies ++;
+			if (Round.isTargetRound) {
+				gameObject.GetComponent<TargetManager>().enabled = true;
+			}
+			else {
+				gameObject.GetComponent<TargetManager>().enabled = false;
+				Enemy.createEnemy(Round.type, Round.number, spawnPoints[randomSpawn], randomSpawn);
+				GridSystem.grids[randomSpawn].currentEnemies ++;
+				waveDeltaTime = 0;
+				Enemy.current++;				
+				
+			}
 			
 			/*Instantiate (
 							spawnParticlePrefab, 
@@ -99,8 +110,7 @@ public class RoundManager : MonoBehaviour {
 							spawnParticlePrefab.transform.rotation
 						);*/
 			
-			waveDeltaTime = 0;
-			Enemy.current++;
+
 		}
 	}
 	
