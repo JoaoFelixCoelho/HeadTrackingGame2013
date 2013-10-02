@@ -751,7 +751,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54775f91069b2d24eb2f78e78bfc2627, type: 3}
   m_Name: 
   ammo: 99999
-  weapon: {fileID: 0}
+  rifle: {fileID: 1421268627}
+  laser: {fileID: 533992337}
   kills: 0
   killsInRound: 0
   score: 0
@@ -951,7 +952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &533992338
 Transform:
   m_ObjectHideFlags: 0
@@ -2088,7 +2089,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18a9b4a24a3345e4baa3d39d25f56ee3, type: 3}
   m_Name: 
-  weaponModel: 0
+  weaponModel: 1
   damage: 90
   shootInterval: .600000024
   capacity: 500
@@ -2112,7 +2113,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 2b5c2682d3630d24d80b92ecb3c76981, type: 2}
+  - {fileID: 2100000, guid: e4c6827da15f3ff45b001797f1b3caf5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
