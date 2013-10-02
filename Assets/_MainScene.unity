@@ -513,6 +513,7 @@ GameObject:
   - 65: {fileID: 295569424}
   - 23: {fileID: 295569423}
   - 114: {fileID: 295569426}
+  - 114: {fileID: 295569427}
   m_Layer: 0
   m_Name: Arma1
   m_TagString: Weapon
@@ -592,6 +593,21 @@ MonoBehaviour:
   rifleFab: {fileID: 5400000, guid: 9a9142d4b1f40894c9928c6e9cac9735, type: 2}
   player: {fileID: 319776606}
   muzzle: {fileID: 441553365}
+--- !u!114 &295569427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 295569421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ebf5cd8ad47194ab1b428852032726, type: 3}
+  m_Name: 
+  mira: {fileID: 2800000, guid: 8265c24532c889845a2128f088f9d6eb, type: 3}
+  arma: {fileID: 295569421}
+  control: 0
+  rifleMaterial: {fileID: 2100000, guid: 76f40fe04e217ee4582c9f47db76893f, type: 2}
+  laserMaterial: {fileID: 2100000, guid: 2b5c2682d3630d24d80b92ecb3c76981, type: 2}
 --- !u!1 &319776600
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,13 +5,13 @@
 
 	<round n="1">
 		<destiny>3</destiny>
-		<type>zombie</type>
+		<type>flubber</type>
 		<interval>1.7</interval>
 	</round>
 
 	<round n="2">
 		<destiny>3</destiny>
-		<type>ghost</type>
+		<type>flubber</type>
 		<interval>1.7</interval>
 	</round>
 
