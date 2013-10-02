@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour {
 	public float timeToDestroy;
 	public string target;
 	public int damage;
-	public GameObject hitParticle;
+	public static GameObject hitParticle = (GameObject) Resources.Load("Prefabs/Particles/PlayerParticleHolder");
 	
 	// Use this for initialization
 	void Start () {
@@ -28,9 +28,10 @@ public class Projectile : MonoBehaviour {
 			//para que no se auto-saque vida
 			if (colTMP.isPlayer && target=="Player" || !colTMP.isPlayer && target=="Enemy" ) {
 				colTMP.damageHp(damage);
-				Destroy(gameObject);
 			}
 		}
+		Destroy(gameObject);
+		
 
 	}
 		
