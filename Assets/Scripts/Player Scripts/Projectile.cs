@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour {
 	public float timeToDestroy;
 	public string target;
 	public int damage;
+	public GameObject hitParticle;
 	
 	// Use this for initialization
 	void Start () {
@@ -17,11 +18,16 @@ public class Projectile : MonoBehaviour {
 	}	
 	
 	void OnTriggerEnter(Collider col){
+		
+		if(col.tag != "DevLayer") {
+	 		Destroy(Instantiate(hitParticle,transform.position, transform.rotation), timeToDestroy);
+		}
+		
 		HealthSystem colTMP = col.GetComponent<HealthSystem>();
 		if (colTMP != null) {
 			//para que no se auto-saque vida
 			if (colTMP.isPlayer && target=="Player" || !colTMP.isPlayer && target=="Enemy" ) {
-				colTMP.damageHp(damage);	
+				colTMP.damageHp(damage);
 				Destroy(gameObject);
 			}
 		}

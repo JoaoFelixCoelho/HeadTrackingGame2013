@@ -4,7 +4,9 @@
 
 
 	<round n="1">
-		<type>targets</type>
+		<destiny>3</destiny>
+		<type>zombie</type>
+		<interval>1.7</interval>
 	</round>
 
 	<round n="2">

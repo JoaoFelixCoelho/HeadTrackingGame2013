@@ -8,6 +8,21 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
+  m_Layer: 0
+  m_Name: PlayerParticleHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400002}
   - 198: {fileID: 19800000}
   - 199: {fileID: 19900000}
   m_Layer: 0
@@ -24,17 +39,29 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.64832211, y: 3.3900001, z: 35.0199509}
+  m_LocalPosition: {x: -4.55232382, y: 4.25683403, z: 41.4372101}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 400002}
+  m_Father: {fileID: 0}
+--- !u!4 &400002
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
+  m_LocalPosition: {x: 3.90725088, y: -2.22489214, z: -5.48169327}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 400000}
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  lengthInSec: 1.5
+  m_GameObject: {fileID: 100002}
+  lengthInSec: .800000012
   startDelay: 0
   speed: 1
   randomSeed: 0
@@ -277,8 +304,8 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 4
-    radius: .49000001
-    angle: 29.9899998
+    radius: .419999987
+    angle: 34.3899994
     length: 5
     boxX: 1
     boxY: 1
@@ -290,14 +317,14 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 100
+      scalar: 500
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
-          inSlope: -2.64501143
-          outSlope: -2.64501143
+          value: .401006758
+          inSlope: -1.0606674
+          outSlope: -1.0606674
           tangentMode: 10
         - time: .378070205
           value: 0
@@ -339,12 +366,12 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .755319178
+          value: .775453389
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         - time: .140000001
-          value: 0
+          value: .00167785212
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1074,7 +1101,7 @@ ParticleSystemRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
+  m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1

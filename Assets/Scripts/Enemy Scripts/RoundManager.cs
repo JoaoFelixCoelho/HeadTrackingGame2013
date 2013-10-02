@@ -34,6 +34,11 @@ public class RoundManager : MonoBehaviour {
 		for (int i=0; i<spawnPoints.Length; i++) {
 			GridSystem.grids[i].xPos = spawnPoints[i].transform.position.x;	
 		}
+		
+		if (Round.isTargetRound) {
+			gameObject.GetComponent<TargetManager>().enabled = true;	
+		}
+		
 	}	
 	
 	public void startNewRound(){

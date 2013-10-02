@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.58051658, y: .891802788, z: 1.75491714}
+  m_LocalPosition: {x: -5.46806526, y: 2.44573517e-17, z: 43.4780807}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -134,12 +134,12 @@ Animation:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 167192077aa51dc4b883cf2527e2f791, type: 2}
+  m_Animation: {fileID: 7400000, guid: 5c2cf6de72535414ca97218bfba4f28d, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: 167192077aa51dc4b883cf2527e2f791, type: 2}
-  - {fileID: 7400000, guid: bc8233e6068ef4344b5a5ee56db8e661, type: 2}
-  - {fileID: 7400000, guid: 1e4769ebf8179bb4b94588f861d5be43, type: 2}
-  - {fileID: 7400000, guid: f1a28f3ae157e5a4b868e840f3571390, type: 2}
+  - {fileID: 7400000, guid: 5c2cf6de72535414ca97218bfba4f28d, type: 2}
+  - {fileID: 7400000, guid: e08cfd2714c4fd74480d45bc8fd9a147, type: 2}
+  - {fileID: 7400000, guid: 74a692ec86931bc4896ea4616248868d, type: 2}
+  - {fileID: 7400000, guid: 341ee751ee4928440912e7a1ba4f85a6, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -161,6 +161,7 @@ MonoBehaviour:
   currHp: 0
   isPlayer: 0
   player: {fileID: 0}
+  isTarget: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: defe6a50576a77c4699de21df2103707, type: 3}
   m_Name: 
   originalGrid: 0
+  hittingPlayer: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
