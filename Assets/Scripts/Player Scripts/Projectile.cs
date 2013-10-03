@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour {
 	public float timeToDestroy;
 	public string target;
 	public int damage;
-	public static GameObject hitParticle = (GameObject) Resources.Load("Prefabs/Particles/PlayerParticleHolder");
+	public static GameObject hitParticle = (GameObject) Resources.Load("Prefabs/Particles/LaserHit");
 	
 	// Use this for initialization
 	void Start () {

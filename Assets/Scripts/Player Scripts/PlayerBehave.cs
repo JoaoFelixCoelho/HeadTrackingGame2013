@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerBehave : MonoBehaviour {
 
 	public int ammo;
-	public GameObject rifle;
+	public GameObject handgun;
 	public GameObject laser;
 	private Arma weapon;
 	public int kills;
@@ -25,7 +25,8 @@ public class PlayerBehave : MonoBehaviour {
 	void Start () {
 		this.kills=0;
 		this.score=0;
-		rifle.gameObject.SetActive(true);
+		handgun.gameObject.SetActive(true);
+		weapon = handgun.GetComponent<Arma>();
 		//this.currHp = totalHp;
 	}
 	
@@ -56,8 +57,14 @@ public class PlayerBehave : MonoBehaviour {
 		bool isLeft = Input.GetKey(KeyCode.Mouse0);
 		bool rKey = Input.GetKeyDown(KeyCode.R);
 		bool gKey = Input.GetKeyDown(KeyCode.G);
+		
 		if(isLeft) {
 			weapon.shoot();	
 		}
+		
+		if (rKey) {
+			weapon.reload(this.ammo);	
+		}
+		
 	}
 }

@@ -9,18 +9,19 @@ public class Arma : MonoBehaviour {
 	public enum WeaponEnum {Laser = 0, Rifle = 1};
 	public WeaponEnum weaponModel = 0;
 	public int damage;
-	public float shootInterval;
 	public int capacity;
 	public float laserSpeed;
 	public float rifleSpeed;
 	public bool shooting = false;
 	float muzzleDeltaTime = 0;
-	private float fireRate = 0.2f;
+	
+	
+	public float fireRate;
 	private float timer = 0f;
 	
 	//Dependencias
 	public Transform spawnPos;
-	public Rigidbody proPrefab,rifleFab;
+	public Rigidbody proPrefab;
 	public PlayerBehave player;
 	
 	GUIText ammoTxt;
@@ -33,8 +34,7 @@ public class Arma : MonoBehaviour {
 	public void shoot(){
 		
 		//falta checkear que el jugador se quedo sin balas
-		
-		timer += Time.deltaTime;
+				
 		if (timer >= fireRate) {
 		
 			if (this.bullets<=0){
@@ -57,9 +57,16 @@ public class Arma : MonoBehaviour {
 				{
 					
 					Vector3 fwd = spawnPos.TransformDirection(Vector3.forward);
+					fwd *= 20;
+					
+					Debug.DrawRay(transform.position,fwd);
+					
 					RaycastHit hit;
-					if (Physics.Raycast(transform.position, fwd, out hit))
+					if (Physics.Raycast(transform.position, fwd, out hit, 9999, 1))
 					{
+						GameObject particleInstance = (GameObject) Instantiate(Projectile.hitParticle, hit.point, transform.rotation);
+						particleInstance.transform.LookAt(transform.position);
+						Destroy(particleInstance, particleInstance.particleSystem.duration + 0.01f);
 						Enemy enemyInstance = hit.collider.gameObject.GetComponent<Enemy>();
 						
 						if (enemyInstance != null){
@@ -145,6 +152,11 @@ public class Arma : MonoBehaviour {
 	}
 	
 	void Update () {
+		
+		timer += Time.deltaTime;
+
+		
+		
 		if (shooting == true) {
 			muzzle.renderer.enabled=true;
 			muzzleDeltaTime += Time.deltaTime;
