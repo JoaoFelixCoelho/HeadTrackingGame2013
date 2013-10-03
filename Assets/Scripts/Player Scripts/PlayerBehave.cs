@@ -25,7 +25,6 @@ public class PlayerBehave : MonoBehaviour {
 	void Start () {
 		this.kills=0;
 		this.score=0;
-		handgun.gameObject.SetActive(true);
 		weapon = handgun.GetComponent<Arma>();
 		//this.currHp = totalHp;
 	}
@@ -36,7 +35,7 @@ public class PlayerBehave : MonoBehaviour {
 		}
 	}
 	
-	public void reloadWep(){
+	public void reloadWeapon(){
 		// .reload te devuelve la cantidad de balas que van a quedar, le llegan la cantidad que tenés
 		this.ammo-=(weapon.reload(this.ammo));
 	}
@@ -51,6 +50,18 @@ public class PlayerBehave : MonoBehaviour {
 		this.killsInRound++;
 		this.score += 10 * Round.number + Random.Range(0,Round.number+kills);
 	}
+	
+	public void cambioArma () {
+		if (laser.gameObject.activeSelf==true){
+			print("Hasta aca llego porlomenos");
+			laser.gameObject.animation.Play ("CambioArmaUp");
+			
+			WaitForSeconds(0.3);
+			
+		}
+		else {
+		}
+	}
 		
 	
 	void Update () {
@@ -63,8 +74,12 @@ public class PlayerBehave : MonoBehaviour {
 		}
 		
 		if (rKey) {
-			weapon.reload(this.ammo);	
+			reloadWeapon();
 		}
+		
+		if (gKey) {
+			cambioArma ();
+		}	
 		
 	}
 }

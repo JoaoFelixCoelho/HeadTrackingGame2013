@@ -39,7 +39,7 @@ public class Crosshair : MonoBehaviour {
 		}
 		
 		if(isA) {
-			Enemy.player.GetComponent<PlayerBehave>().reloadWep();
+			Enemy.player.GetComponent<PlayerBehave>().reloadWeapon();
 			
 		}
 		//if(isBtnRight && limitChange==false && arma.GetComponent<Arma>().enumInt<=1){
