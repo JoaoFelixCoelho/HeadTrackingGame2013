@@ -15,6 +15,7 @@ public class PlayerBehave : MonoBehaviour {
 	public GUIText enemyCounter;
 	public GUIText warningGUI;
 	private double fireRate=0.2;
+	private double animationwait=0;
 	private bool allowFire=false;
 	private bool resetBool=true;
 	public Transform testSpawn;
@@ -53,14 +54,26 @@ public class PlayerBehave : MonoBehaviour {
 	
 	public void cambioArma () {
 		if (laser.gameObject.activeSelf==true){
-			print("Hasta aca llego porlomenos");
-			laser.gameObject.animation.Play ("CambioArmaUp");
-			
-			WaitForSeconds(0.3);
-			
+			laser.gameObject.animation.Play ("LaserUp");	
+			StartCoroutine (laserToHand());
+
 		}
 		else {
+			handgun.gameObject.animation.Play ("HandgunUp");
+			StartCoroutine (handToLaser());
 		}
+	}
+	public IEnumerator laserToHand(){
+		yield return new WaitForSeconds(0.7f);
+			laser.gameObject.SetActive(false);
+			handgun.gameObject.SetActive(true);
+			handgun.gameObject.animation.Play ("HandgunDown");
+	}
+	public IEnumerator handToLaser(){
+		yield return new WaitForSeconds(0.7f);
+		handgun.gameObject.SetActive(false);
+		laser.gameObject.SetActive(true);
+		laser.gameObject.animation.Play ("LaserDown");
 	}
 		
 	
