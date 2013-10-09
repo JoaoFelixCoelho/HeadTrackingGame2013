@@ -11,6 +11,9 @@ public class RangedAttackScript : MonoBehaviour {
 	//accuracy 0 es lo mas preciso
 	public float accuracy;
 	
+	public bool isAttacking, readyToAttack = false;
+	public float animationLength;
+	
 	protected float attackDeltaTime = 0f;
 	
 	
@@ -24,12 +27,15 @@ public class RangedAttackScript : MonoBehaviour {
 		gameObject.transform.LookAt(new Vector3(Enemy.player.transform.position.x, transform.position.y, Enemy.player.transform.position.z));
 		attackDeltaTime += Time.deltaTime;
 		if (ammo>0) {	
+			
+			if(attackDeltaTime  >= attackInterval - animationLength) {
+				readyToAttack = true;	
+			}
+			
+			
 			if (attackDeltaTime >= attackInterval) {
-				
-				if (enemyAttrs.GetComponent<Enemy>().type == "flubber") {
-					
-				}
-				
+				readyToAttack = false;
+				isAttacking = true;
 				
 				Vector3 velocityVector = Enemy.player.transform.position - transform.position;
 				Rigidbody tmpProjectile = (Rigidbody) Instantiate(projectile, transform.position, transform.rotation);
@@ -38,12 +44,12 @@ public class RangedAttackScript : MonoBehaviour {
 				velocityVector.x += Random.Range(-accuracy,accuracy);
 				velocityVector.y += Random.Range(-accuracy/2,accuracy);
 				velocityVector.z += Random.Range(0,accuracy);
-				
 				tmpProjectile.AddForce(velocityVector * bulletSpeed);
 				
 				tmpProjectile.GetComponent<Projectile>().setDamage(enemyAttrs.damage);
 				attackDeltaTime=0f;
 				ammo--;
+				isAttacking = false;
 			}
 		}
 		else {

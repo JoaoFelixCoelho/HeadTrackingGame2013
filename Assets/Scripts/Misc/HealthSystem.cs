@@ -9,33 +9,41 @@ public class HealthSystem : MonoBehaviour {
 	public PlayerBehave player;
 	private Enemy enemyAttrs;
 	
-	public bool isTarget;
+	public bool isTarget;	
+	public bool isDead= false;
 	
-	public void damageHp (int hit){
+	public void damageHp (int hit){		
+		
 		if (this.currHp-hit > 0){
 			this.currHp-=hit;
 		}
 		
-		else if (!isTarget) 
-		{
-			if(!isPlayer) {
-				if (!enemyAttrs.isDead){
-					enemyAttrs.markAsDead();
-					Destroy(gameObject);
-					player.GetComponent<PlayerBehave>().addKill();
-					roundManager.killOne();
+		else {
+			
+			isDead = true;
+			this.currHp = 0;
+			
+			if (!isTarget) 
+			{
+				if(!isPlayer) {
+					if (!enemyAttrs.isDead){
+						enemyAttrs.markAsDead();
+						Destroy(gameObject);
+						player.GetComponent<PlayerBehave>().addKill();
+						roundManager.killOne();
+					}
+				}
+				else {
+					print("el jugador se murio");	
 				}
 			}
 			else {
-				print("el jugador se murio");	
+				//es target aca y se murio	
+				
 			}
-		}
-		else {
-			//es target aca y se murio	
-			
-		}
 		
 		
+		}
 	}
 
 	

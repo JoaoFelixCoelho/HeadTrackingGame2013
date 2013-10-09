@@ -7,9 +7,12 @@ public class TargetManager : MonoBehaviour {
 	public GameObject [] targetsMiddle;
 	public GameObject [] targetsBack;
 	
+	private int num = 0;
+	private bool targetSpawned = false;
+	
 	public bool firstWave, secondWave, thirdWave = false;
 	
-	public AudioClip testClip;
+	public AudioClip [] clips;
 	private AudioSource audioSC;
 	
 	float audioTimer = 0f;
@@ -19,16 +22,17 @@ public class TargetManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		audioSC = gameObject.GetComponent<AudioSource>();
-		firstWave = true;
-		/*for (int i=0; i<targetsFront.Length; i++) {
-			targetsFront[i].SetActive(true);
-			
-		}*/
-
-	
+		firstWave = true;	
+		playSound();
 	}
 	
 	void Update () {
+		
+		if (!audioSC.isPlaying && audioOver) {
+			spawnTarget();
+			
+		}
+		
 		
 		/*
 		 * audio: "hola bienvenido bla bla"
@@ -67,24 +71,85 @@ public class TargetManager : MonoBehaviour {
 		 * 
 		 * */
 		
+	/*	if (!audioSC.isPlaying) {
+			audioSC.clip = clips[num];
+			audioSC.Play();
+		}
+		
+		audioTimer += Time.deltaTime;
+		
+		if (audioOver && audioTimer >= audioSC.clip.length) {
+			audioOver = true;
+			num ++;
+			spawnTarget();
+			checkTarget();
+			
+		}*/
+		
+	}
+	
+	private void spawnTarget() {
+		if (!targetSpawned) {
+			targetsFront[num].SetActive(true);
+			targetsFront[num].animation.Play("levantar");
+			targetSpawned = true;	
+		}	
+	}
+		
+	private void checkTarget () {
+		if (targetsFront[num].GetComponent<HealthSystem>().isDead){
+			targetSpawned = false;			
+		}
+		
+	}
+		
+		
+		
+		
+		
+		/*
 		if (firstWave) 
 		{
-			if (playSound(testClip))
-			{	
-				print("ea ea ea");
-				targetsFront[0].SetActive(true);
-				targetsFront[0].animation.Play("levantar");
+			if (!lastTargetDead) {
+				HealthSystem currentTarget = targetsFront[num].GetComponent<HealthSystem>();
+				print (currentTarget.name);
+				
+				if (currentTarget.isDead) {
+					
+					num++;
+					lastTargetDead = true;
+					
+					
+				}	
 			}
+			else {
+			
+				
+				if (playSound(clips[num]))
+				{	
+					print("ea ea ea");
+					targetsFront[num].SetActive(true);
+					targetsFront[num].animation.Play("levantar");
+					lastTargetDead = false;
+				}
+			}
+			
+
 			
 			
 			
 		}
-		
+		*/
 	
-	}
 	
-	private bool playSound(AudioClip audioIN) {
+	private IEnumerator playSound() {
 		
+		audioSC.clip = clips[num];
+		audioSC.Play();
+		
+		yield return new WaitForSeconds(audioSC.clip.length);
+		
+		/*
 		if(!audioPlayed) {
 			audioSC.PlayOneShot(audioIN);
 			audioPlayed = true;	
@@ -103,7 +168,7 @@ public class TargetManager : MonoBehaviour {
 				return false;	
 			}
 		}
-		return false;
+		return false;*/
 	}
 	
 }

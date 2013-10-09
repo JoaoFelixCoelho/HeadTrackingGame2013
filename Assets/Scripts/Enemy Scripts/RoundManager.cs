@@ -2,13 +2,6 @@ using UnityEngine;
 using System.Collections;
 
 public class RoundManager : MonoBehaviour {
-	
-	
-	/*
-	 * Enemy tiene los prefabs, desde aca solo se instansean los enemigos, los stats y todo, allá (en Enemy)
-	 * Quiero que los pibes se copen y comenten todo bien piola ok ?
-	 * 
-	 * */
 		
 	public static float interval; 
 	public bool isSpawning;
