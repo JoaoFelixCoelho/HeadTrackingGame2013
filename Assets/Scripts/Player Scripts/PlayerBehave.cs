@@ -19,7 +19,7 @@ public class PlayerBehave : MonoBehaviour {
 	private bool allowFire=false;
 	private bool resetBool=true;
 	public Transform testSpawn;
-
+	private bool handtolaser;
 	
 	
 	// Use this for initialization
@@ -54,26 +54,30 @@ public class PlayerBehave : MonoBehaviour {
 	
 	public void cambioArma () {
 		if (laser.gameObject.activeSelf==true){
+			handtolaser = false;
 			laser.gameObject.animation.Play ("LaserUp");	
-			StartCoroutine (laserToHand());
-
+			StartCoroutine (handToLaser());
 		}
 		else {
 			handgun.gameObject.animation.Play ("HandgunUp");
+			handtolaser = true;
 			StartCoroutine (handToLaser());
 		}
 	}
-	public IEnumerator laserToHand(){
-		yield return new WaitForSeconds(0.7f);
-			laser.gameObject.SetActive(false);
-			handgun.gameObject.SetActive(true);
-			handgun.gameObject.animation.Play ("HandgunDown");
-	}
+
 	public IEnumerator handToLaser(){
+		if (handtolaser){
 		yield return new WaitForSeconds(0.7f);
 		handgun.gameObject.SetActive(false);
 		laser.gameObject.SetActive(true);
 		laser.gameObject.animation.Play ("LaserDown");
+		}
+		else {
+		yield return new WaitForSeconds(0.7f);
+		laser.gameObject.SetActive(false);
+		handgun.gameObject.SetActive(true);
+		handgun.gameObject.animation.Play ("HandgunDown");
+		}
 	}
 		
 	
