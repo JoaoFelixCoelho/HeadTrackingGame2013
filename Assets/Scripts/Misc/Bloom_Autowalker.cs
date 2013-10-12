@@ -56,7 +56,7 @@ public class Bloom_Autowalker : MonoBehaviour {
 			if (!source.isPlaying) {
 				i = Random.Range(0, footsteps.Length);
 				source.PlayOneShot(footsteps[i]);
-				print("un footstep");
+				
 			}
 		}
 	}
