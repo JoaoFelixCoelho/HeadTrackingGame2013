@@ -13,7 +13,7 @@ GameObject:
   - 95: {fileID: 9500000}
   m_Layer: 0
   m_Name: arania
-  m_TagString: Untagged
+  m_TagString: Model
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,6 +162,7 @@ MonoBehaviour:
   isPlayer: 0
   player: {fileID: 0}
   isTarget: 0
+  isDead: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

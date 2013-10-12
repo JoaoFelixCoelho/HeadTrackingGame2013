@@ -4,7 +4,8 @@ using System.Collections;
 public class Projectile : MonoBehaviour {
 	
 	public float timeToDestroy;
-	public string target;
+	public enum TargetEnum {Player = 0, Enemy = 1};
+	public TargetEnum target = 0;
 	public int damage;
 	public static GameObject hitParticle = (GameObject) Resources.Load("Prefabs/Particles/LaserHit");
 	
@@ -18,20 +19,18 @@ public class Projectile : MonoBehaviour {
 	}	
 	
 	void OnTriggerEnter(Collider col){
-		
+				
 		if(col.tag != "DevLayer") {
-	 		Destroy(Instantiate(hitParticle,transform.position, transform.rotation), timeToDestroy);
-		}
-		
-		HealthSystem colTMP = col.GetComponent<HealthSystem>();
-		if (colTMP != null) {
-			//para que no se auto-saque vida
-			if (colTMP.isPlayer && target=="Player" || !colTMP.isPlayer && target=="Enemy" ) {
-				colTMP.damageHp(damage);
+			HealthSystem colTMP = col.GetComponent<HealthSystem>();
+			if (colTMP != null) {
+				//para que no se auto-saque vida
+				if (colTMP.isPlayer && target == TargetEnum.Player || !colTMP.isPlayer && target == TargetEnum.Enemy ) {
+					colTMP.damageHp(damage);
+					Destroy(gameObject);
+				}
+				
 			}
 		}
-		Destroy(gameObject);
-		
 
 	}
 		

@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour{
 	public float moveSpeed;
 	public float attackRange = 4f;
 	public float baseAttInterval;
+	public Animation anim;
 	
 	
 	public int id;
@@ -56,6 +57,7 @@ public class Enemy : MonoBehaviour{
 		enemyInstance.baseAttInterval = enemyStats.interval;
 		enemyInstance.id = Enemy.numerator;
 		enemyInstance.name = enemyInstance.type + "-" + enemyInstance.id + "-" + Round.number;
+		enemyInstance.anim = enemyGameObject.transform.FindChild("Model").GetComponent<Animation>();
 		Enemy.numerator++;	
 		enemyInstance.GetComponent<AIPathfinding>().originalGrid = firstGrid;
 		
@@ -96,6 +98,11 @@ public class Enemy : MonoBehaviour{
 	
 	public void modifyRoute() {
 		this.insideAttZone=true;
+		anim.Play(type + "Idle");
+		if (gameObject.GetComponent<RangedAttackScript>() != null) {
+			float [] lengthArray = {anim[type + "AttackCharge"].length, anim[type + "Attack"].length};
+			gameObject.GetComponent<RangedAttackScript>().animationLength = lengthArray;
+		}
 	}
 	
 	
@@ -114,18 +121,28 @@ public class Enemy : MonoBehaviour{
 		MeshFilter MF = new MeshFilter();
 		MeshRenderer MR = new MeshRenderer();
 		
-		if (gameObject.GetComponentInChildren<MeshFilter>() == null) 
+		GameObject model = new GameObject("Invisible");
+		
+		for (int i=0; i< gameObject.transform.childCount; i++) {
+			if (gameObject.transform.GetChild(i).tag == "Model") {
+					model = (GameObject) gameObject.transform.GetChild(i).gameObject;
+			}
+			
+		}
+				
+		
+		if (model.GetComponent<MeshFilter>() == null) 
 		{
 			hasMF = false;
-			SKMR = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+			SKMR = model.GetComponentInChildren<SkinnedMeshRenderer>();
 	    	M = SKMR.sharedMesh;
 			
 		}
 		
 		else 
 		{
-			MF = gameObject.GetComponentInChildren<MeshFilter>();
-			MR = gameObject.GetComponentInChildren<MeshRenderer>();
+			MF = model.GetComponentInChildren<MeshFilter>();
+			MR = model.GetComponentInChildren<MeshRenderer>();
 	   		M  = MF.mesh;
 		}
 		
@@ -157,7 +174,7 @@ public class Enemy : MonoBehaviour{
 	            GameObject GO = new GameObject("Triangle " + (i / 3));
 				GO.transform.parent = enemyContainer.transform;
 				if (!hasMF) {
-	           		GO.transform.position = new Vector3(SKMR.transform.position.x, SKMR.transform.position.y + 1.6f, SKMR.transform.position.z);
+	           		GO.transform.position = new Vector3(SKMR.transform.position.x, SKMR.transform.position.y , SKMR.transform.position.z);
 		            GO.transform.rotation = SKMR.transform.rotation;
 		            GO.AddComponent<MeshRenderer>().material = SKMR.materials[submesh];										
 				}
@@ -170,7 +187,7 @@ public class Enemy : MonoBehaviour{
 	            GO.AddComponent<MeshFilter>().mesh = mesh;
 		       /* GO.AddComponent<BoxCollider>();
 		        GO.AddComponent<Rigidbody>();	*/				
-	
+				Destroy(model);
 	            Destroy(GO, Random.Range(0.5f, 1.2f));
 	        }
 	    }

@@ -12,7 +12,7 @@ public class RangedAttackScript : MonoBehaviour {
 	public float accuracy;
 	
 	public bool isAttacking, readyToAttack = false;
-	public float animationLength;
+	public float [] animationLength;
 	
 	protected float attackDeltaTime = 0f;
 	
@@ -28,14 +28,22 @@ public class RangedAttackScript : MonoBehaviour {
 		attackDeltaTime += Time.deltaTime;
 		if (ammo>0) {	
 			
-			if(attackDeltaTime  >= attackInterval - animationLength) {
-				readyToAttack = true;	
+			if(attackDeltaTime  >= attackInterval - animationLength[0]) {
+				if (enemyAttrs.anim.IsPlaying(enemyAttrs.type + "Idle")) {
+					enemyAttrs.anim.CrossFade(enemyAttrs.type + "AttackCharge");
+				}
+			}
+			
+			if(attackDeltaTime >= attackInterval - animationLength[1]) {
+				if (enemyAttrs.anim.IsPlaying(enemyAttrs.type + "AttackCharge")) {
+					enemyAttrs.anim.CrossFade(enemyAttrs.type + "Attack");
+				}
 			}
 			
 			
-			if (attackDeltaTime >= attackInterval) {
-				readyToAttack = false;
-				isAttacking = true;
+			
+			if (attackDeltaTime >= attackInterval) {				
+				
 				
 				Vector3 velocityVector = Enemy.player.transform.position - transform.position;
 				Rigidbody tmpProjectile = (Rigidbody) Instantiate(projectile, transform.position, transform.rotation);
@@ -49,7 +57,9 @@ public class RangedAttackScript : MonoBehaviour {
 				tmpProjectile.GetComponent<Projectile>().setDamage(enemyAttrs.damage);
 				attackDeltaTime=0f;
 				ammo--;
-				isAttacking = false;
+				
+				enemyAttrs.anim.CrossFade(enemyAttrs.type + "Idle");
+				
 			}
 		}
 		else {
@@ -59,14 +69,14 @@ public class RangedAttackScript : MonoBehaviour {
 		}	
 	}
 	
-	public void setPrefab(Rigidbody prefab) {
+	/*public void setPrefab(Rigidbody prefab) {
 		this.projectile = prefab;	
-	}
+	}*/
 	
 	
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (enemyAttrs.insideAttZone) {
 			shoot();
 		}

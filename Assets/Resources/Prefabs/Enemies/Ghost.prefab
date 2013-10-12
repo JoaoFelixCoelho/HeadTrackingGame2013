@@ -12,7 +12,7 @@ GameObject:
   - 33: {fileID: 3300000}
   m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Model
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,6 +149,7 @@ MonoBehaviour:
   isPlayer: 0
   player: {fileID: 0}
   isTarget: 0
+  isDead: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,6 +165,9 @@ MonoBehaviour:
   bulletSpeed: 70
   ammo: 10
   accuracy: .5
+  isAttacking: 0
+  readyToAttack: 0
+  animationLength: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
