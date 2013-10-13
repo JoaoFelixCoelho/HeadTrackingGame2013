@@ -88,6 +88,7 @@ ModelImporter:
     7400004: flubberIdle
     7400006: FlubberAttackCharge
     7400008: flubberAttackCharge
+    7400010: flubberDie
     9500000: //RootNode
     11100000: //RootNode
     13700000: Flubber
@@ -172,6 +173,27 @@ ModelImporter:
       firstFrame: 110
       lastFrame: 150
       wrapMode: 1
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      transformMask: []
+    - name: flubberDie
+      takeName: Take 001
+      firstFrame: 70
+      lastFrame: 85
+      wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0

@@ -109,6 +109,7 @@ public class Enemy : MonoBehaviour{
 	
 	public void markAsDead() {
 		this.isDead = true;	
+		anim.Play(type + "Die");
 		explodeMesh();
 	}
 	
@@ -121,7 +122,9 @@ public class Enemy : MonoBehaviour{
 		MeshFilter MF = new MeshFilter();
 		MeshRenderer MR = new MeshRenderer();
 		
-		GameObject model = new GameObject("Invisible");
+		//negrada
+		
+		GameObject model = gameObject;
 		
 		for (int i=0; i< gameObject.transform.childCount; i++) {
 			if (gameObject.transform.GetChild(i).tag == "Model") {
