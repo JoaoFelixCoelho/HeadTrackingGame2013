@@ -12,7 +12,7 @@ public class HealthSystem : MonoBehaviour {
 	public bool isTarget;	
 	public bool isDead= false;
 	
-	public void damageHp (int hit){		
+	public void damageHp (int hit){	
 		
 		if (this.currHp-hit > 0){
 			this.currHp-=hit;
@@ -22,6 +22,7 @@ public class HealthSystem : MonoBehaviour {
 			
 			isDead = true;
 			this.currHp = 0;
+
 			
 			if (!isTarget) 
 			{
@@ -29,7 +30,7 @@ public class HealthSystem : MonoBehaviour {
 					if (!enemyAttrs.isDead){
 						enemyAttrs.markAsDead();
 						Destroy(gameObject);
-						player.GetComponent<PlayerBehave>().addKill();
+						player.addKill();
 						roundManager.killOne();
 					}
 				}
@@ -38,7 +39,8 @@ public class HealthSystem : MonoBehaviour {
 				}
 			}
 			else {
-				//es target aca y se murio	
+				//es target aca y se murio	(o es una bala)
+				Destroy(gameObject);
 				
 			}
 		
@@ -59,8 +61,8 @@ public class HealthSystem : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.currHp = this.totHp;
+		player = (PlayerBehave) Enemy.player.GetComponent<PlayerBehave>();
 		roundManager = (RoundManager) GameObject.Find("WaveManagerGO").GetComponent<RoundManager>();
-		player = (PlayerBehave) GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehave>();
 		if (!isPlayer) {
 			enemyAttrs = gameObject.GetComponent<Enemy>();	
 		}

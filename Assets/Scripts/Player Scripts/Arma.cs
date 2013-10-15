@@ -67,10 +67,10 @@ public class Arma : MonoBehaviour {
 						GameObject particleInstance = (GameObject) Instantiate(Projectile.hitParticle, hit.point, transform.rotation);
 						particleInstance.transform.LookAt(transform.position);
 						Destroy(particleInstance, particleInstance.particleSystem.duration + 0.01f);
-						Enemy enemyInstance = hit.collider.gameObject.GetComponent<Enemy>();
+						HealthSystem HP = hit.collider.gameObject.GetComponent<HealthSystem>();
 						
-						if (enemyInstance != null){
-							enemyInstance.GetComponent<HealthSystem>().damageHp(this.damage);
+						if (HP != null){
+							HP.damageHp(damage);
 						}
 					}
 				}				
