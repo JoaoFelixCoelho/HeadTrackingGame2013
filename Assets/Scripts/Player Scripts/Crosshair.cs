@@ -75,7 +75,7 @@ public class Crosshair : MonoBehaviour {
 		float temp_y = Screen.height - (ir_y * (float) Screen.height / (float)2.0);
 		mira_x = Mathf.RoundToInt(temp_x);
 		mira_y = Mathf.RoundToInt(temp_y);
-		vec3Look = Camera.main.camera.ScreenToWorldPoint(new Vector3(mira_x + 17.5f, Screen.height*1.5f - mira_y -20f , -20));
+		vec3Look = Camera.main.camera.ScreenToWorldPoint(new Vector3(mira_x + 17.5f, Screen.height*1.5f - mira_y -20f , 20));
 		arma.transform.LookAt(vec3Look);
 		    
 	}

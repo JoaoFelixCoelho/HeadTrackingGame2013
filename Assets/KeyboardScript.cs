@@ -2,11 +2,14 @@ using UnityEngine;
 using System.Collections;
 
 public class KeyboardScript : MonoBehaviour {
-	private string letra;
+	private string letter;
+	public string name;
 	void press(){
 	if (Input.anyKey){
-		letra = Input.inputString;
-		transform.FindChild(letra).animation.Play(letra+"Key");
+		letter = Input.inputString;
+		transform.FindChild(letter).animation.Play(letter+"Key");
+		name += letter;
+		print (name);
 		}
 		
 	}

@@ -24,7 +24,8 @@ public class Bloom_Autowalker : MonoBehaviour {
 	private float toScale;
 	private float animTime;
 	bool headUp = true;
-	
+	private bool fin = false;
+
 	
 	
 	void Start () {
@@ -61,11 +62,18 @@ public class Bloom_Autowalker : MonoBehaviour {
 		}
 	}
 	
+	void OnTriggerEnter(Collider other){
+		fin = true;
+	}	
 	
 	private void step() {
 		timerDelta += Time.deltaTime;
+		if (fin==false){
 		checkWalk();
+		}
 	}
+	
+	
 
 	
 	
