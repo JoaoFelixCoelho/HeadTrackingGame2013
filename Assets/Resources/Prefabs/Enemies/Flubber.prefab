@@ -1187,8 +1187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a48af2e71171604d80a9d5a9cf3b690, type: 3}
   m_Name: 
   projectile: {fileID: 5400000, guid: 9a9142d4b1f40894c9928c6e9cac9735, type: 2}
-  attackInterval: 2.92000008
-  bulletSpeed: 45
+  attackInterval: 1.25999999
+  bulletSpeed: 400
   ammo: 4
   accuracy: 1.62
   isAttacking: 0
