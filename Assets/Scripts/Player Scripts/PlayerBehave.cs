@@ -9,7 +9,7 @@ public class PlayerBehave : MonoBehaviour {
 	private Arma weapon;
 	public int kills;
 	public int killsInRound;
-	public int score;
+	public static int score;
 	
 	public GUIText ammoGUI;
 	public GUIText enemyCounter;
@@ -25,7 +25,6 @@ public class PlayerBehave : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.kills=0;
-		this.score=0;
 		weapon = handgun.GetComponent<Arma>();
 		//this.currHp = totalHp;
 	}
@@ -49,7 +48,8 @@ public class PlayerBehave : MonoBehaviour {
 	public void addKill() {
 		this.kills++;
 		this.killsInRound++;
-		this.score += 10 * Round.number + Random.Range(0,Round.number+kills);
+		//meter algoritmo de medina
+		PlayerBehave.score += 10 * Round.number + Random.Range(0,Round.number+kills);
 	}
 	
 	public void cambioArma () {

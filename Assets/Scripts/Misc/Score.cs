@@ -20,7 +20,7 @@ public class Score : MonoBehaviour {
 
 	}
 	
-	void score() {
+	/*void score() {
 		
         MySqlConnection cn = new MySqlConnection("Server=" + serverIP + ";Database=" + database + ";User ID=" + UserDataBase + ";Password=" + PassDataBase + ";Pooling=false");
         cn.Open();
@@ -62,7 +62,7 @@ public class Score : MonoBehaviour {
 			}
 		}
 	}
-	
+*/	
 	
 	
 }
