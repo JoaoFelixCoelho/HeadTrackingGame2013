@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Glow_Grid2
-  m_Shader: {fileID: 10, guid: 0000000000000000e000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: d176069dc2c53fb4d9b504b8fdc3ba1d, type: 3}
   m_ShaderKeywords: []
   m_SavedProperties:
     serializedVersion: 2
@@ -16,8 +16,8 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 7fc30035bfa79c041858da6de132c38a, type: 3}
-          m_Scale: {x: 20, y: 3}
+          m_Texture: {fileID: 2800000, guid: 0ff6fd86c3cef80468c49dcc067d7747, type: 3}
+          m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -35,4 +35,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: .783582091, b: .783582091, a: .78039217}
+        second: {r: 1, g: 1, b: 1, a: 1}
