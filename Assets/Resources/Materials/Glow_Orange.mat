@@ -28,14 +28,7 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Illum
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1.5, y: 1}
-          m_Offset: {x: 0, y: -.100000001}
-      data:
-        first:
-          name: _DecalTex
+          name: _Ramp
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -49,14 +42,21 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Ramp
+          name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ParallaxMap
+          name: _Illum
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1.5, y: 1}
+          m_Offset: {x: 0, y: -.100000001}
+      data:
+        first:
+          name: _DecalTex
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -64,30 +64,30 @@ Material:
     m_Floats:
       data:
         first:
-          name: _EmissionLM
-        second: 93.1200027
+          name: _Outline
+        second: .00458208937
       data:
         first:
           name: _Shininess
         second: .699999988
       data:
         first:
-          name: _Outline
-        second: .00458208937
-      data:
-        first:
           name: _Parallax
         second: .0199999996
+      data:
+        first:
+          name: _EmissionLM
+        second: 93.1200027
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .0509803928, g: .352941185, b: 0, a: .192156866}
+        second: {r: .0734047517, g: .186567187, b: .054299403, a: .192156866}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0, g: .649253726, b: .129850775, a: .874509811}
       data:
         first:
           name: _SpecColor
         second: {r: 1, g: .986014009, b: 0, a: 1}
-      data:
-        first:
-          name: _OutlineColor
-        second: {r: 0, g: 1, b: .200000048, a: 1}

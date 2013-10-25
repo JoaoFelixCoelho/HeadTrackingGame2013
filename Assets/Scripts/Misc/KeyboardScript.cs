@@ -11,28 +11,30 @@ public class KeyboardScript : MonoBehaviour {
 		bool isSpace = Input.GetKeyDown(KeyCode.Space);
 		bool isReturn = Input.GetKeyDown(KeyCode.Return);
 		
-		if (isBackSpace && name.Length-1>=0){
-				 name = name.Substring(0, name.Length - 1);
-			transform.FindChild("backspace").animation.Play("eraseKey");
-			}
-		
-		if (isSpace){
-				 name += " ";
-			transform.FindChild("space").animation.Play("spaceKey");
-		}
-		
-		if (isReturn){
-			transform.FindChild("enter").animation.Play("enterKey");
-		}
-		
 		if (Input.anyKey){
-		letter = Input.inputString;
+			audio.Play();
+			
+			if (isBackSpace && name.Length-1>=0){
+					 name = name.Substring(0, name.Length - 1);
+				transform.FindChild("backspace").animation.Play("eraseKey");
+			}
+			
+			if (isSpace){
+					 name += " ";
+				transform.FindChild("space").animation.Play("spaceKey");
+			}
+			
+			if (isReturn){
+				transform.FindChild("enter").animation.Play("enterKey");
+			}
+			
+			letter = Input.inputString;
 			if (transform.FindChild(letter)!=null && name.Length<15) {
 				transform.FindChild(letter).animation.Play(letter+"Key");
 				name += letter;
-			}	
+			}
+			textoMonitor.text = name;
 		}
-		textoMonitor.text = name;
 	}
 	// Use this for initialization
 	void Start () {

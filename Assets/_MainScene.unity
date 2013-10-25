@@ -1194,9 +1194,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d1352984e3c6465088f6cc7c4ce6e22, type: 3}
   m_Name: 
-  glowIntensity: 1.38
+  glowIntensity: 1.32000005
   blurIterations: 2
-  blurSpread: .620000005
+  blurSpread: .5
   glowTint: {r: 1, g: 1, b: 1, a: 0}
   compositeShader: {fileID: 4800000, guid: 96ca71e39c7b6fb4f9bec2c5bf331349, type: 3}
   blurShader: {fileID: 4800000, guid: fb52973118cf00648825ced2fcca240c, type: 3}
@@ -2030,7 +2030,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 2063c22a710dad148bde74f524ef59d4, type: 2}
+  - {fileID: 2100000, guid: cb3e3a199bfd24d4da6e4a0deac35009, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
