@@ -40,7 +40,12 @@ public class HealthSystem : MonoBehaviour {
 			}
 			else {
 				//es target aca y se murio	(o es una bala)
-				Destroy(gameObject);
+				if (!isTarget) {
+					Destroy(gameObject);
+				}
+				else {
+					isDead = true;	
+				}
 				
 			}
 		

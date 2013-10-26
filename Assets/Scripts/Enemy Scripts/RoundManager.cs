@@ -29,7 +29,7 @@ public class RoundManager : MonoBehaviour {
 		}
 		
 		if (Round.isTargetRound) {
-			gameObject.GetComponent<TargetManager>().enabled = true;	
+			gameObject.GetComponent<TargetManager>().enabled = true;
 		}
 		
 	}	

@@ -3,35 +3,77 @@ using System.Collections;
 
 public class TargetManager : MonoBehaviour {
 
-	public GameObject [] targetsFront;
-	public GameObject [] targetsMiddle;
-	public GameObject [] targetsBack;
+	public GameObject [] targets;
 	
-	private int num = 0;
-	private bool targetSpawned = false;
-	
-	public bool firstWave, secondWave, thirdWave = false;
-	
-	public AudioClip [] clips;
 	private AudioSource audioSC;
 	
 	float audioTimer = 0f;
 	bool audioPlayed, audioOver = false;
 	
+	public AudioClip [] clips;
+	private int contador     = 1;
+	private int animsPlayed  = 0;
+	private int soundsPlayed = 0;
+	private int targetWave   = 1;
+	
+	
 	
 	// Use this for initialization
 	void Start () {
 		audioSC = gameObject.GetComponent<AudioSource>();
-		firstWave = true;	
-		playSound();
 	}
 	
-	void Update () {
+	void FixedUpdate () {
 		
-		if (!audioSC.isPlaying && audioOver) {
-			spawnTarget();
+		Transform currTarget = targets[contador - 1].transform.GetChild(0);
+		
+		
+  		if (soundsPlayed == contador && !audioSC.isPlaying) {
+		
+  			if (animsPlayed == contador) 
+			{
+  				if (currTarget.GetComponent<HealthSystem>().isDead) 
+				{	
+					Destroy(currTarget.transform.parent.gameObject);
+					contador ++;
+					if(contador > targets.Length) {
+						gameObject.GetComponent<RoundManager>().startNewRound();
+						this.enabled = false;
+
+					}
+
+  				}
+				
+  			}
 			
-		}
+			
+  			else 
+			{
+				if (animsPlayed < contador) {
+					targets[contador - 1].SetActive(true);
+					if(!currTarget.animation.isPlaying) {
+						if (currTarget.animation.GetClipCount() > 1) {
+							currTarget.animation.CrossFade("MoveTargetCircle");
+			  				animsPlayed ++;
+						}
+						else {
+							animsPlayed ++;
+						}
+					}
+				}
+  			}
+  
+  		}
+		else
+		{
+			if (soundsPlayed < contador) {
+	  			audioSC.clip = clips[contador - 1];
+				audioSC.Play();
+	 			soundsPlayed ++;
+			}
+	  	}
+
+		
 		
 		
 		/*
@@ -45,17 +87,16 @@ public class TargetManager : MonoBehaviour {
 		 * 				audio: "disparale a este mas lejos"
 		 * 				- aparece target 2
 		 * 
-		 * 				comment: estaria piola usar un super ataque o algo asi con el arma de laser
-		 * 				audio: "usa el super ataque (?)"
+		 * 				audio: "disparale a este mas lejos"
 		 * 				- aparece target 3
 		 * 				
 		 * segunda ronda:
 		 * 			
-		 * 				audio: "ahora se mueven papa"
-		 *				- aparece target 1 moviendose
+		 * 				audio: "mantene tal boton y sale super ataque"
+		 *				- aparece target 1 
 		 *
 		 *
-		 * 				audio: "ahora disparale a las dos en el menor tiempo"  ni en pedo hago un contador, es todo chamuyo
+		 * 				audio: "ahora disparale a estas targets moviendose
 		 * 				- aparece target 2
 		 * 
 		 * tercera ronda:
@@ -88,22 +129,22 @@ public class TargetManager : MonoBehaviour {
 		
 	}
 	
-	private void spawnTarget() {
+	/*private void spawnTarget() {
 		if (!targetSpawned) {
-			targetsFront[num].SetActive(true);
-			targetsFront[num].animation.Play("levantar");
+			targets[num].SetActive(true);
+			targets[num].animation.Play("levantar");
 			targetSpawned = true;	
 		}	
 	}
 		
 	private void checkTarget () {
-		if (targetsFront[num].GetComponent<HealthSystem>().isDead){
+		if (targets[num].GetComponent<HealthSystem>().isDead){
 			targetSpawned = false;			
 		}
 		
 	}
 		
-		
+		*/
 		
 		
 		
@@ -111,7 +152,7 @@ public class TargetManager : MonoBehaviour {
 		if (firstWave) 
 		{
 			if (!lastTargetDead) {
-				HealthSystem currentTarget = targetsFront[num].GetComponent<HealthSystem>();
+				HealthSystem currentTarget = targets[num].GetComponent<HealthSystem>();
 				print (currentTarget.name);
 				
 				if (currentTarget.isDead) {
@@ -128,8 +169,8 @@ public class TargetManager : MonoBehaviour {
 				if (playSound(clips[num]))
 				{	
 					print("ea ea ea");
-					targetsFront[num].SetActive(true);
-					targetsFront[num].animation.Play("levantar");
+					targets[num].SetActive(true);
+					targets[num].animation.Play("levantar");
 					lastTargetDead = false;
 				}
 			}
@@ -142,7 +183,7 @@ public class TargetManager : MonoBehaviour {
 		*/
 	
 	
-	private IEnumerator playSound() {
+/*	private IEnumerator playSound() {
 		
 		audioSC.clip = clips[num];
 		audioSC.Play();
@@ -168,7 +209,7 @@ public class TargetManager : MonoBehaviour {
 				return false;	
 			}
 		}
-		return false;*/
-	}
+		return false;
+	}*/
 	
 }
