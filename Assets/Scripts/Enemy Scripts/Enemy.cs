@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour{
 	public float baseAttInterval;
 	public Animation anim;
 	
-	
 	public int id;
 	
 	public static float standByTime = 1f;
@@ -25,17 +24,13 @@ public class Enemy : MonoBehaviour{
 	public bool insideAttZone = false;
 	public bool isDead = false;
 	
-
 	
-
-	
+	private static GameObject dieParticles = (GameObject) Resources.Load("Prefabs/Particles/EnemyDieParticles");
 	public static GameObject enemyContainer = GameObject.Find("Enemies");
 	
 	
 	//El jugador y el controlador de las rondas
-	public static GameObject player = GameObject.FindGameObjectWithTag("Player");
-	public static Rigidbody ghostProjectile;
-		
+	public static GameObject player = GameObject.FindGameObjectWithTag("Player");	
 	
 	#region Stats
 	
@@ -109,7 +104,7 @@ public class Enemy : MonoBehaviour{
 	
 	public void markAsDead() {
 		this.isDead = true;	
-		anim.Play(type + "Die");
+		Instantiate(dieParticles, transform.position, transform.rotation);
 		explodeMesh();
 	}
 	
@@ -201,12 +196,6 @@ public class Enemy : MonoBehaviour{
 	
 
 }
-	
-	
-	
-	
-	
-	
 	
 	
 	#endregion	

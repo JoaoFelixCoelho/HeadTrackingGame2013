@@ -29,7 +29,6 @@ public class HealthSystem : MonoBehaviour {
 				if(!isPlayer) {
 					if (!enemyAttrs.isDead){
 						enemyAttrs.markAsDead();
-						Destroy(gameObject);
 						player.addKill();
 						roundManager.killOne();
 					}

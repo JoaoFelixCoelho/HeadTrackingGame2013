@@ -876,7 +876,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 429358630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.1147385, y: -.445157051, z: 27.270813}
+  m_LocalPosition: {x: 22.1147385, y: -.445157051, z: 19.6008263}
   m_LocalScale: {x: 38.7999992, y: 17, z: .450446129}
   m_Children: []
   m_Father: {fileID: 1040878314}
@@ -937,8 +937,6 @@ MonoBehaviour:
   mira: {fileID: 2800000, guid: 8265c24532c889845a2128f088f9d6eb, type: 3}
   arma: {fileID: 533992337}
   control: 0
-  rifleMaterial: {fileID: 2100000, guid: 76f40fe04e217ee4582c9f47db76893f, type: 2}
-  laserMaterial: {fileID: 2100000, guid: 2b5c2682d3630d24d80b92ecb3c76981, type: 2}
 --- !u!114 &533992340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1201,7 +1199,7 @@ GUIText:
   m_GameObject: {fileID: 576486253}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 888/888
+  m_Text: 88/88
   m_Anchor: 6
   m_Alignment: 0
   m_PixelOffset: {x: 0, y: 0}
@@ -1780,7 +1778,7 @@ GUIText:
   m_GameObject: {fileID: 1088193629}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 500/500
+  m_Text: 20/20
   m_Anchor: 6
   m_Alignment: 0
   m_PixelOffset: {x: 0, y: 0}
@@ -2748,8 +2746,6 @@ MonoBehaviour:
   mira: {fileID: 2800000, guid: 8265c24532c889845a2128f088f9d6eb, type: 3}
   arma: {fileID: 1872000885}
   control: 0
-  rifleMaterial: {fileID: 2100000, guid: 76f40fe04e217ee4582c9f47db76893f, type: 2}
-  laserMaterial: {fileID: 2100000, guid: 2b5c2682d3630d24d80b92ecb3c76981, type: 2}
 --- !u!1 &1922944077
 GameObject:
   m_ObjectHideFlags: 0

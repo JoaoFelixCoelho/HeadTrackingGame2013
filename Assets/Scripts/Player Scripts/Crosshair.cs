@@ -16,7 +16,6 @@ public class Crosshair : MonoBehaviour {
 	private int fireRate;
 	private bool limitChange=false;
 	public int control=0;
-	public Material rifleMaterial, laserMaterial;
 	// Use this for initialization
 	void Start () {
 		WiiMote.wiimote_start();
