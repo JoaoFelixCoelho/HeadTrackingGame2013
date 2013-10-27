@@ -14,13 +14,17 @@ public class PlayerBehave : MonoBehaviour {
 	public GUIText ammoGUI;
 	public GUIText enemyCounter;
 	public GUIText warningGUI;
-	private double fireRate=0.2;
+	private double fireRate=0.5;
 	private double animationwait=0;
 	private bool allowFire=false;
 	private bool resetBool=true;
-	public Transform testSpawn;
 	private bool handtolaser;
 	
+	public Vignetting cameraEffect;
+	public bool imageEffectActive;
+	private float ieTimer = 0;
+	public float ieLimit = 5f;
+	public float chromaticRate = 60f;
 	
 	// Use this for initialization
 	void Start () {
@@ -62,14 +66,14 @@ public class PlayerBehave : MonoBehaviour {
 			handtolaser = false;
 			laser.gameObject.animation.Play ("LaserUp");	
 			StartCoroutine (handToLaser());
-			weapon = laser.GetComponent<Arma>();
+			weapon = handgun.GetComponent<Arma>();
 
 		}
 		else {
 			handgun.gameObject.animation.Play ("HandgunUp");
 			handtolaser = true;
 			StartCoroutine (handToLaser());
-			weapon = handgun.GetComponent<Arma>();
+			weapon = laser.GetComponent<Arma>();
 		}
 	}
 
@@ -89,11 +93,39 @@ public class PlayerBehave : MonoBehaviour {
 	}
 		
 	
+	
+	private void checkCameraDistort() {
+		int signo = Random.Range(0,2);
+		if (signo == 0) {
+			cameraEffect.chromaticAberration = Random.Range(-chromaticRate, -chromaticRate+20);
+		}
+		else {
+			cameraEffect.chromaticAberration = Random.Range(chromaticRate-50, chromaticRate);
+		}
+		cameraEffect.blur +=0.5f;
+		cameraEffect.blurSpread += 0.01f;
+		ieTimer += Time.deltaTime;
+		if (ieTimer >= ieLimit) {
+			cameraEffect.chromaticAberration = 0;
+			cameraEffect.blurSpread = 0.75f;
+			cameraEffect.blur = 0.8f;
+			imageEffectActive = false;
+			ieTimer = 0f;
+		}
+	}
+	
+	
+	
 	void Update () {
 		bool isLeft = Input.GetKey(KeyCode.Mouse0);
 		bool rKey = Input.GetKeyDown(KeyCode.R);
 		bool gKey = Input.GetKeyDown(KeyCode.G);
 		
+		
+		if (imageEffectActive) {
+			checkCameraDistort();
+		}
+				
 		if(isLeft) {
 			weapon.shoot();	
 		}

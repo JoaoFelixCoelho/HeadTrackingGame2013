@@ -14,9 +14,19 @@ public class HealthSystem : MonoBehaviour {
 	
 	public void damageHp (int hit){	
 		
+		print("sacando vida");
+		
+		if(isPlayer) {
+			player.imageEffectActive = true;
+		}
+		
+		
+		
 		if (this.currHp-hit > 0){
 			this.currHp-=hit;
 		}
+		
+		
 		
 		else {
 			
