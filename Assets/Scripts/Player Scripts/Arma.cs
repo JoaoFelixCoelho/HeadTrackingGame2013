@@ -47,6 +47,7 @@ public class Arma : MonoBehaviour {
 				
 				if (weaponModel == WeaponEnum.Laser) 				
 				{
+					print("disparando");
 					Rigidbody lasInstance = (Rigidbody) Instantiate(proPrefab, spawnPos.position, spawnPos.rotation);
 					lasInstance.AddForce(spawnPos.forward*laserSpeed);	
 					lasInstance.GetComponent<Projectile>().setDamage(damage);

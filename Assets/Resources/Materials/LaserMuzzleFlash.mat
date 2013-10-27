@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MuzzleFlash
+  m_Name: LaserMuzzleFlash
   m_Shader: {fileID: 200, guid: 0000000000000000e000000000000000, type: 0}
   m_ShaderKeywords: []
   m_SavedProperties:
@@ -17,30 +17,19 @@ Material:
           name: _MainTex
         second:
           m_Texture: {fileID: 2800000, guid: 4aa151b633440314f9b58532b83ba39c, type: 3}
-          m_Scale: {x: 1, y: .5}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Illum
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
+          m_Scale: {x: 1, y: .600000024}
+          m_Offset: {x: 0, y: 5}
     m_Floats:
       data:
         first:
-          name: _EmissionLM
-        second: 0
-      data:
-        first:
           name: _InvFade
-        second: 1
+        second: 3
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: 1, g: .849285007, b: .432835817, a: 1}
+        second: {r: .335820913, g: .359043956, b: 1, a: 1}
       data:
         first:
           name: _TintColor
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .291044772, g: .315833241, b: 1, a: 1}

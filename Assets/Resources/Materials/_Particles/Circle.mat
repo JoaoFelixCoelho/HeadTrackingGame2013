@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Glow_Orange
-  m_Shader: {fileID: 4800000, guid: 9ce107479d11178d11005b9844295342, type: 3}
+  m_Name: Circle
+  m_Shader: {fileID: 200, guid: 0000000000000000e000000000000000, type: 0}
   m_ShaderKeywords: []
   m_SavedProperties:
     serializedVersion: 2
@@ -16,7 +16,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 59b91ad4fc6604e4ca236c7219fcc2b5, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -29,13 +29,6 @@ Material:
       data:
         first:
           name: _Illum
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1.5, y: 1}
-          m_Offset: {x: 0, y: -.100000001}
-      data:
-        first:
-          name: _DecalTex
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -54,40 +47,21 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ParallaxMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
-          name: _Shininess
-        second: .699999988
-      data:
-        first:
           name: _EmissionLM
-        second: 93.1200027
+        second: 0
       data:
         first:
-          name: _Outline
-        second: .00583582046
-      data:
-        first:
-          name: _Parallax
-        second: .0199999996
+          name: _InvFade
+        second: 3
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .0811706334, g: .24626863, b: .0532969423, a: .192156866}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _SpecColor
-        second: {r: 1, g: .986014009, b: 0, a: 1}
-      data:
-        first:
-          name: _OutlineColor
-        second: {r: 0, g: .649253726, b: .129850775, a: .874509811}
+          name: _TintColor
+        second: {r: .5, g: .5, b: .5, a: .325490206}

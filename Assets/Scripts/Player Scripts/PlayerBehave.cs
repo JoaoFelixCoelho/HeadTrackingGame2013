@@ -25,7 +25,12 @@ public class PlayerBehave : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.kills=0;
-		weapon = handgun.GetComponent<Arma>();
+		if (handgun.activeSelf) {
+			weapon = handgun.GetComponent<Arma>();
+		}
+		else {
+			weapon = laser.GetComponent<Arma>();
+		}
 		//this.currHp = totalHp;
 	}
 	
@@ -53,30 +58,33 @@ public class PlayerBehave : MonoBehaviour {
 	}
 	
 	public void cambioArma () {
-		if (laser.gameObject.activeSelf==true){
+		if (laser.activeSelf==true){
 			handtolaser = false;
 			laser.gameObject.animation.Play ("LaserUp");	
 			StartCoroutine (handToLaser());
+			weapon = laser.GetComponent<Arma>();
+
 		}
 		else {
 			handgun.gameObject.animation.Play ("HandgunUp");
 			handtolaser = true;
 			StartCoroutine (handToLaser());
+			weapon = handgun.GetComponent<Arma>();
 		}
 	}
 
 	public IEnumerator handToLaser(){
 		if (handtolaser){
-		yield return new WaitForSeconds(0.7f);
-		handgun.gameObject.SetActive(false);
-		laser.gameObject.SetActive(true);
-		laser.gameObject.animation.Play ("LaserDown");
+			yield return new WaitForSeconds(0.7f);
+			handgun.gameObject.SetActive(false);
+			laser.gameObject.SetActive(true);
+			laser.gameObject.animation.Play ("LaserDown");
 		}
 		else {
-		yield return new WaitForSeconds(0.7f);
-		laser.gameObject.SetActive(false);
-		handgun.gameObject.SetActive(true);
-		handgun.gameObject.animation.Play ("HandgunDown");
+			yield return new WaitForSeconds(0.7f);
+			laser.gameObject.SetActive(false);
+			handgun.gameObject.SetActive(true);
+			handgun.gameObject.animation.Play ("HandgunDown");
 		}
 	}
 		
