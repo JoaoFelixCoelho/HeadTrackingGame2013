@@ -21,10 +21,11 @@ public class PlayerBehave : MonoBehaviour {
 	private bool handtolaser;
 	
 	public Vignetting cameraEffect;
+	public MotionBlur motionBlur;
 	public bool imageEffectActive;
 	private float ieTimer = 0;
-	public float ieLimit = 5f;
-	public float chromaticRate = 60f;
+	public float imageDistortTime = 1.2f;
+	private float chromaticRate = 90f;
 	
 	// Use this for initialization
 	void Start () {
@@ -102,14 +103,16 @@ public class PlayerBehave : MonoBehaviour {
 		else {
 			cameraEffect.chromaticAberration = Random.Range(chromaticRate-50, chromaticRate);
 		}
+		motionBlur.enabled = true;
 		cameraEffect.blur +=0.5f;
 		cameraEffect.blurSpread += 0.01f;
 		ieTimer += Time.deltaTime;
-		if (ieTimer >= ieLimit) {
+		if (ieTimer >= imageDistortTime) {
 			cameraEffect.chromaticAberration = 0;
 			cameraEffect.blurSpread = 0.75f;
 			cameraEffect.blur = 0.8f;
 			imageEffectActive = false;
+			motionBlur.enabled = false;
 			ieTimer = 0f;
 		}
 	}

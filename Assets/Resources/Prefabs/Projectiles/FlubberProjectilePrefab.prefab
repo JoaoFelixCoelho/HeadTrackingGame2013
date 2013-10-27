@@ -109,9 +109,8 @@ MonoBehaviour:
   m_Name: 
   totHp: 10
   currHp: 0
-  isPlayer: 0
   player: {fileID: 0}
-  isTarget: 1
+  type: 2
   isDead: 0
 --- !u!1001 &100100000
 Prefab:

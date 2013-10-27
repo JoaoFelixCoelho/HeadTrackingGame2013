@@ -4,60 +4,78 @@ using System.Collections;
 public class HealthSystem : MonoBehaviour {
 	public int totHp;
 	public int currHp;	
-	public bool isPlayer;
 	public static RoundManager roundManager;
 	public PlayerBehave player;
 	private Enemy enemyAttrs;
 	
-	public bool isTarget;	
-	public bool isDead= false;
 	
+	public enum Type {Enemy = 0, Target = 1, Bullet = 2, Player = 3};
+	public Type type = 0;
+	
+	public bool isDead= false;
 	public void damageHp (int hit){	
 		
-		print("sacando vida");
 		
-		if(isPlayer) {
+		if(type == Type.Player) {
 			player.imageEffectActive = true;
 		}
-		
 		
 		
 		if (this.currHp-hit > 0){
 			this.currHp-=hit;
 		}
-		
-		
-		
 		else {
 			
-			isDead = true;
-			this.currHp = 0;
-
+			if (type == Type.Enemy && !isDead) {
+				enemyAttrs.markAsDead();
+				player.addKill();
+				roundManager.killOne();				
+			}
 			
+			if (type == Type.Player && !isDead) {
+				print("El jugador murio");	
+			}
+			
+			if (type == Type.Bullet) {
+				print("se deberia morir la bala ");
+				Destroy(gameObject);
+			}
+						
+			
+			this.currHp = 0;
+			isDead = true;
+			
+			/*
 			if (!isTarget) 
 			{
 				if(!isPlayer) {
-					if (!enemyAttrs.isDead){
-						enemyAttrs.markAsDead();
-						player.addKill();
-						roundManager.killOne();
+					if (!this.isDead)
+					{
+						//para que no lo mate varias veces
+						isDead = true;
+						if (enemyAttrs != null) 
+						{
+							//es un enemigo
+							enemyAttrs.markAsDead();
+							player.addKill();
+							roundManager.killOne();
+						} 
+						else 
+						{
+							//es una bala
+							Destroy(gameObject);	
+						}
 					}
 				}
-				else {
+				else 
+				{
 					print("el jugador se murio");	
 				}
-			}
-			else {
-				//es target aca y se murio	(o es una bala)
-				if (!isTarget) {
-					Destroy(gameObject);
-				}
-				else {
-					isDead = true;	
-				}
-				
-			}
-		
+			} 
+			else 
+			{
+				this.isDead = true;	
+			}*/
 		
 		}
 	}
@@ -77,13 +95,12 @@ public class HealthSystem : MonoBehaviour {
 		this.currHp = this.totHp;
 		player = (PlayerBehave) Enemy.player.GetComponent<PlayerBehave>();
 		roundManager = (RoundManager) GameObject.Find("WaveManagerGO").GetComponent<RoundManager>();
-		if (!isPlayer) {
-			enemyAttrs = gameObject.GetComponent<Enemy>();	
+		if (type == Type.Enemy) {
+			enemyAttrs = gameObject.GetComponent<Enemy>();
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+	}	
 }

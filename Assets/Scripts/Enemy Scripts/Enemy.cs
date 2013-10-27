@@ -22,7 +22,6 @@ public class Enemy : MonoBehaviour{
 	public static int numerator;
 	public static int current;
 	public bool insideAttZone = false;
-	public bool isDead = false;
 	
 	
 	private static GameObject dieParticles = (GameObject) Resources.Load("Prefabs/Particles/EnemyDieParticles");
@@ -103,7 +102,6 @@ public class Enemy : MonoBehaviour{
 	
 	
 	public void markAsDead() {
-		this.isDead = true;	
 		Instantiate(dieParticles, transform.position, transform.rotation);
 		explodeMesh();
 	}
