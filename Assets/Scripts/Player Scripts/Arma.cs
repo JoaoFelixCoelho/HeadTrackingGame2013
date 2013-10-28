@@ -28,6 +28,7 @@ public class Arma : MonoBehaviour {
 	GUIText warningTxt;
 
 	public GameObject muzzle;
+	public GameObject handgunAudio, laserAudio, nobulletAudio;
 		
 
 	
@@ -39,6 +40,9 @@ public class Arma : MonoBehaviour {
 		
 			if (this.bullets<=0){
 				showWarning("reload");
+				if (weaponModel == WeaponEnum.Rifle){
+					nobulletAudio.audio.Play ();
+				}
 			}
 			else {
 				
@@ -50,12 +54,13 @@ public class Arma : MonoBehaviour {
 					Rigidbody lasInstance = (Rigidbody) Instantiate(proPrefab, spawnPos.position, spawnPos.rotation);
 					lasInstance.AddForce(spawnPos.forward*laserSpeed);	
 					lasInstance.GetComponent<Projectile>().setDamage(damage);
+					laserAudio.audio.Play ();
 				}
 				
 				
 				else if (weaponModel == WeaponEnum.Rifle)
 				{
-					
+					handgunAudio.audio.Play ();
 					Vector3 fwd = spawnPos.TransformDirection(Vector3.forward);
 					fwd *= 20;
 					
@@ -73,6 +78,7 @@ public class Arma : MonoBehaviour {
 							HP.damageHp(damage);
 						}
 					}
+					
 				}				
 				
 				
