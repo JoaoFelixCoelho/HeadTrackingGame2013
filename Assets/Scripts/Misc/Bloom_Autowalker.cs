@@ -23,9 +23,19 @@ public class Bloom_Autowalker : MonoBehaviour {
 	private int i = 0;
 	private float toScale;
 	private float animTime;
+	private float tickstart;
 	bool headUp = true;
 	private bool fin = false;
-
+	public bool tick = false;
+	public GameObject pass;
+	public TextMesh textopass;	
+	
+	void Timer () {
+		tickstart += Time.deltaTime;
+		if (tickstart > 0.1f){
+		tick = true;
+		}
+	}
 	
 	
 	void Start () {
@@ -70,6 +80,12 @@ public class Bloom_Autowalker : MonoBehaviour {
 		timerDelta += Time.deltaTime;
 		if (fin==false){
 		checkWalk();
+		}
+		else {
+			Timer ();
+			if (tick){
+				textopass.text += "*";
+			}
 		}
 	}
 	

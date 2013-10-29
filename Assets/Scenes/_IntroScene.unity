@@ -339,7 +339,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 156265676}
-  m_Text: chgfhfghggh
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: .200000003
   m_LineSpacing: 1
@@ -773,6 +773,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f8baf3a6d9d17fb4491217411317b222, type: 3}
   - {fileID: 8300000, guid: f8567826243f0f043b84f82b3668072d, type: 3}
   source: {fileID: 286631135}
+  tick: 1
+  pass: {fileID: 1273613764}
+  textopass: {fileID: 1273613767}
 --- !u!114 &286631134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2342,7 +2345,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1273613764}
-  m_Text: '*********'
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: .200000003
   m_LineSpacing: 1
@@ -2725,6 +2728,8 @@ MonoBehaviour:
   m_Name: 
   name: 
   textoMonitor: {fileID: 156265678}
+  tick: 0
+  tickstart: 0
 --- !u!82 &1419417611
 AudioSource:
   m_ObjectHideFlags: 0

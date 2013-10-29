@@ -5,15 +5,19 @@ public class KeyboardScript : MonoBehaviour {
 	private string letter;
 	public string name;
 	public TextMesh textoMonitor;
-
+	public bool tick;
+	public float tickstart;
 	void press(){
 		bool isBackSpace = Input.GetKeyDown(KeyCode.Backspace);
 		bool isSpace = Input.GetKeyDown(KeyCode.Space);
 		bool isReturn = Input.GetKeyDown(KeyCode.Return);
 		
-		if (Input.anyKey){
+		if(Input.anyKeyDown){
 			audio.Play();
-			
+		}
+		
+		if (Input.anyKey){
+
 			if (isBackSpace && name.Length-1>=0){
 					 name = name.Substring(0, name.Length - 1);
 				transform.FindChild("backspace").animation.Play("eraseKey");
@@ -36,10 +40,13 @@ public class KeyboardScript : MonoBehaviour {
 			textoMonitor.text = name;
 		}
 	}
+	
+
 	// Use this for initialization
 	void Start () {
 	
 	}
+	
 	
 	// Update is called once per frame
 	void Update () {
