@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour{
 	
 	private static GameObject dieParticles = (GameObject) Resources.Load("Prefabs/Particles/EnemyDieParticles");
 	public static GameObject enemyContainer = GameObject.Find("Enemies");
-	
+	public static Material flubberTrisMat = (Material) Resources.Load("Materials/Glow_OrangeAlt1");
 	
 	//El jugador y el controlador de las rondas
 	public static GameObject player = GameObject.FindGameObjectWithTag("Player");	
@@ -102,7 +102,7 @@ public class Enemy : MonoBehaviour{
 	
 	
 	public void markAsDead() {
-		Instantiate(dieParticles, transform.position, transform.rotation);
+		Destroy(Instantiate(dieParticles, transform.position, transform.rotation),1.2f);
 		explodeMesh();
 	}
 	
@@ -121,7 +121,7 @@ public class Enemy : MonoBehaviour{
 		
 		for (int i=0; i< gameObject.transform.childCount; i++) {
 			if (gameObject.transform.GetChild(i).tag == "Model") {
-					model = (GameObject) gameObject.transform.GetChild(i).gameObject;
+				model = (GameObject) gameObject.transform.GetChild(i).gameObject;
 			}
 			
 		}
@@ -172,17 +172,18 @@ public class Enemy : MonoBehaviour{
 				if (!hasMF) {
 	           		GO.transform.position = new Vector3(SKMR.transform.position.x, SKMR.transform.position.y , SKMR.transform.position.z);
 		            GO.transform.rotation = SKMR.transform.rotation;
-		            GO.AddComponent<MeshRenderer>().material = SKMR.materials[submesh];										
+					if(type == "flubber"){
+		            	GO.AddComponent<MeshRenderer>().material = flubberTrisMat;	
+					}
 				}
 				else {
 	           		GO.transform.position = MF.transform.position;
 		            GO.transform.rotation = MF.transform.rotation;
 		            GO.AddComponent<MeshRenderer>().material = MR.materials[submesh];					
-					
 				}
 	            GO.AddComponent<MeshFilter>().mesh = mesh;
-		       /* GO.AddComponent<BoxCollider>();
-		        GO.AddComponent<Rigidbody>();	*/				
+		        GO.AddComponent<BoxCollider>();
+		        GO.AddComponent<Rigidbody>();				
 				Destroy(model);
 	            Destroy(GO, Random.Range(0.5f, 1.2f));
 	        }

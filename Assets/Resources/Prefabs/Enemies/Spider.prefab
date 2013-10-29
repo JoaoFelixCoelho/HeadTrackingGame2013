@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Model
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &100002
 GameObject:
@@ -37,7 +37,7 @@ GameObject:
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &400000
 Transform:
@@ -159,9 +159,8 @@ MonoBehaviour:
   m_Name: 
   totHp: 0
   currHp: 0
-  isPlayer: 0
   player: {fileID: 0}
-  isTarget: 0
+  type: 0
   isDead: 0
 --- !u!114 &11400002
 MonoBehaviour:
