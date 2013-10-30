@@ -773,9 +773,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f8baf3a6d9d17fb4491217411317b222, type: 3}
   - {fileID: 8300000, guid: f8567826243f0f043b84f82b3668072d, type: 3}
   source: {fileID: 286631135}
+  keyboard: {fileID: 1419417608}
   tick: 1
   pass: {fileID: 1273613764}
   textopass: {fileID: 1273613767}
+  tigers: tigers123
 --- !u!114 &286631134
 MonoBehaviour:
   m_ObjectHideFlags: 0
