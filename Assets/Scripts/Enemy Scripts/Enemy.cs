@@ -145,6 +145,7 @@ public class Enemy : MonoBehaviour{
 	    Vector3[] verts = M.vertices;
 	    Vector3[] normals = M.normals;
 	    Vector2[] uvs = M.uv;
+		print (M.subMeshCount);
 	    for (int submesh = 0; submesh < M.subMeshCount; submesh++)
 	    {
 	        int[] indices = M.GetTriangles(submesh);
@@ -182,8 +183,9 @@ public class Enemy : MonoBehaviour{
 		            GO.AddComponent<MeshRenderer>().material = MR.materials[submesh];					
 				}
 	            GO.AddComponent<MeshFilter>().mesh = mesh;
-		        GO.AddComponent<BoxCollider>();
-		        GO.AddComponent<Rigidbody>();				
+		        //GO.AddComponent<BoxCollider>();
+		        GO.AddComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-200,200),Random.Range(-100,-30),Random.Range(-200, 200)));	
+				GO.AddComponent<CheapPhysics>();
 				Destroy(model);
 	            Destroy(GO, Random.Range(0.5f, 1.2f));
 	        }
