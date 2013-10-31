@@ -431,6 +431,10 @@ Prefab:
       propertyPath: m_Name
       value: GunMuzzle
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 39f359a4b4f222b4aaa0e43a0ca559d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 39f359a4b4f222b4aaa0e43a0ca559d0, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 39f359a4b4f222b4aaa0e43a0ca559d0, type: 3}
@@ -731,7 +735,7 @@ MonoBehaviour:
   enemyCounter: {fileID: 247720298}
   warningGUI: {fileID: 581524345}
   cameraEffect: {fileID: 1272390910}
-  motionBlur: {fileID: 1272390911}
+  motionBlur: {fileID: 1272390912}
   imageEffectActive: 0
   imageDistortTime: 1.20000005
 --- !u!114 &353553923
@@ -1550,7 +1554,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 0
+      value: .055555556
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1924,6 +1928,7 @@ GameObject:
   - 114: {fileID: 1272390909}
   - 114: {fileID: 1272390910}
   - 114: {fileID: 1272390911}
+  - 114: {fileID: 1272390912}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2059,12 +2064,53 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1272390902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35a90bed98554f4d8b92c9cd3cfbafa, type: 3}
+  m_Name: 
+  tweakMode: 0
+  screenBlendMode: 1
+  hdr: 0
+  sepBlurSpread: 4.80000019
+  useSrcAlphaAsMask: -.129999995
+  bloomIntensity: 2.56999993
+  bloomThreshhold: .540000021
+  bloomBlurIterations: 2
+  lensflares: 0
+  hollywoodFlareBlurIterations: 2
+  lensflareMode: 1
+  hollyStretchWidth: 3.5
+  lensflareIntensity: 1
+  lensflareThreshhold: .300000012
+  flareColorA: {r: .400000006, g: .400000006, b: .800000012, a: .75}
+  flareColorB: {r: .400000006, g: .800000012, b: .800000012, a: .75}
+  flareColorC: {r: .800000012, g: .400000006, b: .800000012, a: .75}
+  flareColorD: {r: .800000012, g: .400000006, b: 0, a: .75}
+  blurWidth: 1
+  lensFlareVignetteMask: {fileID: 2800000, guid: 95ef4804fe0be4c999ddaa383536cde8,
+    type: 3}
+  lensFlareShader: {fileID: 4800000, guid: 459fe69d2f6d74ddb92f04dbf45a866b, type: 3}
+  vignetteShader: {fileID: 4800000, guid: 562f620336e024ac99992ff05725a89a, type: 3}
+  separableBlurShader: {fileID: 4800000, guid: a9df009a214e24a5ebbf271595f8d5b6, type: 3}
+  addBrightStuffOneOneShader: {fileID: 4800000, guid: f7898d203e9b94c0dbe2bf9dd5cb32c0,
+    type: 3}
+  screenBlendShader: {fileID: 4800000, guid: 53b3960ee3d3d4a5caa8d5473d120187, type: 3}
+  hollywoodFlaresShader: {fileID: 4800000, guid: e2baf3cae8edc4daf94c9adc2154be00,
+    type: 3}
+  brightPassFilterShader: {fileID: 4800000, guid: 186c4c0d31e314f049595dcbaf4ca129,
+    type: 3}
+--- !u!114 &1272390912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1272390902}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 478a2083ad114a07d000fbfb8d76c639, type: 3}
   m_Name: 
   shader: {fileID: 4800000, guid: e9ba2083ad114a07d000fbfb8d76c639, type: 3}
-  blurAmount: .850000024
+  blurAmount: .800000012
   extraBlur: 0
 --- !u!1 &1318704166
 GameObject:
