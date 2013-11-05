@@ -11,7 +11,6 @@ public class Arma : MonoBehaviour {
 	public int damage;
 	public int capacity;
 	public float laserSpeed;
-	public float rifleSpeed;
 	public bool shooting = false;
 	float muzzleDeltaTime = 0;
 	
@@ -69,7 +68,7 @@ public class Arma : MonoBehaviour {
 					RaycastHit hit;
 					if (Physics.Raycast(transform.position, fwd, out hit, 9999, 1))
 					{
-						GameObject particleInstance = (GameObject) Instantiate(Projectile.hitParticle, hit.point, transform.rotation);
+						GameObject particleInstance = (GameObject) Instantiate(Projectile.bulletParticle, hit.point, transform.rotation);
 						particleInstance.transform.LookAt(transform.position);
 						Destroy(particleInstance, particleInstance.particleSystem.duration + 0.01f);
 						HealthSystem HP = hit.collider.gameObject.GetComponent<HealthSystem>();
@@ -153,7 +152,7 @@ public class Arma : MonoBehaviour {
 		ammoTxt = player.ammoGUI;
 		warningTxt = player.warningGUI;
 		updateAmmo();
-		muzzle.renderer.enabled = false;
+		muzzle.SetActive(false);
 
 	}
 	
@@ -164,13 +163,13 @@ public class Arma : MonoBehaviour {
 		
 		
 		if (shooting == true) {
-			muzzle.renderer.enabled=true;
+			muzzle.SetActive(true);
 			muzzleDeltaTime += Time.deltaTime;
 			if (muzzleDeltaTime > 0.15) {
-				muzzle.renderer.enabled=false;	
 				muzzleDeltaTime = 0;
 				muzzle.transform.Rotate(new Vector3(muzzle.transform.rotation.x, muzzle.transform.rotation.y, Random.Range(-90,90)));
 				shooting= false;
+				muzzle.SetActive(false);
 				
 			}
 		}

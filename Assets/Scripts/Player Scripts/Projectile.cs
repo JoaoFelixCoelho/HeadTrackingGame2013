@@ -7,7 +7,9 @@ public class Projectile : MonoBehaviour {
 	public enum TargetEnum {Player = 0, Enemy = 1};
 	public TargetEnum target = 0;
 	public int damage;
-	public static GameObject hitParticle = (GameObject) Resources.Load("Prefabs/Particles/LaserHit");
+	public static GameObject bulletParticle = (GameObject) Resources.Load("Prefabs/Particles/BulletHit");
+	public static GameObject laserParticle  = (GameObject) Resources.Load("Prefabs/Particles/LaserHit");
+	
 	
 	// Use this for initialization
 	void Start () {
@@ -21,6 +23,11 @@ public class Projectile : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 				
 		if(col.tag != "DevLayer") {
+			if(target == TargetEnum.Enemy) {
+				GameObject tmpParticle = (GameObject) Instantiate(laserParticle, transform.position, transform.rotation);
+				tmpParticle.transform.LookAt(Enemy.player.transform);
+				Destroy(tmpParticle,0.9f);
+			}
 			HealthSystem colTMP = col.GetComponent<HealthSystem>();
 			if (colTMP != null) {
 				//para que no se auto-saque vida

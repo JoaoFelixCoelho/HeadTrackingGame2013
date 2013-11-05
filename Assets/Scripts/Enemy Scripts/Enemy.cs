@@ -145,7 +145,6 @@ public class Enemy : MonoBehaviour{
 	    Vector3[] verts = M.vertices;
 	    Vector3[] normals = M.normals;
 	    Vector2[] uvs = M.uv;
-		print (M.subMeshCount);
 	    for (int submesh = 0; submesh < M.subMeshCount; submesh++)
 	    {
 	        int[] indices = M.GetTriangles(submesh);

@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 public class PlayerBehave : MonoBehaviour {
-
+	
+	#region playerAttributes
 	public int ammo;
 	public GameObject handgun;
 	public GameObject laser;
@@ -10,22 +11,34 @@ public class PlayerBehave : MonoBehaviour {
 	public int kills;
 	public int killsInRound;
 	public static int score;
+	#endregion
 	
+	#region GUIs
 	public GUIText ammoGUI;
 	public GUIText enemyCounter;
 	public GUIText warningGUI;
-	private double fireRate=0.5;
-	private double animationwait=0;
-	private bool allowFire=false;
-	private bool resetBool=true;
-	private bool handtolaser;
+	#endregion
+
 	
+	#region imageEffectManager
 	public Vignetting cameraEffect;
 	public MotionBlur motionBlur;
 	public bool imageEffectActive;
 	private float ieTimer = 0;
 	public float imageDistortTime = 1.2f;
 	private float chromaticRate = 90f;
+	#endregion
+	
+	
+	#region menuAttrs
+	public GameObject pauseMenu;
+	private bool menuOpen;
+	#endregion
+	
+	#region others
+	private bool handtolaser;
+	#endregion
+	
 	
 	// Use this for initialization
 	void Start () {
@@ -117,13 +130,28 @@ public class PlayerBehave : MonoBehaviour {
 		}
 	}
 	
+	public void pauseGame() {
+		if (!menuOpen) {
+			Time.timeScale = 0f;
+			pauseMenu.SetActive(true);
+			menuOpen = true;
+			//GetComponent<MouseLook>().enabled = false;
+		}
+		else {
+			Time.timeScale = 1f;
+			pauseMenu.SetActive(false);
+			menuOpen = false;
+		}
+		
+	}
+	
 	
 	
 	void Update () {
 		bool isLeft = Input.GetKey(KeyCode.Mouse0);
 		bool rKey = Input.GetKeyDown(KeyCode.R);
 		bool gKey = Input.GetKeyDown(KeyCode.G);
-		
+		bool isEsc = Input.GetKeyDown(KeyCode.Escape);
 		
 		if (imageEffectActive) {
 			checkCameraDistort();
@@ -139,7 +167,12 @@ public class PlayerBehave : MonoBehaviour {
 		
 		if (gKey) {
 			cambioArma ();
-		}	
+		}
+		
+		if (isEsc) {
+			pauseGame();
+		}
+		
 		
 	}
 }
