@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour {
 			HealthSystem colTMP = col.GetComponent<HealthSystem>();
 			if (colTMP != null) {
 				//para que no se auto-saque vida
-				if (colTMP.type == HealthSystem.Type.Player && target == TargetEnum.Player || colTMP.type == HealthSystem.Type.Enemy && target == TargetEnum.Enemy ) {
+				if (colTMP.type == HealthSystem.Type.Player && target == TargetEnum.Player || colTMP.type == HealthSystem.Type.Enemy && target == TargetEnum.Enemy || colTMP.type == HealthSystem.Type.Bullet) {
 					colTMP.damageHp(damage);
 					Destroy(gameObject);
 				}

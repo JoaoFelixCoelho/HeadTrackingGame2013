@@ -783,7 +783,7 @@ MonoBehaviour:
   warningGUI: {fileID: 581524345}
   cameraEffect: {fileID: 1272390910}
   motionBlur: {fileID: 1272390912}
-  imageEffectActive: 1
+  imageEffectActive: 0
   imageDistortTime: 1.20000005
   pauseMenu: {fileID: 988445320}
 --- !u!114 &353553923
@@ -4311,9 +4311,9 @@ MonoBehaviour:
   proPrefab: {fileID: 5400000, guid: 296098b9f4797e14aad6b6f3491b3a05, type: 2}
   player: {fileID: 353553922}
   muzzle: {fileID: 2105626764}
-  handgunAudio: {fileID: 0}
-  laserAudio: {fileID: 0}
-  nobulletAudio: {fileID: 0}
+  handgunAudio: {fileID: 1872000885}
+  laserAudio: {fileID: 533992337}
+  nobulletAudio: {fileID: 1872000885}
 --- !u!111 &1872000887
 Animation:
   m_ObjectHideFlags: 0
