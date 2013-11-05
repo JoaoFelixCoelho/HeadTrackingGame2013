@@ -7,10 +7,48 @@ public class KeyboardScript : MonoBehaviour {
 	public TextMesh textoMonitor;
 	public bool tick;
 	public float tickstart;
+	public Bloom_Autowalker bloom;
+	private bool fin = false;
+	
+	private float tickRate;
+	public GameObject pass;
+	public TextMesh textopass;	
+	public string tigers= "tigers123";
+	public string passletter;
+	private int i,o = 0;
+	public bool enable=false;
+
+	
+	void Timer () {
+		tickRate += Time.deltaTime;
+		if (tickRate > 0.09f){
+		tick = true;
+		tickRate = 0;
+		}
+		else{tick=false;}
+	}
+	
+	void Password(){	
+			bool isReturn = Input.GetKeyDown(KeyCode.Return);
+			bool isEnter = Input.GetKeyDown(KeyCode.KeypadEnter);
+			if (isEnter||isReturn){
+				enable=true;
+			}
+			Timer ();
+			if (tick && textopass.text.Length < 9 && enable){
+				textopass.text += "*";
+				passletter=tigers[o].ToString();
+				transform.FindChild(passletter).animation.Play(passletter+"Key");
+				o+=1;
+			}
+	}
+	
+
 	void press(){
 		bool isBackSpace = Input.GetKeyDown(KeyCode.Backspace);
 		bool isSpace = Input.GetKeyDown(KeyCode.Space);
-		bool isReturn = Input.GetKeyDown(KeyCode.Return);
+
+		
 		
 		if(Input.anyKeyDown){
 			audio.Play();
@@ -28,9 +66,6 @@ public class KeyboardScript : MonoBehaviour {
 				transform.FindChild("space").animation.Play("spaceKey");
 			}
 			
-			if (isReturn){
-				transform.FindChild("enter").animation.Play("enterKey");
-			}
 			
 			letter = Input.inputString;
 			if (transform.FindChild(letter)!=null && name.Length<15) {
@@ -51,6 +86,9 @@ public class KeyboardScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+		if (bloom.walkAnimOver){
+			Password ();
+		}
         press ();
 	}
 }

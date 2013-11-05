@@ -10,39 +10,24 @@ public class Bloom_Autowalker : MonoBehaviour {
 	private float frameIntensity;
 	private float timerDelta;
 	private bool bloomAnimOver = false;
-	private bool walkAnimOver  = false;
-	
+	public bool walkAnimOver  = false;
+	private int i=0;
 	
 	public float amplitud;
 	public float frecuencia;
 	public AudioClip [] footsteps;
 	public AudioSource source;
-	
 	public GameObject keyboard;
 	private bool isStepping;
 	private float spc = 0f;
-	private int i,o = 0;
+	
 	private float toScale;
 	private float animTime;
-	private float tickRate;
-	bool headUp = true;
 	private bool fin = false;
-	public bool tick = false;
-	public GameObject pass;
-	public TextMesh textopass;	
-	public string tigers= "tigers123";
-	private string letter;
+	bool headUp = true;
+
 	
-	void Timer () {
-		tickRate += Time.deltaTime;
-		if (tickRate > 0.09f){
-		tick = true;
-		tickRate = 0;
-		}
-		else{tick=false;}
-	}
-	
-	
+
 	void Start () {
 	
 		bloom = gameObject.GetComponent<Bloom>();
@@ -81,27 +66,23 @@ public class Bloom_Autowalker : MonoBehaviour {
 		fin = true;
 	}	
 	
-	private void step() {
+	public void step() {
 		timerDelta += Time.deltaTime;
 		if (fin==false){
 		checkWalk();
 		}
-		else {
-			Timer ();
-			if (tick && textopass.text.Length < 9){
-				textopass.text += "*";
-				letter=tigers[o].ToString();
-				keyboard.transform.FindChild(letter).animation.Play(letter+"Key");
-				o+=1;
-			}
+		if (fin){
+			walkAnimOver=true;
 		}
+
 	}
 	
+
 	
 
 	
 	
-	void FixedUpdate () {
+	void Update () {
 		if(!bloomAnimOver) {
 			checkInt();
 		}
