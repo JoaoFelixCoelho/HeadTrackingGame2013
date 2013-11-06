@@ -35,7 +35,6 @@ public class KeyboardScript : MonoBehaviour {
 			enable=true;
 			PlayerBehave.playerName= textoMonitor.text;	
 			//cambiar esto de lugar
-			Application.LoadLevel(2);
 		}
 		Timer ();
 		if (tick && textopass.text.Length < 9 && enable){
@@ -44,7 +43,10 @@ public class KeyboardScript : MonoBehaviour {
 			transform.FindChild(passletter).animation.Play(passletter+"Key");
 			o+=1;
 		}
-		
+		else if (textopass.text.Length == 9){
+			Application.LoadLevel(2);
+
+		}
 	}
 	
 

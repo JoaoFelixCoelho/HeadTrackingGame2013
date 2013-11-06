@@ -14,7 +14,7 @@ public class Arma : MonoBehaviour {
 	public bool shooting = false;
 	float muzzleDeltaTime = 0;
 	public float overheatCount;
-	private int overheatLimit=18;
+	private int overheatLimit=14;
 	
 	public float fireRate;
 	private float timer = 0f;
@@ -31,9 +31,8 @@ public class Arma : MonoBehaviour {
 	public GameObject muzzle;
 	public GameObject handgunAudio, laserAudio, nobulletAudio;
 	public Material laserMaterial, materialInstance;
-	public Color addred = laserMaterial.material.color;
-	public Color testcolor;
-	public int redadd=0;
+	private Color color1;
+	public float redIncrRate;
 
 	
 	public void shoot(){
@@ -110,17 +109,21 @@ public class Arma : MonoBehaviour {
 	
 	public void overHeat() {
 		overheatCount+=1;	
-		addred.r+=5;
-		testcolor = new Vector4(0.5f, 0, 0, 1);
-		materialInstance.color= testcolor;
-		
+		Color newCol = renderer.material.color;
+		newCol.r += redIncrRate;
+		renderer.material.color = newCol;
+			
 	}
 	
 	public void decreaseOverHeat(){
 		if (shooting == false && overheatCount>0){
 			timeroverHeat+= Time.deltaTime;
-			if (timeroverHeat>2){
+			if (timeroverHeat>1.5f){
 				overheatCount-=Time.fixedDeltaTime*4;
+				Color newCol = renderer.material.color;
+				newCol.r -= redIncrRate * Time.fixedDeltaTime*4;
+				renderer.material.color = newCol;
+				
 			}
 		}
 		else{
@@ -187,16 +190,14 @@ public class Arma : MonoBehaviour {
 		warningTxt = player.warningGUI;
 		updateAmmo();
 		muzzle.SetActive(false);
-		materialInstance = Instantiate(laserMaterial);
-		renderer.material = materialInstance;
-	
+		redIncrRate = 5f/overheatLimit;
+		print(redIncrRate);
+		//color1 = renderer.material.color;
 	}
 	
 	void Update () {
-		print (overheatCount);
 		timer += Time.deltaTime;
 		decreaseOverHeat();
-		
 		
 		if (shooting == true) {
 			muzzle.SetActive(true);
