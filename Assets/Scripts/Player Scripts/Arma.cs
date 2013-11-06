@@ -21,7 +21,7 @@ public class Arma : MonoBehaviour {
 	//Dependencias
 	public Transform spawnPos;
 	public Rigidbody proPrefab;
-	public PlayerBehave player;
+	private PlayerBehave player;
 	
 	GUIText ammoTxt;
 	GUIText warningTxt;
@@ -68,6 +68,12 @@ public class Arma : MonoBehaviour {
 					RaycastHit hit;
 					if (Physics.Raycast(transform.position, fwd, out hit, 9999, 1))
 					{
+						//para cuando queres levantar el arma2
+						if(Round.weaponSpawned && !Round.weaponPicked) {
+							if (hit.collider.GetComponent<Arma>() != null) {
+								hit.collider.GetComponent<WeaponSpawn>().transitionToPlayer();
+							}
+						}
 						GameObject particleInstance = (GameObject) Instantiate(Projectile.bulletParticle, hit.point, transform.rotation);
 						particleInstance.transform.LookAt(transform.position);
 						Destroy(particleInstance, particleInstance.particleSystem.duration + 0.01f);
@@ -149,6 +155,7 @@ public class Arma : MonoBehaviour {
 	
 	void Start () {	
 		this.bullets = this.capacity;
+		player = Enemy.player.GetComponent<PlayerBehave>();
 		ammoTxt = player.ammoGUI;
 		warningTxt = player.warningGUI;
 		updateAmmo();
@@ -167,7 +174,7 @@ public class Arma : MonoBehaviour {
 			muzzleDeltaTime += Time.deltaTime;
 			if (muzzleDeltaTime > 0.15) {
 				muzzleDeltaTime = 0;
-				muzzle.transform.Rotate(new Vector3(muzzle.transform.rotation.x, muzzle.transform.rotation.y, Random.Range(-90,90)));
+				muzzle.transform.Rotate(new Vector3(0,0, Random.Range(-90,90)));
 				shooting= false;
 				muzzle.SetActive(false);
 				

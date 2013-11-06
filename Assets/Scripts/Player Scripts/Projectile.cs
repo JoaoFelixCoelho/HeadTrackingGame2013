@@ -26,6 +26,8 @@ public class Projectile : MonoBehaviour {
 			if(target == TargetEnum.Enemy) {
 				GameObject tmpParticle = (GameObject) Instantiate(laserParticle, transform.position, transform.rotation);
 				tmpParticle.transform.LookAt(Enemy.player.transform);
+				//mover un toque la particula para que se vea mas
+				tmpParticle.transform.position -= (tmpParticle.transform.position - Enemy.player.transform.position).normalized;
 				Destroy(tmpParticle,0.9f);
 			}
 			HealthSystem colTMP = col.GetComponent<HealthSystem>();

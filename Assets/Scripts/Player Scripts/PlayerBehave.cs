@@ -76,18 +76,20 @@ public class PlayerBehave : MonoBehaviour {
 	}
 	
 	public void cambioArma () {
-		if (laser.activeSelf==true){
-			handtolaser = false;
-			laser.gameObject.animation.Play ("LaserUp");	
-			StartCoroutine (handToLaser());
-			weapon = handgun.GetComponent<Arma>();
-
-		}
-		else {
-			handgun.gameObject.animation.Play ("HandgunUp");
-			handtolaser = true;
-			StartCoroutine (handToLaser());
-			weapon = laser.GetComponent<Arma>();
+		if (Round.weaponPicked) {
+			if (laser.activeSelf==true){
+				handtolaser = false;
+				laser.gameObject.animation.Play ("LaserUp");	
+				StartCoroutine (handToLaser());
+				weapon = handgun.GetComponent<Arma>();
+	
+			}
+			else {
+				handgun.gameObject.animation.Play ("HandgunUp");
+				handtolaser = true;
+				StartCoroutine (handToLaser());
+				weapon = laser.GetComponent<Arma>();
+			}
 		}
 	}
 

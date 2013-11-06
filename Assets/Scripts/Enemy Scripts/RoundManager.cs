@@ -8,9 +8,8 @@ public class RoundManager : MonoBehaviour {
 	
 	public Transform [] spawnPoints;
 	public GUIText roundAlert;
-	public GameObject spawnParticlePrefab;
-	
-	
+		
+	public GameObject secondaryWeaponPrefab, weaponSpawn;
 	public PlayerBehave player;
 	
 	float waveInterval;
@@ -31,6 +30,7 @@ public class RoundManager : MonoBehaviour {
 		if (Round.isTargetRound) {
 			gameObject.GetComponent<TargetManager>().enabled = true;
 		}
+
 		
 	}	
 	
@@ -46,6 +46,10 @@ public class RoundManager : MonoBehaviour {
 		roundAlert.transform.position = new Vector3(0.5f, 0.5f, 0.5f);
 
 		roundStarted = false;
+		if(Round.weaponSpawned && !Round.weaponPicked) {
+			weaponSpawn.SetActive(true);
+			Instantiate(secondaryWeaponPrefab);
+		}
 	}	
 	
 	

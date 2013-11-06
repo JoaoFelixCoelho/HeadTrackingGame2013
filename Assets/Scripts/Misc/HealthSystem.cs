@@ -37,7 +37,6 @@ public class HealthSystem : MonoBehaviour {
 			}
 			
 			if (type == Type.Bullet) {
-				print("se deberia morir la bala ");
 				Destroy(gameObject);
 			}
 						
