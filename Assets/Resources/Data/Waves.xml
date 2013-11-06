@@ -7,13 +7,14 @@
 		<destiny>1</destiny>
 		<type>flubber</type>
 		<interval>1.7</interval>
+		<spawnWeapon>2</spawnWeapon>
 	</round>
 
 	<round n="2">
 		<destiny>3</destiny>
 		<type>flubber</type>
 		<interval>1.7</interval>
-		<spawnWeapon>2</spawnWeapon>
+		
 	</round>
 
 	<round n="3">

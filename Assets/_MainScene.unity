@@ -3814,6 +3814,7 @@ MonoBehaviour:
   capacity: 20
   laserSpeed: 5000
   shooting: 0
+  overheatCount: 0
   fireRate: .600000024
   spawnPos: {fileID: 91026815}
   proPrefab: {fileID: 5400000, guid: 296098b9f4797e14aad6b6f3491b3a05, type: 2}
@@ -3821,6 +3822,7 @@ MonoBehaviour:
   handgunAudio: {fileID: 1872000885}
   laserAudio: {fileID: 0}
   nobulletAudio: {fileID: 1872000885}
+  laserMaterial: {fileID: 2100000, guid: 2b5c2682d3630d24d80b92ecb3c76981, type: 2}
 --- !u!111 &1872000887
 Animation:
   m_ObjectHideFlags: 0

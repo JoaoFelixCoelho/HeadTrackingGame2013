@@ -13,10 +13,12 @@ public class Arma : MonoBehaviour {
 	public float laserSpeed;
 	public bool shooting = false;
 	float muzzleDeltaTime = 0;
-	
+	public float overheatCount;
+	private int overheatLimit=18;
 	
 	public float fireRate;
 	private float timer = 0f;
+	private float timeroverHeat=0;
 	
 	//Dependencias
 	public Transform spawnPos;
@@ -28,7 +30,10 @@ public class Arma : MonoBehaviour {
 
 	public GameObject muzzle;
 	public GameObject handgunAudio, laserAudio, nobulletAudio;
-		
+	public Material laserMaterial, materialInstance;
+	public Color addred = laserMaterial.material.color;
+	public Color testcolor;
+	public int redadd=0;
 
 	
 	public void shoot(){
@@ -46,16 +51,17 @@ public class Arma : MonoBehaviour {
 			else {
 				
 				
-				shooting = true;
+				//shooting = true;  SAQUE ESTE SHOOTING = TRUE Y HICE QUE REALMENTE SOLO CUANDO ESTE DISPARANDO, CONSULTAR A COZZA SI ESTA BIEN EN CLASE.
 				
-				if (weaponModel == WeaponEnum.Laser) 				
+				if (weaponModel == WeaponEnum.Laser && overheatCount<overheatLimit) 				
 				{
 					Rigidbody lasInstance = (Rigidbody) Instantiate(proPrefab, spawnPos.position, spawnPos.rotation);
 					lasInstance.AddForce(spawnPos.forward*laserSpeed);	
 					lasInstance.GetComponent<Projectile>().setDamage(damage);
 					laserAudio.audio.Play ();
-				}
-				
+					overHeat();	
+					shooting = true;
+				}			
 				
 				else if (weaponModel == WeaponEnum.Rifle)
 				{
@@ -83,9 +89,11 @@ public class Arma : MonoBehaviour {
 							HP.damageHp(damage);
 						}
 					}
-					
+					shooting = true;
 				}				
-				
+				else{
+					shooting = false;
+				}
 				
 				
 				this.bullets-=1;
@@ -100,6 +108,25 @@ public class Arma : MonoBehaviour {
 		}
 	}
 	
+	public void overHeat() {
+		overheatCount+=1;	
+		addred.r+=5;
+		testcolor = new Vector4(0.5f, 0, 0, 1);
+		materialInstance.color= testcolor;
+		
+	}
+	
+	public void decreaseOverHeat(){
+		if (shooting == false && overheatCount>0){
+			timeroverHeat+= Time.deltaTime;
+			if (timeroverHeat>2){
+				overheatCount-=Time.fixedDeltaTime*4;
+			}
+		}
+		else{
+			timeroverHeat=0;
+		}
+	}
 	
 	private void updateAmmo() {
 		ammoTxt.text = this.bullets + "/" + this.capacity;
@@ -160,13 +187,15 @@ public class Arma : MonoBehaviour {
 		warningTxt = player.warningGUI;
 		updateAmmo();
 		muzzle.SetActive(false);
-
+		materialInstance = Instantiate(laserMaterial);
+		renderer.material = materialInstance;
+	
 	}
 	
 	void Update () {
-		
+		print (overheatCount);
 		timer += Time.deltaTime;
-
+		decreaseOverHeat();
 		
 		
 		if (shooting == true) {
