@@ -9,7 +9,7 @@ public static class Round{
 	public static int count;
 	public static string type;
 	private static XmlDocument xmlAsset = new XmlDocument();
-	public static bool isTargetRound, weaponSpawned, weaponPicked = false;
+	public static bool isTargetRound, gameOver, weaponSpawned, weaponPicked = false;
 
 	
 	
@@ -29,21 +29,25 @@ public static class Round{
 		 * */
 		
 		number++;
-		XmlNode roundData = xmlAsset.ChildNodes[1].ChildNodes[number-1];	
-		type = (string) roundData["type"].InnerText;
-		isTargetRound = false;
-		
-		if (type == "targets") {
-			isTargetRound = true;
-		}
-		else {
+		if (number <= count) {
+			XmlNode roundData = xmlAsset.ChildNodes[1].ChildNodes[number-1];	
+			type = (string) roundData["type"].InnerText;
+			isTargetRound = false;
 			
-			if(roundData["spawnWeapon"] != null) {
-				weaponSpawned = true;	
+			if (type == "targets") {
+				isTargetRound = true;
 			}
-			
-			destinyQuant = int.Parse(roundData["destiny"].InnerText);
-			RoundManager.interval = float.Parse(roundData["interval"].InnerText);	
+			else {
+				
+				if(roundData["spawnWeapon"] != null) {
+					weaponSpawned = true;	
+				}
+				
+				destinyQuant = int.Parse(roundData["destiny"].InnerText);
+				RoundManager.interval = float.Parse(roundData["interval"].InnerText);	
+			}
+		} else {
+			gameOver = true;
 		}
 	}
 
