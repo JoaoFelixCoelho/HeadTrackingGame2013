@@ -11,6 +11,7 @@ public class RoundManager : MonoBehaviour {
 		
 	public GameObject secondaryWeaponPrefab, weaponSpawn;
 	public PlayerBehave player;
+	public static HSController dbController = new HSController();
 	
 	float waveInterval;
 	float waveDeltaTime = 0f;	
@@ -76,7 +77,7 @@ public class RoundManager : MonoBehaviour {
 				newRoundWarning();
 			}
 		} else if (Round.gameOver) {
-			print("SE TERMINO EL JUEGOOOO");	
+			StartCoroutine(dbController.PostScores(PlayerBehave.playerName, PlayerBehave.score));	
 		}
 
 		

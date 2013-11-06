@@ -29,18 +29,22 @@ public class KeyboardScript : MonoBehaviour {
 	}
 	
 	void Password(){	
-			bool isReturn = Input.GetKeyDown(KeyCode.Return);
-			bool isEnter = Input.GetKeyDown(KeyCode.KeypadEnter);
-			if (isEnter||isReturn){
-				enable=true;
-			}
-			Timer ();
-			if (tick && textopass.text.Length < 9 && enable){
-				textopass.text += "*";
-				passletter=tigers[o].ToString();
-				transform.FindChild(passletter).animation.Play(passletter+"Key");
-				o+=1;
-			}
+		bool isReturn = Input.GetKeyDown(KeyCode.Return);
+		bool isEnter = Input.GetKeyDown(KeyCode.KeypadEnter);
+		if (isEnter||isReturn){
+			enable=true;
+			PlayerBehave.playerName= textoMonitor.text;	
+			//cambiar esto de lugar
+			Application.LoadLevel(2);
+		}
+		Timer ();
+		if (tick && textopass.text.Length < 9 && enable){
+			textopass.text += "*";
+			passletter=tigers[o].ToString();
+			transform.FindChild(passletter).animation.Play(passletter+"Key");
+			o+=1;
+		}
+		
 	}
 	
 

@@ -11,6 +11,7 @@ public class PlayerBehave : MonoBehaviour {
 	public int kills;
 	public int killsInRound;
 	public static int score;
+	public static string playerName = "noName";
 	#endregion
 	
 	#region GUIs
@@ -65,8 +66,8 @@ public class PlayerBehave : MonoBehaviour {
 	
 	public void killPlayer () {
 		Debug.Log("El jugador se murio guacho");
-		//hacer mas codigo	
-	}	
+		StartCoroutine(RoundManager.dbController.PostScores(PlayerBehave.playerName, PlayerBehave.score));	
+	}
 	
 	public void addKill() {
 		this.kills++;
