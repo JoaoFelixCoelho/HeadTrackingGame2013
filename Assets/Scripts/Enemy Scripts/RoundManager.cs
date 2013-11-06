@@ -62,7 +62,7 @@ public class RoundManager : MonoBehaviour {
 	void FixedUpdate () {
 		
 		waveDeltaTime+=Time.deltaTime;	
-		if (!Round.isTargetRound) {
+		if (!Round.isTargetRound && !Round.gameOver) {
 			if(roundStarted) {
 				if (Enemy.current + player.killsInRound < Round.destinyQuant) {
 					spawnEnemy();
@@ -75,7 +75,9 @@ public class RoundManager : MonoBehaviour {
 			else{
 				newRoundWarning();
 			}
-		} 
+		} else if (Round.gameOver) {
+			print("SE TERMINO EL JUEGOOOO");	
+		}
 
 		
 		
