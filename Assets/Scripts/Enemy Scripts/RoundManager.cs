@@ -7,8 +7,8 @@ public class RoundManager : MonoBehaviour {
 	public bool isSpawning;
 	
 	public Transform [] spawnPoints;
-	public GUIText roundAlert;
-		
+	
+	
 	public GameObject secondaryWeaponPrefab, weaponSpawn;
 	public PlayerBehave player;
 	public static HSController dbController = new HSController();
@@ -43,8 +43,8 @@ public class RoundManager : MonoBehaviour {
 		Round.next();	
 		updateEnemiesLeft();
 		
-		roundAlert.GetComponent<FadeGUI>().startAnim();
-		roundAlert.transform.position = new Vector3(0.5f, 0.5f, 0.5f);
+		//roundAlert.GetComponent<FadeGUI>().startAnim();
+		//roundAlert.transform.position = new Vector3(0.5f, 0.5f, 0.5f);
 
 		roundStarted = false;
 		if(Round.weaponSpawned && !Round.weaponPicked) {
@@ -69,7 +69,7 @@ public class RoundManager : MonoBehaviour {
 					spawnEnemy();
 				}
 				else if(player.killsInRound==Round.destinyQuant) {
-						startNewRound();
+					startNewRound();
 				}
 			}
 			
@@ -86,10 +86,14 @@ public class RoundManager : MonoBehaviour {
 	
 	private void newRoundWarning() {
 		
-		if(waveDeltaTime>roundAlert.GetComponent<FadeGUI>().timeToFade) {
-			roundStarted = true;
+		roundStarted = true;
+	
+		if (!Round.gameOver) {
+			player.sendMessageToPlayer("round " + (Round.number), "RoundWarning");
 		}
-		this.roundAlert.text = "round " + (Round.number);
+		else {
+			player.sendMessageToPlayer("Game Over!", "RoundWarning");
+		}
 		
 	}	
 	

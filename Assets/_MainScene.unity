@@ -781,11 +781,12 @@ MonoBehaviour:
   ammoGUI: {fileID: 1088193630}
   enemyCounter: {fileID: 247720298}
   warningGUI: {fileID: 581524345}
-  cameraEffect: {fileID: 0}
-  motionBlur: {fileID: 0}
+  roundWarning: {fileID: 1945098443}
+  cameraEffect: {fileID: 1272390910}
+  motionBlur: {fileID: 1272390912}
   imageEffectActive: 0
   imageDistortTime: 1.20000005
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 988445320}
 --- !u!114 &353553923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,6 +1292,7 @@ GameObject:
   - 114: {fileID: 772610982}
   - 82: {fileID: 772610983}
   - 114: {fileID: 772610981}
+  - 114: {fileID: 772610984}
   m_Layer: 0
   m_Name: WaveManagerGO
   m_TagString: DevLayer
@@ -1316,7 +1318,6 @@ MonoBehaviour:
   - {fileID: 697376759}
   - {fileID: 1773812064}
   - {fileID: 1857447098}
-  roundAlert: {fileID: 1945098443}
   secondaryWeaponPrefab: {fileID: 100000, guid: 9007e0c0a52dc3746869b77f5eaa84c0,
     type: 2}
   weaponSpawn: {fileID: 1600487356}
@@ -1329,7 +1330,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 772610977}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9443934, y: 1.54317641, z: 49.6563683}
+  m_LocalPosition: {x: -.235085249, y: 1.54317641, z: 49.6563683}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1430,6 +1431,17 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &772610984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 772610977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fdc57c40c06fc4aa1cc1c0cc5783e9, type: 3}
+  m_Name: 
+  audioFadeTime: 1
 --- !u!1 &853448141
 GameObject:
   m_ObjectHideFlags: 0
@@ -3837,8 +3849,7 @@ MonoBehaviour:
   nobulletAudio: {fileID: 1872000885}
   laserMaterial: {fileID: 0}
   materialInstance: {fileID: 0}
-  testcolor: {r: 0, g: 0, b: 0, a: 0}
-  redadd: 0
+  redIncrRate: 0
 --- !u!111 &1872000887
 Animation:
   m_ObjectHideFlags: 0
@@ -4123,7 +4134,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1945098441}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce5d5d69b5365314ab0f06fc8d2cdbe2, type: 3}
   m_Name: 

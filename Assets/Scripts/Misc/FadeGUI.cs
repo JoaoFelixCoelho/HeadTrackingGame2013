@@ -9,29 +9,27 @@ public class FadeGUI : MonoBehaviour {
 	private float counter;
 	private bool fadeEnable = true;
 	
-	void Start () {
+	void OnEnable () {
 		alphaRate = 1f/timeToFade;
 		newAlpha = 0;
-	}
-	
-	public void startAnim(){
+		transform.position = new Vector3(0.5f, 0.5f, 0.5f);
 		newAlpha = 0f;
 		counter = 0f;
-		this.fadeEnable = true;	
-		
+		fadeEnable = true;	
 	}
+
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (this.fadeEnable) {
+		if (fadeEnable) {
 			newAlpha += alphaRate * Time.deltaTime;
 			Color oldCol = guiText.material.color;
 			guiText.material.color = new Color(oldCol.r, oldCol.g, oldCol.b, newAlpha);
 			counter += Time.deltaTime;
-			
 			if (counter >= timeToFade) {
 				animation.Play();
 				this.fadeEnable = false;
+				this.enabled = false;
 			}
 		}
 		

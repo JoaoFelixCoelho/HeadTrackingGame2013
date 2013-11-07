@@ -191,7 +191,6 @@ public class Arma : MonoBehaviour {
 		updateAmmo();
 		muzzle.SetActive(false);
 		redIncrRate = 5f/overheatLimit;
-		print(redIncrRate);
 		//color1 = renderer.material.color;
 	}
 	

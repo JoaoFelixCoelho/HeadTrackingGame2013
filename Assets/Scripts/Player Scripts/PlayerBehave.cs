@@ -18,6 +18,7 @@ public class PlayerBehave : MonoBehaviour {
 	public GUIText ammoGUI;
 	public GUIText enemyCounter;
 	public GUIText warningGUI;
+	public GUIText roundWarning;
 	#endregion
 
 	
@@ -65,7 +66,7 @@ public class PlayerBehave : MonoBehaviour {
 	}
 	
 	public void killPlayer () {
-		Debug.Log("El jugador se murio guacho");
+		sendMessageToPlayer("Game Over!", "warning");
 		StartCoroutine(RoundManager.dbController.PostScores(PlayerBehave.playerName, PlayerBehave.score));	
 	}
 	
@@ -148,6 +149,27 @@ public class PlayerBehave : MonoBehaviour {
 		
 	}
 	
+	public void sendMessageToPlayer(string msg, string guiTextToUse) {
+		guiTextToUse = guiTextToUse.ToLower();
+		if(guiTextToUse == "ammocount") {
+			ammoGUI.text = msg;
+		}
+		
+		if (guiTextToUse == "warning") {
+			warningGUI.text = msg;	
+		}
+		
+		if(guiTextToUse == "enemyCounter") {
+			enemyCounter.text = msg;	
+		}
+		
+		if (guiTextToUse == "roundwarning") {
+			roundWarning.GetComponent<FadeGUI>().enabled = true;
+			roundWarning.text = msg;	
+		}
+		
+		
+	}
 	
 	
 	void Update () {
