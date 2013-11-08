@@ -12,14 +12,12 @@ public class WiiCameraScript: MonoBehaviour {
 	Vector3 oldVec;
 	public GUIText debug;
 	private float midY;
+	public bool menu;
 	
 	public float Xlimit = 10f;
 	public float Ylimit = 10f;
 	
-	
-	
 	void Start () {
-		
 		WiiMote.wiimote_start();
 		midY = transform.position.y;
 		X = WiiMote.wiimote_getIrX(WiiMote.cameraWiimote)*10;
@@ -31,57 +29,29 @@ public class WiiCameraScript: MonoBehaviour {
 		else {
 			oldVec = new Vector3(-X, - Y + 1.8f ,Z);
 		}
-		
 	}
 	
 	
 	void Update () {
-		
-
-		
-		MoveCamera();
-
-		
-		
+		MoveCamera();		
 	}
 	
-
 	void MoveCamera() {
-
 		X = WiiMote.wiimote_getIrX(WiiMote.cameraWiimote) * 10;
 		Y = WiiMote.wiimote_getIrY(WiiMote.cameraWiimote) * 2f;
 
 		Z = 60f;
-		
-		
+
 		transform.position = oldVec;
 		if(X>-9.5f && X<9.5f){
 			oldVec = new Vector3(-X, - Y + 1.8f ,Z);
-		} 
-		
-		//if (X==-1000 || Y<-0){
-		//	transform.position = oldVec;
-		//}
-		//else if(X<=9f) {
-		//	vec = new Vector3(X, Y, Z);
-		//	oldVec = vec;
-    	//	transform.position = vec;
-		//}
-		
-		/*if(X<=9f){
-			if (X==-1000 || Y<-0){
-				transform.position += oldVec;
-			} else {
-				vec = new Vector3(X, Y, Z);
-				oldVec = vec;
-				transform.position += vec;	
+			if (menu == true){
+				gameObject.transform.LookAt(oldVec);
 			}
-		}*/
+		}
 		
 		gameObject.transform.LookAt(center);
 	}
-	
-
 }
 
 
