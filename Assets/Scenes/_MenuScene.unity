@@ -91,6 +91,8 @@ GameObject:
   - 82: {fileID: 117336686}
   - 114: {fileID: 117336687}
   - 114: {fileID: 117336688}
+  - 114: {fileID: 117336689}
+  - 114: {fileID: 117336690}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -154,7 +156,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 117336680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.167728901, y: 1, z: -10}
+  m_LocalPosition: {x: -.167728901, y: 1.39999998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1191428942}
@@ -221,7 +223,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 117336680}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b28d47c7fd4a6de4c9d6932ecfe9a3d7, type: 3}
   m_Name: 
@@ -251,6 +253,36 @@ MonoBehaviour:
   compositeShader: {fileID: 4800000, guid: 96ca71e39c7b6fb4f9bec2c5bf331349, type: 3}
   blurShader: {fileID: 4800000, guid: fb52973118cf00648825ced2fcca240c, type: 3}
   downsampleShader: {fileID: 4800000, guid: b14b79b8936134d3f8238f0c2d40d634, type: 3}
+--- !u!114 &117336689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 117336680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fedb5beedd63fe4faaa7cba6220e9ff, type: 3}
+  m_Name: 
+  glowShader: {fileID: 4800000, guid: d176069dc2c53fb4d9b504b8fdc3ba1d, type: 3}
+  buttons:
+  - {fileID: 707808082}
+  - {fileID: 1360315230}
+  - {fileID: 541132412}
+  - {fileID: 388213381}
+  mouse: 0
+  mira: {fileID: 2800000, guid: 8265c24532c889845a2128f088f9d6eb, type: 3}
+--- !u!114 &117336690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 117336680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff30c32bdaacbbe4bb048b292c6aa19a, type: 3}
+  m_Name: 
+  center: {fileID: 0}
+  menu: 1
 --- !u!114 &117336691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +354,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 234360844}
   m_LocalRotation: {x: -3.09086232e-08, y: .707106829, z: -.707106829, w: -3.09086232e-08}
-  m_LocalPosition: {x: -.138773486, y: 2.5, z: -6.42000008}
+  m_LocalPosition: {x: -.138773486, y: 2.25999999, z: -6.42000008}
   m_LocalScale: {x: .330000013, y: 2.31999993, z: .0299999993}
   m_Children: []
   m_Father: {fileID: 0}
@@ -450,6 +482,7 @@ MonoBehaviour:
   nameScore: []
   listItem: {fileID: 0}
   scoreContainer: {fileID: 0}
+  glowShader: {fileID: 4800000, guid: d176069dc2c53fb4d9b504b8fdc3ba1d, type: 3}
 --- !u!1 &541132412
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +523,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 0, z: 10}
+  m_Size: {x: 10, y: .0799999982, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &541132415
 MonoBehaviour:
@@ -506,6 +539,7 @@ MonoBehaviour:
   nameScore: []
   listItem: {fileID: 100000, guid: 8299f7bbd3185874ba80909cda1aa936, type: 2}
   scoreContainer: {fileID: 2052817959}
+  glowShader: {fileID: 4800000, guid: d176069dc2c53fb4d9b504b8fdc3ba1d, type: 3}
 --- !u!23 &541132416
 Renderer:
   m_ObjectHideFlags: 0
@@ -677,6 +711,7 @@ MonoBehaviour:
   nameScore: []
   listItem: {fileID: 0}
   scoreContainer: {fileID: 0}
+  glowShader: {fileID: 4800000, guid: d176069dc2c53fb4d9b504b8fdc3ba1d, type: 3}
 --- !u!1 &1157641884
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +720,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1157641885}
-  - 114: {fileID: 1157641886}
   m_Layer: 0
   m_Name: Buttons
   m_TagString: Untagged
@@ -708,19 +742,6 @@ Transform:
   - {fileID: 1360315231}
   - {fileID: 707808083}
   m_Father: {fileID: 0}
---- !u!114 &1157641886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1157641884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fedb5beedd63fe4faaa7cba6220e9ff, type: 3}
-  m_Name: 
-  glowShader: {fileID: 4800000, guid: d176069dc2c53fb4d9b504b8fdc3ba1d, type: 3}
-  mouse: 0
-  mira: {fileID: 2800000, guid: 8265c24532c889845a2128f088f9d6eb, type: 3}
 --- !u!1 &1191428941
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +885,7 @@ MonoBehaviour:
   nameScore: []
   listItem: {fileID: 0}
   scoreContainer: {fileID: 0}
+  glowShader: {fileID: 4800000, guid: d176069dc2c53fb4d9b504b8fdc3ba1d, type: 3}
 --- !u!1 &1923483578
 GameObject:
   m_ObjectHideFlags: 0

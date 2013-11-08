@@ -7,8 +7,8 @@ using System.Text;
 public static class WiiMote
 {
 	
-	public static int cameraWiimote  = 1;
-	public static int pointerWiimote = 0;
+	public static int cameraWiimote  = 0;
+	public static int pointerWiimote = 1;
 	
 
     [DllImport("UniWii")]
