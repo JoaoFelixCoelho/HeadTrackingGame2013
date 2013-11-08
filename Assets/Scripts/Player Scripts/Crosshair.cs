@@ -60,10 +60,7 @@ public class Crosshair : MonoBehaviour {
 		else {
 			aversh= false;
 		}
-		
-		int x = WiiMote.wiimote_getAccX(WiiMote.pointerWiimote) ;
-		int y = WiiMote.wiimote_getAccY(WiiMote.pointerWiimote);
-		int z = WiiMote.wiimote_getAccZ(WiiMote.pointerWiimote);
+	
 
 		float roll = Mathf.Round(WiiMote.wiimote_getRoll(WiiMote.pointerWiimote));
 		float p = Mathf.Round(WiiMote.wiimote_getPitch(WiiMote.pointerWiimote));

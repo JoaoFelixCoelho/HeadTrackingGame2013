@@ -44,8 +44,9 @@ public class Menu : MonoBehaviour
 			
 	}
 	
-	void OnMouseUp()
-	{
+	public void checkButton() {
+		
+		
 		switch(buttonType) {
 			
 		case MenuEnum.play:
@@ -67,8 +68,14 @@ public class Menu : MonoBehaviour
 			
 			
 			
-		}
+		}				
 	}
+	
+	
+	void OnMouseUp() {
+		checkButton();
+	}
+
 	
 	void showScoreData(){
 		if (!showingScores) {

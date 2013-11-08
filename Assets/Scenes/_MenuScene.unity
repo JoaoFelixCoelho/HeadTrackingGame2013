@@ -719,6 +719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fedb5beedd63fe4faaa7cba6220e9ff, type: 3}
   m_Name: 
   glowShader: {fileID: 4800000, guid: d176069dc2c53fb4d9b504b8fdc3ba1d, type: 3}
+  mouse: 0
+  mira: {fileID: 2800000, guid: 8265c24532c889845a2128f088f9d6eb, type: 3}
 --- !u!1 &1191428941
 GameObject:
   m_ObjectHideFlags: 0
