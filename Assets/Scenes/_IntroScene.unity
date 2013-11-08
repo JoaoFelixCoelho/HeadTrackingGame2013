@@ -758,7 +758,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 286631126}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f02cd036901c4e4d9905c5a3eb2e5af, type: 3}
   m_Name: 
@@ -781,7 +781,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 286631126}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a773099f140e846f7835d27351846623, type: 3}
   m_Name: 
@@ -971,6 +971,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 393000776}
+  - 111: {fileID: 393000777}
   m_Layer: 0
   m_Name: LeftRotate
   m_TagString: Untagged
@@ -985,12 +986,30 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 393000775}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.26912022, y: -.32019043, z: 3.16843367}
+  m_LocalPosition: {x: -1.75027001, y: -.32019043, z: 2.52179503}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 898935379}
   - {fileID: 1768832786}
   m_Father: {fileID: 1669097849}
+--- !u!111 &393000777
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393000775}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 109d13d69be25e947a7734577da1701b, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 109d13d69be25e947a7734577da1701b, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+  m_UserAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!1 &397353318
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,7 +2195,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
-        rgba: 4294956032
+        rgba: 4278190335
       maxColor:
         serializedVersion: 2
         rgba: 4294901890
@@ -2244,7 +2263,7 @@ ParticleSystem:
       minMaxState: 0
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 1177
+    maxNumParticles: 300
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -3058,7 +3077,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 898935376}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 1.45690036, y: 2.21585798, z: -.635305405}
+  m_LocalPosition: {x: 0, y: 2.21585798, z: 0}
   m_LocalScale: {x: 1, y: 1, z: .0358338878}
   m_Children: []
   m_Father: {fileID: 393000776}
@@ -3502,7 +3521,7 @@ ParticleSystem:
       minMaxState: 0
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 1177
+    maxNumParticles: 300
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -4731,7 +4750,7 @@ ParticleSystem:
       minMaxState: 0
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 1177
+    maxNumParticles: 300
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -5708,7 +5727,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: bd0a5dcc0e8b9cb4bb725f1d9ca35506, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
   m_UserAABB:
@@ -6101,12 +6120,16 @@ MonoBehaviour:
   textoMonitor: {fileID: 156265678}
   tick: 0
   tickstart: 0
+  counter: 0
   bloom: {fileID: 286631133}
   pass: {fileID: 1273613764}
   textopass: {fileID: 1273613767}
   tigers: 
   passletter: 
   enable: 0
+  rotateleft: {fileID: 393000775}
+  rotateright: {fileID: 1281511780}
+  teleportparticles: {fileID: 1669097848}
 --- !u!82 &1419417611
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6743,7 +6766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1669097849
 Transform:
   m_ObjectHideFlags: 0
@@ -6751,7 +6774,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1669097848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7036953, y: -4.1527729, z: -.587644577}
+  m_LocalPosition: {x: 1.7036953, y: -5.15216446, z: 15.1304379}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 393000776}
@@ -7038,7 +7061,7 @@ ParticleSystem:
       minMaxState: 0
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 1177
+    maxNumParticles: 300
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -7852,7 +7875,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1768832783}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 1.45690036, y: 1.01759005, z: -.635305405}
+  m_LocalPosition: {x: 0, y: 1.01759005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: .0358338878}
   m_Children: []
   m_Father: {fileID: 393000776}

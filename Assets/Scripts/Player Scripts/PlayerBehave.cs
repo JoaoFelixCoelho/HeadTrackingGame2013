@@ -15,6 +15,8 @@ public class PlayerBehave : MonoBehaviour {
 	#endregion
 	
 	#region GUIs
+	public Texture aversh;
+	public GUITexture background;
 	public GUIText ammoGUI;
 	public GUIText enemyCounter;
 	public GUIText warningGUI;
@@ -136,7 +138,8 @@ public class PlayerBehave : MonoBehaviour {
 	
 	public void pauseGame() {
 		if (!menuOpen) {
-			Time.timeScale = 0f;
+			Time.timeScale = 0f; 
+			resizeGui ();
 			pauseMenu.SetActive(true);
 			menuOpen = true;
 			//GetComponent<MouseLook>().enabled = false;
@@ -171,6 +174,10 @@ public class PlayerBehave : MonoBehaviour {
 		
 	}
 	
+	public void resizeGui(){
+		background.pixelInset.width = Screen.width;
+		background.pixelInset.height = Screen.height;
+	}
 	
 	void Update () {
 		bool isLeft = Input.GetKey(KeyCode.Mouse0);

@@ -6,7 +6,7 @@ public class KeyboardScript : MonoBehaviour {
 	public string name;
 	public TextMesh textoMonitor;
 	public bool tick;
-	public float tickstart;
+	public float tickstart, counter=0;
 	public Bloom_Autowalker bloom;
 	private bool fin = false;
 	
@@ -15,8 +15,11 @@ public class KeyboardScript : MonoBehaviour {
 	public TextMesh textopass;	
 	public string tigers= "tigers123";
 	public string passletter;
-	private int i,o = 0;
+	private int i,o;
+	
 	public bool enable=false;
+	public GameObject rotateleft, rotateright,teleportparticles;
+	
 
 	
 	void Timer () {
@@ -27,7 +30,7 @@ public class KeyboardScript : MonoBehaviour {
 		}
 		else{tick=false;}
 	}
-	
+	     
 	void Password(){	
 		bool isReturn = Input.GetKeyDown(KeyCode.Return);
 		bool isEnter = Input.GetKeyDown(KeyCode.KeypadEnter);
@@ -39,14 +42,21 @@ public class KeyboardScript : MonoBehaviour {
 		Timer ();
 		if (tick && textopass.text.Length < 9 && enable){
 			textopass.text += "*";
-			passletter=tigers[o].ToString();
-			transform.FindChild(passletter).animation.Play(passletter+"Key");
+			//passletter=tigers[o].ToString();
+			//ransform.FindChild(passletter).animation.Play(passletter+"Key");
 			o+=1;
 		}
 		else if (textopass.text.Length == 9){
-			Application.LoadLevel(2);
-
+			
+			teleportparticles.SetActive(true);
+			rotateleft.animation.Play("RotateLeft");
+			rotateright.animation.Play("RotateRight");
+			counter+=Time.deltaTime;
+			if (counter>rotateleft.animation.clip.length){
+				Application.LoadLevel(2);
+			}
 		}
+		
 	}
 	
 
@@ -91,7 +101,7 @@ public class KeyboardScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 		if (bloom.walkAnimOver){
 			Password ();
 		}
