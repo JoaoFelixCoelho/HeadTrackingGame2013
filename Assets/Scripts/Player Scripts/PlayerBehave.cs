@@ -81,7 +81,7 @@ public class PlayerBehave : MonoBehaviour {
 	
 	public void cambioArma () {
 		if (Round.weaponPicked) {
-			if (laser.activeSelf==true){
+			if (laser.GetComponent<Crosshair>().enabled == true){
 				handtolaser = false;
 				laser.gameObject.animation.Play ("LaserUp");	
 				StartCoroutine (handToLaser());
@@ -100,14 +100,19 @@ public class PlayerBehave : MonoBehaviour {
 	public IEnumerator handToLaser(){
 		if (handtolaser){
 			yield return new WaitForSeconds(0.7f);
-			handgun.gameObject.SetActive(false);
-			laser.gameObject.SetActive(true);
+			
+			handgun.gameObject.GetComponent<Crosshair>().enabled = false;
+			laser.gameObject.GetComponent<Crosshair>().enabled = true;
+			
 			laser.gameObject.animation.Play ("LaserDown");
 		}
 		else {
 			yield return new WaitForSeconds(0.7f);
-			laser.gameObject.SetActive(false);
-			handgun.gameObject.SetActive(true);
+			
+			laser.gameObject.GetComponent<Crosshair>().enabled = false;
+			handgun.gameObject.GetComponent<Crosshair>().enabled = true;
+			
+			
 			handgun.gameObject.animation.Play ("HandgunDown");
 		}
 	}
@@ -137,8 +142,9 @@ public class PlayerBehave : MonoBehaviour {
 	}
 	
 	public void pauseGame() {
+		print ("La tengo colosal");
 		if (!menuOpen) {
-			Time.timeScale = 0f; 
+			Time.timeScale = 0.05f; 
 			resizeGui ();
 			pauseMenu.SetActive(true);
 			menuOpen = true;
@@ -175,11 +181,10 @@ public class PlayerBehave : MonoBehaviour {
 	}
 	
 	public void resizeGui(){
-		background.pixelInset.width = Screen.width;
-		background.pixelInset.height = Screen.height;
+		background.pixelInset = new Rect(background.border.left, background.border.top, Screen.width, Screen.height);
 	}
 	
-	void Update () {
+	void FixedUpdate () {
 		bool isLeft = Input.GetKey(KeyCode.Mouse0);
 		bool rKey = Input.GetKeyDown(KeyCode.R);
 		bool gKey = Input.GetKeyDown(KeyCode.G);

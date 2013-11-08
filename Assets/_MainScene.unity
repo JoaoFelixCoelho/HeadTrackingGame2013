@@ -165,6 +165,14 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10302, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 11400006, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
   m_RootGameObject: {fileID: 353553916}
@@ -737,7 +745,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 39724669}
   m_GameObject: {fileID: 353553916}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
   m_Name: 
@@ -802,7 +810,7 @@ MonoBehaviour:
   totHp: 600
   currHp: 0
   player: {fileID: 0}
-  type: 0
+  type: 3
   isDead: 0
 --- !u!114 &353553924
 MonoBehaviour:
@@ -1359,6 +1367,7 @@ MonoBehaviour:
   m_Name: 
   addScoreURL: http://localhost/score/addscore.php?
   highscoreURL: http://localhost/score/display.php
+  data: 
 --- !u!114 &772610982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1439,7 +1448,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 772610977}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7fdc57c40c06fc4aa1cc1c0cc5783e9, type: 3}
   m_Name: 
@@ -1561,9 +1570,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e4f4cdc8a4a0f64f8d4c0bd77a72853, type: 3}
   m_Name: 
-  resume: {fileID: 1385989236}
-  exit: {fileID: 317788012}
-  save: {fileID: 928810439}
 --- !u!1 &1040878313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,7 +1880,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 39724669}
   m_GameObject: {fileID: 1272390902}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
   m_Name: 
@@ -2169,7 +2175,7 @@ MonoBehaviour:
   totHp: 15
   currHp: 0
   player: {fileID: 0}
-  type: 0
+  type: 1
   isDead: 0
 --- !u!111 &1386686749
 Animation:
@@ -4009,13 +4015,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1872000885}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3ebf5cd8ad47194ab1b428852032726, type: 3}
   m_Name: 
   mira: {fileID: 2800000, guid: 8265c24532c889845a2128f088f9d6eb, type: 3}
   arma: {fileID: 1872000885}
-  control: 0
 --- !u!82 &1872000891
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4354,7 +4359,7 @@ MonoBehaviour:
   totHp: 15
   currHp: 0
   player: {fileID: 0}
-  type: 0
+  type: 1
   isDead: 0
 --- !u!111 &2031259317
 Animation:
@@ -4615,7 +4620,7 @@ MonoBehaviour:
   totHp: 15
   currHp: 0
   player: {fileID: 0}
-  type: 0
+  type: 1
   isDead: 0
 --- !u!1 &2105626764
 GameObject:

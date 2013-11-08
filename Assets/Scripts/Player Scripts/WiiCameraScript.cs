@@ -22,8 +22,8 @@ public class WiiCameraScript: MonoBehaviour {
 		
 		WiiMote.wiimote_start();
 		midY = transform.position.y;
-		X = WiiMote.wiimote_getIrX(0)*10;
-		Y = WiiMote.wiimote_getIrY(0)*10;
+		X = WiiMote.wiimote_getIrX(WiiMote.cameraWiimote)*10;
+		Y = WiiMote.wiimote_getIrY(WiiMote.cameraWiimote)*10;
 		Z = 100f;
 		if (X==-1000) {
 			oldVec = transform.position;
@@ -48,8 +48,8 @@ public class WiiCameraScript: MonoBehaviour {
 
 	void MoveCamera() {
 
-		X = WiiMote.wiimote_getIrX(0) * 10;
-		Y = WiiMote.wiimote_getIrY(0) * 2f;
+		X = WiiMote.wiimote_getIrX(WiiMote.cameraWiimote) * 10;
+		Y = WiiMote.wiimote_getIrY(WiiMote.cameraWiimote) * 2f;
 
 		Z = 60f;
 		
@@ -79,7 +79,6 @@ public class WiiCameraScript: MonoBehaviour {
 		}*/
 		
 		gameObject.transform.LookAt(center);
-		debug.text = "x:" + X + " Y:" + Y;
 	}
 	
 

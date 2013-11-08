@@ -7,7 +7,10 @@ public class HSController : MonoBehaviour
     public string addScoreURL = "http://localhost:8080/score/addscore.php?";
     public string highscoreURL = "http://localhost:8080/score/display.php";
 	private bool sentScores = false;
+	public string data;
  
+	
+	
     public IEnumerator PostScores(string name, int score)
     {
 		if (!sentScores) {
@@ -29,16 +32,22 @@ public class HSController : MonoBehaviour
     public IEnumerator GetScores()
     {
         WWW hs_get = new WWW(highscoreURL);
-        yield return hs_get;
+		yield return  hs_get;
+		data = hs_get.text;
  
         if (hs_get.error != null)
         {
             print("Error: " + hs_get.error);
         }
-        else
+		
+		
+
+		
+        /*else
         {
             gameObject.guiText.text = hs_get.text;
-        }
+        }*/
+		
     }
  
 }

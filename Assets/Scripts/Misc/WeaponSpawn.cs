@@ -41,7 +41,6 @@ public class WeaponSpawn : MonoBehaviour {
 				transform.localScale /= 3;
 				gameObject.collider.enabled = false;
 				gameObject.transform.parent = Enemy.player.transform.FindChild("Main Camera");
-				gameObject.SetActive(false);
 				tmpPlayer.cambioArma();
 				this.enabled = false;
 			}

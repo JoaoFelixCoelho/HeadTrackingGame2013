@@ -14,7 +14,7 @@ public class Arma : MonoBehaviour {
 	public bool shooting = false;
 	float muzzleDeltaTime = 0;
 	public float overheatCount;
-	private int overheatLimit=14;
+	private int overheatLimit=25;
 	
 	public float fireRate;
 	private float timer = 0f;
@@ -60,14 +60,17 @@ public class Arma : MonoBehaviour {
 					laserAudio.audio.Play ();
 					overHeat();	
 					shooting = true;
+					WiiMote.wiimote_rumble(WiiMote.pointerWiimote, (float)0.073);
 				}			
-				
+				else if (overheatCount>overheatLimit){
+					WiiMote.wiimote_rumble(WiiMote.pointerWiimote, (float)2);
+				}
 				else if (weaponModel == WeaponEnum.Rifle)
 				{
 					handgunAudio.audio.Play ();
 					Vector3 fwd = spawnPos.TransformDirection(Vector3.forward);
 					fwd *= 20;
-					
+					WiiMote.wiimote_rumble(WiiMote.pointerWiimote, (float)0.2);
 					Debug.DrawRay(transform.position,fwd);
 					
 					RaycastHit hit;
