@@ -18,6 +18,9 @@ public class Menu : MonoBehaviour
 	#endregion
 	
 	
+	public Shader glowShader;
+	
+	
 	void Start() {
 		StartCoroutine(RoundManager.dbController.GetScores());	
 		
@@ -74,6 +77,7 @@ public class Menu : MonoBehaviour
 	
 	void OnMouseUp() {
 		checkButton();
+		gameObject.renderer.material.shader = glowShader;
 	}
 
 	

@@ -7,7 +7,7 @@ public class PlayerBehave : MonoBehaviour {
 	public int ammo;
 	public GameObject handgun;
 	public GameObject laser;
-	private Arma weapon;
+	public Arma weapon;
 	public int kills;
 	public int killsInRound;
 	public static int score;
@@ -37,6 +37,7 @@ public class PlayerBehave : MonoBehaviour {
 	#region menuAttrs
 	public GameObject pauseMenu;
 	private bool menuOpen;
+	private bool pauseCheck = false;
 	#endregion
 	
 	#region others
@@ -142,7 +143,6 @@ public class PlayerBehave : MonoBehaviour {
 	}
 	
 	public void pauseGame() {
-		print ("La tengo colosal");
 		if (!menuOpen) {
 			Time.timeScale = 0.05f; 
 			resizeGui ();
@@ -184,29 +184,47 @@ public class PlayerBehave : MonoBehaviour {
 		background.pixelInset = new Rect(background.border.left, background.border.top, Screen.width, Screen.height);
 	}
 	
-	void FixedUpdate () {
+	void Update () {
 		bool isLeft = Input.GetKey(KeyCode.Mouse0);
 		bool rKey = Input.GetKeyDown(KeyCode.R);
 		bool gKey = Input.GetKeyDown(KeyCode.G);
 		bool isEsc = Input.GetKeyDown(KeyCode.Escape);
 		
+		bool isB = WiiMote.wiimote_getButtonB(WiiMote.pointerWiimote);
+		bool isA = WiiMote.wiimote_getButtonA(WiiMote.pointerWiimote);
+		bool isHome = WiiMote.wiimote_getButtonHome(WiiMote.pointerWiimote);
+		bool isMinus = WiiMote.wiimote_getButtonMinus(WiiMote.pointerWiimote);
+		bool isBtnLeft = WiiMote.wiimote_getButtonLeft(WiiMote.pointerWiimote);
+		bool isBtnRight = WiiMote.wiimote_getButtonRight(WiiMote.pointerWiimote);
+		
+			
+		
+		
+		
+		
 		if (imageEffectActive) {
 			checkCameraDistort();
 		}
 				
-		if(isLeft) {
+		if(isLeft || isB) {
 			weapon.shoot();	
 		}
 		
-		if (rKey) {
+		if (rKey || isA) {
 			reloadWeapon();
 		}
 		
-		if (gKey) {
+		if (gKey || isBtnLeft || isBtnRight) {
 			cambioArma ();
 		}
 		
 		if (isEsc) {
+			pauseGame();	
+		}
+		
+		
+		if (isMinus && !pauseCheck || isHome && !pauseCheck) {
+			pauseCheck = true;
 			pauseGame();
 		}
 		

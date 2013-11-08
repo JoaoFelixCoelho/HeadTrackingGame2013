@@ -198,6 +198,11 @@ public class Arma : MonoBehaviour {
 	}
 	
 	void Update () {
+		
+		if (player.weapon == this) {
+			gameObject.transform.LookAt(Crosshair.getWiimoteCrosshair());
+		}
+		
 		timer += Time.deltaTime;
 		decreaseOverHeat();
 		

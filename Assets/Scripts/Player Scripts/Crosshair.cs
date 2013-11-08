@@ -26,49 +26,15 @@ public class Crosshair : MonoBehaviour {
 	}
  
 	// Update is called once per frame
-	void FixedUpdate () {
-		int c = WiiMote.wiimote_count();
-		bool isE = Input.GetKey(KeyCode.E);
-		bool isQ = Input.GetKey(KeyCode.Q);
-		bool isB = WiiMote.wiimote_getButtonB(WiiMote.pointerWiimote);
-		bool isA = WiiMote.wiimote_getButtonA(WiiMote.pointerWiimote);
-		bool isHome = WiiMote.wiimote_getButtonHome(WiiMote.pointerWiimote);
-		bool isMinus = WiiMote.wiimote_getButtonMinus(WiiMote.pointerWiimote);
-		bool isBtnLeft = WiiMote.wiimote_getButtonLeft(WiiMote.pointerWiimote);
-		bool isBtnRight = WiiMote.wiimote_getButtonRight(WiiMote.pointerWiimote);
-		
-		if(isB) {
-			arma.GetComponent<Arma>().shoot();
-			
-		}
-		
-		if(isA) {
-			Enemy.player.GetComponent<PlayerBehave>().reloadWeapon();
-			
-		}
-		if(isBtnRight) {
-			Enemy.player.GetComponent<PlayerBehave>().cambioArma();
-		}
-
-		if(isBtnLeft) {
-			Enemy.player.GetComponent<PlayerBehave>().cambioArma();
-		}
-		if(isHome || isMinus && aversh == false) {
-			aversh =true;
-			Enemy.player.GetComponent<PlayerBehave>().pauseGame();
-		}
-		else {
-			aversh= false;
-		}
+	void Update () {
 	
-
-		float roll = Mathf.Round(WiiMote.wiimote_getRoll(WiiMote.pointerWiimote));
+/*		float roll = Mathf.Round(WiiMote.wiimote_getRoll(WiiMote.pointerWiimote));
 		float p = Mathf.Round(WiiMote.wiimote_getPitch(WiiMote.pointerWiimote));
 		float yaw = Mathf.Round(WiiMote.wiimote_getYaw(WiiMote.pointerWiimote));
 		float ir_x = WiiMote.wiimote_getIrX(WiiMote.pointerWiimote);
 		float ir_y = WiiMote.wiimote_getIrY(WiiMote.pointerWiimote);
 
-		Vector3 vec = new Vector3(p, 0 , -1 * roll);
+/*		Vector3 vec = new Vector3(p, 0 , -1 * roll);
 		vec = Vector3.Lerp(oldVec, vec, Time.deltaTime * 5);
 		oldVec = vec;
 
@@ -77,13 +43,35 @@ public class Crosshair : MonoBehaviour {
 		mira_x = Mathf.RoundToInt(temp_x);
 		mira_y = Mathf.RoundToInt(temp_y);
 		if (mira_x > 0 && mira_y >0) {
-			vec3Look = Camera.main.camera.ScreenToWorldPoint(new Vector3(mira_x + 37f, Screen.height * 1.5f - mira_y - 37f , 20));
-			arma.transform.LookAt(vec3Look);
+			return Camera.main.camera.ScreenToWorldPoint(new Vector3(mira_x + 37f, Screen.height * 1.5f - mira_y - 37f , 20));
 		}
-		    
+		else {
+				
+			
+		}
+	*/	    
 	}
  
 		
+	public static Vector3 getWiimoteCrosshair() {
+		
+		float ir_x = WiiMote.wiimote_getIrX(WiiMote.pointerWiimote);
+		float ir_y = WiiMote.wiimote_getIrY(WiiMote.pointerWiimote);	
+		
+		ir_x = ( Screen.width / 2) + ir_x * (float) Screen.width / (float)2.0;
+		ir_y = Screen.height - (ir_y * (float) Screen.height / (float)2.0);
+		
+		if (ir_x > 0 && ir_y >0) {
+			
+			return Camera.main.camera.ScreenToWorldPoint(new Vector3(ir_x + 37f, Screen.height * 1.5f - ir_y - 37f , 20));
+
+			
+		}
+		else {	
+			return new Vector3(1,1,1);
+		}		
+		
+	}
 		
 
  
