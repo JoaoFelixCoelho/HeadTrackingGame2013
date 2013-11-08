@@ -144,11 +144,10 @@ public class PlayerBehave : MonoBehaviour {
 	
 	public void pauseGame() {
 		if (!menuOpen) {
-			Time.timeScale = 0.05f; 
+			Time.timeScale = 0f; 
 			resizeGui ();
 			pauseMenu.SetActive(true);
 			menuOpen = true;
-			//GetComponent<MouseLook>().enabled = false;
 		}
 		else {
 			Time.timeScale = 1f;
