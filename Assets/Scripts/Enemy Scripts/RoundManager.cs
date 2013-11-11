@@ -23,6 +23,7 @@ public class RoundManager : MonoBehaviour {
 		startNewRound();
 		//lo tuve que poner aca porque no andaba, alta negrada :/
 		Stats.read();
+		Configuration.readConfig();
 		GridSystem.setGridLength(spawnPoints.Length);
 		for (int i=0; i<spawnPoints.Length; i++) {
 			GridSystem.grids[i].xPos = spawnPoints[i].transform.position.x;	
@@ -106,7 +107,9 @@ public class RoundManager : MonoBehaviour {
 			}
 			else {
 				gameObject.GetComponent<TargetManager>().enabled = false;
-				Enemy.createEnemy(Round.type, Round.number, spawnPoints[randomSpawn], randomSpawn);
+				int spawnRate  = Random.Range(0,101);
+				int randomType = Random.Range(0,Round.type.Length);		
+				Enemy.createEnemy(Round.type[randomType], Round.number, spawnPoints[randomSpawn], randomSpawn);
 				GridSystem.grids[randomSpawn].currentEnemies ++;
 				waveDeltaTime = 0;
 				Enemy.current++;				

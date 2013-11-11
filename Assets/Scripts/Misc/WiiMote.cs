@@ -6,11 +6,6 @@ using System.Text;
 
 public static class WiiMote
 {
-	
-	public static int cameraWiimote  = 0;
-	public static int pointerWiimote = 1;
-	
-
     [DllImport("UniWii")]
     public static extern void wiimote_start();
     [DllImport("UniWii")]

@@ -77,6 +77,7 @@ public class RangedAttackScript : MonoBehaviour {
 		else {
 			//cuando se le acaban las balas, que se haga melee
 			gameObject.AddComponent<MeleeAttackScript>();
+			enemyAttrs.anim.Play();
 			Destroy(this);
 		}	
 	}

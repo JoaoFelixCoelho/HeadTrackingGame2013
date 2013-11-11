@@ -28,11 +28,11 @@ public class Crosshair : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-/*		float roll = Mathf.Round(WiiMote.wiimote_getRoll(WiiMote.pointerWiimote));
-		float p = Mathf.Round(WiiMote.wiimote_getPitch(WiiMote.pointerWiimote));
-		float yaw = Mathf.Round(WiiMote.wiimote_getYaw(WiiMote.pointerWiimote));
-		float ir_x = WiiMote.wiimote_getIrX(WiiMote.pointerWiimote);
-		float ir_y = WiiMote.wiimote_getIrY(WiiMote.pointerWiimote);
+/*		float roll = Mathf.Round(WiiMote.wiimote_getRoll(Configuration.pointerWiiMote));
+		float p = Mathf.Round(WiiMote.wiimote_getPitch(Configuration.pointerWiiMote));
+		float yaw = Mathf.Round(WiiMote.wiimote_getYaw(Configuration.pointerWiiMote));
+		float ir_x = WiiMote.wiimote_getIrX(Configuration.pointerWiiMote);
+		float ir_y = WiiMote.wiimote_getIrY(Configuration.pointerWiiMote);
 
 /*		Vector3 vec = new Vector3(p, 0 , -1 * roll);
 		vec = Vector3.Lerp(oldVec, vec, Time.deltaTime * 5);
@@ -55,8 +55,8 @@ public class Crosshair : MonoBehaviour {
 		
 	public static Vector3 getWiimoteCrosshair() {
 		
-		float ir_x = WiiMote.wiimote_getIrX(WiiMote.pointerWiimote);
-		float ir_y = WiiMote.wiimote_getIrY(WiiMote.pointerWiimote);	
+		float ir_x = WiiMote.wiimote_getIrX(Configuration.pointerWiiMote);
+		float ir_y = WiiMote.wiimote_getIrY(Configuration.pointerWiiMote);	
 		
 		ir_x = ( Screen.width / 2) + ir_x * (float) Screen.width / (float)2.0;
 		ir_y = Screen.height - (ir_y * (float) Screen.height / (float)2.0);
@@ -78,8 +78,8 @@ public class Crosshair : MonoBehaviour {
 	void OnGUI() {
 		int c = WiiMote.wiimote_count();
 		for (int i=0; i<=c-1; i++) {
-			float ir_x = WiiMote.wiimote_getIrX(WiiMote.pointerWiimote);
-			float ir_y = WiiMote.wiimote_getIrY(WiiMote.pointerWiimote);
+			float ir_x = WiiMote.wiimote_getIrX(Configuration.pointerWiiMote);
+			float ir_y = WiiMote.wiimote_getIrY(Configuration.pointerWiiMote);
 		    if ( (ir_x != -100) && (ir_y != -100) ) {
 			    float temp_x = ((ir_x + (float) 1.0)/ (float)2.0) * (float) Screen.width;
 			    float temp_y = (float) Screen.height - (((ir_y + (float) 1.0)/ (float)2.0) * (float) Screen.height);

@@ -11,14 +11,17 @@ public class Arma : MonoBehaviour {
 	public int damage;
 	public int capacity;
 	public float laserSpeed;
-	public bool shooting = false;
+	public bool shooting, reloading = false;
 	float muzzleDeltaTime = 0;
 	public float overheatCount;
 	private int overheatLimit=25;
 	
 	public float fireRate;
-	private float timer = 0f;
+	private float timer, reloadTimer = 0f;
 	private float timeroverHeat=0;
+	private float reloadDelay = 0f;
+	
+	public AudioClip shootAudio, noBulletAudio;
 	
 	//Dependencias
 	public Transform spawnPos;
@@ -29,84 +32,89 @@ public class Arma : MonoBehaviour {
 	GUIText warningTxt;
 
 	public GameObject muzzle;
-	public GameObject handgunAudio, laserAudio, nobulletAudio;
-	public Material laserMaterial, materialInstance;
-	private Color color1;
+	private GameObject modelGameObject;
+	public Material laserMaterial;
 	public float redIncrRate;
 
 	
 	public void shoot(){
 		
 		//falta checkear que el jugador se quedo sin balas
-				
-		if (timer >= fireRate) {
-		
-			if (this.bullets<=0){
-				showWarning("reload");
-				if (weaponModel == WeaponEnum.Rifle){
-					nobulletAudio.audio.Play ();
+		if (!reloading) {
+			if (timer >= fireRate) {
+			
+				if (this.bullets==0){
+					showWarning("reload");
+					print("reload");
+					if (weaponModel == WeaponEnum.Rifle){
+						audio.clip = noBulletAudio;
+						audio.Play();
+					}
 				}
-			}
-			else {
-				
-				
-				//shooting = true;  SAQUE ESTE SHOOTING = TRUE Y HICE QUE REALMENTE SOLO CUANDO ESTE DISPARANDO, CONSULTAR A COZZA SI ESTA BIEN EN CLASE.
-				
-				if (weaponModel == WeaponEnum.Laser && overheatCount<overheatLimit) 				
-				{
-					Rigidbody lasInstance = (Rigidbody) Instantiate(proPrefab, spawnPos.position, spawnPos.rotation);
-					lasInstance.AddForce(spawnPos.forward*laserSpeed);	
-					lasInstance.GetComponent<Projectile>().setDamage(damage);
-					laserAudio.audio.Play ();
-					overHeat();	
-					shooting = true;
-					WiiMote.wiimote_rumble(WiiMote.pointerWiimote, (float)0.073);
-				}			
-				else if (overheatCount>overheatLimit){
-					WiiMote.wiimote_rumble(WiiMote.pointerWiimote, (float)2);
-				}
-				else if (weaponModel == WeaponEnum.Rifle)
-				{
-					handgunAudio.audio.Play ();
-					Vector3 fwd = spawnPos.TransformDirection(Vector3.forward);
-					fwd *= 20;
-					WiiMote.wiimote_rumble(WiiMote.pointerWiimote, (float)0.2);
-					Debug.DrawRay(transform.position,fwd);
+				else {
 					
-					RaycastHit hit;
-					if (Physics.Raycast(transform.position, fwd, out hit, 9999, 1))
+					
+					//shooting = true;  SAQUE ESTE SHOOTING = TRUE Y HICE QUE REALMENTE SOLO CUANDO ESTE DISPARANDO, CONSULTAR A COZZA SI ESTA BIEN EN CLASE.
+					
+					audio.clip = shootAudio;
+					audio.Play ();		
+					
+					if (weaponModel == WeaponEnum.Laser && overheatCount<overheatLimit) 				
 					{
-						//para cuando queres levantar el arma2
-						if(Round.weaponSpawned && !Round.weaponPicked) {
-							if (hit.collider.GetComponent<Arma>() != null) {
-								hit.collider.GetComponent<WeaponSpawn>().transitionToPlayer();
+						Rigidbody lasInstance = (Rigidbody) Instantiate(proPrefab, spawnPos.position, spawnPos.rotation);
+						lasInstance.AddForce(spawnPos.forward*laserSpeed);	
+						lasInstance.GetComponent<Projectile>().setDamage(damage);
+
+						overHeat();	
+						shooting = true;
+						WiiMote.wiimote_rumble(Configuration.pointerWiiMote, (float)0.073);
+					}			
+					else if (overheatCount>overheatLimit){
+						WiiMote.wiimote_rumble(Configuration.pointerWiiMote, (float)2);
+					}
+					else if (weaponModel == WeaponEnum.Rifle)
+					{
+						modelGameObject.animation.Play();
+						Vector3 fwd = spawnPos.TransformDirection(Vector3.forward);
+						fwd *= 20;
+						WiiMote.wiimote_rumble(Configuration.pointerWiiMote, (float)0.2);
+						Debug.DrawRay(transform.position,fwd);
+						
+						RaycastHit hit;
+						if (Physics.Raycast(transform.position, fwd, out hit, 9999, 1))
+						{
+							//para cuando queres levantar el arma2
+							if(Round.weaponSpawned && !Round.weaponPicked) {
+								if (hit.collider.GetComponent<Arma>() != null) {
+									hit.collider.GetComponent<WeaponSpawn>().transitionToPlayer();
+								}
+							}
+							GameObject particleInstance = (GameObject) Instantiate(Projectile.bulletParticle, hit.point, transform.rotation);
+							particleInstance.transform.LookAt(transform.position);
+							Destroy(particleInstance, particleInstance.particleSystem.duration + 0.01f);
+							HealthSystem HP = hit.collider.gameObject.GetComponent<HealthSystem>();
+							
+							if (HP != null){
+								HP.damageHp(damage);
 							}
 						}
-						GameObject particleInstance = (GameObject) Instantiate(Projectile.bulletParticle, hit.point, transform.rotation);
-						particleInstance.transform.LookAt(transform.position);
-						Destroy(particleInstance, particleInstance.particleSystem.duration + 0.01f);
-						HealthSystem HP = hit.collider.gameObject.GetComponent<HealthSystem>();
-						
-						if (HP != null){
-							HP.damageHp(damage);
-						}
+						shooting = true;
+					}				
+					else{
+						shooting = false;
 					}
-					shooting = true;
-				}				
-				else{
-					shooting = false;
+					
+					
+					this.bullets-=1;
+					updateAmmo();
+					
+					if (this.bullets==0) {
+						showWarning("reload");	
+					}
+					
 				}
-				
-				
-				this.bullets-=1;
-				updateAmmo();
-				
-				if (this.bullets==0) {
-					showWarning("reload");	
-				}
-				
+				timer = 0f;
 			}
-			timer = 0f;
 		}
 	}
 	
@@ -162,13 +170,17 @@ public class Arma : MonoBehaviour {
 	
 	
 	
-	public int reload (int totalBalas) {
-	
+	public int reload (int totalBalas) {		
+		
 		if (totalBalas==0){
 			showWarning("empty");
 		}
 		
 		else if (totalBalas>this.capacity || (totalBalas+this.bullets)>this.capacity){
+			reloading = true;
+			if (weaponModel == WeaponEnum.Rifle) {
+				modelGameObject.animation.Play("handgunReload");
+			}			
 			int aux = this.capacity - this.bullets;
 			this.bullets = capacity;
 			showWarning("hide");
@@ -194,6 +206,13 @@ public class Arma : MonoBehaviour {
 		updateAmmo();
 		muzzle.SetActive(false);
 		redIncrRate = 5f/overheatLimit;
+		if (weaponModel == WeaponEnum.Rifle) {
+			modelGameObject = transform.FindChild("HandgunModelContainer").gameObject;
+			reloadDelay = modelGameObject.animation["handgunReload"].length;
+		}
+		else {
+			reloadDelay = 2f;	
+		}
 		//color1 = renderer.material.color;
 	}
 	
@@ -202,6 +221,12 @@ public class Arma : MonoBehaviour {
 		if (player.weapon == this) {
 			gameObject.transform.LookAt(Crosshair.getWiimoteCrosshair());
 		}
+		
+		
+		if(reloading) {
+			checkReloadTimer();	
+		}
+		
 		
 		timer += Time.deltaTime;
 		decreaseOverHeat();
@@ -219,5 +244,17 @@ public class Arma : MonoBehaviour {
 		}
 		
 	}
+	
+	private void checkReloadTimer() {
+		reloadTimer += Time.deltaTime;
+		if (reloadTimer >= reloadDelay) {
+			reloading= false;
+			reloadTimer = 0f;
+		}	
+		
+		
+	}
+	
+	
 
 }

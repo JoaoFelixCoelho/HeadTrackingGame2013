@@ -313,16 +313,15 @@ MonoBehaviour:
   capacity: 500
   laserSpeed: 3000
   shooting: 0
+  reloading: 0
   overheatCount: 0
   fireRate: .200000003
+  shootAudio: {fileID: 8300000, guid: ba42d98128bfaab4f99f04a574aef36b, type: 3}
+  noBulletAudio: {fileID: 8300000, guid: 1809aae69e0af074887f04b9f0857e71, type: 3}
   spawnPos: {fileID: 400002}
   proPrefab: {fileID: 5400000, guid: 296098b9f4797e14aad6b6f3491b3a05, type: 2}
   muzzle: {fileID: 100004}
-  handgunAudio: {fileID: 0}
-  laserAudio: {fileID: 100000}
-  nobulletAudio: {fileID: 0}
   laserMaterial: {fileID: 2100000, guid: 2b5c2682d3630d24d80b92ecb3c76981, type: 2}
-  materialInstance: {fileID: 0}
   redIncrRate: 0
 --- !u!114 &11400004
 MonoBehaviour:

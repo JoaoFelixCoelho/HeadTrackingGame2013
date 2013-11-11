@@ -7,7 +7,8 @@ public static class Round{
 	public static int destinyQuant;
   	public static int number = 0;
 	public static int count;
-	public static string type;
+	public static string [] type;
+	public static int    [] rate;
 	private static XmlDocument xmlAsset = new XmlDocument();
 	public static bool isTargetRound, gameOver, weaponSpawned, weaponPicked = false;
 
@@ -31,10 +32,24 @@ public static class Round{
 		number++;
 		if (number <= count) {
 			XmlNode roundData = xmlAsset.ChildNodes[1].ChildNodes[number-1];	
-			type = (string) roundData["type"].InnerText;
+			XmlNode typeNode = roundData["type"];
 			isTargetRound = false;
+			type = new string[typeNode.ChildNodes.Count];
+			if (typeNode.ChildNodes.Count > 0) {
+				for (int i=0; i<typeNode.ChildNodes.Count; i++) {
+					type[i]	= typeNode.ChildNodes[i].InnerText;
+					//rate[i] = int.Parse(typeNode.ChildNodes[i].Attributes["rate"].InnerText);
+				}
+			}
+			else {
+				rate[0] = 100;
+				type[0] = (string) roundData["type"].InnerText;
+			}
+			/*for (int i=0; i<type.Length; i++) {
+				Debug.Log(type[i]);
+			}*/		
 			
-			if (type == "targets") {
+			if (type[0] == "targets") {
 				isTargetRound = true;
 			}
 			else {

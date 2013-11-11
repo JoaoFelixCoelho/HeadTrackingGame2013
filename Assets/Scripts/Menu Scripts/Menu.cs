@@ -6,7 +6,7 @@ public class Menu : MonoBehaviour
 	public enum MenuEnum {play = 0, option = 1, highscores = 2, exit = 3}
 	public MenuEnum buttonType  = MenuEnum.play;
 	public string [] nameScore;
-	public GameObject listItem, scoreContainer;
+	public GameObject listItem, scoreContainer, optionContainer;
 	private bool showingScores = false;
 	
 	
@@ -41,8 +41,13 @@ public class Menu : MonoBehaviour
 		for (int i=0; i< transform.parent.childCount; i++) {
 			transform.parent.GetChild(i).renderer.enabled = visib;
 		}
+		if (buttonType == MenuEnum.highscores) {
+			scoreContainer.SetActive(!visib);
+		}
 		
-		scoreContainer.SetActive(!visib);
+		if (buttonType == MenuEnum.option) {
+			optionContainer.SetActive(!visib);
+		}
 		
 			
 	}
@@ -57,6 +62,8 @@ public class Menu : MonoBehaviour
 			break;
 			
 		case MenuEnum.option:
+			setVisibility(false);
+			showOptionPane();
 			break;
 			
 		case MenuEnum.highscores:
@@ -79,7 +86,17 @@ public class Menu : MonoBehaviour
 		checkButton();
 		gameObject.renderer.material.shader = glowShader;
 	}
+	
+	
+	
+	void showOptionPane() {
 
+		
+		
+	}
+	
+	
+	
 	
 	void showScoreData(){
 		if (!showingScores) {
@@ -138,7 +155,7 @@ public class Menu : MonoBehaviour
 		bool downKey = Input.GetKey(KeyCode.DownArrow);
 		bool upKey   = Input.GetKey(KeyCode.UpArrow);
 		bool backKey = Input.GetKey(KeyCode.Backspace);
-		
+		bool buttonB = WiiMote.wiimote_getButtonB(Configuration.pointerWiiMote);
 		checkScroll();
 		
 		if (downKey && buttonType == MenuEnum.highscores && !scrolling) {
@@ -151,7 +168,7 @@ public class Menu : MonoBehaviour
 			scrollUp = true;
 		}
 		
-		if (backKey && buttonType == MenuEnum.highscores) {
+		if (backKey || buttonB) {
 			setVisibility(true);	
 		}
 		

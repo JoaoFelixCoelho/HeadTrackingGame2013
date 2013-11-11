@@ -34,6 +34,7 @@ public class HealthSystem : MonoBehaviour {
 			
 			if (type == Type.Player && !isDead) {
 				print("El jugador murio");	
+				player.killPlayer();
 			}
 			
 			if (type == Type.Bullet) {

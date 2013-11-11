@@ -10,7 +10,6 @@ public class WiiCameraScript: MonoBehaviour {
 	public Transform center;
 	Vector3 vec;
 	Vector3 oldVec;
-	private float midY;
 	public bool menu;
 	
 	void Start () {
@@ -19,9 +18,8 @@ public class WiiCameraScript: MonoBehaviour {
 		}
 		else{
 			WiiMote.wiimote_start();
-			midY = transform.position.y;
-			X = WiiMote.wiimote_getIrX(WiiMote.cameraWiimote)*10;
-			Y = WiiMote.wiimote_getIrY(WiiMote.cameraWiimote)*10;
+			X = WiiMote.wiimote_getIrX(Configuration.cameraWiiMote)*10;
+			Y = WiiMote.wiimote_getIrY(Configuration.cameraWiiMote)*10;
 			Z = 100f;
 			if (X==-1000) {
 				oldVec = transform.position;
@@ -35,16 +33,29 @@ public class WiiCameraScript: MonoBehaviour {
 	
 	void Update () {
 		MoveCamera();
-		OnGUI();
+		//OnGUI();
 	}
 	
 	void MoveCamera() {
-		X = WiiMote.wiimote_getIrX(WiiMote.cameraWiimote) * 10;
-		Y = WiiMote.wiimote_getIrY(WiiMote.cameraWiimote) * 2f;
-
+		X = WiiMote.wiimote_getIrX(Configuration.cameraWiiMote) * 10;
+		Y = WiiMote.wiimote_getIrY(Configuration.cameraWiiMote) * 2;
 		Z = 60f;
 		
-		if(X>-9.5f && X<9.5f && Y<1f){
+		/* NO BORRAR
+		if (X==-1000 && Y==-200) {
+			transform.position = oldVec;
+		}
+		else if(X>-9.5f && X<9.5f && Y<0f) {
+			oldVec = new Vector3(-X, -Y+1.8f ,Z);
+		}
+		*/
+		bool spaceBar = Input.GetKey(KeyCode.Space);
+		
+		if (spaceBar = true){
+			transform.position = new Vector3(0,0,0);
+		}
+		
+		if(X>-9.5f && X<9.5f && Y<0f){
 			if (menu == true){
 				vec = new Vector3(-X, -Y ,0f);
 				gameObject.transform.LookAt(vec);
@@ -55,11 +66,14 @@ public class WiiCameraScript: MonoBehaviour {
 				gameObject.transform.LookAt(center);
 			}
 		}
+		else if (X==-1000 && Y==-200){
+			transform.position = oldVec;
+		}	
 	}
 	
-	void OnGUI() {
+/*	void OnGUI() {
         GUI.Label(new Rect(10, 50, 300, 300), "Y: "+ Y + "X: " +X);
-    }
+    }*/
 }
 
 

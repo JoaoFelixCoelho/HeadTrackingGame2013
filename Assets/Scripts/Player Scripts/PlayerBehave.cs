@@ -71,6 +71,7 @@ public class PlayerBehave : MonoBehaviour {
 	public void killPlayer () {
 		sendMessageToPlayer("Game Over!", "warning");
 		StartCoroutine(RoundManager.dbController.PostScores(PlayerBehave.playerName, PlayerBehave.score));	
+		//transform.FindChild("Main Camera").animation.Play("playerDie");
 	}
 	
 	public void addKill() {
@@ -180,7 +181,7 @@ public class PlayerBehave : MonoBehaviour {
 	}
 	
 	public void resizeGui(){
-		background.pixelInset = new Rect(background.border.left, background.border.top, Screen.width, Screen.height);
+		background.pixelInset = new Rect(-Screen.width/2, -Screen.height/2, Screen.width, Screen.height);
 	}
 	
 	void Update () {
@@ -189,12 +190,12 @@ public class PlayerBehave : MonoBehaviour {
 		bool gKey = Input.GetKeyDown(KeyCode.G);
 		bool isEsc = Input.GetKeyDown(KeyCode.Escape);
 		
-		bool isB = WiiMote.wiimote_getButtonB(WiiMote.pointerWiimote);
-		bool isA = WiiMote.wiimote_getButtonA(WiiMote.pointerWiimote);
-		bool isHome = WiiMote.wiimote_getButtonHome(WiiMote.pointerWiimote);
-		bool isMinus = WiiMote.wiimote_getButtonMinus(WiiMote.pointerWiimote);
-		bool isBtnLeft = WiiMote.wiimote_getButtonLeft(WiiMote.pointerWiimote);
-		bool isBtnRight = WiiMote.wiimote_getButtonRight(WiiMote.pointerWiimote);
+		bool isB = WiiMote.wiimote_getButtonB(Configuration.pointerWiiMote);
+		bool isA = WiiMote.wiimote_getButtonA(Configuration.pointerWiiMote);
+		bool isHome = WiiMote.wiimote_getButtonHome(Configuration.pointerWiiMote);
+		bool isMinus = WiiMote.wiimote_getButtonMinus(Configuration.pointerWiiMote);
+		bool isBtnLeft = WiiMote.wiimote_getButtonLeft(Configuration.pointerWiiMote);
+		bool isBtnRight = WiiMote.wiimote_getButtonRight(Configuration.pointerWiiMote);
 		
 			
 		

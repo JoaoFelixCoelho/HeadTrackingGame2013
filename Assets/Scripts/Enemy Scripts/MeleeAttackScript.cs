@@ -31,7 +31,7 @@ public class MeleeAttackScript : MonoBehaviour {
 		auxTime += Time.deltaTime;
 		if (auxTime >= attackInterval) {
 			if (gameObject.GetComponent<AIPathfinding>().hittingPlayer) {
-				print ("pegando");
+				enemyAttrs.anim.Play(enemyAttrs.type + "Melee");
 				Enemy.player.GetComponent<HealthSystem>().damageHp(enemyAttrs.damage);
 				auxTime = 0f;
 			}			

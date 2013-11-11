@@ -4,21 +4,77 @@ using System.Collections;
 public class MenuHoverController : MonoBehaviour {
 	public Shader glowShader;
 	private Shader diffuseShader;
-	private Color originalColor;
+	//private Color originalColor;
 	public GameObject [] buttons;
+	int selectedButton = 1;
+	float buttonDownTimer = 0f;
 	
-	public bool mouse;
-	public Texture2D mira;
+	//public bool mouse;
+	//public Texture2D mira;
 	
 	
 	// Use this for initialization
 	void Start () {
+		Configuration.readConfig();
 		diffuseShader = Shader.Find("Transparent/Bumped Diffuse");
+		buttons[0].renderer.material.shader = glowShader;
 	}
 	
+	void Update() {
+		
+		bool downBtn = WiiMote.wiimote_getButtonDown(Configuration.pointerWiiMote);
+		bool upBtn   = WiiMote.wiimote_getButtonUp(Configuration.pointerWiiMote);
+		bool isA     = WiiMote.wiimote_getButtonA(Configuration.pointerWiiMote);
+		
+		bool downKey = Input.GetKey(KeyCode.DownArrow);
+		bool upKey   = Input.GetKey(KeyCode.UpArrow);
+		bool enterKey = Input.GetKey(KeyCode.Return);
+		
+		buttonDownTimer += Time.deltaTime;
+		
+		if (downBtn||downKey) {
+			if (buttonDownTimer >= 0.2f) {
+				if (selectedButton + 1 <= buttons.Length) {
+					
+					for (int i=0; i < buttons.Length; i++) {
+						buttons[i].renderer.material.shader = diffuseShader;
+					}				
+					selectedButton ++;	
+					buttons[selectedButton-1].renderer.material.shader = glowShader;
+					buttonDownTimer = 0f;
+				}
+				
+			}			
+			
+		}
+		
+		if (upBtn||upKey) {
+			if (buttonDownTimer >= 0.2f) {
+				if (selectedButton > 1) {
+					
+					for (int i=0; i < buttons.Length; i++) {
+						buttons[i].renderer.material.shader = diffuseShader;
+					}
+					selectedButton --;	
+					buttons[selectedButton-1].renderer.material.shader = glowShader;
+					buttonDownTimer = 0f;
+				}
+			}
+		}
+		
+		if (isA||enterKey) {
+			buttons[selectedButton-1].GetComponent<Menu>().checkButton();	
+		}
+	}
+
+	
+	
+	
+	
+	
 	// Update is called once per frame
-	void Update () {
-		bool isA = WiiMote.wiimote_getButtonA(WiiMote.pointerWiimote);
+	/*void Update () {
+		bool isA = WiiMote.wiimote_getButtonA(Configuration.pointerWiiMote);
 		Vector3 fwd;
 		
 		if (mouse) {
@@ -32,7 +88,7 @@ public class MenuHoverController : MonoBehaviour {
 		for (int i=0; i < buttons.Length; i++) {
 			buttons[i].renderer.material.shader = diffuseShader;
 		}		
-		
+		Debug.DrawRay(transform.position, fwd *100);
 		RaycastHit hit;
 		if (Physics.Raycast(transform.position, fwd, out hit, 4f)) {
 
@@ -76,14 +132,14 @@ public class MenuHoverController : MonoBehaviour {
 				transform.GetChild(i).renderer.material.shader = diffuseShader;
 			}
 		}
-		*/
+		
 	}
 	
 	void OnGUI() {
 		int c = WiiMote.wiimote_count();
 		for (int i=0; i<=c-1; i++) {
-			float ir_x = WiiMote.wiimote_getIrX(WiiMote.pointerWiimote);
-			float ir_y = WiiMote.wiimote_getIrY(WiiMote.pointerWiimote);
+			float ir_x = WiiMote.wiimote_getIrX(Configuration.pointerWiiMote);
+			float ir_y = WiiMote.wiimote_getIrY(Configuration.pointerWiiMote);
 		    if ( (ir_x != -100) && (ir_y != -100) ) {
 			    float temp_x = ((ir_x + (float) 1.0)/ (float)2.0) * (float) Screen.width;
 			    float temp_y = (float) Screen.height - (((ir_y + (float) 1.0)/ (float)2.0) * (float) Screen.height);
@@ -96,6 +152,6 @@ public class MenuHoverController : MonoBehaviour {
 	}	
 	
 	
-	
+	*/
 	
 }
