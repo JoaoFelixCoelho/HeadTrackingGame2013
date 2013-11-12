@@ -663,6 +663,8 @@ GameObject:
   - 82: {fileID: 286631135}
   - 65: {fileID: 286631136}
   - 54: {fileID: 286631137}
+  - 114: {fileID: 286631138}
+  - 111: {fileID: 286631139}
   m_Layer: 0
   m_Name: Player
   m_TagString: MainCamera
@@ -896,6 +898,55 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &286631138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 286631126}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7db9ec1392f34265817a55853e6ab07, type: 3}
+  m_Name: 
+  filterType: 2
+  preview: 0
+  previewScale: {x: 1, y: 1, z: 1}
+  movementScale: 0
+  rotationScale: 1
+  maxVelocity: 8
+  maxNumSamples: 17
+  minVelocity: .100000001
+  velocityScale: .375
+  softZDistance: .00499999989
+  velocityDownsample: 20
+  excludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  shader: {fileID: 4800000, guid: 85a88efa8c871af4a9d17c64791b6f4f, type: 3}
+  dx11MotionBlurShader: {fileID: 4800000, guid: f1b13d7a80660504a858ea24cfa418c6,
+    type: 3}
+  replacementClear: {fileID: 4800000, guid: 7699c5fbfa27745a1abe111ab7bf9785, type: 3}
+  noiseTexture: {fileID: 2800000, guid: 31f5a8611c4ed1245b18456206e798dc, type: 3}
+  showVelocity: 0
+  showVelocityScale: 1
+--- !u!111 &286631139
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 286631126}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1a336480e4c86a240bf16d22dd721208, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1a336480e4c86a240bf16d22dd721208, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+  m_UserAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!1 &339601077
 GameObject:
   m_ObjectHideFlags: 0
@@ -6130,6 +6181,7 @@ MonoBehaviour:
   rotateleft: {fileID: 393000775}
   rotateright: {fileID: 1281511780}
   teleportparticles: {fileID: 1669097848}
+  player: {fileID: 286631126}
 --- !u!82 &1419417611
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6774,7 +6826,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1669097848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7036953, y: -5.15216446, z: 15.1304379}
+  m_LocalPosition: {x: 1.7036953, y: -3.44736075, z: 10.3381348}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 393000776}

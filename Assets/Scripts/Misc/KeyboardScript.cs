@@ -17,8 +17,9 @@ public class KeyboardScript : MonoBehaviour {
 	public string passletter;
 	private int i,o;
 	
+	private bool animPlaying = false;
 	public bool enable=false;
-	public GameObject rotateleft, rotateright,teleportparticles;
+	public GameObject rotateleft, rotateright,teleportparticles, player;
 	
 
 	
@@ -47,7 +48,11 @@ public class KeyboardScript : MonoBehaviour {
 			o+=1;
 		}
 		else if (textopass.text.Length == 9){
-			
+			if (!animPlaying) {
+				player.GetComponent<CameraMotionBlur>().enabled = true;
+				player.animation.Play();
+				animPlaying = true;
+			}
 			teleportparticles.SetActive(true);
 			rotateleft.animation.Play("RotateLeft");
 			rotateright.animation.Play("RotateRight");
