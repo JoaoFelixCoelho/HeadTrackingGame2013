@@ -910,29 +910,14 @@ MonoBehaviour:
   weapon: {fileID: 0}
   kills: 0
   killsInRound: 0
-  background: {fileID: 507531374}
   ammoGUI: {fileID: 1088193630}
   enemyCounter: {fileID: 247720298}
   warningGUI: {fileID: 581524345}
   roundWarning: {fileID: 1945098443}
-  resume: {fileID: 1385989236}
-  options: {fileID: 313026426}
-  saveAndExit: {fileID: 928810439}
-  exitToWindows: {fileID: 317788012}
-  exitToMenu: {fileID: 1637015308}
   cameraEffect: {fileID: 1272390910}
   motionBlur: {fileID: 1272390912}
   imageEffectActive: 0
   imageDistortTime: 1.20000005
-  pauseMenu: {fileID: 988445320}
-  menuNavigator: 1
-  lowOpacity: {r: 0, g: 0, b: 0, a: 0}
-  normalOpacity: {r: 0, g: 0, b: 0, a: 0}
-  canUp: 0
-  canDown: 0
-  letUp: 0
-  letDown: 0
-  timerUpDown: 0
 --- !u!114 &353553923
 MonoBehaviour:
   m_ObjectHideFlags: 0

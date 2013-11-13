@@ -6175,8 +6175,6 @@ MonoBehaviour:
   bloom: {fileID: 286631133}
   pass: {fileID: 1273613764}
   textopass: {fileID: 1273613767}
-  tigers: 
-  passletter: 
   enable: 0
   rotateleft: {fileID: 393000775}
   rotateright: {fileID: 1281511780}

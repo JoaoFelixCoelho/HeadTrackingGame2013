@@ -13,8 +13,8 @@ public class KeyboardScript : MonoBehaviour {
 	private float tickRate;
 	public GameObject pass;
 	public TextMesh textopass;	
-	public string tigers= "tigers123";
-	public string passletter;
+	private string tigers= "tigers";
+	private string passletter;
 	private int i,o;
 	
 	private bool animPlaying = false;
@@ -43,9 +43,13 @@ public class KeyboardScript : MonoBehaviour {
 		Timer ();
 		if (tick && textopass.text.Length < 9 && enable){
 			textopass.text += "*";
-			//passletter=tigers[o].ToString();
-			//ransform.FindChild(passletter).animation.Play(passletter+"Key");
+			audio.Play();
+			if (o<6){
+			passletter=tigers[o].ToString();
+			transform.FindChild(passletter).animation.Play(passletter+"Key");
 			o+=1;
+				print(o);
+			}
 		}
 		else if (textopass.text.Length == 9){
 			if (!animPlaying) {
@@ -109,7 +113,9 @@ public class KeyboardScript : MonoBehaviour {
 
 		if (bloom.walkAnimOver){
 			Password ();
+			 press ();
 		}
-        press ();
+	
+       
 	}
 }
