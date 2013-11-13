@@ -7,6 +7,7 @@ public static class Configuration{
 	private static string [] configLines;
 	public static int cameraWiiMote  = 1;
 	public static int pointerWiiMote = 0;
+	public static string difficulty = "easy";
 
 	public static void readConfig() {
 		

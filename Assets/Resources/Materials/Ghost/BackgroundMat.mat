@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: robocop_gun
-  m_Shader: {fileID: 10, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: BackgroundMat
+  m_Shader: {fileID: 30, guid: 0000000000000000e000000000000000, type: 0}
   m_ShaderKeywords: []
   m_SavedProperties:
     serializedVersion: 2
@@ -16,7 +16,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: d32b1669c7b51de45a52827770af00ae, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -35,4 +35,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .23880595, g: .23880595, b: .23880595, a: 0}
+        second: {r: 0, g: 0, b: 0, a: .4627451}

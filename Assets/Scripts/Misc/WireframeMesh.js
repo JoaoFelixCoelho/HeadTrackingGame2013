@@ -19,6 +19,8 @@ private var lineMaterial : Material;
 
 private var meshRenderer : SkinnedMeshRenderer;
 
+public var meshMat: Material;
+public var lineMat : Material;
  
 
 function Start ()
@@ -29,17 +31,17 @@ function Start ()
 
     //if(!meshRenderer) meshRenderer = gameObject.AddComponent(MeshRenderer);
 
-    meshRenderer.material = new Material("Shader \"Lines/Background\" { Properties { _Color (\"Main Color\", Color) = (1,1,1,1) } SubShader { Pass {" + (ZWrite ? " ZWrite on " : " ZWrite off ") + (blend ? " Blend SrcAlpha OneMinusSrcAlpha" : " ") + (AWrite ? " Colormask RGBA " : " ") + "Lighting Off Offset 1, 1 Color[_Color] }}}");
+    //meshRenderer.material = new Material("Shader \"Lines/Background\" { Properties { _Color (\"Main Color\", Color) = (1,1,1,1) } SubShader { Pass {" + (ZWrite ? " ZWrite on " : " ZWrite off ") + (blend ? " Blend SrcAlpha OneMinusSrcAlpha" : " ") + (AWrite ? " Colormask RGBA " : " ") + "Lighting Off Offset 1, 1 Color[_Color] }}}");
+
+    meshRenderer.material = meshMat;
+ 	lineMaterial = lineMat;
+    //lineMaterial = new Material("Shader \"Lines/Colored Blended\" { SubShader { Pass { Blend SrcAlpha OneMinusSrcAlpha ZWrite Off Cull Front Fog { Mode Off } } } }");
 
     
 
-    lineMaterial = new Material("Shader \"Lines/Colored Blended\" { SubShader { Pass { Blend SrcAlpha OneMinusSrcAlpha ZWrite Off Cull Front Fog { Mode Off } } } }");
+    /*lineMaterial.hideFlags = HideFlags.HideAndDontSave;
 
-    
-
-    lineMaterial.hideFlags = HideFlags.HideAndDontSave;
-
-    lineMaterial.shader.hideFlags = HideFlags.HideAndDontSave;
+    lineMaterial.shader.hideFlags = HideFlags.HideAndDontSave;*/
 
    
 
@@ -81,7 +83,6 @@ function OnRenderObject()
 
 {   
 
-    meshRenderer.material.color = backgroundColor;
 
     lineMaterial.SetPass(0);
 

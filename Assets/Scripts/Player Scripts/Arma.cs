@@ -32,7 +32,7 @@ public class Arma : MonoBehaviour {
 	GUIText warningTxt;
 
 	public GameObject muzzle;
-	private GameObject modelGameObject;
+	public GameObject modelGameObject;
 	public Material laserMaterial;
 	public float redIncrRate;
 
@@ -206,10 +206,10 @@ public class Arma : MonoBehaviour {
 		updateAmmo();
 		muzzle.SetActive(false);
 		redIncrRate = 5f/overheatLimit;
-		if (weaponModel == WeaponEnum.Rifle) {
-			modelGameObject = transform.FindChild("HandgunModelContainer").gameObject;
+		if (modelGameObject != null) {
 			reloadDelay = modelGameObject.animation["handgunReload"].length;
 		}
+
 		else {
 			reloadDelay = 2f;	
 		}

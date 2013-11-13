@@ -2,12 +2,16 @@ using UnityEngine;
 using System.Collections;
 
 public class MenuHoverController : MonoBehaviour {
+	public bool usesShader;
 	public Shader glowShader;
-	private Shader diffuseShader;
+	private Shader originalShader;
 	//private Color originalColor;
 	public GameObject [] buttons;
-	int selectedButton = 1;
+	public GameObject backMenu;
+	public int selectedButton = 1;
 	float buttonDownTimer = 0f;
+	public bool accessible, isRoot;
+	Color originalColor, glowColor;
 	
 	//public bool mouse;
 	//public Texture2D mira;
@@ -16,8 +20,16 @@ public class MenuHoverController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Configuration.readConfig();
-		diffuseShader = Shader.Find("Transparent/Bumped Diffuse");
-		buttons[0].renderer.material.shader = glowShader;
+		if(usesShader) {
+			originalShader = buttons[0].renderer.material.shader;
+			buttons[0].renderer.material.shader = glowShader;
+		} 
+		else {
+			glowColor = new Color(buttons[0].renderer.material.color.r, buttons[0].renderer.material.color.g, buttons[0].renderer.material.color.b, 255);
+			originalColor = buttons[0].renderer.material.color;
+			buttons[0].renderer.material.color = glowColor;
+		}
+		
 	}
 	
 	void Update() {
@@ -30,6 +42,15 @@ public class MenuHoverController : MonoBehaviour {
 		bool upKey   = Input.GetKey(KeyCode.UpArrow);
 		bool enterKey = Input.GetKey(KeyCode.Return);
 		
+		bool backKey = Input.GetKey(KeyCode.Backspace);
+		bool buttonB = WiiMote.wiimote_getButtonB(Configuration.pointerWiiMote);
+
+		
+		if (backKey && !isRoot || buttonB && !isRoot) {
+			navigateTo(backMenu);	
+		}		
+		
+		
 		buttonDownTimer += Time.deltaTime;
 		
 		if (downBtn||downKey) {
@@ -37,10 +58,22 @@ public class MenuHoverController : MonoBehaviour {
 				if (selectedButton + 1 <= buttons.Length) {
 					
 					for (int i=0; i < buttons.Length; i++) {
-						buttons[i].renderer.material.shader = diffuseShader;
+						if(usesShader) {
+							buttons[i].renderer.material.shader = originalShader;
+						}
+						else {
+							buttons[i].renderer.material.color = originalColor;
+						}
+						
 					}				
 					selectedButton ++;	
-					buttons[selectedButton-1].renderer.material.shader = glowShader;
+					if (usesShader) {
+						buttons[selectedButton-1].renderer.material.shader = glowShader;
+					}
+					else {
+						buttons[selectedButton-1].renderer.material.color = glowColor;
+					
+					}
 					buttonDownTimer = 0f;
 				}
 				
@@ -53,20 +86,48 @@ public class MenuHoverController : MonoBehaviour {
 				if (selectedButton > 1) {
 					
 					for (int i=0; i < buttons.Length; i++) {
-						buttons[i].renderer.material.shader = diffuseShader;
-					}
+						if(usesShader) {
+							buttons[i].renderer.material.shader = originalShader;
+						}
+						else {
+							buttons[i].renderer.material.color = originalColor;
+						}
+						
+					}	
 					selectedButton --;	
-					buttons[selectedButton-1].renderer.material.shader = glowShader;
+					if (usesShader) {
+						buttons[selectedButton-1].renderer.material.shader = glowShader;
+					}
+					else {
+						buttons[selectedButton-1].renderer.material.color = glowColor;
+					
+					}
 					buttonDownTimer = 0f;
 				}
 			}
 		}
 		
 		if (isA||enterKey) {
-			buttons[selectedButton-1].GetComponent<Menu>().checkButton();	
+			if (accessible) {
+				if(buttons[selectedButton-1].GetComponent<Menu>().checkButton() != null) {
+					navigateTo(buttons[selectedButton-1].GetComponent<Menu>().checkButton());	
+				}
+			}	
+			
 		}
 	}
-
+	
+	
+	private void navigateTo(GameObject container) {
+		
+		/*for (int i=0; i< transform.childCount; i++) {
+			transform.GetChild(i).gameObject.SetActive(visib);
+		}*/
+		container.SetActive(true);
+		gameObject.SetActive(false);
+		
+			
+	}
 	
 	
 	
@@ -86,7 +147,7 @@ public class MenuHoverController : MonoBehaviour {
 		}
 	
 		for (int i=0; i < buttons.Length; i++) {
-			buttons[i].renderer.material.shader = diffuseShader;
+			buttons[i].renderer.material.shader = originalShader;
 		}		
 		Debug.DrawRay(transform.position, fwd *100);
 		RaycastHit hit;
@@ -129,7 +190,7 @@ public class MenuHoverController : MonoBehaviour {
 		
 		else {
 			for (int i=0 ; i < gameObject.transform.childCount ; i++) {
-				transform.GetChild(i).renderer.material.shader = diffuseShader;
+				transform.GetChild(i).renderer.material.shader = originalShader;
 			}
 		}
 		

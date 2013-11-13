@@ -34,9 +34,9 @@ public class HSController : MonoBehaviour
         WWW hs_get = new WWW(highscoreURL);
 		yield return  hs_get;
 		data = hs_get.text;
- 
         if (hs_get.error != null)
         {
+			data = "error";
             print("Error: " + hs_get.error);
         }
 		

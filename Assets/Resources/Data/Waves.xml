@@ -5,10 +5,7 @@
 
 	<round n="1">
 		<destiny>1</destiny>
-		<type>
-			<subtype rate ="80">flubber</subtype>
-			<subtype rate ="20">zombie</subtype>
-		</type>
+		<type>ghost</type>
 		<interval>1.7</interval>
 		<spawnWeapon>2</spawnWeapon>
 	</round>

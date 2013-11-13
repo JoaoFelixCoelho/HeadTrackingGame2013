@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
+
+
 public class PauseMenuScript : MonoBehaviour {
 	public GameObject pauseMenu;
 	
@@ -11,6 +13,8 @@ public class PauseMenuScript : MonoBehaviour {
 	public GUIText exitToWindows;
 	public GUIText exitToMenu;
 	
+	
+	public GameObject optionsContainer;
 	
 	
 	
@@ -79,9 +83,13 @@ public class PauseMenuScript : MonoBehaviour {
 			case 1:
 				pauseGame();
 			break;
+			case 2:
+				openOptionMenu();
+				break;
 			case 3:
 				StartCoroutine(RoundManager.dbController.PostScores(PlayerBehave.playerName, PlayerBehave.score));
 				pauseGame();
+				Round.number = 0;
 				Application.LoadLevel(0);
 				break;
 			case 4:
@@ -169,6 +177,17 @@ public class PauseMenuScript : MonoBehaviour {
 		exitToWindows.material.color = lowOpacity;
 	}
 	
+	private void openOptionMenu() {
+		resume.enabled = false;
+		options.enabled = false;
+		saveAndExit.enabled = false;
+		exitToMenu.enabled = false;
+		exitToWindows.enabled = false;		
+		optionsContainer.SetActive(true);
+			
+	}
+	
+	
 	// Update is called once per frame
 	void Update () {
 		bool isEsc = Input.GetKeyDown(KeyCode.Escape);
@@ -176,6 +195,7 @@ public class PauseMenuScript : MonoBehaviour {
 		bool isMinus = WiiMote.wiimote_getButtonMinus(Configuration.pointerWiiMote);
 		
 		if (menuOpen){
+
 			selectOption();
 			
 		} 
