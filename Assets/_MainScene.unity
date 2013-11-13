@@ -599,6 +599,53 @@ Transform:
   - {fileID: 1866563422}
   - {fileID: 1724825138}
   m_Father: {fileID: 853448142}
+--- !u!1 &313026424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 313026425}
+  - 132: {fileID: 313026426}
+  m_Layer: 0
+  m_Name: OptionsText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &313026425
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 313026424}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .5, y: .922472775, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 988445321}
+--- !u!132 &313026426
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 313026424}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Options
+  m_Anchor: 1
+  m_Alignment: 1
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 0
+  m_Font: {fileID: 12800000, guid: 9a252611c5e6ec542aef3e3152621143, type: 3}
+  m_Material: {fileID: 0}
+  m_FontSize: 47
+  m_FontStyle: 0
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &317788010
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,7 +669,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 317788010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .5, y: .400000006, z: 1}
+  m_LocalPosition: {x: .5, y: .922472775, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 988445321}
@@ -634,13 +681,13 @@ GUIText:
   m_GameObject: {fileID: 317788010}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: Exit
+  m_Text: Exit to Windows
   m_Anchor: 1
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
   m_TabSize: 0
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: 9a252611c5e6ec542aef3e3152621143, type: 3}
   m_Material: {fileID: 0}
   m_FontSize: 47
   m_FontStyle: 0
@@ -868,11 +915,24 @@ MonoBehaviour:
   enemyCounter: {fileID: 247720298}
   warningGUI: {fileID: 581524345}
   roundWarning: {fileID: 1945098443}
+  resume: {fileID: 1385989236}
+  options: {fileID: 313026426}
+  saveAndExit: {fileID: 928810439}
+  exitToWindows: {fileID: 317788012}
+  exitToMenu: {fileID: 1637015308}
   cameraEffect: {fileID: 1272390910}
   motionBlur: {fileID: 1272390912}
   imageEffectActive: 0
   imageDistortTime: 1.20000005
   pauseMenu: {fileID: 988445320}
+  menuNavigator: 1
+  lowOpacity: {r: 0, g: 0, b: 0, a: 0}
+  normalOpacity: {r: 0, g: 0, b: 0, a: 0}
+  canUp: 0
+  canDown: 0
+  letUp: 0
+  letDown: 0
+  timerUpDown: 0
 --- !u!114 &353553923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1579,7 +1639,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 928810437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .5, y: .600000024, z: 1}
+  m_LocalPosition: {x: .5, y: .922472775, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 988445321}
@@ -1591,13 +1651,13 @@ GUIText:
   m_GameObject: {fileID: 928810437}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: End and save to Highscores
+  m_Text: Save Score & Quit
   m_Anchor: 1
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
   m_TabSize: 0
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: 9a252611c5e6ec542aef3e3152621143, type: 3}
   m_Material: {fileID: 0}
   m_FontSize: 47
   m_FontStyle: 0
@@ -1611,7 +1671,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 988445321}
-  - 114: {fileID: 988445322}
   m_Layer: 0
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -1631,19 +1690,11 @@ Transform:
   m_Children:
   - {fileID: 507531373}
   - {fileID: 1385989237}
+  - {fileID: 1637015307}
+  - {fileID: 313026425}
   - {fileID: 317788011}
   - {fileID: 928810438}
   m_Father: {fileID: 0}
---- !u!114 &988445322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 988445320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e4f4cdc8a4a0f64f8d4c0bd77a72853, type: 3}
-  m_Name: 
 --- !u!1 &1040878313
 GameObject:
   m_ObjectHideFlags: 0
@@ -2207,7 +2258,7 @@ GUIText:
   m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
   m_TabSize: 0
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: 9a252611c5e6ec542aef3e3152621143, type: 3}
   m_Material: {fileID: 0}
   m_FontSize: 47
   m_FontStyle: 0
@@ -2220,7 +2271,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1385989235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .5, y: .800000012, z: 0}
+  m_LocalPosition: {x: .5, y: .922472775, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 988445321}
@@ -3476,6 +3527,53 @@ Transform:
   m_Children:
   - {fileID: 1386686747}
   m_Father: {fileID: 59827351}
+--- !u!1 &1637015306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1637015307}
+  - 132: {fileID: 1637015308}
+  m_Layer: 0
+  m_Name: ExitToMenuText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1637015307
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1637015306}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .5, y: .922472775, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 988445321}
+--- !u!132 &1637015308
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1637015306}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Exit to Menu
+  m_Anchor: 1
+  m_Alignment: 1
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 0
+  m_Font: {fileID: 12800000, guid: 9a252611c5e6ec542aef3e3152621143, type: 3}
+  m_Material: {fileID: 0}
+  m_FontSize: 47
+  m_FontStyle: 0
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &1688868518
 GameObject:
   m_ObjectHideFlags: 0
