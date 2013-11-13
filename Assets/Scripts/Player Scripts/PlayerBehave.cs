@@ -15,16 +15,10 @@ public class PlayerBehave : MonoBehaviour {
 	#endregion
 	
 	#region GUIs
-	public GUITexture background;
 	public GUIText ammoGUI;
 	public GUIText enemyCounter;
 	public GUIText warningGUI;
 	public GUIText roundWarning;
-	public GUIText resume;
-	public GUIText options;
-	public GUIText saveAndExit;
-	public GUIText exitToWindows;
-	public GUIText exitToMenu;
 	#endregion
 
 	
@@ -35,18 +29,6 @@ public class PlayerBehave : MonoBehaviour {
 	private float ieTimer = 0;
 	public float imageDistortTime = 1.2f;
 	private float chromaticRate = 90f;
-	#endregion
-	
-	
-	#region menuAttrs
-	public GameObject pauseMenu;
-	private bool menuOpen;
-	private bool pauseCheck = false;
-	public int menuNavigator=1;
-	public Color lowOpacity;
-	public Color normalOpacity;
-	public bool canUp=false, canDown = false, letUp, letDown;
-	public float timerUpDown;
 	#endregion
 	
 	#region others
@@ -64,14 +46,6 @@ public class PlayerBehave : MonoBehaviour {
 		else {
 			weapon = laser.GetComponent<Arma>();
 		}
-		//this.currHp = totalHp;
-		lowOpacity = new Color (resume.font.material.color.r, resume.font.material.color.g, resume.font.material.color.b,0.1f);
-		normalOpacity = new Color (resume.font.material.color.r, resume.font.material.color.g, resume.font.material.color.b,1f);
-		resume.material.color = normalOpacity;
-		options.material.color = lowOpacity;
-		saveAndExit.material.color = lowOpacity;
-		exitToMenu.material.color = lowOpacity;
-		exitToWindows.material.color = lowOpacity;
 	}
 	
 	public void addAmmo(int cant){
