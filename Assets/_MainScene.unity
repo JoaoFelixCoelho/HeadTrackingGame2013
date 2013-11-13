@@ -774,6 +774,7 @@ GameObject:
   - 114: {fileID: 353553922}
   - 114: {fileID: 353553923}
   - 114: {fileID: 353553924}
+  - 114: {fileID: 353553925}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -909,7 +910,6 @@ MonoBehaviour:
   weapon: {fileID: 0}
   kills: 0
   killsInRound: 0
-  aversh: {fileID: 0}
   background: {fileID: 507531374}
   ammoGUI: {fileID: 1088193630}
   enemyCounter: {fileID: 247720298}
@@ -960,6 +960,31 @@ MonoBehaviour:
   m_Name: 
   center: {fileID: 1963972223}
   menu: 0
+--- !u!114 &353553925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 353553916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eb8e587e9199fb46996e5983126c213, type: 3}
+  m_Name: 
+  pauseMenu: {fileID: 988445320}
+  background: {fileID: 507531374}
+  resume: {fileID: 1385989236}
+  options: {fileID: 313026426}
+  saveAndExit: {fileID: 928810439}
+  exitToWindows: {fileID: 317788012}
+  exitToMenu: {fileID: 1637015308}
+  menuNavigator: 1
+  lowOpacity: {r: 0, g: 0, b: 0, a: 0}
+  normalOpacity: {r: 0, g: 0, b: 0, a: 0}
+  canUp: 0
+  canDown: 0
+  letUp: 0
+  letDown: 0
+  timerUpDown: 0
 --- !u!1 &429358630
 GameObject:
   m_ObjectHideFlags: 0
