@@ -6,7 +6,7 @@ using System.Collections;
 public class BlurEffect : MonoBehaviour
 {	
 	/// Blur iterations - larger number means more blur.
-	public int iterations = 3;
+	public float iterations = 3;
 	
 	/// Blur spread for each iteration. Lower values
 	/// give better looking blur, but require more iterations to

@@ -90,9 +90,11 @@ public class PauseMenuScript : MonoBehaviour {
 				StartCoroutine(RoundManager.dbController.PostScores(PlayerBehave.playerName, PlayerBehave.score));
 				pauseGame();
 				Round.number = 0;
+				Time.timeScale = 1f;
 				Application.LoadLevel(0);
 				break;
 			case 4:
+				Time.timeScale = 1f;
 				pauseGame();
 				Application.LoadLevel(0);
 			break;

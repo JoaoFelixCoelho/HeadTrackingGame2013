@@ -15,7 +15,7 @@ public class GlowEffect : MonoBehaviour
 	public float glowIntensity = 1.5f;
 	
 	/// Blur iterations - larger number means more blur.
-	public int blurIterations = 3;
+	public float blurIterations = 3;
 	
 	/// Blur spread for each iteration. Lower values
 	/// give better looking blur, but require more iterations to

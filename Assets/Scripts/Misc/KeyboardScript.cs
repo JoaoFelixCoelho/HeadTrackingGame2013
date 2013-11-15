@@ -8,9 +8,9 @@ public class KeyboardScript : MonoBehaviour {
 	public bool tick;
 	public float tickstart, counter=0;
 	public Bloom_Autowalker bloom;
-	private bool fin = false;
+	private bool fin = false, finteleport = true;
 	
-	private float tickRate;
+	private float tickRate, teleportTimer;
 	public GameObject pass;
 	public TextMesh textopass;	
 	private string tigers= "tigers";
@@ -48,26 +48,35 @@ public class KeyboardScript : MonoBehaviour {
 			passletter=tigers[o].ToString();
 			transform.FindChild(passletter).animation.Play(passletter+"Key");
 			o+=1;
-				print(o);
 			}
 		}
 		else if (textopass.text.Length == 9){
-			if (!animPlaying) {
-				player.GetComponent<CameraMotionBlur>().enabled = true;
-				player.animation.Play();
-				animPlaying = true;
-			}
-			teleportparticles.SetActive(true);
-			rotateleft.animation.Play("RotateLeft");
-			rotateright.animation.Play("RotateRight");
+			player.animation.Play("playerBlurTeleport");
 			counter+=Time.deltaTime;
-			if (counter>rotateleft.animation.clip.length){
-				Application.LoadLevel(2);
+			if (counter>0.18f){
+				player.animation.Stop("playerBlurTeleport");
+				player.GetComponent<BlurEffect>().enabled = true;
+				if (player.GetComponent<Vignetting>().chromaticAberration<292){
+					player.GetComponent<Vignetting>().chromaticAberration+=Time.deltaTime*200.8f;
+					player.GetComponent<Vignetting>().blur+=Time.deltaTime*82;
+					
+				}
+				else if (player.GetComponent<Vignetting>().chromaticAberration>200){
+					player.GetComponent<Vignetting>().blurSpread+=Time.deltaTime*33f;
+					if (player.GetComponent<Vignetting>().blurSpread>45){
+						Application.LoadLevel(2);
+						
+					}
+				}
 			}
 		}
 		
 	}
 	
+	void teleport(){
+		teleportTimer+=Time.deltaTime;
+		player.GetComponent<GlowEffect>().enabled = true;
+	}
 
 	void press(){
 		bool isBackSpace = Input.GetKeyDown(KeyCode.Backspace);
