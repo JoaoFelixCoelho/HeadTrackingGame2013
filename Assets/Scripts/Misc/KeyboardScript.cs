@@ -45,17 +45,22 @@ public class KeyboardScript : MonoBehaviour {
 			textopass.text += "*";
 			audio.Play();
 			if (o<6){
-			passletter=tigers[o].ToString();
-			transform.FindChild(passletter).animation.Play(passletter+"Key");
-			o+=1;
+				passletter=tigers[o].ToString();
+				transform.FindChild(passletter).animation.Play(passletter+"Key");
+				o+=1;
+
 			}
+			player.audio.Play();
+
 		}
 		else if (textopass.text.Length == 9){
-			player.animation.Play("playerBlurTeleport");
+			player.animation.clip = player.animation ["playerBlurTeleport"].clip;
+			player.animation.Play();
 			counter+=Time.deltaTime;
-			if (counter>0.18f){
-				player.animation.Stop("playerBlurTeleport");
-				player.GetComponent<BlurEffect>().enabled = true;
+			if (counter>player.animation.clip.length){
+				player.animation.Stop();
+				Application.LoadLevel(2);
+				/*player.GetComponent<BlurEffect>().enabled = true;
 				if (player.GetComponent<Vignetting>().chromaticAberration<292){
 					player.GetComponent<Vignetting>().chromaticAberration+=Time.deltaTime*200.8f;
 					player.GetComponent<Vignetting>().blur+=Time.deltaTime*82;
@@ -67,7 +72,7 @@ public class KeyboardScript : MonoBehaviour {
 						Application.LoadLevel(2);
 						
 					}
-				}
+				}*/
 			}
 		}
 		
