@@ -13,6 +13,7 @@ public class MenuHoverController : MonoBehaviour {
 	public bool accessible, isRoot;
 	Color originalColor, glowColor;
 	
+	
 	//public bool mouse;
 	//public Texture2D mira;
 	

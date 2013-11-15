@@ -4,7 +4,7 @@
 
 
 	<round n="1">
-		<destiny>1</destiny>
+		<destiny>5</destiny>
 		<type>ghost</type>
 		<interval>1.7</interval>
 		<spawnWeapon>2</spawnWeapon>

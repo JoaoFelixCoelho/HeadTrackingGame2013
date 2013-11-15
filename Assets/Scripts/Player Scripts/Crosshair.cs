@@ -16,15 +16,23 @@ public class Crosshair : MonoBehaviour {
 	private int fireRate;
 	private bool limitChange=false;
 	private bool aversh;
-	
+	public Vector3 limit;
+	private static Vector3 oldPos = new Vector3(1,1,1);
 	
 	void Start () {
 		WiiMote.wiimote_start();
 	}
  	
+	
+	
+	void Update() {
+		gameObject.transform.LookAt(getWiimoteCrosshair());	
+	}
  
 		
 	public static Vector3 getWiimoteCrosshair() {
+		
+
 		
 		float ir_x = WiiMote.wiimote_getIrX(Configuration.pointerWiiMote);
 		float ir_y = WiiMote.wiimote_getIrY(Configuration.pointerWiiMote);	
@@ -33,10 +41,11 @@ public class Crosshair : MonoBehaviour {
 		ir_y = Screen.height - (ir_y * (float) Screen.height / (float)2.0);
 
 		if (ir_x > 0 && ir_y >0) {
+			oldPos = Camera.main.camera.ScreenToWorldPoint(new Vector3(ir_x + 37f, Screen.height * 1.5f - ir_y - 37f , 20));	
 			return Camera.main.camera.ScreenToWorldPoint(new Vector3(ir_x + 37f, Screen.height * 1.5f - ir_y - 37f , 20));	
 		}
 		else {	
-			return new Vector3(1,1,1);
+			return oldPos;
 		}		
 		
 	}
@@ -53,7 +62,6 @@ public class Crosshair : MonoBehaviour {
 			    float temp_y = (float) Screen.height - (((ir_y + (float) 1.0)/ (float)2.0) * (float) Screen.height);
 			    temp_x = Mathf.RoundToInt(temp_x);
 			    temp_y = Mathf.RoundToInt(temp_y);
-				//if ((mira_x != 0) || (mira_y != 0))
 				GUI.DrawTexture ( new Rect (temp_x, temp_y, 64, 64), mira, ScaleMode.ScaleToFit, true, 1.0F);
 		    }
 		}

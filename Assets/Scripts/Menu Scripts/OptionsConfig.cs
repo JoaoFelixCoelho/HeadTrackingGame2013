@@ -8,6 +8,7 @@ public class OptionsConfig : MonoBehaviour {
 	private float keyDownTimer = 0f;
 	
 	
+	
 	// Use this for initialization
 	void Start () {
 		
@@ -22,7 +23,7 @@ public class OptionsConfig : MonoBehaviour {
 		
 		
 		originalText = options[2].GetComponent<TextMesh>().text;
-		options[2].GetComponent<TextMesh>().text = replaceStringWith(originalText, Configuration.difficulty);
+		options[2].GetComponent<TextMesh>().text = replaceStringWith(originalText, Configuration.difficulty.ToString());
 
 	}
 	
@@ -67,7 +68,7 @@ public class OptionsConfig : MonoBehaviour {
 					Configuration.cameraWiiMote  = optionValue + sign -1;
 					break;
 				case 2:
-					Configuration.difficulty = "easy";
+					Configuration.difficulty = optionValue + sign -1;
 					break;
 					
 				}
@@ -82,6 +83,27 @@ public class OptionsConfig : MonoBehaviour {
 	
 	
 	private string replaceStringWith(string oldText, string newValue) {
+		string firstOldText = (oldText.Split('<'))[0].ToString();
+		firstOldText = firstOldText.Substring(0,10);
+		print(firstOldText);
+		if(firstOldText=="Difficulty"){
+			
+			switch (int.Parse(newValue)) {
+			case 1:
+				newValue = "Easy";
+				break;
+			case 2:
+				newValue = "Normal";
+				break;
+			case 3:
+				newValue = "Hard";
+				break;
+			case 4:
+				newValue = "Impossible";
+				break;
+				
+			}
+		}
 		return (oldText.Split('<'))[0].ToString() + "<" + newValue + ">";		
 	}
 	

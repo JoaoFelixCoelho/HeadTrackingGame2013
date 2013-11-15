@@ -4,8 +4,8 @@ using System.Collections;
 public class HSController : MonoBehaviour
 {
     private string secretKey = "martha";
-    public string addScoreURL = "http://localhost/score/addscore.php?";
-    public string highscoreURL = "http://localhost/score/display.php";
+    public string addScoreURL = "http://localhost:8080/score/addscore.php?";
+    public string highscoreURL = "http://localhost:8080/score/display.php";
 	private bool sentScores = false;
 	public string data;
  

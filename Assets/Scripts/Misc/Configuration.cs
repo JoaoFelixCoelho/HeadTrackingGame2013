@@ -7,7 +7,7 @@ public static class Configuration{
 	private static string [] configLines;
 	public static int cameraWiiMote  = 1;
 	public static int pointerWiiMote = 0;
-	public static string difficulty = "easy";
+	public static int difficulty = 1;
 
 	public static void readConfig() {
 		
@@ -23,7 +23,11 @@ public static class Configuration{
 			}
 			if (lineAttr[0].ToString() == "cameraWiiMote") {
 				cameraWiiMote = int.Parse(lineAttr[1].ToString());	
-			}			
+			}	
+			
+			if (lineAttr[0].ToString() == "difficulty") {
+				difficulty = int.Parse(lineAttr[1].ToString());	
+			}				
 			
 		}				
 		
