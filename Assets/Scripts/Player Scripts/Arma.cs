@@ -70,7 +70,7 @@ public class Arma : MonoBehaviour {
 						WiiMote.wiimote_rumble(Configuration.pointerWiiMote, (float)0.073);
 					}			
 					else if (overheatCount>overheatLimit){
-						WiiMote.wiimote_rumble(Configuration.pointerWiiMote, (float)2);
+						WiiMote.wiimote_rumble(Configuration.pointerWiiMote, (float)1.5);
 					}
 					else if (weaponModel == WeaponEnum.Rifle)
 					{
@@ -219,7 +219,7 @@ public class Arma : MonoBehaviour {
 	void Update () {
 		
 		if (player.weapon == this) {
-			gameObject.transform.LookAt(Crosshair.getWiimoteCrosshair());
+			
 		}
 		
 		

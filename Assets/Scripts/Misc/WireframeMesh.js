@@ -22,6 +22,10 @@ private var meshRenderer : SkinnedMeshRenderer;
 public var meshMat: Material;
 public var lineMat : Material;
  
+public function disableYourself() {
+	this.enabled = false;
+}
+
 
 function Start ()
 

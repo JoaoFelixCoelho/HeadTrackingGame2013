@@ -15,6 +15,7 @@ public class PauseMenuScript : MonoBehaviour {
 	
 	
 	public GameObject optionsContainer;
+	public GUIText pointerOption, cameraOption, difficultyOption;
 	
 	
 	
@@ -53,6 +54,15 @@ public class PauseMenuScript : MonoBehaviour {
 		exitToWindows.pixelOffset = new Vector2(0,exitToMenu.pixelOffset.y-saveAndExit.fontSize-spacing);
 		
 	} 
+	public void resizeOptionsGui(){
+		print ("forro");
+	//	optionsContainer.GetComponent<MenuHoverController>().enabled = true;
+		float spacing = Screen.height/10;
+		pointerOption.pixelOffset = new Vector2(0,0+resume.fontSize);
+		cameraOption.pixelOffset = new Vector2(0,pointerOption.pixelOffset.y-cameraOption.fontSize-spacing);
+		difficultyOption.pixelOffset = new Vector2(0,cameraOption.pixelOffset.y-cameraOption.fontSize-spacing);
+		
+	} 
 	
 	public void selectOption(){
 		bool isUp = Input.GetKeyDown(KeyCode.UpArrow);
@@ -84,9 +94,12 @@ public class PauseMenuScript : MonoBehaviour {
 				pauseGame();
 			break;
 			case 2:
+				optionsContainer.SetActive(true);
+				resizeOptionsGui();
 				openOptionMenu();
 				break;
 			case 3:
+				
 				StartCoroutine(RoundManager.dbController.PostScores(PlayerBehave.playerName, PlayerBehave.score));
 				pauseGame();
 				Round.number = 0;

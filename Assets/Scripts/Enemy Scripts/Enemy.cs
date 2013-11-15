@@ -103,9 +103,34 @@ public class Enemy : MonoBehaviour{
 	
 	
 	public void markAsDead() {
-		Destroy(Instantiate(dieParticles, transform.position, transform.rotation),1.2f);
-		explodeMesh();
+		if(type != "ghost") {
+			Destroy(Instantiate(dieParticles, transform.position, transform.rotation),1.2f);
+			explodeMesh();
+		}
+		else {
+			dissolveMesh();	
+		}
 	}
+	
+	private void dissolveMesh() {
+		if(type == "ghost") {
+			GameObject man = gameObject.transform.FindChild("Model").transform.FindChild("Man").gameObject;
+			man.SendMessage("disableYourself");
+			Texture newTex = (Texture) Resources.Load("Materials/Textures/DissolveAfter");
+			man.renderer.material.mainTexture = newTex;
+		}
+		gameObject.animation.clip = gameObject.animation["EnemyDissolve"].clip;
+		gameObject.animation.Play();
+		Destroy(gameObject,gameObject.animation.clip.length+0.2f);
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	private void explodeMesh () {
