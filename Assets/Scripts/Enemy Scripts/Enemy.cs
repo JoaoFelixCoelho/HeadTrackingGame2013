@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour{
 	
 	#region Stats
 	
+	
 	public static Enemy createEnemy(string type, int round, Transform currSpawn, int firstGrid) {	
 		
 		GameObject enemyGameObject;

@@ -62,6 +62,7 @@ public class OptionsConfig : MonoBehaviour {
 				switch(menu.selectedButton-1) {
 				case 0:
 					Configuration.pointerWiiMote = optionValue + sign -1;
+					print(Configuration.pointerWiiMote);
 					break;
 				case 1:
 					Configuration.cameraWiiMote  = optionValue + sign -1;

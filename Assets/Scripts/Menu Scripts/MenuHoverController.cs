@@ -47,6 +47,7 @@ public class MenuHoverController : MonoBehaviour {
 
 		
 		if (backKey && !isRoot || buttonB && !isRoot) {
+			Configuration.saveConfig();
 			navigateTo(backMenu);	
 		}		
 		

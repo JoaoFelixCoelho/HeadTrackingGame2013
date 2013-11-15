@@ -39,6 +39,9 @@ public class PlayerBehave : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		Configuration.cameraWiiMote = 0;
+		print(Configuration.cameraWiiMote);
+
 		this.kills=0;
 		if (handgun.activeSelf) {
 			weapon = handgun.GetComponent<Arma>();

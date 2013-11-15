@@ -18,14 +18,15 @@ public class WiiCameraScript: MonoBehaviour {
 		}
 		else{
 			WiiMote.wiimote_start();
+			print(Configuration.cameraWiiMote);
 			X = WiiMote.wiimote_getIrX(Configuration.cameraWiiMote)*10;
 			Y = WiiMote.wiimote_getIrY(Configuration.cameraWiiMote)*10;
-			Z = 100f;
+			Z = 60f;
 			if (X==-1000) {
 				oldVec = transform.position;
 			}
 			else {
-				oldVec = new Vector3(-X, - Y + 1.8f ,Z);
+				oldVec = new Vector3(-X, -Y+1.8f ,Z);
 			}
 		}
 	}
@@ -33,7 +34,6 @@ public class WiiCameraScript: MonoBehaviour {
 	
 	void Update () {
 		MoveCamera();
-		//OnGUI();
 	}
 	
 	void MoveCamera() {
@@ -55,14 +55,14 @@ public class WiiCameraScript: MonoBehaviour {
 			transform.position = new Vector3(0,0,0);
 		}
 		
-		if(X>-9.5f && X<9.5f && Y<0f){
+		if(X>-10f && X<10f && Y<2.5f){
 			if (menu == true){
 				vec = new Vector3(-X, -Y ,0f);
 				gameObject.transform.LookAt(vec);
 			}
 			else{
+				oldVec = new Vector3(-X, -Y+1.8f ,60f);
 				transform.position = oldVec;
-				oldVec = new Vector3(-X, -Y+1.8f ,Z);
 				gameObject.transform.LookAt(center);
 			}
 		}
@@ -71,9 +71,10 @@ public class WiiCameraScript: MonoBehaviour {
 		}	
 	}
 	
-/*	void OnGUI() {
-        GUI.Label(new Rect(10, 50, 300, 300), "Y: "+ Y + "X: " +X);
-    }*/
+	void OnGUI() {
+        GUI.Label(new Rect(10, 50, 300, 300), "X: "+ X + " Y: " +Y);
+		//print( "X: "+ X + " Y: " +Y);
+    }
 }
 
 
