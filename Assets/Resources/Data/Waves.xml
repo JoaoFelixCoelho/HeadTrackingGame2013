@@ -4,8 +4,8 @@
 
 
 	<round n="1">
-		<destiny>5</destiny>
-		<type>ghost</type>
+		<destiny>8</destiny>
+		<type>flubber</type>
 		<interval>1.7</interval>
 		<spawnWeapon>2</spawnWeapon>
 	</round>

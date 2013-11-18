@@ -17,6 +17,11 @@ public class MeleeAttackScript : MonoBehaviour {
 			
 			gameObject.transform.LookAt(playerPos);
 			enemyAttrs.moveForward();
+			
+			if(transform.position.z > Enemy.player.transform.position.z) {
+				gameObject.GetComponent<HealthSystem>().damageHp(9999);	
+			}			
+			
 		}
 	}
 	

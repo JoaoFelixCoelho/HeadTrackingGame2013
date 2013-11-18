@@ -94,7 +94,7 @@ public class AIPathfinding : MonoBehaviour {
 			else {
 				rayDistance = enemyAttrs.attackRange;
 			
-				if(hit.collider.tag == "Player") {
+				if(hit.collider.tag == "Player" || hit.collider.tag == "PlayerCol") {
 					hittingPlayer = true;
 					return false;
 				}
@@ -124,6 +124,9 @@ public class AIPathfinding : MonoBehaviour {
 				moveForwardRect();
 			}
 		} 
+		
+		
+		
 		
 		
 
