@@ -59,7 +59,7 @@ public class RangedAttackScript : MonoBehaviour {
 				
 				//aplicar la accuracy
 				velocityVector.x += Random.Range(-accuracy,accuracy);
-				velocityVector.y += Random.Range(-accuracy/2,accuracy/2);
+				velocityVector.y += Random.Range(-accuracy/4,accuracy/4);
 				velocityVector.z += Random.Range(0,accuracy);
 				tmpProjectile.AddForce(velocityVector.normalized * bulletSpeed);
 				

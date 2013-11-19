@@ -50,7 +50,7 @@ public class KeyboardScript : MonoBehaviour {
 			audio.Play();
 			if (o<6){
 				passletter=tigers[o].ToString();
-				transform.FindChild(passletter).animation.Play(passletter+"Key");
+				transform.FindChild(passletter.ToUpper()).animation.Play(passletter+"Key");
 				o+=1;
 
 			}
@@ -115,8 +115,9 @@ public class KeyboardScript : MonoBehaviour {
 			
 			
 			letter = Input.inputString;
-			if (transform.FindChild(letter)!=null && name.Length<15) {
-				transform.FindChild(letter).animation.Play(letter+"Key");
+
+			if (transform.FindChild(letter.ToUpper() + "001")!=null && name.Length<15) {
+				transform.FindChild(letter.ToUpper() + "001").animation.Play(letter+"Key");
 				name += letter;
 			}
 			textoMonitor.text = name;

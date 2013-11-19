@@ -40,6 +40,17 @@ public class RoundManager : MonoBehaviour {
 		Enemy.numerator = 0;
 		Enemy.current = 0;
 		player.killsInRound = 0;
+		if(Round.number > 0) {
+			int randomRestore = Round.number*10 + Random.Range(20,50);
+			if(player.GetComponent<HealthSystem>().currHp + randomRestore <= player.GetComponent<HealthSystem>().totHp) {
+				player.GetComponent<HealthSystem>().currHp += randomRestore;
+				player.msgGUI.showMsg("Health restored partially");
+			}
+		}
+		else {
+			Camera.main.animation.Play("playerSpawn");	
+		}
+		
 		waveDeltaTime = 0f;
 		Round.next();	
 		updateEnemiesLeft();

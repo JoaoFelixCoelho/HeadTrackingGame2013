@@ -28,7 +28,7 @@ public class HealthSystem : MonoBehaviour {
 			
 			if (type == Type.Enemy && !isDead) {
 				enemyAttrs.markAsDead();
-				player.addKill();
+				player.addKill(enemyAttrs.type);
 				roundManager.killOne();				
 			}
 			

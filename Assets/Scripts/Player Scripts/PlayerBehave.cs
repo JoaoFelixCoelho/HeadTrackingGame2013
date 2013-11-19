@@ -19,6 +19,7 @@ public class PlayerBehave : MonoBehaviour {
 	public GUIText enemyCounter;
 	public GUIText warningGUI;
 	public GUIText roundWarning;
+	public QuickMessage msgGUI;
 	#endregion
 
 	
@@ -63,16 +64,37 @@ public class PlayerBehave : MonoBehaviour {
 	}
 	
 	public void killPlayer () {
+		gameObject.GetComponent<WiiCameraScript>().enabled = false;
+		this.weapon.enabled = false;
 		sendMessageToPlayer("Game Over!", "warning");
+		transform.FindChild("Main Camera").animation.Play("playerDie");
 		StartCoroutine(RoundManager.dbController.PostScores(PlayerBehave.playerName, PlayerBehave.score));	
-		//transform.FindChild("Main Camera").animation.Play("playerDie");
 	}
 	
-	public void addKill() {
+	public void addKill(string enemyType) {
 		this.kills++;
 		this.killsInRound++;
-		//meter algoritmo de medina
-		PlayerBehave.score += 10 * Round.number + Random.Range(0,Round.number+kills);
+		int extra = 0;
+		int extra2 = 0;
+		if(enemyType == "zombie") {
+			extra = Random.Range(10,30);	
+		}
+		if(enemyType == "flubber") {
+			extra = Random.Range(30,40);	
+		}		
+		if(enemyType == "spider") {
+			extra = Random.Range(50,70);	
+		}
+		if(enemyType == "ghost") {
+			extra = Random.Range(70,100);	
+		}
+		
+		if(GetComponent<HealthSystem>().currHp > GetComponent<HealthSystem>().totHp/2) {
+			extra2 = 50;	
+		}
+		
+		
+		PlayerBehave.score += 10 * Round.number + extra + extra2;
 	}
 	
 	public void cambioArma () {

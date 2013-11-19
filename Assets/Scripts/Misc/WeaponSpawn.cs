@@ -42,6 +42,7 @@ public class WeaponSpawn : MonoBehaviour {
 				gameObject.collider.enabled = false;
 				gameObject.transform.parent = Enemy.player.transform.FindChild("Main Camera");
 				tmpPlayer.cambioArma();
+				tmpPlayer.msgGUI.showMsg("To switch weapons, press the left or right arrow on your wiimote");
 				this.enabled = false;
 			}
 		}
