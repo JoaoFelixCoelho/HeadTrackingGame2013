@@ -1402,6 +1402,18 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 26c03c54eb9b6aa4896b1f3049bd9400, type: 2}
+    - target: {fileID: 2300006, guid: e791d4ff8b36fea4ab5f04b9e7fba5a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c810f870f7f70246be57316953d2f68, type: 2}
+    - target: {fileID: 2300004, guid: e791d4ff8b36fea4ab5f04b9e7fba5a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a02bd547855dd3848b9ca12016b94c9f, type: 2}
+    - target: {fileID: 2300002, guid: e791d4ff8b36fea4ab5f04b9e7fba5a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c810f870f7f70246be57316953d2f68, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e791d4ff8b36fea4ab5f04b9e7fba5a7, type: 3}
   m_RootGameObject: {fileID: 1225133129}
@@ -1606,7 +1618,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: cf76528b8aa1e69479a0236fb294f0e2, type: 2}
+  - {fileID: 2100000, guid: a02bd547855dd3848b9ca12016b94c9f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -2435,7 +2447,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: cf76528b8aa1e69479a0236fb294f0e2, type: 2}
+  - {fileID: 2100000, guid: 5c810f870f7f70246be57316953d2f68, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -3036,7 +3048,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 4c75a36f942e42147836e182c5e736ef, type: 2}
+  - {fileID: 2100000, guid: 5c810f870f7f70246be57316953d2f68, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

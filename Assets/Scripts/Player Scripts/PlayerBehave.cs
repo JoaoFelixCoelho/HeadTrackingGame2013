@@ -64,6 +64,7 @@ public class PlayerBehave : MonoBehaviour {
 	}
 	
 	public void killPlayer () {
+		imageEffectActive = true;
 		gameObject.GetComponent<WiiCameraScript>().enabled = false;
 		this.weapon.enabled = false;
 		sendMessageToPlayer("Game Over!", "warning");

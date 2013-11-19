@@ -160,7 +160,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 2b5c2682d3630d24d80b92ecb3c76981, type: 2}
+  - {fileID: 2100000, guid: bd04df4405bd99443883fb7eac105669, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Name: 
   mira: {fileID: 2800000, guid: 8265c24532c889845a2128f088f9d6eb, type: 3}
   arma: {fileID: 100000}
+  limit: {x: 0, y: 0, z: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,6 +322,7 @@ MonoBehaviour:
   spawnPos: {fileID: 400002}
   proPrefab: {fileID: 5400000, guid: 296098b9f4797e14aad6b6f3491b3a05, type: 2}
   muzzle: {fileID: 100004}
+  modelGameObject: {fileID: 0}
   laserMaterial: {fileID: 2100000, guid: 2b5c2682d3630d24d80b92ecb3c76981, type: 2}
   redIncrRate: 0
 --- !u!114 &11400004
