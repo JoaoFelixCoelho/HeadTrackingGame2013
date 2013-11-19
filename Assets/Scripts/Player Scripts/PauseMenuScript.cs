@@ -15,7 +15,7 @@ public class PauseMenuScript : MonoBehaviour {
 	
 	
 	public GameObject optionsContainer;
-	public GUIText pointerOption, cameraOption, difficultyOption;
+	public GUIText pointerOption, cameraOption, difficultyOption, goBack;
 	
 	
 	
@@ -61,6 +61,7 @@ public class PauseMenuScript : MonoBehaviour {
 		pointerOption.pixelOffset = new Vector2(0,0+resume.fontSize);
 		cameraOption.pixelOffset = new Vector2(0,pointerOption.pixelOffset.y-cameraOption.fontSize-spacing);
 		difficultyOption.pixelOffset = new Vector2(0,cameraOption.pixelOffset.y-cameraOption.fontSize-spacing);
+		goBack.pixelOffset = new Vector2 (0,difficultyOption.pixelOffset.y-difficultyOption.fontSize-spacing);
 		
 	} 
 	
@@ -71,23 +72,7 @@ public class PauseMenuScript : MonoBehaviour {
 		bool isWiiDown = WiiMote.wiimote_getButtonDown(Configuration.pointerWiiMote);
 		bool isWiiUp = WiiMote.wiimote_getButtonUp(Configuration.pointerWiiMote);
 		
-		if (isWiiUp){
-			letUp= true;
-			letUp=false;
-			canUp = true;
-			if (canUp){
-				timerUpDown+=Time.deltaTime;
-				if (timerUpDown>0.5f){
-					letUp=true;
-					timerUpDown=0;
-					letUp=false;
-				}
-			}
-			else { 
-				canUp = false;
-			}
-		}
-		
+	
 		if (isEnter){
 			switch (menuNavigator){
 			case 1:
@@ -97,6 +82,8 @@ public class PauseMenuScript : MonoBehaviour {
 				optionsContainer.SetActive(true);
 				resizeOptionsGui();
 				openOptionMenu();
+				menuNavigator = 7;
+				pointerOption.material.color = normalOpacity;
 				break;
 			case 3:
 				
@@ -121,31 +108,53 @@ public class PauseMenuScript : MonoBehaviour {
 		if (isUp || letUp){
 			menuNavigator-=1;
 			switch (menuNavigator){
-				case 0:
-					menuNavigator=5;
-					resume.material.color = lowOpacity;
-					exitToWindows.material.color = normalOpacity;
+			case 0:
+				menuNavigator=5;
+				resume.material.color = lowOpacity;
+				exitToWindows.material.color = normalOpacity;
 				break;
-				case 1:
-					resume.material.color = normalOpacity;
-					options.material.color = lowOpacity;
-					break;
-				case 2:
-					options.material.color = normalOpacity;
-					saveAndExit.material.color = lowOpacity;
+			case 1:
+				resume.material.color = normalOpacity;
+				options.material.color = lowOpacity;
 				break;
-				case 3:
-					exitToMenu.material.color = lowOpacity;
-					saveAndExit.material.color = normalOpacity;
+			case 2:
+				options.material.color = normalOpacity;
+				saveAndExit.material.color = lowOpacity;
 				break;
-				case 4:
-					exitToWindows.material.color = lowOpacity;
-					exitToMenu.material.color = normalOpacity;
+			case 3:
+				exitToMenu.material.color = lowOpacity;
+				saveAndExit.material.color = normalOpacity;
 				break;
-				case 5:
-					resume.material.color = lowOpacity;
-					exitToWindows.material.color = normalOpacity;
+			case 4:
+				exitToWindows.material.color = lowOpacity;
+				exitToMenu.material.color = normalOpacity;
 				break;
+			case 5:
+				resume.material.color = lowOpacity;
+				exitToWindows.material.color = normalOpacity;
+				break;
+			case 6:
+				menuNavigator=10;
+				pointerOption.material.color = lowOpacity;
+				goBack.material.color = normalOpacity;
+				break;
+			case 7:
+				pointerOption.material.color = normalOpacity;
+				cameraOption.material.color = lowOpacity;
+				break;
+			case 8:
+				difficultyOption.material.color = lowOpacity;
+				cameraOption.material.color = normalOpacity;
+				break;
+			case 9:
+				difficultyOption.material.color = normalOpacity;
+				goBack.material.color = lowOpacity;
+				break;
+			case 10:
+				goBack.material.color = normalOpacity;
+				break;
+				
+					
 			}	
 		}	
 		if (isDown){
@@ -176,6 +185,28 @@ public class PauseMenuScript : MonoBehaviour {
 				resume.material.color = normalOpacity;
 				exitToWindows.material.color = lowOpacity;
 				break;
+				case 7:
+				pointerOption.material.color = normalOpacity;
+				goBack.material.color = lowOpacity;
+				break;
+				case 8:
+				pointerOption.material.color = lowOpacity;
+				cameraOption.material.color = normalOpacity;
+				break;
+				case 9 :
+				cameraOption.material.color = lowOpacity;
+				difficultyOption.material.color = normalOpacity;
+				break;
+				case 10:
+				difficultyOption.material.color = lowOpacity;
+				goBack.material.color = normalOpacity;
+				break;
+				case 11:
+				menuNavigator=7;
+				goBack.material.color=lowOpacity;
+				pointerOption.material.color=normalOpacity;
+				break;
+				
 			}	
 		}
 		//navegar con flechitas

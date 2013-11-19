@@ -261,6 +261,7 @@ Transform:
   - {fileID: 1040096172}
   - {fileID: 284137345}
   - {fileID: 2063129775}
+  - {fileID: 2032089720}
   m_Father: {fileID: 988445321}
 --- !u!1 &59827350
 GameObject:
@@ -643,7 +644,7 @@ GUIText:
   m_GameObject: {fileID: 284137344}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: Exit to Menu
+  m_Text: Pointer option
   m_Anchor: 1
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
@@ -1021,9 +1022,10 @@ MonoBehaviour:
   exitToWindows: {fileID: 317788012}
   exitToMenu: {fileID: 1637015308}
   optionsContainer: {fileID: 55525467}
-  pointerOption: {fileID: 0}
-  cameraOption: {fileID: 0}
-  difficultyOption: {fileID: 0}
+  pointerOption: {fileID: 284137346}
+  cameraOption: {fileID: 1040096173}
+  difficultyOption: {fileID: 2063129776}
+  goBack: {fileID: 2032089721}
   menuNavigator: 1
   lowOpacity: {r: 1, g: 1, b: 1, a: .100000001}
   normalOpacity: {r: 1, g: 1, b: 1, a: 1}
@@ -2028,7 +2030,7 @@ GUIText:
   m_GameObject: {fileID: 1040096171}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: SOY UN GAY NEGRO VILLERO
+  m_Text: Camera
   m_Anchor: 1
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
@@ -5068,6 +5070,53 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2031259314}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2032089719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2032089720}
+  - 132: {fileID: 2032089721}
+  m_Layer: 0
+  m_Name: Back
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2032089720
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2032089719}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .5, y: .922472775, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 55525468}
+--- !u!132 &2032089721
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2032089719}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Go Back
+  m_Anchor: 1
+  m_Alignment: 1
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 0
+  m_Font: {fileID: 12800000, guid: 9a252611c5e6ec542aef3e3152621143, type: 3}
+  m_Material: {fileID: 935224602}
+  m_FontSize: 47
+  m_FontStyle: 0
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &2048731834
 GameObject:
   m_ObjectHideFlags: 0
@@ -5156,7 +5205,7 @@ GUIText:
   m_GameObject: {fileID: 2063129774}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: Exit to Menu
+  m_Text: Difficulty
   m_Anchor: 1
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
