@@ -8,7 +8,7 @@ public class Bloom_Autowalker : MonoBehaviour {
 	public float fadeTime;
 	public float walkSpeed;
 	private float frameIntensity;
-	private float timerDelta;
+	private float timerDelta = 0f;
 	private bool bloomAnimOver = false;
 	public bool walkAnimOver  = false;
 	private int i=0;
@@ -20,6 +20,7 @@ public class Bloom_Autowalker : MonoBehaviour {
 	public GameObject keyboard;
 	private bool isStepping;
 	private float spc = 0f;
+	public BootComputer bootSystem;
 	
 	private float toScale;
 	private float animTime;
@@ -29,7 +30,6 @@ public class Bloom_Autowalker : MonoBehaviour {
 	
 
 	void Start () {
-	
 		bloom = gameObject.GetComponent<Bloom>();
 		frameIntensity = (bloom.bloomIntensity - toIntensity) / fadeTime;
 		animTime = (1f-toScale) / 0.5f ;
@@ -63,6 +63,7 @@ public class Bloom_Autowalker : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider other){
+		bootSystem.enabled = true;
 		fin = true;
 	}	
 	
@@ -81,14 +82,13 @@ public class Bloom_Autowalker : MonoBehaviour {
 	
 
 	
-	
-	void Update () {
-		if(!bloomAnimOver) {
-			checkInt();
-		}
-		else if (!walkAnimOver) {
-				step();
-		}
+    void Update () {
+            if(!bloomAnimOver) {
+            	checkInt();
+            }
+            else if (!walkAnimOver) {
+            	step();
+            }
 
-	}
+    }
 }

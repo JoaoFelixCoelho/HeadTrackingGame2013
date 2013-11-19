@@ -2,9 +2,11 @@ using UnityEngine;
 using System.Collections;
 
 public class KeyboardScript : MonoBehaviour {
+	
 	private string letter;
 	public string name;
-	public TextMesh textoMonitor;
+	public GameObject monitor;
+	private TextMesh textoMonitor;
 	public bool tick;
 	public float tickstart, counter=0;
 	public Bloom_Autowalker bloom;
@@ -16,10 +18,11 @@ public class KeyboardScript : MonoBehaviour {
 	private string tigers= "tigers";
 	private string passletter;
 	private int i,o;
+	private bool anim= false;
 	
 	private bool animPlaying = false;
 	public bool enable=false;
-	public GameObject rotateleft, rotateright,teleportparticles, player;
+	public GameObject rotateleft, rotateright,teleportparticles, player, passTitle;
 	
 
 	
@@ -36,6 +39,7 @@ public class KeyboardScript : MonoBehaviour {
 		bool isReturn = Input.GetKeyDown(KeyCode.Return);
 		bool isEnter = Input.GetKeyDown(KeyCode.KeypadEnter);
 		if (isEnter||isReturn){
+			passTitle.SetActive(true);
 			enable=true;
 			PlayerBehave.playerName= textoMonitor.text;	
 			//cambiar esto de lugar
@@ -50,12 +54,16 @@ public class KeyboardScript : MonoBehaviour {
 				o+=1;
 
 			}
-			player.audio.Play();
 
 		}
 		else if (textopass.text.Length == 9){
-			player.animation.clip = player.animation ["playerBlurTeleport"].clip;
-			player.animation.Play();
+			if(!anim){
+				anim = true;
+				monitor.animation.Play();
+				player.audio.Play();
+				player.animation.clip = player.animation ["playerBlurTeleport"].clip;
+				player.animation.Play();
+			}
 			counter+=Time.deltaTime;
 			if (counter>player.animation.clip.length){
 				player.animation.Stop();
@@ -118,7 +126,7 @@ public class KeyboardScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		textoMonitor = monitor.transform.FindChild("_Name").gameObject.GetComponent<TextMesh>();
 	}
 	
 	

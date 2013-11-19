@@ -17,8 +17,6 @@ public class PauseMenuScript : MonoBehaviour {
 	public GameObject optionsContainer;
 	public GUIText pointerOption, cameraOption, difficultyOption, goBack;
 	
-	
-	
 	private bool menuOpen;
 	private bool pauseCheck = false;
 	//public enum MenuEnum {Continue = 1, Options=2, SaveAndExit=3, ExitToMenu=4, ExitToWindows=5};

@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 pointerWiiMote = 1;
 cameraWiiMote  = 0;
 difficulty  = easy;
-=======
-pointerWiiMote = 0;
-cameraWiiMote  = 1;
-difficulty  = 1;
->>>>>>> 11fc88e82bbb77338ab10efdeebba5b493d237db
+
