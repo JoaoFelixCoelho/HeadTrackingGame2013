@@ -753,7 +753,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 286631126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.36021519, z: 7.8221221}
+  m_LocalPosition: {x: 0, y: -3.36021519, z: .955423355}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -774,10 +774,10 @@ MonoBehaviour:
   amplitud: .0949999988
   frecuencia: .99000001
   footsteps:
-  - {fileID: 8300000, guid: 52e8785d485570848b2bab7da20efec4, type: 3}
-  - {fileID: 8300000, guid: 6131d95ea00dd9f47ae9843045d09b52, type: 3}
-  - {fileID: 8300000, guid: f8baf3a6d9d17fb4491217411317b222, type: 3}
-  - {fileID: 8300000, guid: f8567826243f0f043b84f82b3668072d, type: 3}
+  - {fileID: 8300000, guid: db3b7763bbd43a646b76f99bdbc98696, type: 3}
+  - {fileID: 8300000, guid: 70fdd37e51398a04e84a73c7ba25f9a5, type: 3}
+  - {fileID: 8300000, guid: 254118cf855199b44bb92e26c675fa3b, type: 3}
+  - {fileID: 8300000, guid: 276127a6efefae04082aef40aec91725, type: 3}
   source: {fileID: 286631135}
   keyboard: {fileID: 1419417608}
 --- !u!114 &286631134
