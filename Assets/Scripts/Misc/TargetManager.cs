@@ -16,6 +16,8 @@ public class TargetManager : MonoBehaviour {
 	private int soundsPlayed = 0;
 	private int targetWave   = 1;
 	
+	public MusicPlayer musicPlayer;
+	
 	
 	
 	// Use this for initialization
@@ -27,7 +29,6 @@ public class TargetManager : MonoBehaviour {
 		
 		Transform currTarget = targets[contador - 1].transform.GetChild(0);
 		
-		
   		if (soundsPlayed == contador && !audioSC.isPlaying) {
 		
   			if (animsPlayed == contador) 
@@ -37,7 +38,10 @@ public class TargetManager : MonoBehaviour {
 					Destroy(currTarget.transform.parent.gameObject);
 					contador ++;
 					if(contador > targets.Length) {
-						gameObject.GetComponent<RoundManager>().startNewRound();
+						audioSC.clip = clips[contador-1];
+						audioSC.Play();
+						musicPlayer.enabled = true;
+						musicPlayer.firstAudio = clips[contador-1].length;
 						this.enabled = false;
 
 					}

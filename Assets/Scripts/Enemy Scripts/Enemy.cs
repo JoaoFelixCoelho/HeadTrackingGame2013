@@ -56,6 +56,10 @@ public class Enemy : MonoBehaviour{
 		Enemy.numerator++;	
 		enemyInstance.GetComponent<AIPathfinding>().originalGrid = firstGrid;
 		
+		if(enemyInstance.type=="spider") {
+			dieParticles = (GameObject) Resources.Load("Prefabs/Particles/EnemyDieParticles2");
+		}
+		
 		/*if (type=="flubber") {
 			int a = Mathf.RoundToInt(Random.Range(0,1));
 			Material mat;
@@ -95,20 +99,32 @@ public class Enemy : MonoBehaviour{
 		this.insideAttZone=true;
 		anim.Play(type + "Idle");
 		if (gameObject.GetComponent<RangedAttackScript>() != null) {
-			float [] lengthArray = {anim[type + "AttackCharge"].length, anim[type + "Attack"].length};
-			gameObject.GetComponent<RangedAttackScript>().animationLength = lengthArray;
+			if(type=="flubber") {
+				float [] lengthArray = {anim[type + "AttackCharge"].length, anim[type + "Attack"].length};
+				gameObject.GetComponent<RangedAttackScript>().animationLength = lengthArray;
+			}
 		}
 	}
 	
 	
 	
 	public void markAsDead() {
-		if(type != "ghost") {
+		
+		if(type=="spider") {
 			Destroy(Instantiate(dieParticles, transform.position, transform.rotation),1.2f);
-			explodeMesh();
+			Destroy(gameObject);
 		}
 		else {
-			dissolveMesh();	
+			
+		
+		
+			if(type != "ghost" ) {
+				Destroy(Instantiate(dieParticles, transform.position, transform.rotation),1.2f);
+				explodeMesh();
+			}
+			else {
+				dissolveMesh();	
+			}
 		}
 	}
 	

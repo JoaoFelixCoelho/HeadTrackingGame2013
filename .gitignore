@@ -183,3 +183,6 @@ pip-log.txt
 server.dat
 
 GameSongs/
+Assets/Resources/Materials/Turret.meta
+Assets/Resources/Materials/turr02.mat.meta
+Assets/Resources/Materials/turr03.mat.meta

@@ -26,7 +26,7 @@ public class Crosshair : MonoBehaviour {
 	
 	
 	void Update() {
-		gameObject.transform.LookAt(getWiimoteCrosshair());	
+		//gameObject.transform.LookAt(getWiimoteCrosshair());	
 	}
  
 		

@@ -117,7 +117,8 @@ public class KeyboardScript : MonoBehaviour {
 			letter = Input.inputString;
 
 			if (transform.FindChild(letter.ToUpper() + "001")!=null && name.Length<15) {
-				transform.FindChild(letter.ToUpper() + "001").animation.Play(letter+"Key");
+				GameObject tecla = transform.FindChild(letter.ToUpper() + "001").gameObject;
+				tecla.transform.position = new Vector3(tecla.transform.position.x, tecla.transform.position.y-0.1f, tecla.transform.position.z);
 				name += letter;
 			}
 			textoMonitor.text = name;
