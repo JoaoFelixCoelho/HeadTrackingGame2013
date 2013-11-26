@@ -8,7 +8,7 @@ public class KeyboardScript : MonoBehaviour {
 	public GameObject monitor;
 	private TextMesh textoMonitor;
 	public bool tick;
-	public float tickstart, counter=0;
+	public float tickstart, counter=0,timeranimation=0;
 	public Bloom_Autowalker bloom;
 	private bool fin = false, finteleport = true;
 	
@@ -21,9 +21,9 @@ public class KeyboardScript : MonoBehaviour {
 	private bool anim= false;
 	
 	private bool animPlaying = false;
-	public bool enable=false;
+	public bool enable=false,startAnim=false;
 	public GameObject rotateleft, rotateright,teleportparticles, player, passTitle;
-	
+	public float positionx;
 
 	
 	void Timer () {
@@ -34,6 +34,22 @@ public class KeyboardScript : MonoBehaviour {
 		}
 		else{tick=false;}
 	}
+	
+/*	public void TimerAnimation(){
+		float counteranimation=0;
+		timeranimation+=Time.deltaTime;	
+		
+		if (timeranimation<0.5f){
+		
+		//transform.FindChild(letter).transform.position.x += 0.1f;
+		}
+		else if (timeranimation>0.5f){
+			tecla.transform.position = new Vector3(tecla.transform.position.x, tecla.transform.position.y, tecla.transform.position.z);
+		}
+		else if (timeranimation>1){
+			startAnim=false;
+		}
+	}*/
 	     
 	void Password(){	
 		bool isReturn = Input.GetKeyDown(KeyCode.Return);
@@ -50,7 +66,7 @@ public class KeyboardScript : MonoBehaviour {
 			audio.Play();
 			if (o<6){
 				passletter=tigers[o].ToString();
-				transform.FindChild(passletter.ToUpper()).animation.Play(passletter+"Key");
+				transform.FindChild(passletter).animation.Play(passletter+"Key");
 				o+=1;
 
 			}
@@ -68,19 +84,6 @@ public class KeyboardScript : MonoBehaviour {
 			if (counter>player.animation.clip.length){
 				player.animation.Stop();
 				Application.LoadLevel(2);
-				/*player.GetComponent<BlurEffect>().enabled = true;
-				if (player.GetComponent<Vignetting>().chromaticAberration<292){
-					player.GetComponent<Vignetting>().chromaticAberration+=Time.deltaTime*200.8f;
-					player.GetComponent<Vignetting>().blur+=Time.deltaTime*82;
-					
-				}
-				else if (player.GetComponent<Vignetting>().chromaticAberration>200){
-					player.GetComponent<Vignetting>().blurSpread+=Time.deltaTime*33f;
-					if (player.GetComponent<Vignetting>().blurSpread>45){
-						Application.LoadLevel(2);
-						
-					}
-				}*/
 			}
 		}
 		
@@ -89,6 +92,14 @@ public class KeyboardScript : MonoBehaviour {
 	void teleport(){
 		teleportTimer+=Time.deltaTime;
 		player.GetComponent<GlowEffect>().enabled = true;
+	}
+	
+	void pressKeyAnimation(){
+		timeranimation+=Time.deltaTime;
+		print(timeranimation);
+		GameObject tecla = transform.FindChild(letter).gameObject;
+		tecla.transform.position = new Vector3(tecla.transform.position.x, tecla.transform.position.y-timeranimation, tecla.transform.position.z);
+
 	}
 
 	void press(){
@@ -99,12 +110,13 @@ public class KeyboardScript : MonoBehaviour {
 		
 		if(Input.anyKeyDown){
 			audio.Play();
+		
 		}
 		
 		if (Input.anyKey){
-
+			letter = Input.inputString;
 			if (isBackSpace && name.Length-1>=0){
-					 name = name.Substring(0, name.Length - 1);
+				name = name.Substring(0, name.Length - 1);
 				transform.FindChild("backspace").animation.Play("eraseKey");
 			}
 			
@@ -112,17 +124,20 @@ public class KeyboardScript : MonoBehaviour {
 					 name += " ";
 				transform.FindChild("space").animation.Play("spaceKey");
 			}
-			
-			
-			letter = Input.inputString;
 
 			if (transform.FindChild(letter.ToUpper() + "001")!=null && name.Length<15) {
+				name += letter;
+				transform.FindChild(letter.ToUpper() + "001").animation.Play(letter+"Key");
+
+			/*if (transform.FindChild(letter.ToUpper() + "001")!=null && name.Length<15) {
 				GameObject tecla = transform.FindChild(letter.ToUpper() + "001").gameObject;
 				tecla.transform.position = new Vector3(tecla.transform.position.x, tecla.transform.position.y-0.1f, tecla.transform.position.z);
-				name += letter;
-			}
+
+				
+			}*/
 			textoMonitor.text = name;
 		}
+	}
 	}
 	
 
@@ -138,6 +153,10 @@ public class KeyboardScript : MonoBehaviour {
 		if (bloom.walkAnimOver){
 			Password ();
 			 press ();
+		}
+		
+		if (startAnim){
+			pressKeyAnimation();
 		}
 	
        

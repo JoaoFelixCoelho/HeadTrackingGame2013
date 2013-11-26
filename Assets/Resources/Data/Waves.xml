@@ -5,7 +5,7 @@
 
 	<round n="1">
 		<destiny>8</destiny>
-		<type>targets</type>
+		<type>spider</type>
 		<interval>1.7</interval>
 	</round>
 

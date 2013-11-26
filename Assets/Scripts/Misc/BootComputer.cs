@@ -3,12 +3,12 @@ using System.Collections;
 
 public class BootComputer : MonoBehaviour {
 	
-	string fullText = "booting system.|jump1|"+
-		"bla bla bla bla bla bla|jump1|" +
-		"el otro dia fui a comer caca |jump1|" +
-		"gg wp vamos las putas eeaaa|jump1|"+
-		"aca tiene que haber una fuente|jump1|" +
-		"que sea un toque mas fachera|jump1|";
+	string fullText = "booting system|wait1|.|wait1|.|wait1|.|jump1|"+
+		"Initalizing shooting system 2.90|jump1|" +
+		"Optimizing partyhats |jump1|" +
+		"Mounting system|jump1|"+
+		"Preparing long boolean variables|jump1|" +
+		"Killing root user|jump1|";
 	float keyStroke = 0.001f;
 	public KeyboardScript kboard;
 	float keyTimer = 0f;
