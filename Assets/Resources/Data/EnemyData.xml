@@ -5,32 +5,32 @@
 	<zombie>
 		<baseHP> 150 </baseHP>
 		<attackType> melee </attackType>
-		<damage> 40 </damage>
-		<moveSpeed> 3  </moveSpeed>
-		<baseAttInterval> 5 </baseAttInterval>
+		<damage> 70 </damage>
+		<moveSpeed> 2.3  </moveSpeed>
+		<baseAttInterval> 6 </baseAttInterval>
 	</zombie>
 	
 	
 	<flubber>
-		<baseHP> 150 </baseHP>
+		<baseHP> 240 </baseHP>
 		<attackType> melee </attackType>
-		<damage> 40 </damage>
+		<damage> 80 </damage>
 		<moveSpeed> 3 </moveSpeed>	
 		<baseAttInterval> 4.3 </baseAttInterval>
 	</flubber>
 	
 	<spider>
-		<baseHP> 150 </baseHP>
+		<baseHP> 400 </baseHP>
 		<attackType> melee </attackType>
-		<damage> 40 </damage>
+		<damage> 120 </damage>
 		<moveSpeed> 3 </moveSpeed>	
 		<baseAttInterval> 3.5 </baseAttInterval>
 	</spider>
 	
 	<ghost>
-		<baseHP> 150 </baseHP>
+		<baseHP> 600 </baseHP>
 		<attackType> melee </attackType>
-		<damage> 40 </damage>
+		<damage> 100 </damage>
 		<moveSpeed> 3 </moveSpeed>	
 		<baseAttInterval> 4 </baseAttInterval>
 	</ghost>

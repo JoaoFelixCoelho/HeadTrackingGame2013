@@ -1,0 +1,287 @@
+fileFormatVersion: 2
+guid: 0531e29fd312ea3459f90c47023e278c
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Feet
+    100002: Hips001
+    100004: Hips001 Head
+    100006: Hips001 HeadNub
+    100008: Hips001 L Calf
+    100010: Hips001 L Clavicle
+    100012: Hips001 L Finger0
+    100014: Hips001 L Finger01
+    100016: Hips001 L Finger02
+    100018: Hips001 L Finger0Nub
+    100020: Hips001 L Finger1
+    100022: Hips001 L Finger11
+    100024: Hips001 L Finger12
+    100026: Hips001 L Finger1Nub
+    100028: Hips001 L Finger2
+    100030: Hips001 L Finger21
+    100032: Hips001 L Finger22
+    100034: Hips001 L Finger2Nub
+    100036: Hips001 L Finger3
+    100038: Hips001 L Finger31
+    100040: Hips001 L Finger32
+    100042: Hips001 L Finger3Nub
+    100044: Hips001 L Finger4
+    100046: Hips001 L Finger41
+    100048: Hips001 L Finger42
+    100050: Hips001 L Finger4Nub
+    100052: Hips001 L Foot
+    100054: Hips001 L Forearm
+    100056: Hips001 L Hand
+    100058: Hips001 L Thigh
+    100060: Hips001 L Toe0
+    100062: Hips001 L Toe0Nub
+    100064: Hips001 L UpperArm
+    100066: Hips001 Neck
+    100068: Hips001 Pelvis
+    100070: Hips001 R Calf
+    100072: Hips001 R Clavicle
+    100074: Hips001 R Finger0
+    100076: Hips001 R Finger01
+    100078: Hips001 R Finger02
+    100080: Hips001 R Finger0Nub
+    100082: Hips001 R Finger1
+    100084: Hips001 R Finger11
+    100086: Hips001 R Finger12
+    100088: Hips001 R Finger1Nub
+    100090: Hips001 R Finger2
+    100092: Hips001 R Finger21
+    100094: Hips001 R Finger22
+    100096: Hips001 R Finger2Nub
+    100098: Hips001 R Finger3
+    100100: Hips001 R Finger31
+    100102: Hips001 R Finger32
+    100104: Hips001 R Finger3Nub
+    100106: Hips001 R Finger4
+    100108: Hips001 R Finger41
+    100110: Hips001 R Finger42
+    100112: Hips001 R Finger4Nub
+    100114: Hips001 R Foot
+    100116: Hips001 R Forearm
+    100118: Hips001 R Hand
+    100120: Hips001 R Thigh
+    100122: Hips001 R Toe0
+    100124: Hips001 R Toe0Nub
+    100126: Hips001 R UpperArm
+    100128: Hips001 Spine
+    100130: Hips001 Spine1
+    100132: Hips001 Spine2
+    100134: Hips001 Spine3
+    100136: //RootNode
+    400000: Feet
+    400002: Hips001
+    400004: Hips001 Head
+    400006: Hips001 HeadNub
+    400008: Hips001 L Calf
+    400010: Hips001 L Clavicle
+    400012: Hips001 L Finger0
+    400014: Hips001 L Finger01
+    400016: Hips001 L Finger02
+    400018: Hips001 L Finger0Nub
+    400020: Hips001 L Finger1
+    400022: Hips001 L Finger11
+    400024: Hips001 L Finger12
+    400026: Hips001 L Finger1Nub
+    400028: Hips001 L Finger2
+    400030: Hips001 L Finger21
+    400032: Hips001 L Finger22
+    400034: Hips001 L Finger2Nub
+    400036: Hips001 L Finger3
+    400038: Hips001 L Finger31
+    400040: Hips001 L Finger32
+    400042: Hips001 L Finger3Nub
+    400044: Hips001 L Finger4
+    400046: Hips001 L Finger41
+    400048: Hips001 L Finger42
+    400050: Hips001 L Finger4Nub
+    400052: Hips001 L Foot
+    400054: Hips001 L Forearm
+    400056: Hips001 L Hand
+    400058: Hips001 L Thigh
+    400060: Hips001 L Toe0
+    400062: Hips001 L Toe0Nub
+    400064: Hips001 L UpperArm
+    400066: Hips001 Neck
+    400068: Hips001 Pelvis
+    400070: Hips001 R Calf
+    400072: Hips001 R Clavicle
+    400074: Hips001 R Finger0
+    400076: Hips001 R Finger01
+    400078: Hips001 R Finger02
+    400080: Hips001 R Finger0Nub
+    400082: Hips001 R Finger1
+    400084: Hips001 R Finger11
+    400086: Hips001 R Finger12
+    400088: Hips001 R Finger1Nub
+    400090: Hips001 R Finger2
+    400092: Hips001 R Finger21
+    400094: Hips001 R Finger22
+    400096: Hips001 R Finger2Nub
+    400098: Hips001 R Finger3
+    400100: Hips001 R Finger31
+    400102: Hips001 R Finger32
+    400104: Hips001 R Finger3Nub
+    400106: Hips001 R Finger4
+    400108: Hips001 R Finger41
+    400110: Hips001 R Finger42
+    400112: Hips001 R Finger4Nub
+    400114: Hips001 R Foot
+    400116: Hips001 R Forearm
+    400118: Hips001 R Hand
+    400120: Hips001 R Thigh
+    400122: Hips001 R Toe0
+    400124: Hips001 R Toe0Nub
+    400126: Hips001 R UpperArm
+    400128: Hips001 Spine
+    400130: Hips001 Spine1
+    400132: Hips001 Spine2
+    400134: Hips001 Spine3
+    400136: //RootNode
+    4300000: Feet
+    7400000: zombieWalk
+    7400002: zombieScream
+    7400004: zombieMelee
+    7400006: zombieIdle
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Feet
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations:
+    - name: zombieWalk
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      transformMask: []
+    - name: zombieScream
+      takeName: Take 001
+      firstFrame: 43
+      lastFrame: 72
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      transformMask: []
+    - name: zombieMelee
+      takeName: Take 001
+      firstFrame: 75
+      lastFrame: 109
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      transformMask: []
+    - name: zombieIdle
+      takeName: Take 001
+      firstFrame: 110
+      lastFrame: 116
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      transformMask: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 1
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 1
+  userData: 
