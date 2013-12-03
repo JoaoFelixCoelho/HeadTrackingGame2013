@@ -70,8 +70,9 @@ public class RangedAttackScript : MonoBehaviour {
 				}
 				
 				Vector3 velocityVector = Enemy.player.transform.position - spawnPos.transform.position;
+				print (velocityVector);
 				
-				//aplicar la accuracy
+				//aplicar la accuracy 
 				velocityVector.x += Random.Range(-accuracy,accuracy);
 				velocityVector.y += Random.Range(-accuracy/4,accuracy/4);
 				velocityVector.z += Random.Range(0,accuracy);

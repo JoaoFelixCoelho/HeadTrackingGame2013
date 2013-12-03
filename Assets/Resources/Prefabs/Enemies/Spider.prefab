@@ -535,7 +535,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.45487237, y: .100000001, z: 40.6707153}
+  m_LocalPosition: {x: -2.3199017, y: .100000001, z: 21.3095016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400030}
@@ -685,8 +685,9 @@ MonoBehaviour:
   bulletSpeed: 700
   ammo: 40
   hasCharge: 0
-  accuracy: .829999983
+  accuracy: 0
   spawnPos: {fileID: 400038}
+  target: 0
   isAttacking: 0
   readyToAttack: 0
   animationLength: []

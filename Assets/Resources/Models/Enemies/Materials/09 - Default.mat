@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 09 - Default
-  m_Shader: {fileID: 30, guid: 0000000000000000e000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 9ce107479d11178d11005b9844295342, type: 3}
   m_ShaderKeywords: []
   m_SavedProperties:
     serializedVersion: 2
@@ -28,6 +28,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _SliceGuide
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Illum
         second:
           m_Texture: {fileID: 0}
@@ -36,13 +43,6 @@ Material:
       data:
         first:
           name: _ToonShade
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _SliceGuide
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -92,12 +92,16 @@ Material:
     m_Floats:
       data:
         first:
+          name: _SliceAmount
+        second: .201492533
+      data:
+        first:
           name: _EmissionLM
         second: 0
       data:
         first:
           name: _Outline
-        second: .0137761189
+        second: .0103582088
       data:
         first:
           name: _Shininess
@@ -106,15 +110,11 @@ Material:
         first:
           name: _InvFade
         second: 1
-      data:
-        first:
-          name: _SliceAmount
-        second: .201492533
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .343283594, g: .343283594, b: .343283594, a: 1}
+        second: {r: .537313461, g: .537313461, b: .537313461, a: 0}
       data:
         first:
           name: _OutlineColor

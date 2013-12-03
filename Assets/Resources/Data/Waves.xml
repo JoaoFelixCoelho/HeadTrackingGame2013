@@ -4,9 +4,9 @@
 
 
 	<round n="1">
-		<destiny>1</destiny>
-		<type>ghost</type>
-		<interval>20</interval>
+		<destiny>8</destiny>
+		<type>zombie</type>
+		<interval>2</interval>
 	</round>
 
 	<round n="2">

@@ -97,8 +97,8 @@ public class Enemy : MonoBehaviour{
 	
 	public void modifyRoute() {
 		this.insideAttZone=true;
-		anim.Play(type + "Idle");
 		if (gameObject.GetComponent<RangedAttackScript>() != null) {
+			anim.Play(type + "Idle");
 			if(type=="flubber") {
 				float [] lengthArray = {anim[type + "AttackCharge"].length, anim[type + "Attack"].length};
 				gameObject.GetComponent<RangedAttackScript>().animationLength = lengthArray;
@@ -118,7 +118,7 @@ public class Enemy : MonoBehaviour{
 			
 		
 		
-			if(type != "ghost" ) {
+			if(type != "ghost" && type != "zombie") {
 				Destroy(Instantiate(dieParticles, transform.position, transform.rotation),1.2f);
 				explodeMesh();
 			}
@@ -130,14 +130,15 @@ public class Enemy : MonoBehaviour{
 	
 	private void dissolveMesh() {
 		if(type == "ghost") {
-			GameObject man = gameObject.transform.FindChild("Model").transform.FindChild("Man").gameObject;
+			/*GameObject man = gameObject.transform.FindChild("Model").transform.FindChild("Man").gameObject;
 			man.SendMessage("disableYourself");
 			Texture newTex = (Texture) Resources.Load("Materials/Textures/DissolveAfter");
-			man.renderer.material.mainTexture = newTex;
+			man.renderer.material.mainTexture = newTex;*/
 		}
-		gameObject.animation.clip = gameObject.animation["EnemyDissolve"].clip;
-		gameObject.animation.Play();
-		Destroy(gameObject,gameObject.animation.clip.length+0.2f);
+		GameObject tmp = gameObject.transform.FindChild("Model").gameObject;
+		tmp.animation.clip = tmp.animation[type + "Dissolve"].clip;
+		tmp.animation.Play();
+		Destroy(gameObject, tmp.animation.clip.length+0.2f);
 		
 		
 	}

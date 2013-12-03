@@ -5,23 +5,25 @@ public class MeleeAttackScript : MonoBehaviour {
 	Enemy enemyAttrs;
 	public float attackInterval;
 	private float auxTime = 0f;
+	bool stay = false;
 	
 	
 	private void followPlayer(){
-		
-		if (!gameObject.GetComponent<AIPathfinding>().hittingPlayer){
-		
-			Vector3 playerPos = new Vector3(Enemy.player.transform.position.x,
-											gameObject.transform.position.y
-											,Enemy.player.transform.position.z);
+		if(!stay) {
+			if (!gameObject.GetComponent<AIPathfinding>().hittingPlayer){
 			
-			gameObject.transform.LookAt(playerPos);
-			enemyAttrs.moveForward();
-			
-			if(transform.position.z > Enemy.player.transform.position.z) {
-				gameObject.GetComponent<HealthSystem>().damageHp(9999);	
-			}			
-			
+				Vector3 playerPos = new Vector3(Enemy.player.transform.position.x,
+												gameObject.transform.position.y
+												,Enemy.player.transform.position.z);
+				
+				gameObject.transform.LookAt(playerPos);
+				enemyAttrs.moveForward();
+				
+				if(transform.position.z > Enemy.player.transform.position.z) {
+					gameObject.GetComponent<HealthSystem>().damageHp(9999);	
+				}			
+				
+			}
 		}
 	}
 	
@@ -40,12 +42,7 @@ public class MeleeAttackScript : MonoBehaviour {
 				Enemy.player.GetComponent<HealthSystem>().damageHp(enemyAttrs.damage);
 				auxTime = 0f;
 			}			
-		}
-
-
-	
-		
-		
+		}		
 	}
 	
 	
