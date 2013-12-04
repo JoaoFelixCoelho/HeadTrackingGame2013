@@ -275,8 +275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef3d242a13c447ac90c2d2dc213b1ea, type: 3}
   m_Name: 
   mode: 0
-  intensity: .375
-  chromaticAberration: 35
+  intensity: -.109999999
+  chromaticAberration: -.689999998
   axialAberration: 164.509995
   blur: 5
   blurSpread: 0
@@ -401,8 +401,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 234360844}
   m_LocalRotation: {x: -3.09086232e-08, y: .707106829, z: -.707106829, w: -3.09086232e-08}
-  m_LocalPosition: {x: -.138773486, y: 2.25999999, z: -6.42000008}
-  m_LocalScale: {x: .330000013, y: 2.31999993, z: .0299999993}
+  m_LocalPosition: {x: -.138773486, y: 2.2291925, z: -6.42000008}
+  m_LocalScale: {x: .569068134, y: .0517334752, z: .0517334752}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!23 &234360846
