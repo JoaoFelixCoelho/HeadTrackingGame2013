@@ -218,11 +218,6 @@ public class Arma : MonoBehaviour {
 	
 	void Update () {
 		
-		if (player.weapon == this) {
-			
-		}
-		
-		
 		if(reloading) {
 			checkReloadTimer();	
 		}

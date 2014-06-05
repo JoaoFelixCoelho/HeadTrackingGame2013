@@ -4,13 +4,12 @@
 SceneSettings:
   m_ObjectHideFlags: 0
   m_PVSData: 
-  m_QueryMode: 1
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
-    viewCellSize: 1
-    bakeMode: 2
-    memoryUsage: 10485760
+    smallestOccluder: 5
+    smallestHole: .25
+    backfaceThreshold: 100
 --- !u!104 &2
 RenderSettings:
   m_Fog: 0
@@ -23,6 +22,7 @@ RenderSettings:
   m_SkyboxMaterial: {fileID: 2100000, guid: 305866bbf81148c4d8d69501e0167542, type: 2}
   m_HaloStrength: .5
   m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 0}
   m_ObjectHideFlags: 0
@@ -148,6 +148,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
+  m_OcclusionCulling: 1
 --- !u!4 &117336685
 Transform:
   m_ObjectHideFlags: 0
@@ -181,6 +182,8 @@ AudioSource:
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -226,6 +229,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b28d47c7fd4a6de4c9d6932ecfe9a3d7, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   axes: 0
   sensitivityX: .5
   sensitivityY: .5
@@ -245,6 +249,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d1352984e3c6465088f6cc7c4ce6e22, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   glowIntensity: .5
   blurIterations: 1
   blurSpread: 1
@@ -262,6 +267,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff30c32bdaacbbe4bb048b292c6aa19a, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   center: {fileID: 0}
   menu: 1
 --- !u!114 &117336691
@@ -274,6 +280,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bef3d242a13c447ac90c2d2dc213b1ea, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   mode: 0
   intensity: -.109999999
   chromaticAberration: -.689999998
@@ -295,6 +302,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0da8daaf1d21e474bafa968f8f6c9f1e, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   intensityMultiplier: 3
   generalIntensity: 1
   blackIntensity: 1
@@ -357,6 +365,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!102 &223726682
 TextMesh:
   serializedVersion: 3
@@ -376,6 +387,9 @@ TextMesh:
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 2b2517950f8a78d4d847bef5eb7dfbe2, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
 --- !u!1 &234360844
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +437,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!111 &234360847
 Animation:
   m_ObjectHideFlags: 0
@@ -438,9 +455,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!33 &234360848
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -485,6 +499,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &388213383
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -525,6 +542,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceeda3a677f5bd74991e667d4d7683d5, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   buttonType: 3
   listItem: {fileID: 0}
   containerToOpen: {fileID: 1157641884}
@@ -581,6 +599,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceeda3a677f5bd74991e667d4d7683d5, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   buttonType: 2
   listItem: {fileID: 100000, guid: 8299f7bbd3185874ba80909cda1aa936, type: 2}
   containerToOpen: {fileID: 2052817959}
@@ -603,6 +622,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &541132417
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -646,6 +668,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &620605333
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -674,6 +699,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 919cee3da86e3ba4c93efe3dc7fd8a22, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   scrollSpeed: .800000012
 --- !u!1 &707808082
 GameObject:
@@ -723,6 +749,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &707808085
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -752,6 +781,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceeda3a677f5bd74991e667d4d7683d5, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   buttonType: 0
   listItem: {fileID: 0}
   containerToOpen: {fileID: 1157641884}
@@ -792,6 +822,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!102 &946021168
 TextMesh:
   serializedVersion: 3
@@ -811,6 +844,9 @@ TextMesh:
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 2b2517950f8a78d4d847bef5eb7dfbe2, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
 --- !u!4 &946021169
 Transform:
   m_ObjectHideFlags: 0
@@ -863,6 +899,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fedb5beedd63fe4faaa7cba6220e9ff, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   usesShader: 1
   glowShader: {fileID: 4800000, guid: d176069dc2c53fb4d9b504b8fdc3ba1d, type: 3}
   buttons:
@@ -983,6 +1020,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!102 &1315836616
 TextMesh:
   serializedVersion: 3
@@ -1002,6 +1042,9 @@ TextMesh:
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 2b2517950f8a78d4d847bef5eb7dfbe2, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
 --- !u!1 &1360315230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1050,6 +1093,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &1360315233
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1079,6 +1125,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceeda3a677f5bd74991e667d4d7683d5, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   buttonType: 1
   listItem: {fileID: 0}
   containerToOpen: {fileID: 1800457775}
@@ -1235,9 +1282,6 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!4 &1800457777
 Transform:
   m_ObjectHideFlags: 0
@@ -1262,6 +1306,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fedb5beedd63fe4faaa7cba6220e9ff, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   usesShader: 0
   glowShader: {fileID: 4800000, guid: d176069dc2c53fb4d9b504b8fdc3ba1d, type: 3}
   buttons:
@@ -1282,6 +1327,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2ab2176c2035c24c9569c9ae1adef69, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   options:
   - {fileID: 1315836612}
   - {fileID: 223726678}
@@ -1324,6 +1370,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa163596e3a51824382cc31b0cd6dd38, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1950323240
 Prefab:
   m_ObjectHideFlags: 0
@@ -1415,9 +1462,6 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!4 &2052817961
 Transform:
   m_ObjectHideFlags: 0
@@ -1439,6 +1483,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fedb5beedd63fe4faaa7cba6220e9ff, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   usesShader: 0
   glowShader: {fileID: 4800000, guid: d176069dc2c53fb4d9b504b8fdc3ba1d, type: 3}
   buttons: []
@@ -1456,4 +1501,5 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fe6ba1edbe795446b752545392af2ad, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   noScrollTimes: 3

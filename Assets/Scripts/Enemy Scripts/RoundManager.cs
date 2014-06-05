@@ -101,7 +101,7 @@ public class RoundManager : MonoBehaviour {
 		roundStarted = true;
 	
 		if (!Round.gameOver) {
-			player.sendMessageToPlayer("round " + (Round.number), "RoundWarning");
+			player.sendMessageToPlayer("round " + (Round.number-1), "RoundWarning");
 		}
 		else {
 			player.sendMessageToPlayer("Game Over!", "RoundWarning");

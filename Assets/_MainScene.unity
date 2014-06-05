@@ -4,13 +4,12 @@
 SceneSettings:
   m_ObjectHideFlags: 0
   m_PVSData: 
-  m_QueryMode: 1
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
-    viewCellSize: 1
-    bakeMode: 2
-    memoryUsage: 10485760
+    smallestOccluder: 5
+    smallestHole: .25
+    backfaceThreshold: 100
 --- !u!104 &2
 RenderSettings:
   m_Fog: 0
@@ -23,6 +22,7 @@ RenderSettings:
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: .5
   m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 0}
   m_ObjectHideFlags: 0
@@ -123,6 +123,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &14494641
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -179,9 +182,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!23 &35255657
 Renderer:
   m_ObjectHideFlags: 0
@@ -202,6 +202,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &35255658
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -220,6 +223,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9c369d7a848658438169f1a33598c71, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   totHp: 15
   currHp: 0
   player: {fileID: 0}
@@ -327,7 +331,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 11400006, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_Enabled
       value: 0
@@ -492,6 +496,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &85266016
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -537,9 +544,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!1 &91026814
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,6 +617,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &117223612
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -732,6 +739,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &183679308
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -866,6 +876,9 @@ GUIText:
   m_Material: {fileID: 0}
   m_FontSize: 36
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!4 &247720299
@@ -878,7 +891,7 @@ Transform:
   m_LocalPosition: {x: .00499999989, y: 1, z: -1.3915112}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1200163680}
+  m_Father: {fileID: 1741497362}
 --- !u!1 &268610928
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,6 +991,9 @@ GUIText:
   m_Material: {fileID: 935224602}
   m_FontSize: 47
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!1 &313026424
@@ -1025,6 +1041,9 @@ GUIText:
   m_Material: {fileID: 1282287547}
   m_FontSize: 47
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!1 &317788010
@@ -1072,6 +1091,9 @@ GUIText:
   m_Material: {fileID: 1798286855}
   m_FontSize: 47
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!1 &328597079
@@ -1121,6 +1143,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &328597082
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1140,6 +1165,56 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 328597079}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &330607090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 330607092}
+  - 132: {fileID: 330607091}
+  m_Layer: 0
+  m_Name: GUI Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!132 &330607091
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 330607090}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Gui Text
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 95
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_PixelCorrect: 1
+  m_RichText: 1
+--- !u!4 &330607092
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 330607090}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .0259517431, y: .779029846, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &353553916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1231,7 @@ GameObject:
   - 114: {fileID: 353553923}
   - 114: {fileID: 353553924}
   - 114: {fileID: 353553925}
+  - 114: {fileID: 353553926}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1190,6 +1266,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60bca8f58a0b8478e946e6e86658cb29, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &353553919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1201,6 +1278,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ab79d7f243824f5d9826bd83522c8df, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   canControl: 1
   useFixedUpdate: 1
   movement:
@@ -1256,6 +1334,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   axes: 1
   sensitivityX: 15
   sensitivityY: 0
@@ -1288,6 +1367,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54775f91069b2d24eb2f78e78bfc2627, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   ammo: 2000
   handgun: {fileID: 1872000885}
   laser: {fileID: 0}
@@ -1313,6 +1393,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9c369d7a848658438169f1a33598c71, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   totHp: 1400
   currHp: 0
   player: {fileID: 0}
@@ -1328,6 +1409,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff30c32bdaacbbe4bb048b292c6aa19a, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   center: {fileID: 1963972223}
   menu: 0
 --- !u!114 &353553925
@@ -1340,6 +1422,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0eb8e587e9199fb46996e5983126c213, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   pauseMenu: {fileID: 988445320}
   background: {fileID: 507531374}
   resume: {fileID: 1385989236}
@@ -1360,6 +1443,17 @@ MonoBehaviour:
   letUp: 0
   letDown: 0
   timerUpDown: 0
+--- !u!114 &353553926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 353553916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 049d5a7a4a95bb54bba02304c34a01ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &418185984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,6 +1517,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &429358632
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1463,6 +1560,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e843de044bf5de044af2241b843885e6, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!21 &458828670
 Material:
   serializedVersion: 3
@@ -1472,6 +1570,7 @@ Material:
   m_Name: Font Material (Instance) (Instance) (Instance) (Instance) (Instance)
   m_Shader: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
   m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -1633,6 +1732,9 @@ GUIText:
   m_Material: {fileID: 2100000, guid: 36df4a99d2ba47848b90e7f68294e204, type: 2}
   m_FontSize: 80
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!1 &581524344
@@ -1669,6 +1771,9 @@ GUIText:
   m_Material: {fileID: 0}
   m_FontSize: 81
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!4 &581524346
@@ -1778,6 +1883,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &649800085
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1909,6 +2017,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &678629489
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1974,6 +2085,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &687493167
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2058,6 +2172,9 @@ SkinnedMeshRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -2077,6 +2194,7 @@ SkinnedMeshRenderer:
   - {fileID: 2036671327}
   - {fileID: 1947262820}
   - {fileID: 277674683}
+  m_BlendShapeWeights: []
   m_RootBone: {fileID: 517179764}
   m_AABB:
     m_Center: {x: -1.15257788, y: -.280229807, z: -.022705853}
@@ -2128,6 +2246,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &697376761
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2180,6 +2301,9 @@ GUIText:
   m_Material: {fileID: 0}
   m_FontSize: 24
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!1 &772610977
@@ -2213,6 +2337,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90f01d14f67d1a144aada01536e1ad36, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   isSpawning: 0
   spawnPoints:
   - {fileID: 678629490}
@@ -2247,6 +2372,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98c1fbc2b5c22e04181079aa3aa98c24, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   visualDebug: {fileID: 749391529}
 --- !u!114 &772610981
 MonoBehaviour:
@@ -2258,6 +2384,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97423b50305afc847998f638af7ddb74, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   addScoreURL: http://localhost/score/addscore.php?
   highscoreURL: http://localhost/score/display.php
   data: 
@@ -2271,6 +2398,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d12c86c6ebd4974bb659972a7c5021f, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   targets:
   - {fileID: 560426165}
   - {fileID: 1621264053}
@@ -2302,6 +2430,8 @@ AudioSource:
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2347,6 +2477,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7fdc57c40c06fc4aa1cc1c0cc5783e9, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   audioFadeTime: 1
   firstAudio: 0
   songs:
@@ -2431,6 +2562,9 @@ GUIText:
   m_Material: {fileID: 0}
   m_FontSize: 30
   m_FontStyle: 2
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!114 &890982989
@@ -2443,6 +2577,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3b0717923f0c454bb524a64c945245e, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!111 &890982990
 Animation:
   m_ObjectHideFlags: 0
@@ -2458,9 +2593,6 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!1 &928810437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,6 +2638,9 @@ GUIText:
   m_Material: {fileID: 458828670}
   m_FontSize: 47
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!21 &935224602
@@ -2517,6 +2652,7 @@ Material:
   m_Name: Font Material (Instance) (Instance) (Instance) (Instance) (Instance)
   m_Shader: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
   m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -2581,6 +2717,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!136 &970086542
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2681,6 +2820,9 @@ GUIText:
   m_Material: {fileID: 935224602}
   m_FontSize: 47
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!1 &1040878313
@@ -2752,12 +2894,15 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &1076783789
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2800,6 +2945,9 @@ GUIText:
   m_Material: {fileID: 2100000, guid: 6871714b4136eef4e86026c07e26c049, type: 2}
   m_FontSize: 80
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!4 &1088193631
@@ -2888,6 +3036,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &1146731521
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2954,9 +3105,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
-  m_UserAABB:
-    m_Center: {x: .0116729736, y: .980154872, z: -.202255249}
-    m_Extent: {x: 1.74485016, y: 1.01355159, z: 1.96567941}
 --- !u!1 &1200163679
 GameObject:
   m_ObjectHideFlags: 0
@@ -2983,7 +3131,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1088193631}
-  - {fileID: 247720299}
   - {fileID: 890982987}
   - {fileID: 581524346}
   m_Father: {fileID: 1777784252}
@@ -3036,9 +3183,6 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: .798153043, y: .379533648, z: .199985921}
-    m_Extent: {x: 2.09128284, y: 1.89139569, z: 2.16235781}
 --- !u!23 &1225133132
 Renderer:
   m_ObjectHideFlags: 0
@@ -3058,6 +3202,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &1225133133
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3194,6 +3341,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   axes: 2
   sensitivityX: 10
   sensitivityY: 10
@@ -3246,6 +3394,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
+  m_OcclusionCulling: 1
 --- !u!114 &1272390909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3256,6 +3405,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d1352984e3c6465088f6cc7c4ce6e22, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   glowIntensity: 1.32000005
   blurIterations: 2
   blurSpread: .5
@@ -3273,6 +3423,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bef3d242a13c447ac90c2d2dc213b1ea, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   mode: 0
   intensity: .375
   chromaticAberration: .200000003
@@ -3294,6 +3445,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d35a90bed98554f4d8b92c9cd3cfbafa, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   tweakMode: 0
   screenBlendMode: 1
   hdr: 0
@@ -3335,6 +3487,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 478a2083ad114a07d000fbfb8d76c639, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: e9ba2083ad114a07d000fbfb8d76c639, type: 3}
   blurAmount: .800000012
   extraBlur: 0
@@ -3354,9 +3507,6 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!21 &1282287547
 Material:
   serializedVersion: 3
@@ -3366,6 +3516,7 @@ Material:
   m_Name: Font Material (Instance) (Instance) (Instance) (Instance) (Instance)
   m_Shader: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
   m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -3473,6 +3624,9 @@ GUIText:
   m_Material: {fileID: 1520957351}
   m_FontSize: 47
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!4 &1385989237
@@ -3522,6 +3676,7 @@ Material:
   m_Name: Font Material (Instance) (Instance) (Instance) (Instance) (Instance)
   m_Shader: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
   m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -3612,6 +3767,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &1570578382
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3667,6 +3825,9 @@ ParticleSystemRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
   m_RenderMode: 0
   m_MaxParticleSize: .5
   m_CameraVelocityScale: 0
@@ -4717,6 +4878,7 @@ ParticleSystem:
       m_Bits: 4294967295
     quality: 0
     voxelSize: .5
+    collisionMessages: 0
   SubModule:
     enabled: 0
     subEmitterBirth: {fileID: 0}
@@ -4740,9 +4902,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!1 &1621264053
 GameObject:
   m_ObjectHideFlags: 0
@@ -4815,6 +4974,9 @@ GUIText:
   m_Material: {fileID: 935224602}
   m_FontSize: 47
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!1 &1688868518
@@ -4853,6 +5015,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &1688868520
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4919,6 +5084,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &1698261204
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4985,6 +5153,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &1700817501
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5062,6 +5233,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &1724825140
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5152,6 +5326,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 247720299}
   - {fileID: 749391528}
   m_Father: {fileID: 0}
 --- !u!1 &1773812063
@@ -5200,6 +5375,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &1773812066
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5307,9 +5485,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!23 &1793728765
 Renderer:
   m_ObjectHideFlags: 0
@@ -5330,6 +5505,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &1793728766
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5348,6 +5526,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9c369d7a848658438169f1a33598c71, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   totHp: 15
   currHp: 0
   player: {fileID: 0}
@@ -5374,6 +5553,7 @@ Material:
   m_Name: Font Material (Instance) (Instance) (Instance) (Instance) (Instance)
   m_Shader: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
   m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -5436,6 +5616,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &1857447100
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5490,6 +5673,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &1866563424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5538,6 +5724,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18a9b4a24a3345e4baa3d39d25f56ee3, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   weaponModel: 1
   damage: 90
   capacity: 8
@@ -5570,9 +5757,6 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!82 &1872000888
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5594,6 +5778,8 @@ AudioSource:
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -5653,6 +5839,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3ebf5cd8ad47194ab1b428852032726, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   mira: {fileID: 2800000, guid: 8265c24532c889845a2128f088f9d6eb, type: 3}
   arma: {fileID: 1872000885}
   limit: {x: 0, y: 0, z: 0}
@@ -5713,6 +5900,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a48af2e71171604d80a9d5a9cf3b690, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   projectile: {fileID: 5400000, guid: 9a9142d4b1f40894c9928c6e9cac9735, type: 2}
   attackInterval: 3.01999998
   bulletSpeed: 599.77002
@@ -5739,9 +5927,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!114 &1884865452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5753,6 +5938,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9c369d7a848658438169f1a33598c71, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   totHp: 295
   currHp: 0
   player: {fileID: 0}
@@ -5876,6 +6062,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &1922944080
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5930,6 +6119,9 @@ GUIText:
   m_Material: {fileID: 2100000, guid: ac4b93a5e777d1e45a4da9ac7dd9e08c, type: 2}
   m_FontSize: 45
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!111 &1945098445
@@ -5947,9 +6139,6 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!114 &1945098446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5960,6 +6149,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce5d5d69b5365314ab0f06fc8d2cdbe2, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   newAlpha: 0
   timeToFade: 1.60000002
 --- !u!1 &1947262819
@@ -6018,12 +6208,15 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &1963972222
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6149,6 +6342,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9c369d7a848658438169f1a33598c71, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   totHp: 15
   currHp: 0
   player: {fileID: 0}
@@ -6170,9 +6364,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!23 &2031259318
 Renderer:
   m_ObjectHideFlags: 0
@@ -6191,6 +6382,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &2031259319
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6255,6 +6449,9 @@ GUIText:
   m_Material: {fileID: 935224602}
   m_FontSize: 47
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!1 &2036671326
@@ -6330,6 +6527,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &2048731837
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6382,6 +6582,9 @@ GUIText:
   m_Material: {fileID: 935224602}
   m_FontSize: 47
   m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!1001 &2067123710
@@ -6550,6 +6753,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &2105626767
 MeshFilter:
   m_ObjectHideFlags: 0

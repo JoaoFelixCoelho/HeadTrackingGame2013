@@ -36,7 +36,10 @@ public class PlayerBehave : MonoBehaviour {
 	private bool handtolaser;
 
 	#endregion
-	
+
+	void Awake () {
+		//PipeClient.start ("spawnclient");
+	}
 	
 	// Use this for initialization
 	void Start () {
@@ -49,6 +52,10 @@ public class PlayerBehave : MonoBehaviour {
 		}
 		else {
 			weapon = laser.GetComponent<Arma>();
+		}
+		Enemy.player = this.gameObject;
+		if (Round.number > 1) {
+			Round.number = 0;
 		}
 	}
 	
@@ -67,9 +74,11 @@ public class PlayerBehave : MonoBehaviour {
 		imageEffectActive = true;
 		gameObject.GetComponent<WiiCameraScript>().enabled = false;
 		this.weapon.enabled = false;
+		this.weapon.gameObject.SetActive (false);
 		sendMessageToPlayer("Game Over!", "warning");
 		transform.FindChild("Main Camera").animation.Play("playerDie");
 		StartCoroutine(RoundManager.dbController.PostScores(PlayerBehave.playerName, PlayerBehave.score));	
+		this.gameObject.AddComponent<RestartScript> ();
 	}
 	
 	public void addKill(string enemyType) {
@@ -168,6 +177,7 @@ public class PlayerBehave : MonoBehaviour {
 		}
 		
 		if (guiTextToUse == "warning") {
+			print ("lost game");
 			warningGUI.text = msg;	
 		}
 		

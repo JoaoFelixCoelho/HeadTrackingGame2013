@@ -2,6 +2,9 @@
 
 <rounds>
 
+	<round n="0">
+		<type>targets</type>
+	</round>
 
 	<round n="1">
 		<destiny>8</destiny>
@@ -17,11 +20,9 @@
 
 	<round n="3">
 		<destiny>10</destiny>
-		<type>
-			<subtype>flubber</subtype>
-			<subtype>spider</subtype>
-		</type>
-		<interval>2</interval>
+		<type>flubber</type>
+		<interval>2</interval>		
+		<spawnWeapon>2</spawnWeapon>
 	</round>
 
 	<round n="4">
@@ -37,7 +38,6 @@
 		<destiny>6</destiny>
 		<type>ghost</type>
 		<interval>2</interval>
-		<spawnWeapon>2</spawnWeapon>
 	</round>
 
 	<round n="6">

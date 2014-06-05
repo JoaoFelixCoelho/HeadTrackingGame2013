@@ -9,6 +9,7 @@ Material:
   m_Name: mat2
   m_Shader: {fileID: 4800000, guid: 9ce107479d11178d11005b9844295342, type: 3}
   m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -46,7 +47,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0, g: 0, b: 0, a: 0}
+        second: {r: .176470578, g: .159602061, b: .159602061, a: 0}
       data:
         first:
           name: _OutlineColor
