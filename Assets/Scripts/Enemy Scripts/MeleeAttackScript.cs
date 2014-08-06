@@ -40,6 +40,7 @@ public class MeleeAttackScript : MonoBehaviour {
 			if (gameObject.GetComponent<AIPathfinding>().hittingPlayer) {
 				enemyAttrs.anim.Play(enemyAttrs.type + "Melee");
 				Enemy.player.GetComponent<HealthSystem>().damageHp(enemyAttrs.damage);
+				stay=true;
 				auxTime = 0f;
 			}			
 		}		

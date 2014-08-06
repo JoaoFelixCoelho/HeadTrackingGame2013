@@ -20,6 +20,7 @@ public class RoundManager : MonoBehaviour {
 	
 	
 	void Start () {	
+		Round.number = 0;
 		startNewRound();
 		//lo tuve que poner aca porque no andaba, alta negrada :/
 		Stats.read();
@@ -41,10 +42,9 @@ public class RoundManager : MonoBehaviour {
 		Enemy.current = 0;
 		player.killsInRound = 0;
 		if(Round.number > 0) {
-			int randomRestore = Round.number*10 + Random.Range(20,50);
+			int randomRestore = Random.Range(5,30);
 			if(player.GetComponent<HealthSystem>().currHp + randomRestore <= player.GetComponent<HealthSystem>().totHp) {
-				player.GetComponent<HealthSystem>().currHp += randomRestore;
-				player.msgGUI.showMsg("Health restored partially");
+				player.GetComponent<HealthSystem>().healHp(randomRestore);
 			}
 		}
 		else {
@@ -89,7 +89,8 @@ public class RoundManager : MonoBehaviour {
 				newRoundWarning();
 			}
 		} else if (Round.gameOver) {
-			StartCoroutine(dbController.PostScores(PlayerBehave.playerName, PlayerBehave.score));	
+			//Application.LoadLevel(0);
+			//StartCoroutine(dbController.PostScores(PlayerBehave.playerName, PlayerBehave.score));	
 		}
 
 		
@@ -101,7 +102,7 @@ public class RoundManager : MonoBehaviour {
 		roundStarted = true;
 	
 		if (!Round.gameOver) {
-			player.sendMessageToPlayer("round " + (Round.number-1), "RoundWarning");
+			player.sendMessageToPlayer("round " + (Round.number), "RoundWarning");
 		}
 		else {
 			player.sendMessageToPlayer("Game Over!", "RoundWarning");

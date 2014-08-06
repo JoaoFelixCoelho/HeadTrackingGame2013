@@ -657,6 +657,32 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!21 &194455155
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ScreenMat (Instance) (Instance) (Instance) (Instance)
+  m_Shader: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats: {}
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &200968208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,7 +1225,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 286631126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.36021519, z: 4.26278687}
+  m_LocalPosition: {x: 0, y: -3.36021519, z: 17.3478928}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1228,6 +1254,7 @@ MonoBehaviour:
   source: {fileID: 286631135}
   keyboard: {fileID: 1419417608}
   bootSystem: {fileID: 1290257957}
+  monitor: {fileID: 1290257951}
 --- !u!114 &286631134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1244,7 +1271,7 @@ MonoBehaviour:
   hdr: 0
   sepBlurSpread: 2.5
   quality: 1
-  bloomIntensity: .349999994
+  bloomIntensity: 3.52999997
   bloomThreshhold: .00999999978
   bloomThreshholdColor: {r: 1, g: 1, b: 1, a: 1}
   bloomBlurIterations: 2
@@ -8384,7 +8411,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: ce74f574e57389746aaf496ee3ca9b9f, type: 2}
+  - {fileID: 194455155}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -8422,6 +8449,7 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 0b9502265e1f2b6489ca1227ebba03af, type: 2}
   m_Animations:
+  - {fileID: 7400000, guid: 2263c2d57d11cd348a144f965b650e26, type: 2}
   - {fileID: 7400000, guid: 0b9502265e1f2b6489ca1227ebba03af, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0

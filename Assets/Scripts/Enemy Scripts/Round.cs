@@ -55,6 +55,7 @@ public static class Round{
 			else {
 				
 				if(roundData["spawnWeapon"] != null) {
+					weaponPicked = false;
 					weaponSpawned = true;	
 				}
 				

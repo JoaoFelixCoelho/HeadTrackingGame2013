@@ -12,9 +12,13 @@ public class PlayerBehave : MonoBehaviour {
 	public int killsInRound;
 	public static int score;
 	public static string playerName = "noName";
+	Vector3 receivedPos;
+	Vector3 originalPos;
+	Vector3 oldPos;
 	#endregion
 	
 	#region GUIs
+	public GUIText hpGUI;
 	public GUIText ammoGUI;
 	public GUIText enemyCounter;
 	public GUIText warningGUI;
@@ -30,12 +34,14 @@ public class PlayerBehave : MonoBehaviour {
 	private float ieTimer = 0;
 	public float imageDistortTime = 1.2f;
 	private float chromaticRate = 90f;
+	public AudioSource audio;
 	#endregion
 	
 	#region others
 	private bool handtolaser;
-
+	public float xMultiplier, yMultiplier, zMultiplier;
 	#endregion
+
 
 	void Awake () {
 		//PipeClient.start ("spawnclient");
@@ -57,6 +63,7 @@ public class PlayerBehave : MonoBehaviour {
 		if (Round.number > 1) {
 			Round.number = 0;
 		}
+		originalPos = this.transform.position;
 	}
 	
 	public void addAmmo(int cant){
@@ -72,12 +79,11 @@ public class PlayerBehave : MonoBehaviour {
 	
 	public void killPlayer () {
 		imageEffectActive = true;
-		gameObject.GetComponent<WiiCameraScript>().enabled = false;
 		this.weapon.enabled = false;
 		this.weapon.gameObject.SetActive (false);
 		sendMessageToPlayer("Game Over!", "warning");
 		transform.FindChild("Main Camera").animation.Play("playerDie");
-		StartCoroutine(RoundManager.dbController.PostScores(PlayerBehave.playerName, PlayerBehave.score));	
+		//StartCoroutine(RoundManager.dbController.PostScores(PlayerBehave.playerName, PlayerBehave.score));	
 		this.gameObject.AddComponent<RestartScript> ();
 	}
 	
@@ -114,6 +120,7 @@ public class PlayerBehave : MonoBehaviour {
 				laser.gameObject.animation.Play ("LaserUp");	
 				StartCoroutine (handToLaser());
 				weapon = handgun.GetComponent<Arma>();
+				weapon.checkAmmo();
 	
 			}
 			else {
@@ -121,6 +128,7 @@ public class PlayerBehave : MonoBehaviour {
 				handtolaser = true;
 				StartCoroutine (handToLaser());
 				weapon = laser.GetComponent<Arma>();
+				weapon.checkAmmo();
 			}
 		}
 	}
@@ -155,10 +163,14 @@ public class PlayerBehave : MonoBehaviour {
 		else {
 			cameraEffect.chromaticAberration = Random.Range(chromaticRate-50, chromaticRate);
 		}
+
 		motionBlur.enabled = true;
 		cameraEffect.blur +=0.5f;
 		cameraEffect.blurSpread += 0.01f;
 		ieTimer += Time.deltaTime;
+		if (!audio.isPlaying) {
+			audio.Play ();
+		}
 		if (ieTimer >= imageDistortTime) {
 			cameraEffect.chromaticAberration = 0;
 			cameraEffect.blurSpread = 0.75f;
@@ -192,9 +204,20 @@ public class PlayerBehave : MonoBehaviour {
 		
 		
 	}
-	
-	public void wiiMenu(){
-		
+
+	public void updateHp(int newHp) {
+		if (newHp < 10) {
+			hpGUI.text =  "0" + newHp + "/99";
+		}
+		hpGUI.text =  newHp + "/99";
+	}
+
+
+	public void changePos(Vector3 newPos) {
+		newPos.x = newPos.x * xMultiplier;
+		newPos.y = newPos.y * yMultiplier;
+		newPos.z = newPos.z * zMultiplier;
+		this.receivedPos = newPos;
 	}
 	
 	void Update () {
@@ -206,7 +229,28 @@ public class PlayerBehave : MonoBehaviour {
 		bool isA = WiiMote.wiimote_getButtonA(Configuration.pointerWiiMote);
 		bool isBtnLeft = WiiMote.wiimote_getButtonLeft(Configuration.pointerWiiMote);
 		bool isBtnRight = WiiMote.wiimote_getButtonRight(Configuration.pointerWiiMote);
-		
+
+		oldPos = this.transform.position;
+		Vector3 newPos = originalPos + receivedPos;
+
+		if (newPos.x > 13 || newPos.x < -11f)
+		{
+			newPos.x = oldPos.x;
+		}
+
+		newPos.y += 1;
+
+		if (newPos.y < 0.5f)
+		{
+			newPos.y += 0.5f - newPos.y;
+		}
+
+		if (newPos.z > 82 || newPos.z < 42)
+		{
+			newPos.z = oldPos.z;
+		}
+
+		this.transform.position = newPos;
 		
 		if (imageEffectActive) {
 			checkCameraDistort();

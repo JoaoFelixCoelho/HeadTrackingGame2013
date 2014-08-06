@@ -29,7 +29,7 @@ public class PauseMenuScript : MonoBehaviour {
 	
 	public void pauseGame() {
 		if (!menuOpen) {
-			Time.timeScale = 0f; 
+			Time.timeScale = 0.001f; 
 			resizeGui ();
 			pauseMenu.SetActive(true);
 			menuOpen = true;
@@ -53,7 +53,6 @@ public class PauseMenuScript : MonoBehaviour {
 		
 	} 
 	public void resizeOptionsGui(){
-		print ("forro");
 	//	optionsContainer.GetComponent<MenuHoverController>().enabled = true;
 		float spacing = Screen.height/10;
 		pointerOption.pixelOffset = new Vector2(0,0+resume.fontSize);
@@ -69,11 +68,13 @@ public class PauseMenuScript : MonoBehaviour {
 		bool isEnter = Input.GetKeyDown(KeyCode.Return);
 		bool isWiiDown = WiiMote.wiimote_getButtonDown(Configuration.pointerWiiMote);
 		bool isWiiUp = WiiMote.wiimote_getButtonUp(Configuration.pointerWiiMote);
+		bool isWiiA = WiiMote.wiimote_getButtonA(Configuration.pointerWiiMote);
 		
 	
-		if (isEnter){
+		if (isEnter || isWiiA ){
 			switch (menuNavigator){
 			case 1:
+				pauseCheck = false;
 				pauseGame();
 			break;
 			case 2:
@@ -89,11 +90,13 @@ public class PauseMenuScript : MonoBehaviour {
 				pauseGame();
 				Round.number = 0;
 				Time.timeScale = 1f;
+				this.GetComponent<TCP>().closeConnection();
 				Application.LoadLevel(0);
 				break;
 			case 4:
 				Time.timeScale = 1f;
 				pauseGame();
+				this.GetComponent<TCP>().closeConnection();
 				Application.LoadLevel(0);
 			break;
 			case 5:
@@ -103,7 +106,7 @@ public class PauseMenuScript : MonoBehaviour {
 		}
 		
 		//navegar con flechitas
-		if (isUp || letUp){
+		if (isUp || letUp || isWiiUp){
 			menuNavigator-=1;
 			switch (menuNavigator){
 			case 0:
@@ -155,7 +158,7 @@ public class PauseMenuScript : MonoBehaviour {
 					
 			}	
 		}	
-		if (isDown){
+		if (isDown || isWiiDown){
 			menuNavigator+=1;
 				switch (menuNavigator){
 				case 1:

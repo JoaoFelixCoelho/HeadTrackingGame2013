@@ -21,7 +21,7 @@ public class Arma : MonoBehaviour {
 	private float timeroverHeat=0;
 	private float reloadDelay = 0f;
 	
-	public AudioClip shootAudio, noBulletAudio;
+	public AudioClip shootAudio, noBulletAudio, reloadAudio;
 	
 	//Dependencias
 	public Transform spawnPos;
@@ -36,6 +36,8 @@ public class Arma : MonoBehaviour {
 	public Material laserMaterial;
 	public float redIncrRate;
 
+	public Material myMaterial;
+
 	
 	public void shoot(){
 		
@@ -43,37 +45,34 @@ public class Arma : MonoBehaviour {
 		if (!reloading) {
 			if (timer >= fireRate) {
 			
-				if (this.bullets==0){
-					showWarning("reload");
-					print("reload");
-					if (weaponModel == WeaponEnum.Rifle){
-						audio.clip = noBulletAudio;
-						audio.Play();
-					}
-				}
-				else {
+
+				if (checkAmmo()) {
 					
 					
 					//shooting = true;  SAQUE ESTE SHOOTING = TRUE Y HICE QUE REALMENTE SOLO CUANDO ESTE DISPARANDO, CONSULTAR A COZZA SI ESTA BIEN EN CLASE.
 					
-					audio.clip = shootAudio;
-					audio.Play ();		
+		
 					
 					if (weaponModel == WeaponEnum.Laser && overheatCount<overheatLimit) 				
 					{
+						audio.clip = shootAudio;
+						audio.Play ();
+						modelGameObject.animation.Play();
 						Rigidbody lasInstance = (Rigidbody) Instantiate(proPrefab, spawnPos.position, spawnPos.rotation);
 						lasInstance.AddForce(spawnPos.forward*laserSpeed);	
 						lasInstance.GetComponent<Projectile>().setDamage(damage);
 
 						overHeat();	
 						shooting = true;
-						WiiMote.wiimote_rumble(Configuration.pointerWiiMote, (float)0.073);
+						WiiMote.wiimote_rumble(Configuration.pointerWiiMote, (float)0.053);
 					}			
 					else if (overheatCount>overheatLimit){
 						WiiMote.wiimote_rumble(Configuration.pointerWiiMote, (float)1.5);
 					}
 					else if (weaponModel == WeaponEnum.Rifle)
 					{
+						audio.clip = shootAudio;
+						audio.Play ();
 						modelGameObject.animation.Play();
 						Vector3 fwd = spawnPos.TransformDirection(Vector3.forward);
 						fwd *= 20;
@@ -117,12 +116,25 @@ public class Arma : MonoBehaviour {
 			}
 		}
 	}
+
+	public bool checkAmmo() {
+		if (this.bullets==0){
+			showWarning("reload");
+			if (weaponModel == WeaponEnum.Rifle){
+				audio.clip = noBulletAudio;
+				audio.Play();
+			}
+			return false;
+		}
+		showWarning ("hide");
+		return true;
+	}
 	
 	public void overHeat() {
 		overheatCount+=1;	
-		Color newCol = renderer.material.color;
+		Color newCol = myMaterial.color;
 		newCol.r += redIncrRate;
-		renderer.material.color = newCol;
+		myMaterial.color = newCol;
 			
 	}
 	
@@ -131,9 +143,9 @@ public class Arma : MonoBehaviour {
 			timeroverHeat+= Time.deltaTime;
 			if (timeroverHeat>1.5f){
 				overheatCount-=Time.fixedDeltaTime*4;
-				Color newCol = renderer.material.color;
+				Color newCol = myMaterial.color;
 				newCol.r -= redIncrRate * Time.fixedDeltaTime*4;
-				renderer.material.color = newCol;
+				myMaterial.color = newCol;
 				
 			}
 		}
@@ -145,7 +157,7 @@ public class Arma : MonoBehaviour {
 	private void updateAmmo() {
 		ammoTxt.text = this.bullets + "/" + this.capacity;
 	}
-	
+
 	private void showWarning (string msg) {
 		switch (msg.ToLower()) {
 		case "reload":
@@ -171,30 +183,38 @@ public class Arma : MonoBehaviour {
 	
 	
 	public int reload (int totalBalas) {		
-		
-		if (totalBalas==0){
-			showWarning("empty");
+
+		if(this.weaponModel == WeaponEnum.Rifle) {
+			if (this.bullets < this.capacity) 
+			{
+				if (totalBalas == 0) {
+						showWarning ("empty");
+				} else {
+					audio.clip = reloadAudio;
+					audio.Play ();	
+					if (totalBalas > this.capacity || (totalBalas + this.bullets) > this.capacity) {
+							reloading = true;
+							if (weaponModel == WeaponEnum.Rifle) {
+									modelGameObject.animation.Play ("handgunReload");
+							}			
+							int aux = this.capacity - this.bullets;
+							this.bullets = capacity;
+							showWarning ("hide");
+							updateAmmo ();
+							return aux;
+					} 
+					else {
+							this.bullets += totalBalas;	
+							updateAmmo ();
+							showWarning ("hide");
+					}
+				}
+				return 0;//devuelve siempre totalBlas salvo el 2do caso. El return es las balas que va a restar
+			}
+
 		}
+		return 0;//devuelve siempre totalBlas salvo el 2do caso. El return es las balas que va a restar
 		
-		else if (totalBalas>this.capacity || (totalBalas+this.bullets)>this.capacity){
-			reloading = true;
-			if (weaponModel == WeaponEnum.Rifle) {
-				modelGameObject.animation.Play("handgunReload");
-			}			
-			int aux = this.capacity - this.bullets;
-			this.bullets = capacity;
-			showWarning("hide");
-			updateAmmo();
-			return aux;
-		}
-		
-		else{
-			this.bullets+= totalBalas;	
-			updateAmmo();
-			showWarning("hide");
-		}
-		
-		return totalBalas;//devuelve siempre totalBlas salvo el 2do caso. El return es las balas que va a restar
 	}	
 	
 	
@@ -206,10 +226,9 @@ public class Arma : MonoBehaviour {
 		updateAmmo();
 		muzzle.SetActive(false);
 		redIncrRate = 5f/overheatLimit;
-		if (modelGameObject != null) {
+		if (this.weaponModel == WeaponEnum.Rifle) {
 			reloadDelay = modelGameObject.animation["handgunReload"].length;
 		}
-
 		else {
 			reloadDelay = 2f;	
 		}

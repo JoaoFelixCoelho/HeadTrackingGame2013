@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WeaponSpawn : MonoBehaviour {
 	
-	private Transform finalPos;
+	public Transform finalPos;
 	public GameObject startPos;
 	private bool translate = false;
 	private Vector3 perSecondDistance;

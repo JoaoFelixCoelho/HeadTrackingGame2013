@@ -14,15 +14,16 @@ public class HealthSystem : MonoBehaviour {
 	
 	public bool isDead= false;
 	public void damageHp (int hit){	
-		
-		
-		if(type == Type.Player) {
-			player.imageEffectActive = true;
-		}
-		
-		
+
+
+
+
 		if (this.currHp-hit > 0){
 			this.currHp-=hit;
+			if(type == Type.Player) {
+				player.imageEffectActive = true;
+				player.updateHp(currHp);
+			}
 		}
 		else {
 			
@@ -85,6 +86,16 @@ public class HealthSystem : MonoBehaviour {
 		this.totHp = baseHp + Random.Range(10,40) * Round.number;
 		this.currHp = this.totHp;
 	}	
+
+	public void healHp(int plusHp) {
+		if (this.currHp + plusHp <= 99) {
+			this.currHp += plusHp;
+		} 
+		else {
+			this.currHp = 99;
+		}
+		player.msgGUI.showMsg("Health restored partially");
+	}
 	
 	
 	

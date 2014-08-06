@@ -1,64 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <rounds>
-
-	<round n="0">
-		<type>targets</type>
-	</round>
-
+	
 	<round n="1">
-		<destiny>8</destiny>
-		<type>zombie</type>
-		<interval>2</interval>
-	</round>
-
-	<round n="2">
 		<destiny>12</destiny>
 		<type>flubber</type>
 		<interval>2</interval>
 	</round>
 
-	<round n="3">
+	<round n="2">
 		<destiny>10</destiny>
-		<type>flubber</type>
-		<interval>2</interval>		
+		<type>spider</type>
+		<interval>2.7</interval>		
 		<spawnWeapon>2</spawnWeapon>
 	</round>
 
-	<round n="4">
+	<round n="3">
 		<destiny>16</destiny>
 		<type>
 			<subtype>flubber</subtype>
 			<subtype>spider</subtype>
 		</type>
-		<interval>1.2</interval>
+		<interval>3</interval>
 	</round>
-
-	<round n="5">
-		<destiny>6</destiny>
-		<type>ghost</type>
-		<interval>2</interval>
-	</round>
-
-	<round n="6">
+	
+	<round n="4">
 		<destiny>10</destiny>
 		<type>
 			<subtype>flubber</subtype>
-			<subtype>ghost</subtype>
+			<subtype>zombie</subtype>
 		</type>
-		<interval>1.2</interval>
+		<interval>2</interval>
+	</round>
+	
+	<round n="5">
+		<destiny>20</destiny>
+		<type>
+			<subtype>flubber</subtype>
+			<subtype>zombie</subtype>
+			<subtype>spider</subtype>
+		</type>
+		<interval>3</interval>
+	</round>
+
+
+	<round n="6">
+		<destiny>14</destiny>
+		<type>ghost</type>
+		<interval>1</interval>
 	</round>
 
 	<round n="7">
-		<destiny>18</destiny>
+		<destiny>28</destiny>
 		<type>
+			<subtype>flubber</subtype>
+			<subtype>zombie</subtype>
 			<subtype>spider</subtype>
 			<subtype>ghost</subtype>
+		</type>
+		<interval>4</interval>
+	</round>
+
+	<round n="8">
+		<destiny>15</destiny>
+		<type>
+			<subtype>spider</subtype>
+			<subtype>flubber</subtype>
 		</type>
 		<interval>1.2</interval>
 	</round>
 
-	<round n="8">
+	<round n="9">
 		<destiny>25</destiny>
 		<type>
 			<subtype>spider</subtype>
@@ -66,6 +78,30 @@
 		</type>
 		<interval>1.2</interval>
 	</round>
+	
+	<round n="10">
+		<destiny>56</destiny>
+		<type>
+			<subtype>flubber</subtype>
+			<subtype>zombie</subtype>
+			<subtype>spider</subtype>
+			<subtype>ghost</subtype>
+		</type>
+		<interval>2</interval>
+	</round>
+	
+	<round n="11">
+		<destiny>85</destiny>
+		<type>
+			<subtype>flubber</subtype>
+			<subtype>zombie</subtype>
+			<subtype>spider</subtype>
+			<subtype>ghost</subtype>
+		</type>
+		<interval>1</interval>
+	</round>
+	
+	
 	
 
 

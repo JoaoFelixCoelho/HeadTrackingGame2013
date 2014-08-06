@@ -6,6 +6,8 @@ using System.Text;
 using System;
 using System.IO;
 using System.Threading;
+using System.Globalization;
+
 
 
 public class TCP : MonoBehaviour 
@@ -18,24 +20,36 @@ public class TCP : MonoBehaviour
 	Thread clientThread;
 	TcpClient tcp_client;
 	bool isTrue = true;
+	PlayerBehave player;
 	
 	// Use this for initialization
 	void Start () 
 	{
+		player = this.GetComponent<PlayerBehave> ();
 		IPAddress ip_addy = IPAddress.Parse(ip_address);
 		tcp_listener = new TcpListener(ip_addy, port);
 		listen_thread = new Thread(new ThreadStart(ListenForClients));
 		listen_thread.Start();
-		
-		
-		Debug.Log("start thread");
-		
+		Debug.Log ("start thread");
+	}
+
+	public void closeConnection() {
+		tcp_client.Close ();
+		tcp_listener.Stop ();
+		listen_thread.Abort ();
+		clientThread.Abort ();
+	}
+
+	void Update() {
+		if(Input.GetKey(KeyCode.P)) {
+			tcp_client.GetStream().Close();
+			tcp_client.Close();
+		}
 	}
 	
 	private void ListenForClients()
 	{
 		this.tcp_listener.Start();
-		
 		while(isTrue == true)   
 		{
 			//blocks until a client has connected to the server
@@ -58,7 +72,7 @@ public class TCP : MonoBehaviour
 		NetworkStream client_stream = tcp_client.GetStream();
 		
 		
-		byte[] message = new byte[4096];
+		byte[] message = new byte[2048];
 		int bytes_read;
 		
 		while(isTrue == true)
@@ -68,7 +82,7 @@ public class TCP : MonoBehaviour
 			try
 			{
 				//blocks until a client sends a message
-				bytes_read = client_stream.Read(message, 0, 4096);
+				bytes_read = client_stream.Read(message, 0, 2048);
 				//Debug.Log(message);
 				
 			}
@@ -86,9 +100,26 @@ public class TCP : MonoBehaviour
 				tcp_client.Close();
 				break;
 			}
-			
+
+
 			ASCIIEncoding encoder = new ASCIIEncoding();
-			Debug.Log(encoder.GetString(message,0,bytes_read));
+			String msg = encoder.GetString(message,0,bytes_read);
+			//Debug.Log(msg);
+			String[] nums = msg.Split('!');
+			float x,y,z;
+			if (nums.Length==3) {
+				x = float.Parse(nums[0], CultureInfo.InvariantCulture.NumberFormat);
+				y = float.Parse(nums[1], CultureInfo.InvariantCulture.NumberFormat);
+				z = float.Parse(nums[2], CultureInfo.InvariantCulture.NumberFormat);		
+				Vector3 newPos = new Vector3(x,y,z);
+				player.changePos(newPos);
+			}
+			else {
+				tcp_client.GetStream().Close();
+				tcp_client.Close();
+			}
+		
+
 			
 			
 		}
@@ -101,6 +132,8 @@ public class TCP : MonoBehaviour
 		
 	}
 	
+
+
 	void OnApplicationQuit()
 	{
 		try

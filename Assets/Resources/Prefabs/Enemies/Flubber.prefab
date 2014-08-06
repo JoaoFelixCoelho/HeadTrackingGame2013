@@ -1081,6 +1081,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &3300000
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1130,9 +1133,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!111 &11100002
 Animation:
   m_ObjectHideFlags: 1
@@ -1153,9 +1153,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
-  m_UserAABB:
-    m_Center: {x: -.00427627563, y: 1.79023027, z: .420747876}
-    m_Extent: {x: 1.57275701, y: 1.90807056, z: 1.25382435}
 --- !u!111 &11100004
 Animation:
   m_ObjectHideFlags: 1
@@ -1174,9 +1171,6 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
-  m_UserAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1187,6 +1181,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: defe6a50576a77c4699de21df2103707, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   originalGrid: 0
   hittingPlayer: 0
 --- !u!114 &11400002
@@ -1199,6 +1194,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9c369d7a848658438169f1a33598c71, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   totHp: 0
   currHp: 0
   player: {fileID: 0}
@@ -1214,13 +1210,15 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a48af2e71171604d80a9d5a9cf3b690, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   projectile: {fileID: 5400000, guid: 9a9142d4b1f40894c9928c6e9cac9735, type: 2}
-  attackInterval: 1.25999999
-  bulletSpeed: 400
+  attackInterval: .889999986
+  bulletSpeed: 800
   ammo: 4
   hasCharge: 1
   accuracy: 1.62
   spawnPos: {fileID: 400072}
+  target: 0
   isAttacking: 0
   readyToAttack: 0
   animationLength: []
@@ -1242,6 +1240,9 @@ SkinnedMeshRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -1267,6 +1268,7 @@ SkinnedMeshRenderer:
   - {fileID: 400058}
   - {fileID: 400032}
   - {fileID: 400030}
+  m_BlendShapeWeights: []
   m_RootBone: {fileID: 400066}
   m_AABB:
     m_Center: {x: .0535653234, y: .000736236572, z: .0217673779}

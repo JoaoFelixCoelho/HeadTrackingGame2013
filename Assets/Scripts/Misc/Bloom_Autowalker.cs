@@ -27,6 +27,8 @@ public class Bloom_Autowalker : MonoBehaviour {
 	private bool fin = false;
 	bool headUp = true;
 
+	public GameObject monitor; 
+
 	
 
 	void Start () {
@@ -44,6 +46,8 @@ public class Bloom_Autowalker : MonoBehaviour {
 		
 		else {
 			bloomAnimOver = true;	
+			monitor.animation.clip = monitor.animation.GetClip("monitorToBlack");
+			monitor.animation.Play();
 			timerDelta = 0.9f;
 		}
 		

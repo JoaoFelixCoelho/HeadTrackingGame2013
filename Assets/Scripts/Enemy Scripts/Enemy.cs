@@ -35,7 +35,22 @@ public class Enemy : MonoBehaviour{
 	
 	
 	public static Enemy createEnemy(string type, int round, Transform currSpawn, int firstGrid) {	
-		
+		 
+		//cuando reinicio el juego, las variables estaticas se rompen, aca checkeo que no sean null, y si lo son, les asigno un valor 
+		if (dieParticles == null) {
+			dieParticles = (GameObject) Resources.Load("Prefabs/Particles/EnemyDieParticles");
+		}
+		if (enemyContainer == null) {
+			enemyContainer = GameObject.Find("Enemies");
+		}
+		if (flubberTrisMat == null) {
+			flubberTrisMat  = (Material) Resources.Load("Materials/Glow_OrangeAlt1");
+		}
+		if (player == null) {
+			player = GameObject.FindGameObjectWithTag("Player");	
+		}
+
+
 		GameObject enemyGameObject;
 		Enemy enemyInstance;
 		

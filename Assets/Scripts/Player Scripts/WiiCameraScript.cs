@@ -72,7 +72,7 @@ public class WiiCameraScript: MonoBehaviour {
 	}
 	
 	void OnGUI() {
-        GUI.Label(new Rect(10, 50, 300, 300), "X: "+ X + " Y: " +Y);
+       // GUI.Label(new Rect(10, 50, 300, 300), "X: "+ X + " Y: " +Y);
 		//print( "X: "+ X + " Y: " +Y);
     }
 }

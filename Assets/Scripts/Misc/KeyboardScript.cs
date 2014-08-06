@@ -75,6 +75,7 @@ public class KeyboardScript : MonoBehaviour {
 		else if (textopass.text.Length == 9){
 			if(!anim){
 				anim = true;
+				monitor.animation.clip = monitor.animation.GetClip("monitorToWhite");
 				monitor.animation.Play();
 				player.audio.Play();
 				player.animation.clip = player.animation ["playerBlurTeleport"].clip;
